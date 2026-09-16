@@ -1,0 +1,1159 @@
+{
+  "schema": "traceone-canary-v1",
+  "seed": 20260916,
+  "items_per_family": 48,
+  "items": [
+    {
+      "id": "string-041",
+      "family": "string_transform",
+      "prompt": "Take `JL7E934KMNXXTXGGG`. Rotate left by 14 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "XTXXNMK439E7LJGGG"
+    },
+    {
+      "id": "string-004",
+      "family": "string_transform",
+      "prompt": "Take `S6VQFRGQ3RXTU7FSR`. Rotate left by 4 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "QV6SRSF7UTXR3QGRF"
+    },
+    {
+      "id": "string-010",
+      "family": "string_transform",
+      "prompt": "Take `3SQ8FX2THJF2MSY9J`. Rotate left by 13 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "M2FJHT2XF8QS3J9YS"
+    },
+    {
+      "id": "sequence-015",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=34. Its first difference at step k (from a_k to a_(k+1)) is 3+2*(k-1). Compute a_14. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "229"
+    },
+    {
+      "id": "gcd-lcm-034",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 736 and 660, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "4,121440"
+    },
+    {
+      "id": "sequence-026",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=40. Its first difference at step k (from a_k to a_(k+1)) is 6+4*(k-1). Compute a_16. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "550"
+    },
+    {
+      "id": "modular-039",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((897 * 850) + 1251) mod 101. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "40"
+    },
+    {
+      "id": "sequence-033",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=36. Its first difference at step k (from a_k to a_(k+1)) is 9+1*(k-1). Compute a_14. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "231"
+    },
+    {
+      "id": "string-031",
+      "family": "string_transform",
+      "prompt": "Take `6FFGVP2AEEJWYSZYN`. Rotate left by 8 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "A2PVGFF6NYZSYWJEE"
+    },
+    {
+      "id": "string-028",
+      "family": "string_transform",
+      "prompt": "Take `FKM9SRUGJSMJU2JMK`. Rotate left by 5 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "S9MKFKMJ2UJMSJGUR"
+    },
+    {
+      "id": "gcd-lcm-046",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 284 and 341, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,96844"
+    },
+    {
+      "id": "string-001",
+      "family": "string_transform",
+      "prompt": "Take `E877S6BVNDUX8B7MX`. Rotate left by 4 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "778EXM7B8XUDNVB6S"
+    },
+    {
+      "id": "string-027",
+      "family": "string_transform",
+      "prompt": "Take `B7VU55623Y2ZKLQMA`. Rotate left by 8 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2655UV7BAMQLKZ2Y3"
+    },
+    {
+      "id": "modular-004",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((676 * 728) + 9763) mod 101. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "22"
+    },
+    {
+      "id": "modular-025",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((523 * 284) + 5561) mod 97. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "57"
+    },
+    {
+      "id": "sequence-038",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=27. Its first difference at step k (from a_k to a_(k+1)) is 4+3*(k-1). Compute a_19. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "558"
+    },
+    {
+      "id": "gcd-lcm-021",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 132 and 860, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "4,28380"
+    },
+    {
+      "id": "string-021",
+      "family": "string_transform",
+      "prompt": "Take `BF7P62MNJ9QWKL2WU`. Rotate left by 13 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "KWQ9JNM26P7FBUW2L"
+    },
+    {
+      "id": "modular-012",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((150 * 474) + 1405) mod 103. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "96"
+    },
+    {
+      "id": "string-026",
+      "family": "string_transform",
+      "prompt": "Take `FPGTC9DRPFPW8U78R`. Rotate left by 6 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "9CTGPFR87U8WPFPRD"
+    },
+    {
+      "id": "string-019",
+      "family": "string_transform",
+      "prompt": "Take `XRSQ88WYPQYBV8698`. Rotate left by 13 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "VBYQPYW88QSRX8968"
+    },
+    {
+      "id": "gcd-lcm-016",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 191 and 452, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,86332"
+    },
+    {
+      "id": "sequence-025",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=37. Its first difference at step k (from a_k to a_(k+1)) is 7+5*(k-1). Compute a_15. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "590"
+    },
+    {
+      "id": "gcd-lcm-022",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 318 and 730, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2,116070"
+    },
+    {
+      "id": "gcd-lcm-032",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 696 and 819, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "3,190008"
+    },
+    {
+      "id": "string-046",
+      "family": "string_transform",
+      "prompt": "Take `X7H56G27FX92ML499`. Rotate left by 5 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "65H7X994LM29XF72G"
+    },
+    {
+      "id": "sequence-003",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=11. Its first difference at step k (from a_k to a_(k+1)) is 7+1*(k-1). Compute a_14. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "180"
+    },
+    {
+      "id": "modular-023",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((303 * 550) + 7302) mod 101. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "30"
+    },
+    {
+      "id": "modular-030",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((220 * 505) + 3211) mod 103. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "84"
+    },
+    {
+      "id": "modular-029",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((737 * 779) + 3916) mod 97. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "16"
+    },
+    {
+      "id": "modular-026",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((821 * 284) + 1415) mod 97. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "33"
+    },
+    {
+      "id": "modular-017",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((696 * 606) + 3114) mod 97. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "30"
+    },
+    {
+      "id": "gcd-lcm-009",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 186 and 490, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2,45570"
+    },
+    {
+      "id": "sequence-004",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=30. Its first difference at step k (from a_k to a_(k+1)) is 7+2*(k-1). Compute a_13. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "246"
+    },
+    {
+      "id": "sequence-002",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=21. Its first difference at step k (from a_k to a_(k+1)) is 2+5*(k-1). Compute a_17. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "653"
+    },
+    {
+      "id": "modular-036",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((190 * 273) + 1788) mod 113. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "96"
+    },
+    {
+      "id": "string-014",
+      "family": "string_transform",
+      "prompt": "Take `QMVB7U3XJ8Z6PZG9J`. Rotate left by 4 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "BVMQJ9GZP6Z8JX3U7"
+    },
+    {
+      "id": "modular-009",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((925 * 909) + 3985) mod 107. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "45"
+    },
+    {
+      "id": "gcd-lcm-044",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 203 and 124, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,25172"
+    },
+    {
+      "id": "string-009",
+      "family": "string_transform",
+      "prompt": "Take `M5UHL4A6DDW39PNXJ`. Rotate left by 6 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "4LHU5MJXNP93WDD6A"
+    },
+    {
+      "id": "modular-005",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((355 * 278) + 8139) mod 103. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "18"
+    },
+    {
+      "id": "string-047",
+      "family": "string_transform",
+      "prompt": "Take `LMP29ALGGDDGUKGAA`. Rotate left by 4 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2PMLAAGKUGDDGGLA9"
+    },
+    {
+      "id": "modular-038",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((255 * 349) + 4895) mod 107. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "51"
+    },
+    {
+      "id": "string-000",
+      "family": "string_transform",
+      "prompt": "Take `W58ZB8GFFX9ZC3RB9`. Rotate left by 5 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "BZ85W9BR3CZ9XFFG8"
+    },
+    {
+      "id": "modular-046",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((743 * 783) + 8563) mod 107. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "13"
+    },
+    {
+      "id": "modular-027",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((661 * 598) + 4257) mod 103. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "101"
+    },
+    {
+      "id": "sequence-028",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=27. Its first difference at step k (from a_k to a_(k+1)) is 9+5*(k-1). Compute a_13. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "465"
+    },
+    {
+      "id": "modular-043",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((901 * 181) + 5730) mod 113. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "102"
+    },
+    {
+      "id": "sequence-039",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=32. Its first difference at step k (from a_k to a_(k+1)) is 4+2*(k-1). Compute a_19. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "410"
+    },
+    {
+      "id": "sequence-034",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=40. Its first difference at step k (from a_k to a_(k+1)) is 6+3*(k-1). Compute a_18. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "550"
+    },
+    {
+      "id": "modular-032",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((417 * 771) + 7499) mod 107. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "88"
+    },
+    {
+      "id": "string-029",
+      "family": "string_transform",
+      "prompt": "Take `YCUFMFK2WHE3CSTGH`. Rotate left by 6 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "FMFUCYHGTSC3EHW2K"
+    },
+    {
+      "id": "gcd-lcm-036",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 834 and 385, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,321090"
+    },
+    {
+      "id": "modular-021",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((159 * 463) + 7181) mod 107. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "13"
+    },
+    {
+      "id": "string-044",
+      "family": "string_transform",
+      "prompt": "Take `77PUHUQ9XLLPKGNNX`. Rotate left by 2 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "77XNNGKPLLX9QUHUP"
+    },
+    {
+      "id": "sequence-011",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=22. Its first difference at step k (from a_k to a_(k+1)) is 3+5*(k-1). Compute a_18. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "753"
+    },
+    {
+      "id": "sequence-029",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=16. Its first difference at step k (from a_k to a_(k+1)) is 5+5*(k-1). Compute a_13. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "406"
+    },
+    {
+      "id": "string-017",
+      "family": "string_transform",
+      "prompt": "Take `VAYGC6CT5YPDC72JF`. Rotate left by 12 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "DPY5TC6CGYAVFJ27C"
+    },
+    {
+      "id": "string-040",
+      "family": "string_transform",
+      "prompt": "Take `LHPGWAP4ACPPCAPVS`. Rotate left by 7 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "PAWGPHLSVPACPPCA4"
+    },
+    {
+      "id": "modular-002",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((617 * 348) + 8175) mod 113. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "55"
+    },
+    {
+      "id": "gcd-lcm-029",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 280 and 847, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "7,33880"
+    },
+    {
+      "id": "gcd-lcm-019",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 511 and 791, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "7,57743"
+    },
+    {
+      "id": "gcd-lcm-031",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 501 and 899, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,450399"
+    },
+    {
+      "id": "gcd-lcm-014",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 534 and 802, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2,214134"
+    },
+    {
+      "id": "modular-015",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((411 * 820) + 3000) mod 109. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "49"
+    },
+    {
+      "id": "sequence-044",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=36. Its first difference at step k (from a_k to a_(k+1)) is 7+4*(k-1). Compute a_18. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "699"
+    },
+    {
+      "id": "gcd-lcm-026",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 669 and 588, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "3,131124"
+    },
+    {
+      "id": "sequence-042",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=10. Its first difference at step k (from a_k to a_(k+1)) is 3+3*(k-1). Compute a_13. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "244"
+    },
+    {
+      "id": "gcd-lcm-047",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 438 and 892, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2,195348"
+    },
+    {
+      "id": "string-006",
+      "family": "string_transform",
+      "prompt": "Take `M9YYV2NFD5C8YY7PL`. Rotate left by 6 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2VYY9MLP7YY8C5DFN"
+    },
+    {
+      "id": "modular-020",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((271 * 592) + 3717) mod 97. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "25"
+    },
+    {
+      "id": "string-007",
+      "family": "string_transform",
+      "prompt": "Take `EX6BN93ZWBMYXGGGP`. Rotate left by 8 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "Z39NB6XEPGGGXYMBW"
+    },
+    {
+      "id": "modular-008",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((231 * 867) + 8939) mod 97. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "84"
+    },
+    {
+      "id": "modular-003",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((687 * 718) + 9207) mod 113. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "75"
+    },
+    {
+      "id": "string-011",
+      "family": "string_transform",
+      "prompt": "Take `T2GZLFUSSPRSQBVCS`. Rotate left by 2 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2TSCVBQSRPSSUFLZG"
+    },
+    {
+      "id": "modular-040",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((807 * 941) + 4770) mod 97. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "88"
+    },
+    {
+      "id": "modular-033",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((939 * 632) + 8676) mod 97. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "45"
+    },
+    {
+      "id": "gcd-lcm-012",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 246 and 395, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,97170"
+    },
+    {
+      "id": "sequence-045",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=23. Its first difference at step k (from a_k to a_(k+1)) is 4+3*(k-1). Compute a_17. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "447"
+    },
+    {
+      "id": "gcd-lcm-004",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 829 and 142, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,117718"
+    },
+    {
+      "id": "sequence-008",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=22. Its first difference at step k (from a_k to a_(k+1)) is 7+2*(k-1). Compute a_11. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "182"
+    },
+    {
+      "id": "gcd-lcm-003",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 757 and 330, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,249810"
+    },
+    {
+      "id": "string-002",
+      "family": "string_transform",
+      "prompt": "Take `FJVR9HXBEQAVR5NLK`. Rotate left by 7 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "XH9RVJFKLN5RVAQEB"
+    },
+    {
+      "id": "sequence-031",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=6. Its first difference at step k (from a_k to a_(k+1)) is 6+4*(k-1). Compute a_16. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "516"
+    },
+    {
+      "id": "modular-019",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((887 * 328) + 2927) mod 113. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "63"
+    },
+    {
+      "id": "gcd-lcm-001",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 366 and 322, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2,58926"
+    },
+    {
+      "id": "gcd-lcm-011",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 538 and 621, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,334098"
+    },
+    {
+      "id": "string-037",
+      "family": "string_transform",
+      "prompt": "Take `NR2Y2CRXUGMXRVXCT`. Rotate left by 5 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2Y2RNTCXVRXMGUXRC"
+    },
+    {
+      "id": "sequence-014",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=6. Its first difference at step k (from a_k to a_(k+1)) is 4+3*(k-1). Compute a_11. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "181"
+    },
+    {
+      "id": "string-013",
+      "family": "string_transform",
+      "prompt": "Take `R6V2HUCZSAUD36V2W`. Rotate left by 11 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "UASZCUH2V6RW2V63D"
+    },
+    {
+      "id": "sequence-019",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=12. Its first difference at step k (from a_k to a_(k+1)) is 5+5*(k-1). Compute a_17. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "692"
+    },
+    {
+      "id": "sequence-012",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=17. Its first difference at step k (from a_k to a_(k+1)) is 2+1*(k-1). Compute a_12. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "94"
+    },
+    {
+      "id": "string-038",
+      "family": "string_transform",
+      "prompt": "Take `CEAY84TEBZ28TTNRB`. Rotate left by 14 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "TT82ZBET48YAECBRN"
+    },
+    {
+      "id": "string-025",
+      "family": "string_transform",
+      "prompt": "Take `WURAUSP8736GFYWEY`. Rotate left by 14 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "YFG6378PSUARUWYEW"
+    },
+    {
+      "id": "gcd-lcm-002",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 566 and 346, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2,97918"
+    },
+    {
+      "id": "gcd-lcm-000",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 613 and 911, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,558443"
+    },
+    {
+      "id": "modular-034",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((503 * 387) + 8908) mod 113. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "56"
+    },
+    {
+      "id": "sequence-041",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=30. Its first difference at step k (from a_k to a_(k+1)) is 9+5*(k-1). Compute a_16. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "690"
+    },
+    {
+      "id": "gcd-lcm-033",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 409 and 142, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,58078"
+    },
+    {
+      "id": "string-012",
+      "family": "string_transform",
+      "prompt": "Take `DXA6G43JVSK8KFCF5`. Rotate left by 12 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "8KSVJ34G6AXD5FCFK"
+    },
+    {
+      "id": "string-005",
+      "family": "string_transform",
+      "prompt": "Take `R4YRXESB76GNHH8QL`. Rotate left by 9 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "7BSEXRY4RLQ8HHNG6"
+    },
+    {
+      "id": "sequence-020",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=6. Its first difference at step k (from a_k to a_(k+1)) is 6+1*(k-1). Compute a_11. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "111"
+    },
+    {
+      "id": "modular-007",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((753 * 527) + 9693) mod 107. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "31"
+    },
+    {
+      "id": "modular-011",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((591 * 295) + 1498) mod 97. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "79"
+    },
+    {
+      "id": "gcd-lcm-008",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 850 and 259, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,220150"
+    },
+    {
+      "id": "string-024",
+      "family": "string_transform",
+      "prompt": "Take `87RDH8Y5TQHLYFTKK`. Rotate left by 7 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "Y8HDR78KKTFYLHQT5"
+    },
+    {
+      "id": "gcd-lcm-039",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 843 and 398, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,335514"
+    },
+    {
+      "id": "string-034",
+      "family": "string_transform",
+      "prompt": "Take `M5R6FMWSKTQ9B2CAR`. Rotate left by 12 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "9QTKSWMF6R5MRAC2B"
+    },
+    {
+      "id": "string-036",
+      "family": "string_transform",
+      "prompt": "Take `VD69487L67MYL35WV`. Rotate left by 2 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "DVVW53LYM76L78496"
+    },
+    {
+      "id": "sequence-024",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=15. Its first difference at step k (from a_k to a_(k+1)) is 6+3*(k-1). Compute a_15. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "372"
+    },
+    {
+      "id": "sequence-043",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=12. Its first difference at step k (from a_k to a_(k+1)) is 9+1*(k-1). Compute a_17. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "276"
+    },
+    {
+      "id": "gcd-lcm-035",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 264 and 231, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "33,1848"
+    },
+    {
+      "id": "string-039",
+      "family": "string_transform",
+      "prompt": "Take `YDDGV9H6XGVGEXFQJ`. Rotate left by 11 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "VGX6H9VGDDYJQFXEG"
+    },
+    {
+      "id": "string-033",
+      "family": "string_transform",
+      "prompt": "Take `Q9FR9KTMC5Q9MTQ9V`. Rotate left by 9 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "CMTK9RF9QV9QTM9Q5"
+    },
+    {
+      "id": "string-016",
+      "family": "string_transform",
+      "prompt": "Take `KLZYAVF7XPHQURTNR`. Rotate left by 12 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "QHPX7FVAYZLKRNTRU"
+    },
+    {
+      "id": "modular-022",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((479 * 658) + 8334) mod 107. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "55"
+    },
+    {
+      "id": "modular-044",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((470 * 899) + 3358) mod 103. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "86"
+    },
+    {
+      "id": "sequence-030",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=28. Its first difference at step k (from a_k to a_(k+1)) is 6+5*(k-1). Compute a_19. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "901"
+    },
+    {
+      "id": "gcd-lcm-017",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 609 and 506, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,308154"
+    },
+    {
+      "id": "string-042",
+      "family": "string_transform",
+      "prompt": "Take `XZ8N8BSVPCAATF43U`. Rotate left by 6 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "B8N8ZXU34FTAACPVS"
+    },
+    {
+      "id": "gcd-lcm-024",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 221 and 640, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,141440"
+    },
+    {
+      "id": "sequence-006",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=34. Its first difference at step k (from a_k to a_(k+1)) is 8+1*(k-1). Compute a_11. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "159"
+    },
+    {
+      "id": "string-022",
+      "family": "string_transform",
+      "prompt": "Take `4ZAY5G3Q6NTLT2BMD`. Rotate left by 13 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "TLTN6Q3G5YAZ4DMB2"
+    },
+    {
+      "id": "gcd-lcm-043",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 879 and 547, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,480813"
+    },
+    {
+      "id": "modular-037",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((872 * 461) + 9831) mod 107. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "87"
+    },
+    {
+      "id": "sequence-021",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=23. Its first difference at step k (from a_k to a_(k+1)) is 9+4*(k-1). Compute a_18. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "720"
+    },
+    {
+      "id": "sequence-032",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=16. Its first difference at step k (from a_k to a_(k+1)) is 7+4*(k-1). Compute a_19. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "754"
+    },
+    {
+      "id": "gcd-lcm-041",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 869 and 501, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,435369"
+    },
+    {
+      "id": "sequence-000",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=14. Its first difference at step k (from a_k to a_(k+1)) is 6+2*(k-1). Compute a_19. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "428"
+    },
+    {
+      "id": "modular-001",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((992 * 760) + 2778) mod 103. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "60"
+    },
+    {
+      "id": "sequence-047",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=17. Its first difference at step k (from a_k to a_(k+1)) is 9+3*(k-1). Compute a_14. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "368"
+    },
+    {
+      "id": "modular-042",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((258 * 517) + 1528) mod 103. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "87"
+    },
+    {
+      "id": "sequence-005",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=18. Its first difference at step k (from a_k to a_(k+1)) is 9+3*(k-1). Compute a_15. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "417"
+    },
+    {
+      "id": "gcd-lcm-037",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 636 and 613, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,389868"
+    },
+    {
+      "id": "string-018",
+      "family": "string_transform",
+      "prompt": "Take `MXJUU5FZW3RXJA37G`. Rotate left by 11 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "R3WZF5UUJXMG73AJX"
+    },
+    {
+      "id": "gcd-lcm-030",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 551 and 890, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,490390"
+    },
+    {
+      "id": "string-020",
+      "family": "string_transform",
+      "prompt": "Take `XJW95JBG88BCUUMQM`. Rotate left by 13 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "UCB88GBJ59WJXMQMU"
+    },
+    {
+      "id": "gcd-lcm-027",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 818 and 450, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2,184050"
+    },
+    {
+      "id": "string-043",
+      "family": "string_transform",
+      "prompt": "Take `M5TVEUMB6T2U5PS3T`. Rotate left by 6 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "UEVT5MT3SP5U2T6BM"
+    },
+    {
+      "id": "gcd-lcm-013",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 816 and 361, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,294576"
+    },
+    {
+      "id": "sequence-027",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=15. Its first difference at step k (from a_k to a_(k+1)) is 7+4*(k-1). Compute a_11. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "265"
+    },
+    {
+      "id": "modular-013",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((589 * 366) + 7670) mod 109. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "12"
+    },
+    {
+      "id": "gcd-lcm-045",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 223 and 586, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,130678"
+    },
+    {
+      "id": "string-030",
+      "family": "string_transform",
+      "prompt": "Take `Z6N9FKPSTYFML4EVN`. Rotate left by 10 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "YTSPKF9N6ZNVE4LMF"
+    },
+    {
+      "id": "gcd-lcm-018",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 754 and 686, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2,258622"
+    },
+    {
+      "id": "modular-000",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((779 * 144) + 7266) mod 101. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "60"
+    },
+    {
+      "id": "sequence-037",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=14. Its first difference at step k (from a_k to a_(k+1)) is 4+1*(k-1). Compute a_17. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "198"
+    },
+    {
+      "id": "gcd-lcm-015",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 210 and 886, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2,93030"
+    },
+    {
+      "id": "gcd-lcm-005",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 838 and 599, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,501962"
+    },
+    {
+      "id": "sequence-009",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=33. Its first difference at step k (from a_k to a_(k+1)) is 9+3*(k-1). Compute a_16. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "483"
+    },
+    {
+      "id": "gcd-lcm-007",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 495 and 546, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "3,90090"
+    },
+    {
+      "id": "sequence-023",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=33. Its first difference at step k (from a_k to a_(k+1)) is 2+5*(k-1). Compute a_13. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "387"
+    },
+    {
+      "id": "sequence-013",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=19. Its first difference at step k (from a_k to a_(k+1)) is 2+4*(k-1). Compute a_13. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "307"
+    },
+    {
+      "id": "sequence-010",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=16. Its first difference at step k (from a_k to a_(k+1)) is 6+5*(k-1). Compute a_12. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "357"
+    },
+    {
+      "id": "sequence-022",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=22. Its first difference at step k (from a_k to a_(k+1)) is 7+1*(k-1). Compute a_18. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "277"
+    },
+    {
+      "id": "modular-028",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((861 * 981) + 4261) mod 103. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "79"
+    },
+    {
+      "id": "modular-031",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((563 * 159) + 9441) mod 113. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "83"
+    },
+    {
+      "id": "modular-006",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((654 * 754) + 8427) mod 107. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "34"
+    },
+    {
+      "id": "gcd-lcm-028",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 632 and 800, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "8,63200"
+    },
+    {
+      "id": "gcd-lcm-038",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 803 and 332, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,266596"
+    },
+    {
+      "id": "gcd-lcm-025",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 784 and 736, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "16,36064"
+    },
+    {
+      "id": "gcd-lcm-023",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 237 and 559, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,132483"
+    },
+    {
+      "id": "sequence-017",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=5. Its first difference at step k (from a_k to a_(k+1)) is 9+3*(k-1). Compute a_18. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "566"
+    },
+    {
+      "id": "sequence-040",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=17. Its first difference at step k (from a_k to a_(k+1)) is 6+1*(k-1). Compute a_11. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "122"
+    },
+    {
+      "id": "string-015",
+      "family": "string_transform",
+      "prompt": "Take `HUMU5QGVZDG62Y7QZ`. Rotate left by 11 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "GDZVGQ5UMUHZQ7Y26"
+    },
+    {
+      "id": "sequence-035",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=30. Its first difference at step k (from a_k to a_(k+1)) is 3+5*(k-1). Compute a_19. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "849"
+    },
+    {
+      "id": "string-045",
+      "family": "string_transform",
+      "prompt": "Take `8FGB86NXVDFAGBDA4`. Rotate left by 14 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "BGAFDVXN68BGF84AD"
+    },
+    {
+      "id": "gcd-lcm-006",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 708 and 986, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2,349044"
+    },
+    {
+      "id": "gcd-lcm-010",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 248 and 779, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,193192"
+    },
+    {
+      "id": "string-035",
+      "family": "string_transform",
+      "prompt": "Take `7AXKXRVCNUJJN8KBK`. Rotate left by 9 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "NCVRXKXA7KBK8NJJU"
+    },
+    {
+      "id": "modular-018",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((671 * 197) + 2236) mod 103. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "8"
+    },
+    {
+      "id": "modular-016",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((220 * 155) + 4534) mod 103. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "9"
+    },
+    {
+      "id": "modular-014",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((151 * 558) + 9747) mod 109. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "47"
+    },
+    {
+      "id": "modular-010",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((712 * 408) + 9673) mod 113. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "41"
+    },
+    {
+      "id": "modular-041",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((199 * 237) + 2718) mod 109. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "68"
+    },
+    {
+      "id": "modular-024",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((769 * 850) + 8545) mod 107. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "79"
+    },
+    {
+      "id": "gcd-lcm-042",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 825 and 215, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "5,35475"
+    },
+    {
+      "id": "sequence-007",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=7. Its first difference at step k (from a_k to a_(k+1)) is 2+3*(k-1). Compute a_13. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "229"
+    },
+    {
+      "id": "sequence-018",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=17. Its first difference at step k (from a_k to a_(k+1)) is 5+2*(k-1). Compute a_13. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "209"
+    },
+    {
+      "id": "modular-045",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((110 * 207) + 2585) mod 109. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "67"
+    },
+    {
+      "id": "string-032",
+      "family": "string_transform",
+      "prompt": "Take `5RA3QB8Z5BRF6H63L`. Rotate left by 5 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "Q3AR5L36H6FRB5Z8B"
+    },
+    {
+      "id": "string-003",
+      "family": "string_transform",
+      "prompt": "Take `729B3PFGC45RZD3LL`. Rotate left by 14 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "DZR54CGFP3B927LL3"
+    },
+    {
+      "id": "sequence-046",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=10. Its first difference at step k (from a_k to a_(k+1)) is 6+2*(k-1). Compute a_18. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "384"
+    },
+    {
+      "id": "string-023",
+      "family": "string_transform",
+      "prompt": "Take `AZXDNQPMEAB28DKJ9`. Rotate left by 12 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2BAEMPQNDXZA9JKD8"
+    },
+    {
+      "id": "sequence-016",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=6. Its first difference at step k (from a_k to a_(k+1)) is 9+4*(k-1). Compute a_15. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "496"
+    },
+    {
+      "id": "gcd-lcm-040",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 501 and 951, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "3,158817"
+    },
+    {
+      "id": "sequence-036",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=7. Its first difference at step k (from a_k to a_(k+1)) is 7+2*(k-1). Compute a_17. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "359"
+    },
+    {
+      "id": "string-008",
+      "family": "string_transform",
+      "prompt": "Take `N3UZZP5EP9KZC5HX8`. Rotate left by 8 characters, then reverse the whole result. Return only the final string. Do not use tools, code execution, search, or a calculator.",
+      "expected": "E5PZZU3N8XH5CZK9P"
+    },
+    {
+      "id": "gcd-lcm-020",
+      "family": "gcd_lcm",
+      "prompt": "For the integers 830 and 161, compute gcd followed by lcm. Return only `gcd,lcm` with no spaces. Do not use tools, code execution, search, or a calculator.",
+      "expected": "1,133630"
+    },
+    {
+      "id": "sequence-001",
+      "family": "second_difference_sequence",
+      "prompt": "A sequence has a_1=18. Its first difference at step k (from a_k to a_(k+1)) is 6+1*(k-1). Compute a_11. Return only the integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "123"
+    },
+    {
+      "id": "modular-035",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((103 * 994) + 9377) mod 113. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "2"
+    },
+    {
+      "id": "modular-047",
+      "family": "modular_arithmetic",
+      "prompt": "Compute ((589 * 917) + 5371) mod 97. Return only the decimal integer. Do not use tools, code execution, search, or a calculator.",
+      "expected": "53"
+    }
+  ]
+}

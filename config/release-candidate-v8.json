@@ -1,0 +1,71 @@
+{
+  "schema": "traceone-frozen-config-v1",
+  "frozen_at": "2026-09-15T09:59:30-07:00",
+  "targets": [
+    "gpt-5.5",
+    "gpt-5.6-luna",
+    "gpt-5.6-terra",
+    "gpt-5.6-sol",
+    "gpt-6-astra"
+  ],
+  "reasoning_effort": "low",
+  "prompt": {
+    "path": "prompts/identity-v3-schema.txt",
+    "file_sha256": "225b34e767cd2686da0c56ca991c62dc944075d3cfec3cca7397c88a2a4fc969",
+    "normalized_text_sha256": "53767b09f7f15afe169fca782daea4611aa08f39ad18b22839aa3a0e717a6557",
+    "requests": 1,
+    "requested_numbers": 315
+  },
+  "output_schema": {
+    "path": "schemas/identity-v3.json",
+    "sha256": "176a5898f6f364a276183e2196e10afa586776bad087a81dc4434476ea7ccfb0"
+  },
+  "outer_guard": {
+    "implementation": "src/traceone/fingerprint.py",
+    "sha256": "9cd7501ded790b77d46f416a8779d1785bcbde63f2eaddca12192c3215f1eb42",
+    "bank": "src/traceone/data/unified_bank.json",
+    "bank_sha256": "6a3f7e4d703990a2322cf535020309380ca858654345d8fe5db278578568bad3",
+    "profile": "enrolled-outer-v2",
+    "minimum_numbers": 280,
+    "minimum_absolute_similarity": 0.52
+  },
+  "enrollment_adapter": {
+    "implementation": "src/traceone/adapter.py",
+    "implementation_sha256": "405f40924fb4cb1e2c7d45424624d7ed6a1904c5810d53c3f7946ddbacdfdd24",
+    "artifact": "src/traceone/data/codex_low_v4_adapter_415.json",
+    "artifact_sha256": "890221bd34a51af4efd2f3a36ef62d5480b2564c9b776e998e55ef8bd592c662",
+    "classifier": "closed-form ridge, alpha 1",
+    "minimum_margin": 0.01,
+    "training_rows": 415,
+    "training_rows_per_model": 83
+  },
+  "target_support": {
+    "implementation": "src/traceone/support.py",
+    "implementation_sha256": "3ff34dc331bebc07782bcb0c72a3581d2abec5a4bf38ae4c7a3c2bd1b9d47138",
+    "artifact": "src/traceone/data/codex_low_v4_support_415.json",
+    "artifact_sha256": "2785f92725e2e2df2cf7f9361259d1cd7d9f382356fe12af3581983887f8ea5b",
+    "covariance_shrinkage": 0.3,
+    "distance_quantile": 0.99,
+    "rescue_margin_quantile": 0.9,
+    "guarantee": "empirical target-support envelope; no distribution-free guarantee"
+  },
+  "public_enrollment": [
+    {
+      "path": "data/public/enrollment-v3.jsonl",
+      "sha256": "28af25f638f45e560da294f3968e581e39d1e6a210b482e13be823b86a0245cd"
+    },
+    {
+      "path": "data/public/confirmation-v6.jsonl",
+      "sha256": "ab3bd8578e097aaf7d2468cdc760a3f6f4ee772410dc2d508ea52e58c00dab58"
+    }
+  ],
+  "development_evidence": {
+    "group_leave_one_collection_out": "412/415 requested-label matches",
+    "held_confirmation_v5": "74/75 including one timeout; 74/74 valid responses",
+    "held_label_open_world_supported": "24/288 false accepts; tuned development estimate",
+    "held_label_open_world_enrolled": "59/288 false accepts; tuned development estimate",
+    "held_label_modeltrace_closed_set": "288/288 false identifications by construction",
+    "largest_ood_weakness": "held-out gpt-5.4: 20/36 supported false accepts"
+  },
+  "status": "frozen before confirmation-v7"
+}

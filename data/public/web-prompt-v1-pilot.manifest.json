@@ -1,0 +1,32 @@
+{
+  "schema": "traceone-public-export-manifest-v1",
+  "output": "data/public/web-prompt-v1-pilot.jsonl",
+  "rows": 5,
+  "sha256": "930dfa03483e1887884d1778d7c9ac65e2f379216a6bc0f8d8bb530af8a4700d",
+  "excluded_fields": [
+    "thread_id",
+    "stderr_tail"
+  ],
+  "sources": [
+    {
+      "source_file": "data/live/web-prompt-v1/gpt-5.5.jsonl",
+      "sha256": "a0f215805af3bff8e4ea7d8c434dc1082f379d30316fe2b1534a39773eb5ceb9"
+    },
+    {
+      "source_file": "data/live/web-prompt-v1/gpt-5.6-luna.jsonl",
+      "sha256": "5615e29c65babd4c2c6d679b01128aacdeef3b29877b2a5e61438b46209af9e0"
+    },
+    {
+      "source_file": "data/live/web-prompt-v1/gpt-5.6-terra.jsonl",
+      "sha256": "0f64ed6745280bdd51e849e17fc010827db1a7f8e0548ca16e9a686bac708c97"
+    },
+    {
+      "source_file": "data/live/web-prompt-v1/gpt-5.6-sol.jsonl",
+      "sha256": "7a1be091980908ff31ca0473dafa1689bef030545c78ccab1dcef0f31c43abb6"
+    },
+    {
+      "source_file": "data/live/web-prompt-v1/gpt-6-astra.jsonl",
+      "sha256": "f06a3e2d8e755cef66800cf12b0c29e68041ba2e0c5bcf0493d380f47f48e030"
+    }
+  ]
+}

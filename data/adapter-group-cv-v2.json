@@ -1,0 +1,296 @@
+{
+  "schema": "traceone-adapter-group-cv-v1",
+  "design": "each prediction is made by an adapter trained without its entire collection group",
+  "alpha": 1.0,
+  "minimum_adapter_margin": 0.01,
+  "samples": 415,
+  "correct": 412,
+  "accuracy_including_abstention": 0.9927710843373494,
+  "wilson_95_interval": [
+    0.9789646084590408,
+    0.9975385322558156
+  ],
+  "groups": {
+    "development_v3": {
+      "samples": 15,
+      "correct": 15,
+      "accuracy_including_abstention": 1.0,
+      "wilson_95_interval": [
+        0.7961166989641515,
+        1.0
+      ],
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 3,
+          "correct": 3,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-luna": {
+          "samples": 3,
+          "correct": 3,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-terra": {
+          "samples": 3,
+          "correct": 3,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-sol": {
+          "samples": 3,
+          "correct": 3,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-6-astra": {
+          "samples": 3,
+          "correct": 3,
+          "accuracy_including_abstention": 1.0
+        }
+      }
+    },
+    "validation_v3": {
+      "samples": 25,
+      "correct": 24,
+      "accuracy_including_abstention": 0.96,
+      "wilson_95_interval": [
+        0.8045593626380625,
+        0.9929037664980127
+      ],
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 5,
+          "correct": 5,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-luna": {
+          "samples": 5,
+          "correct": 5,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-terra": {
+          "samples": 5,
+          "correct": 4,
+          "accuracy_including_abstention": 0.8
+        },
+        "gpt-5.6-sol": {
+          "samples": 5,
+          "correct": 5,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-6-astra": {
+          "samples": 5,
+          "correct": 5,
+          "accuracy_including_abstention": 1.0
+        }
+      }
+    },
+    "confirmation_v1": {
+      "samples": 75,
+      "correct": 75,
+      "accuracy_including_abstention": 1.0,
+      "wilson_95_interval": [
+        0.9512761575171942,
+        1.0
+      ],
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-luna": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-terra": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-sol": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-6-astra": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        }
+      }
+    },
+    "confirmation_v2": {
+      "samples": 75,
+      "correct": 75,
+      "accuracy_including_abstention": 1.0,
+      "wilson_95_interval": [
+        0.9512761575171942,
+        1.0
+      ],
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-luna": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-terra": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-sol": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-6-astra": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        }
+      }
+    },
+    "confirmation_v3": {
+      "samples": 75,
+      "correct": 75,
+      "accuracy_including_abstention": 1.0,
+      "wilson_95_interval": [
+        0.9512761575171942,
+        1.0
+      ],
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-luna": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-terra": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-sol": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-6-astra": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        }
+      }
+    },
+    "confirmation_v4": {
+      "samples": 75,
+      "correct": 74,
+      "accuracy_including_abstention": 0.9866666666666667,
+      "wilson_95_interval": [
+        0.9282663444557845,
+        0.9976424488609515
+      ],
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-luna": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-terra": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-sol": {
+          "samples": 15,
+          "correct": 14,
+          "accuracy_including_abstention": 0.9333333333333333
+        },
+        "gpt-6-astra": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        }
+      }
+    },
+    "confirmation_v6": {
+      "samples": 75,
+      "correct": 74,
+      "accuracy_including_abstention": 0.9866666666666667,
+      "wilson_95_interval": [
+        0.9282663444557845,
+        0.9976424488609515
+      ],
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-luna": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-terra": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-5.6-sol": {
+          "samples": 15,
+          "correct": 15,
+          "accuracy_including_abstention": 1.0
+        },
+        "gpt-6-astra": {
+          "samples": 15,
+          "correct": 14,
+          "accuracy_including_abstention": 0.9333333333333333
+        }
+      }
+    }
+  },
+  "errors": [
+    {
+      "held_group": "validation_v3",
+      "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+      "truth": "gpt-5.6-terra",
+      "label": "gpt-5.5",
+      "correct": false,
+      "adapter_margin": 0.5228866362898645,
+      "outer_status": "identified"
+    },
+    {
+      "held_group": "confirmation_v4",
+      "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+      "truth": "gpt-5.6-sol",
+      "label": null,
+      "correct": false,
+      "adapter_margin": null,
+      "outer_status": "unknown"
+    },
+    {
+      "held_group": "confirmation_v6",
+      "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+      "truth": "gpt-6-astra",
+      "label": "gpt-5.6-sol",
+      "correct": false,
+      "adapter_margin": 0.16504546694989058,
+      "outer_status": "identified"
+    }
+  ]
+}

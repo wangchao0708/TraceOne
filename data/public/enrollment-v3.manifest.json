@@ -1,0 +1,116 @@
+{
+  "schema": "traceone-public-export-manifest-v1",
+  "output": "data/public/enrollment-v3.jsonl",
+  "rows": 340,
+  "sha256": "28af25f638f45e560da294f3968e581e39d1e6a210b482e13be823b86a0245cd",
+  "excluded_fields": [
+    "thread_id",
+    "stderr_tail"
+  ],
+  "sources": [
+    {
+      "source_file": "development-schema.jsonl",
+      "sha256": "f1baeaa9933a22de8b91fc6bc8a87240165e5109bcef55d7e36e3fea82ad3e3d"
+    },
+    {
+      "source_file": "holdout-schema/gpt-5.5.jsonl",
+      "sha256": "2bb94bd37afd989535b7edf7fb3c0e1fec1e0c98e04c67e84df5147f23ad426e"
+    },
+    {
+      "source_file": "holdout-schema/gpt-5.6-luna.jsonl",
+      "sha256": "dc7645b1212b124ee7ed9a244980d4d08240bc8d275eb0058da423232caa813d"
+    },
+    {
+      "source_file": "holdout-schema/gpt-5.6-sol.jsonl",
+      "sha256": "c8f2c5b5893053f03bdfd27026c5cfb3d60179f7c3d1c917d70c3183d7d4a0ba"
+    },
+    {
+      "source_file": "holdout-schema/gpt-5.6-terra.jsonl",
+      "sha256": "cd0029b733fb8f12a5dab16ab9b6ec03e6a4017256570808102d882b51d6a23d"
+    },
+    {
+      "source_file": "holdout-schema/gpt-6-astra.jsonl",
+      "sha256": "cce7b6cd43deb08be7b05503ff3caab6cad135c88d6921c84f6ce0526170c5b3"
+    },
+    {
+      "source_file": "confirmation-schema/gpt-5.5.jsonl",
+      "sha256": "b94d3b8ff9805a64e208ff541419964c6d56e9ffaae8544a0cda19a3f100f650"
+    },
+    {
+      "source_file": "confirmation-schema/gpt-5.6-luna.jsonl",
+      "sha256": "df032724984ed9d8d41ad085c4b395a12b6249945792cc41d0c1dc58a53b2b98"
+    },
+    {
+      "source_file": "confirmation-schema/gpt-5.6-sol.jsonl",
+      "sha256": "43ec5d113f59481ec26d84c1b2858357a0418211a236e067225168c3a0fe4e0e"
+    },
+    {
+      "source_file": "confirmation-schema/gpt-5.6-terra.jsonl",
+      "sha256": "18711ed62190d35355c0b989947cb7722358aaaecf0408f6d354ce42a1189fbd"
+    },
+    {
+      "source_file": "confirmation-schema/gpt-6-astra.jsonl",
+      "sha256": "63c898bc0b719916bd756241f1c4a1b536ec98b84eb4d13075d40985d31894c4"
+    },
+    {
+      "source_file": "confirmation-v2-schema/gpt-5.5.jsonl",
+      "sha256": "8852acb7cbf3be5792975d74b33e8594b214451fc59d0839c4865b61580accac"
+    },
+    {
+      "source_file": "confirmation-v2-schema/gpt-5.6-luna.jsonl",
+      "sha256": "895f58a093caca0fd4ad057ab8d4de22c0b0504113b62203b01f747db39f710b"
+    },
+    {
+      "source_file": "confirmation-v2-schema/gpt-5.6-sol.jsonl",
+      "sha256": "127919f990a87c88fd584edf9cb3856dc8a1dbc4e43ed4ea184667608016f4a4"
+    },
+    {
+      "source_file": "confirmation-v2-schema/gpt-5.6-terra.jsonl",
+      "sha256": "b287487eff2eb3b07597755224ecdd7eaf25873524006f335d2056e64b21ddd0"
+    },
+    {
+      "source_file": "confirmation-v2-schema/gpt-6-astra.jsonl",
+      "sha256": "a93b8795e9d0c22142f6ea8ef4c5b6ecc1a0c6d3919799c16a6dfa745f4c39f9"
+    },
+    {
+      "source_file": "confirmation-v3-schema/gpt-5.5.jsonl",
+      "sha256": "a892029713fe606c1e36568b7154363e1afb66857a9404602485fa0946144eb1"
+    },
+    {
+      "source_file": "confirmation-v3-schema/gpt-5.6-luna.jsonl",
+      "sha256": "9d093fea9354536281e7affe79c2d562bd62829aaaca32245b7f713b06e874c3"
+    },
+    {
+      "source_file": "confirmation-v3-schema/gpt-5.6-sol.jsonl",
+      "sha256": "4b65d0188692b01af3408e85b6d3bc9ccafa62b436540e33e05ba4c42dbd243c"
+    },
+    {
+      "source_file": "confirmation-v3-schema/gpt-5.6-terra.jsonl",
+      "sha256": "b48eceaffe5b14e2da9403edf83462e6b650b725beb4a6bc9bcabc23cb607a44"
+    },
+    {
+      "source_file": "confirmation-v3-schema/gpt-6-astra.jsonl",
+      "sha256": "e128c4b66b4c56ebeef4efa979b5f3e8aa49c0bf19ed8334c3fd1a1395ab5e15"
+    },
+    {
+      "source_file": "confirmation-v4-schema/gpt-5.5.jsonl",
+      "sha256": "2e206fcb8ef253a200e5d36ea37db6eb85c16173ade0585f1a470d4b29b4bb84"
+    },
+    {
+      "source_file": "confirmation-v4-schema/gpt-5.6-luna.jsonl",
+      "sha256": "e5e1ff32f48160562ddadc183ebb46f05c2c7eab3bd9b51646ae8fc7dc6a4c20"
+    },
+    {
+      "source_file": "confirmation-v4-schema/gpt-5.6-sol.jsonl",
+      "sha256": "4df7aca08e97e6bfdc8ccdf5e067445bc7e2049cb03735c74f8f4b8280971477"
+    },
+    {
+      "source_file": "confirmation-v4-schema/gpt-5.6-terra.jsonl",
+      "sha256": "54d715dfd6056eeb99e4bd3962b73405dc1c2750add28aaf930814d8822468b1"
+    },
+    {
+      "source_file": "confirmation-v4-schema/gpt-6-astra.jsonl",
+      "sha256": "0fa66bb0e71d25dc127729295132c4206bf3ee2653605c84c5ed05305cff1546"
+    }
+  ]
+}

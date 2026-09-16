@@ -1,0 +1,790 @@
+{
+  "schema": "traceone-live-evaluation-v1",
+  "truth_limitation": "requested_model is a control-plane label, not independent proof of served weights; metrics are route-label agreement, not audited ground-truth accuracy",
+  "provenance": {
+    "splits": [
+      "holdout"
+    ],
+    "prompt_sha256": [
+      "d70e72f51997c6683818f3282b94b1d258d7433ced4940e0476f6b9401cf3ca8"
+    ],
+    "output_schema_sha256": [
+      "None"
+    ],
+    "reasoning_efforts": [
+      "low"
+    ],
+    "runtimes": [
+      "codex-cli 0.154.0-alpha.6.2"
+    ],
+    "wrappers": [
+      "codex-exec-ephemeral-ignore-user-config-read-only"
+    ]
+  },
+  "profiles": {
+    "supported": {
+      "samples": 5,
+      "requested_label_matches": 5,
+      "requested_label_match_rate_including_abstention": 1.0,
+      "wilson_95_interval": [
+        0.5655175352168251,
+        1.0
+      ],
+      "identified": 5,
+      "coverage": 1.0,
+      "format_compliant": 1,
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-luna": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-sol": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-terra": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-6-astra": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 1
+        }
+      }
+    },
+    "enrolled": {
+      "samples": 5,
+      "requested_label_matches": 5,
+      "requested_label_match_rate_including_abstention": 1.0,
+      "wilson_95_interval": [
+        0.5655175352168251,
+        1.0
+      ],
+      "identified": 5,
+      "coverage": 1.0,
+      "format_compliant": 1,
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-luna": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-sol": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-terra": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-6-astra": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 1
+        }
+      }
+    },
+    "adaptive": {
+      "samples": 5,
+      "requested_label_matches": 5,
+      "requested_label_match_rate_including_abstention": 1.0,
+      "wilson_95_interval": [
+        0.5655175352168251,
+        1.0
+      ],
+      "identified": 5,
+      "coverage": 1.0,
+      "format_compliant": 1,
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-luna": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-sol": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-terra": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-6-astra": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 1
+        }
+      }
+    },
+    "balanced": {
+      "samples": 5,
+      "requested_label_matches": 5,
+      "requested_label_match_rate_including_abstention": 1.0,
+      "wilson_95_interval": [
+        0.5655175352168251,
+        1.0
+      ],
+      "identified": 5,
+      "coverage": 1.0,
+      "format_compliant": 1,
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-luna": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-sol": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-terra": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-6-astra": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 1
+        }
+      }
+    },
+    "strict": {
+      "samples": 5,
+      "requested_label_matches": 4,
+      "requested_label_match_rate_including_abstention": 0.8,
+      "wilson_95_interval": [
+        0.37553462976252533,
+        0.9637758913675698
+      ],
+      "identified": 4,
+      "coverage": 0.8,
+      "format_compliant": 1,
+      "per_model": {
+        "gpt-5.5": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-luna": {
+          "samples": 1,
+          "requested_label_matches": 0,
+          "requested_label_match_rate_including_abstention": 0.0,
+          "wilson_95_interval": [
+            0.0,
+            0.7934506856227626
+          ],
+          "identified": 0,
+          "coverage": 0.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-sol": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-5.6-terra": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 0
+        },
+        "gpt-6-astra": {
+          "samples": 1,
+          "requested_label_matches": 1,
+          "requested_label_match_rate_including_abstention": 1.0,
+          "wilson_95_interval": [
+            0.20654931437723745,
+            1.0
+          ],
+          "identified": 1,
+          "coverage": 1.0,
+          "format_compliant": 1
+        }
+      }
+    }
+  },
+  "samples": [
+    {
+      "sample_id": "data/live/web-prompt-v1/gpt-5.5.jsonl::gpt-5.5__web-prompt-v1__holdout__001",
+      "requested_model": "gpt-5.5",
+      "response_model": null,
+      "reasoning_effort": "low",
+      "runtime": "codex-cli 0.154.0-alpha.6.2",
+      "return_code": 0,
+      "supported": {
+        "status": "identified",
+        "label": "gpt-5.5",
+        "top_candidate": "gpt-5.5",
+        "marginal_candidate": "gpt-5.5",
+        "format_compliant": false,
+        "usable_numbers": 313,
+        "guard_reasons": [],
+        "similarity": 0.7216694048291982,
+        "score_margin": 1.0859914723860493,
+        "marginal_score_margin": 1.1315354118037584,
+        "decision_path": "distance",
+        "adapter_margin": 0.9333160407619732,
+        "support_distance": 7.450782154559648,
+        "support_threshold": 34.229824435699925,
+        "support_p_value": 0.39285714285714285
+      },
+      "enrolled": {
+        "status": "identified",
+        "label": "gpt-5.5",
+        "top_candidate": "gpt-5.5",
+        "marginal_candidate": "gpt-5.5",
+        "format_compliant": false,
+        "usable_numbers": 313,
+        "guard_reasons": [],
+        "similarity": 0.7216694048291982,
+        "score_margin": 1.0859914723860493,
+        "marginal_score_margin": 1.1315354118037584,
+        "decision_path": "ridge_adapter",
+        "adapter_margin": 0.9333160407619732
+      },
+      "adaptive": {
+        "status": "identified",
+        "label": "gpt-5.5",
+        "top_candidate": "gpt-5.5",
+        "marginal_candidate": "gpt-5.5",
+        "format_compliant": false,
+        "usable_numbers": 313,
+        "guard_reasons": [],
+        "similarity": 0.7216694048291982,
+        "score_margin": 1.0859914723860493,
+        "marginal_score_margin": 1.1315354118037584,
+        "decision_path": "fused"
+      },
+      "balanced": {
+        "status": "identified",
+        "label": "gpt-5.5",
+        "top_candidate": "gpt-5.5",
+        "marginal_candidate": "gpt-5.5",
+        "format_compliant": false,
+        "usable_numbers": 313,
+        "guard_reasons": [],
+        "similarity": 0.7216694048291982,
+        "score_margin": 1.0859914723860493,
+        "marginal_score_margin": 1.1315354118037584,
+        "decision_path": "fused"
+      },
+      "strict": {
+        "status": "identified",
+        "label": "gpt-5.5",
+        "top_candidate": "gpt-5.5",
+        "marginal_candidate": "gpt-5.5",
+        "format_compliant": false,
+        "usable_numbers": 313,
+        "guard_reasons": [],
+        "similarity": 0.7216694048291982,
+        "score_margin": 1.0859914723860493,
+        "marginal_score_margin": 1.1315354118037584,
+        "decision_path": "fused"
+      }
+    },
+    {
+      "sample_id": "data/live/web-prompt-v1/gpt-5.6-luna.jsonl::gpt-5.6-luna__web-prompt-v1__holdout__001",
+      "requested_model": "gpt-5.6-luna",
+      "response_model": null,
+      "reasoning_effort": "low",
+      "runtime": "codex-cli 0.154.0-alpha.6.2",
+      "return_code": 0,
+      "supported": {
+        "status": "identified",
+        "label": "gpt-5.6-luna",
+        "top_candidate": "gpt-5.6-luna",
+        "marginal_candidate": "gpt-5.6-luna",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.5855274699871708,
+        "score_margin": 0.058596736413381034,
+        "marginal_score_margin": 0.04019756249833395,
+        "decision_path": "distance",
+        "adapter_margin": 0.2560863594468953,
+        "support_distance": 22.374948822264372,
+        "support_threshold": 76.39803637979126,
+        "support_p_value": 0.05952380952380952
+      },
+      "enrolled": {
+        "status": "identified",
+        "label": "gpt-5.6-luna",
+        "top_candidate": "gpt-5.6-luna",
+        "marginal_candidate": "gpt-5.6-luna",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.5855274699871708,
+        "score_margin": 0.058596736413381034,
+        "marginal_score_margin": 0.04019756249833395,
+        "decision_path": "ridge_adapter",
+        "adapter_margin": 0.2560863594468953
+      },
+      "adaptive": {
+        "status": "identified",
+        "label": "gpt-5.6-luna",
+        "top_candidate": "gpt-5.6-luna",
+        "marginal_candidate": "gpt-5.6-luna",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.5855274699871708,
+        "score_margin": 0.058596736413381034,
+        "marginal_score_margin": 0.04019756249833395,
+        "decision_path": "fused"
+      },
+      "balanced": {
+        "status": "identified",
+        "label": "gpt-5.6-luna",
+        "top_candidate": "gpt-5.6-luna",
+        "marginal_candidate": "gpt-5.6-luna",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.5855274699871708,
+        "score_margin": 0.058596736413381034,
+        "marginal_score_margin": 0.04019756249833395,
+        "decision_path": "fused"
+      },
+      "strict": {
+        "status": "unknown",
+        "label": null,
+        "top_candidate": "gpt-5.6-luna",
+        "marginal_candidate": "gpt-5.6-luna",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [
+          "low_score_margin"
+        ],
+        "similarity": 0.5855274699871708,
+        "score_margin": 0.058596736413381034,
+        "marginal_score_margin": 0.04019756249833395,
+        "decision_path": null
+      }
+    },
+    {
+      "sample_id": "data/live/web-prompt-v1/gpt-5.6-terra.jsonl::gpt-5.6-terra__web-prompt-v1__holdout__001",
+      "requested_model": "gpt-5.6-terra",
+      "response_model": null,
+      "reasoning_effort": "low",
+      "runtime": "codex-cli 0.154.0-alpha.6.2",
+      "return_code": 0,
+      "supported": {
+        "status": "identified",
+        "label": "gpt-5.6-terra",
+        "top_candidate": "gpt-5.6-terra",
+        "marginal_candidate": "gpt-5.6-terra",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.5957753655098029,
+        "score_margin": 0.7605423175430099,
+        "marginal_score_margin": 0.9205120649321419,
+        "decision_path": "distance",
+        "adapter_margin": 0.25706091174585444,
+        "support_distance": 15.958063802753866,
+        "support_threshold": 69.75669740948469,
+        "support_p_value": 0.4523809523809524
+      },
+      "enrolled": {
+        "status": "identified",
+        "label": "gpt-5.6-terra",
+        "top_candidate": "gpt-5.6-terra",
+        "marginal_candidate": "gpt-5.6-terra",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.5957753655098029,
+        "score_margin": 0.7605423175430099,
+        "marginal_score_margin": 0.9205120649321419,
+        "decision_path": "ridge_adapter",
+        "adapter_margin": 0.25706091174585444
+      },
+      "adaptive": {
+        "status": "identified",
+        "label": "gpt-5.6-terra",
+        "top_candidate": "gpt-5.6-terra",
+        "marginal_candidate": "gpt-5.6-terra",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.5957753655098029,
+        "score_margin": 0.7605423175430099,
+        "marginal_score_margin": 0.9205120649321419,
+        "decision_path": "fused"
+      },
+      "balanced": {
+        "status": "identified",
+        "label": "gpt-5.6-terra",
+        "top_candidate": "gpt-5.6-terra",
+        "marginal_candidate": "gpt-5.6-terra",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.5957753655098029,
+        "score_margin": 0.7605423175430099,
+        "marginal_score_margin": 0.9205120649321419,
+        "decision_path": "fused"
+      },
+      "strict": {
+        "status": "identified",
+        "label": "gpt-5.6-terra",
+        "top_candidate": "gpt-5.6-terra",
+        "marginal_candidate": "gpt-5.6-terra",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.5957753655098029,
+        "score_margin": 0.7605423175430099,
+        "marginal_score_margin": 0.9205120649321419,
+        "decision_path": "fused"
+      }
+    },
+    {
+      "sample_id": "data/live/web-prompt-v1/gpt-5.6-sol.jsonl::gpt-5.6-sol__web-prompt-v1__holdout__001",
+      "requested_model": "gpt-5.6-sol",
+      "response_model": null,
+      "reasoning_effort": "low",
+      "runtime": "codex-cli 0.154.0-alpha.6.2",
+      "return_code": 0,
+      "supported": {
+        "status": "identified",
+        "label": "gpt-5.6-sol",
+        "top_candidate": "gpt-5.6-sol",
+        "marginal_candidate": "gpt-5.6-sol",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.733489783961091,
+        "score_margin": 0.4788520548704802,
+        "marginal_score_margin": 0.5597140141220849,
+        "decision_path": "distance",
+        "adapter_margin": 0.786944216792552,
+        "support_distance": 5.064262540648538,
+        "support_threshold": 19.478150463132746,
+        "support_p_value": 0.5952380952380952
+      },
+      "enrolled": {
+        "status": "identified",
+        "label": "gpt-5.6-sol",
+        "top_candidate": "gpt-5.6-sol",
+        "marginal_candidate": "gpt-5.6-sol",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.733489783961091,
+        "score_margin": 0.4788520548704802,
+        "marginal_score_margin": 0.5597140141220849,
+        "decision_path": "ridge_adapter",
+        "adapter_margin": 0.786944216792552
+      },
+      "adaptive": {
+        "status": "identified",
+        "label": "gpt-5.6-sol",
+        "top_candidate": "gpt-5.6-sol",
+        "marginal_candidate": "gpt-5.6-sol",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.733489783961091,
+        "score_margin": 0.4788520548704802,
+        "marginal_score_margin": 0.5597140141220849,
+        "decision_path": "fused"
+      },
+      "balanced": {
+        "status": "identified",
+        "label": "gpt-5.6-sol",
+        "top_candidate": "gpt-5.6-sol",
+        "marginal_candidate": "gpt-5.6-sol",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.733489783961091,
+        "score_margin": 0.4788520548704802,
+        "marginal_score_margin": 0.5597140141220849,
+        "decision_path": "fused"
+      },
+      "strict": {
+        "status": "identified",
+        "label": "gpt-5.6-sol",
+        "top_candidate": "gpt-5.6-sol",
+        "marginal_candidate": "gpt-5.6-sol",
+        "format_compliant": false,
+        "usable_numbers": 314,
+        "guard_reasons": [],
+        "similarity": 0.733489783961091,
+        "score_margin": 0.4788520548704802,
+        "marginal_score_margin": 0.5597140141220849,
+        "decision_path": "fused"
+      }
+    },
+    {
+      "sample_id": "data/live/web-prompt-v1/gpt-6-astra.jsonl::gpt-6-astra__web-prompt-v1__holdout__001",
+      "requested_model": "gpt-6-astra",
+      "response_model": null,
+      "reasoning_effort": "low",
+      "runtime": "codex-cli 0.154.0-alpha.6.2",
+      "return_code": 0,
+      "supported": {
+        "status": "identified",
+        "label": "gpt-6-astra",
+        "top_candidate": "gpt-6-astra",
+        "marginal_candidate": "gpt-6-astra",
+        "format_compliant": true,
+        "usable_numbers": 315,
+        "guard_reasons": [],
+        "similarity": 0.7714354210437384,
+        "score_margin": 0.8347985400673159,
+        "marginal_score_margin": 0.7943195569102571,
+        "decision_path": "distance",
+        "adapter_margin": 0.8321621062544702,
+        "support_distance": 7.058479732680035,
+        "support_threshold": 37.74801685509998,
+        "support_p_value": 0.39285714285714285
+      },
+      "enrolled": {
+        "status": "identified",
+        "label": "gpt-6-astra",
+        "top_candidate": "gpt-6-astra",
+        "marginal_candidate": "gpt-6-astra",
+        "format_compliant": true,
+        "usable_numbers": 315,
+        "guard_reasons": [],
+        "similarity": 0.7714354210437384,
+        "score_margin": 0.8347985400673159,
+        "marginal_score_margin": 0.7943195569102571,
+        "decision_path": "ridge_adapter",
+        "adapter_margin": 0.8321621062544702
+      },
+      "adaptive": {
+        "status": "identified",
+        "label": "gpt-6-astra",
+        "top_candidate": "gpt-6-astra",
+        "marginal_candidate": "gpt-6-astra",
+        "format_compliant": true,
+        "usable_numbers": 315,
+        "guard_reasons": [],
+        "similarity": 0.7714354210437384,
+        "score_margin": 0.8347985400673159,
+        "marginal_score_margin": 0.7943195569102571,
+        "decision_path": "fused"
+      },
+      "balanced": {
+        "status": "identified",
+        "label": "gpt-6-astra",
+        "top_candidate": "gpt-6-astra",
+        "marginal_candidate": "gpt-6-astra",
+        "format_compliant": true,
+        "usable_numbers": 315,
+        "guard_reasons": [],
+        "similarity": 0.7714354210437384,
+        "score_margin": 0.8347985400673159,
+        "marginal_score_margin": 0.7943195569102571,
+        "decision_path": "fused"
+      },
+      "strict": {
+        "status": "identified",
+        "label": "gpt-6-astra",
+        "top_candidate": "gpt-6-astra",
+        "marginal_candidate": "gpt-6-astra",
+        "format_compliant": true,
+        "usable_numbers": 315,
+        "guard_reasons": [],
+        "similarity": 0.7714354210437384,
+        "score_margin": 0.8347985400673159,
+        "marginal_score_margin": 0.7943195569102571,
+        "decision_path": "fused"
+      }
+    }
+  ]
+}

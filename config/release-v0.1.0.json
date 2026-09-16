@@ -1,0 +1,45 @@
+{
+  "schema": "traceone-release-manifest-v1",
+  "version": "0.1.0",
+  "released_at": "2026-09-15",
+  "frozen_candidate": {
+    "path": "config/release-candidate-v8.json",
+    "sha256": "03540f2b2adc0a4444b53ed671ff49284c5d0a2ff504ddeaee4284d5b610b24d"
+  },
+  "confirmation_plan": {
+    "path": "config/confirmation-v7.json",
+    "sha256": "49d50dffb7d47ca505e9385c06d09ac5273cec1631cd893ffa79c26b62bdc4e4"
+  },
+  "confirmation": {
+    "public_responses": {
+      "path": "data/public/confirmation-v7.jsonl",
+      "sha256": "f59ebce18dcbc88217b073d8add5133dad5025076d0971a1038f3b949e884a7f"
+    },
+    "traceone_evaluation": {
+      "path": "data/confirmation-v7-evaluation.json",
+      "sha256": "372769368598dfff0d2d8477265bb779589bb44933421a59da4fa9cfa5b4d692"
+    },
+    "head_to_head": {
+      "path": "data/confirmation-v7-head-to-head.json",
+      "sha256": "d5ed3134d7f321de32d056752af91cb4327ed651a526ea58dd76d6ffdadf6d6d"
+    },
+    "result": "TraceOne 75/75; ModelTrace one-call 74/75; ModelTrace disjoint three-call 25/25",
+    "truth_boundary": "requested-model agreement, not independently attested served weights"
+  },
+  "open_world_development": {
+    "path": "data/open-world-development-v2.json",
+    "sha256": "c2c1630d6d4d9ff3c98fdaf39016e44499ddd82a464c37c515c57bce4f8fda8e",
+    "result": "supported 24/288 false accepts; ModelTrace closed-set 288/288",
+    "status": "development evidence, not an untouched independent-provider test"
+  },
+  "degradation_canary": {
+    "benchmark": {
+      "path": "benchmarks/canary-v2.json",
+      "sha256": "f53419e510a36f7ed27ee26319d304bef8e3ad103319d7b170b6680595394911"
+    },
+    "power_plan": {
+      "path": "data/degradation-power-plan-v2.json",
+      "sha256": "bc5546b9586a12fa1f55d9425187530cca66bbda1d794eb0e72210ec70dbaffa"
+    }
+  }
+}

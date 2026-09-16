@@ -1,0 +1,32 @@
+{
+  "schema": "traceone-public-export-manifest-v1",
+  "output": "data/public/confirmation-v6.jsonl",
+  "rows": 75,
+  "sha256": "ab3bd8578e097aaf7d2468cdc760a3f6f4ee772410dc2d508ea52e58c00dab58",
+  "excluded_fields": [
+    "thread_id",
+    "stderr_tail"
+  ],
+  "sources": [
+    {
+      "source_file": "confirmation-v6-schema/gpt-5.5.jsonl",
+      "sha256": "bf50e339c3e73e0473ca489af5341562d99e8fdea48c9dd5c18c079114961c29"
+    },
+    {
+      "source_file": "confirmation-v6-schema/gpt-5.6-luna.jsonl",
+      "sha256": "bb93c6012d4f68688538e660784bba85e2b18865f9bcae8c51eb93a1f9a4de2c"
+    },
+    {
+      "source_file": "confirmation-v6-schema/gpt-5.6-sol.jsonl",
+      "sha256": "277fdbbd4b73f35577860cd320e17d61c1d6ecf21c18bfd1669bff3bcb49ca0a"
+    },
+    {
+      "source_file": "confirmation-v6-schema/gpt-5.6-terra.jsonl",
+      "sha256": "c046158a158e5094adf932834e17566c624ee5cf77145a18176f2d7289914606"
+    },
+    {
+      "source_file": "confirmation-v6-schema/gpt-6-astra.jsonl",
+      "sha256": "deb7b9e04712599a89064a4959d50bebd9cb8dcc0e0cf4824a91b71a1c7645aa"
+    }
+  ]
+}

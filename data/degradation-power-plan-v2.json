@@ -1,0 +1,35 @@
+{
+  "schema": "traceone-mcnemar-power-plan-v1",
+  "assumptions": {
+    "regression_probability": 0.1,
+    "improvement_probability": 0.02,
+    "net_accuracy_loss": 0.08,
+    "alpha": 0.05,
+    "minimum_effect": 0.05,
+    "target_power": 0.8
+  },
+  "candidates": [
+    {
+      "items": 48,
+      "exact_power": 0.290612850145025
+    },
+    {
+      "items": 96,
+      "exact_power": 0.6622854009976638
+    },
+    {
+      "items": 192,
+      "exact_power": 0.8975999022865231
+    },
+    {
+      "items": 384,
+      "exact_power": 0.957622717467787
+    },
+    {
+      "items": 768,
+      "exact_power": 0.9937794395888512
+    }
+  ],
+  "recommended_items": 192,
+  "warning": "Power depends on preregistered paired-change probabilities; candidate sizes are evaluated, not continuously optimized."
+}

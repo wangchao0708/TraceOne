@@ -1,0 +1,16 @@
+{
+  "items": [
+    {"id": "math-01", "family": "math", "correct": false},
+    {"id": "math-02", "family": "math", "correct": false},
+    {"id": "math-03", "family": "math", "correct": false},
+    {"id": "math-04", "family": "math", "correct": false},
+    {"id": "math-05", "family": "math", "correct": false},
+    {"id": "math-06", "family": "math", "correct": false},
+    {"id": "string-01", "family": "string", "correct": true},
+    {"id": "string-02", "family": "string", "correct": true},
+    {"id": "string-03", "family": "string", "correct": true},
+    {"id": "string-04", "family": "string", "correct": true},
+    {"id": "string-05", "family": "string", "correct": true},
+    {"id": "string-06", "family": "string", "correct": true}
+  ]
+}

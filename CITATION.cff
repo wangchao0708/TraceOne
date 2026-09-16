@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use TraceOne, please cite this software and the upstream ModelTrace project."
+title: "TraceOne: One-response behavioral route attribution and degradation auditing"
+type: software
+authors:
+  - name: "wangchao0708"
+version: 0.1.0
+date-released: 2026-09-15
+license: MIT

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta
+      name="description"
+      content="复制一次问题，粘贴模型回答，在浏览器本地查看 TraceOne 行为指纹结论。"
+    />
+    <title>TraceOne — 一次响应，识别模型行为指纹</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-nav" aria-label="主导航">
+      <a class="wordmark" href="#top" aria-label="TraceOne 首页">
+        <span class="mark" aria-hidden="true"></span>
+        TraceOne
+      </a>
+      <nav class="nav-links" aria-label="页面导航">
+        <a id="methodNav" href="#method">方法</a>
+        <a id="aboutNav" href="#about">关于</a>
+        <button class="language-button" type="button" aria-label="切换到英文">EN</button>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow" id="heroEyebrow">ONE-RESPONSE MODEL TRACE</p>
+        <h1 id="page-title">一次提问<br />看见模型的行为指纹</h1>
+        <p class="intro-copy" id="introCopy">分析在你的浏览器中完成，不会上传回答。</p>
+      </section>
+
+      <section class="workspace" aria-label="模型检测工作区">
+        <article class="flow-panel">
+          <div class="mode-switch" id="modeSwitch" role="group" aria-label="检测模式">
+            <button class="mode-button is-active" id="identifyMode" type="button" aria-pressed="true">
+              模型识别
+            </button>
+            <button class="mode-button" id="degradationMode" type="button" aria-pressed="false">
+              降智线索
+            </button>
+          </div>
+
+          <div class="expected-model-field" id="expectedModelField" hidden>
+            <div>
+              <label id="expectedModelLabel" for="expectedModel">你正在使用的模型</label>
+              <p id="expectedModelHint">网站会自动将指纹预测与它比较。</p>
+            </div>
+            <div class="select-shell">
+              <select id="expectedModel" aria-describedby="expectedModelHint">
+                <option value="">请选择模型</option>
+                <option value="gpt-5.5">GPT-5.5</option>
+                <option value="gpt-5.6-luna">GPT-5.6 Luna</option>
+                <option value="gpt-5.6-terra">GPT-5.6 Terra</option>
+                <option value="gpt-5.6-sol">GPT-5.6 Sol</option>
+                <option value="gpt-6-astra">GPT-6 Astra</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="step-heading">
+            <span class="step-number" aria-hidden="true">1</span>
+            <div>
+              <p class="step-kicker" id="copyKicker">复制问题</p>
+              <h2 id="copyTitle">发送给需要检测的模型</h2>
+            </div>
+            <button class="copy-button" id="copyPrompt" type="button">复制问题</button>
+          </div>
+          <div class="prompt-box" id="promptText" tabindex="0">Using only the current language model, produce 315 separate first-instinct choices of an integer from 1 through 355 inclusive. Output exactly one JSON array containing 9 arrays; every inner array must contain exactly 35 integers. Do not use tools, Python, code execution, calculators, search, APIs, or external random generators. Do not count upward or downward and do not use an arithmetic progression, repeating cycle, repeated block, or another designed pattern. Accidental repetitions are valid. Output only the JSON value with no explanation.</div>
+
+          <div class="divider" aria-hidden="true"></div>
+
+          <div class="step-heading response-heading">
+            <span class="step-number" aria-hidden="true">2</span>
+            <div>
+              <p class="step-kicker" id="pasteKicker">粘贴回答</p>
+              <h2 id="pasteTitle">保留模型返回的完整 JSON</h2>
+            </div>
+          </div>
+          <label class="sr-only" for="modelResponse">模型回答</label>
+          <textarea
+            id="modelResponse"
+            rows="9"
+            wrap="off"
+            spellcheck="false"
+            placeholder="在这里粘贴 9 × 35 的 JSON 数组…"
+          ></textarea>
+          <div class="input-footer">
+            <p id="inputStatus" role="status">等待回答</p>
+            <button class="analyze-button" id="analyzeButton" type="button" disabled>
+              分析响应
+            </button>
+          </div>
+        </article>
+
+        <aside class="result-panel" id="resultPanel" aria-live="polite" aria-label="分析结果">
+          <div class="result-empty">
+            <div class="signal-orbit" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <p class="step-kicker" id="emptyKicker">分析结果</p>
+            <h2 id="emptyTitle">等待一次响应</h2>
+            <p id="emptyCopy">完成两步后，这里会显示最接近的模型、可信程度与候选分布。</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="method-section" id="method" aria-label="方法概览">
+        <p class="eyebrow">HOW IT WORKS</p>
+        <div class="principles">
+          <article><span>01</span><h3 id="principle1Title">一次响应</h3><p id="principle1Copy">315 个微选择被装入一个严格的 JSON 响应。</p></article>
+          <article><span>02</span><h3 id="principle2Title">分层判断</h3><p id="principle2Copy">先检查参考库相似度，再区分五条目标路由。</p></article>
+          <article><span>03</span><h3 id="principle3Title">允许未知</h3><p id="principle3Copy">证据不足时返回 unknown，而不是强行指定模型。</p></article>
+        </div>
+      </section>
+
+      <section class="about-section" id="about">
+        <p>
+          <span id="aboutPrefix">TraceOne 建立在</span>
+          <a href="https://github.com/xqy2006/ModelTrace" rel="noreferrer">ModelTrace</a><span id="aboutSuffix"> 的优秀开源工作之上。</span>
+        </p>
+      </section>
+    </main>
+
+    <footer><span>TraceOne</span><span id="footerCopy">Local-first behavioral evidence</span></footer>
+    <noscript>TraceOne 需要 JavaScript 在浏览器中本地完成分析。</noscript>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

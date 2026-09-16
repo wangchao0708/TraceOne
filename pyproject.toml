@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "traceone"
+version = "0.1.0"
+description = "Single-call behavioral route attribution and degradation auditing for Codex models"
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26,<3"]
+
+[project.scripts]
+traceone = "traceone.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+traceone = [
+  "data/unified_bank.json",
+  "data/codex_low_v4_adapter_415.json",
+  "data/codex_low_v4_support_415.json",
+  "data/identity-v3-schema.txt",
+]

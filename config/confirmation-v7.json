@@ -1,0 +1,23 @@
+{
+  "schema": "traceone-confirmation-plan-v1",
+  "registered_at": "2026-09-15T09:59:30-07:00",
+  "frozen_configuration": "config/release-candidate-v8.json",
+  "samples_per_model": 15,
+  "run_id": "confirmation-v7",
+  "models": [
+    "gpt-5.5",
+    "gpt-5.6-luna",
+    "gpt-5.6-terra",
+    "gpt-5.6-sol",
+    "gpt-6-astra"
+  ],
+  "primary_metric": "supported requested-label match rate including abstention and failed calls",
+  "success_rule": "at least 14 of 15 for every model; every failed, unknown, or mismatched run remains in the denominator",
+  "secondary_rules": [
+    "75 of 75 schema-compliant responses",
+    "report enrolled and supported operating points separately",
+    "all frozen hashes and provenance values remain constant",
+    "compare TraceOne one-call with ModelTrace one-call and disjoint three-call decisions on the same untouched responses"
+  ],
+  "truth_limitation": "requested route labels are not independent ground truth for served weights"
+}

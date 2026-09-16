@@ -1,0 +1,1243 @@
+{
+  "schema": "traceone-head-to-head-v1",
+  "upstream": {
+    "repository": "https://github.com/xqy2006/ModelTrace",
+    "commit": "3f0dd2f4b451ad424f3b165a108a468efe4d4d81",
+    "bank_sha256": "6a3f7e4d703990a2322cf535020309380ca858654345d8fe5db278578568bad3",
+    "method": "upstream average fused score followed by closed-set argmax"
+  },
+  "design": "same blind responses and bank; TraceOne and upstream-one each make one decision per response; upstream-three uses disjoint chronological triplets",
+  "traceone_method": "outer guard + ridge target adapter + empirical target support",
+  "comparison_limits": [
+    "requested route is not independent served-weight ground truth",
+    "the prompt and structured wrapper are TraceOne's, not ModelTrace's randomized challenge wording",
+    "the three-call arm has one third as many independent decisions",
+    "ModelTrace is closed set and therefore has no unknown decision"
+  ],
+  "traceone_one_call": {
+    "decisions": 75,
+    "requested_label_matches": 75,
+    "requested_label_match_rate": 1.0,
+    "wilson_95_interval": [
+      0.9512761575171942,
+      1.0
+    ],
+    "per_model": {
+      "gpt-5.5": {
+        "decisions": 15,
+        "requested_label_matches": 15,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.7961166989641515,
+          1.0
+        ]
+      },
+      "gpt-5.6-luna": {
+        "decisions": 15,
+        "requested_label_matches": 15,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.7961166989641515,
+          1.0
+        ]
+      },
+      "gpt-5.6-sol": {
+        "decisions": 15,
+        "requested_label_matches": 15,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.7961166989641515,
+          1.0
+        ]
+      },
+      "gpt-5.6-terra": {
+        "decisions": 15,
+        "requested_label_matches": 15,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.7961166989641515,
+          1.0
+        ]
+      },
+      "gpt-6-astra": {
+        "decisions": 15,
+        "requested_label_matches": 15,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.7961166989641515,
+          1.0
+        ]
+      }
+    }
+  },
+  "modeltrace_one_call": {
+    "decisions": 75,
+    "requested_label_matches": 74,
+    "requested_label_match_rate": 0.9866666666666667,
+    "wilson_95_interval": [
+      0.9282663444557845,
+      0.9976424488609515
+    ],
+    "per_model": {
+      "gpt-5.5": {
+        "decisions": 15,
+        "requested_label_matches": 15,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.7961166989641515,
+          1.0
+        ]
+      },
+      "gpt-5.6-luna": {
+        "decisions": 15,
+        "requested_label_matches": 15,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.7961166989641515,
+          1.0
+        ]
+      },
+      "gpt-5.6-sol": {
+        "decisions": 15,
+        "requested_label_matches": 14,
+        "requested_label_match_rate": 0.9333333333333333,
+        "wilson_95_interval": [
+          0.7018347012621998,
+          0.9881331045067315
+        ]
+      },
+      "gpt-5.6-terra": {
+        "decisions": 15,
+        "requested_label_matches": 15,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.7961166989641515,
+          1.0
+        ]
+      },
+      "gpt-6-astra": {
+        "decisions": 15,
+        "requested_label_matches": 15,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.7961166989641515,
+          1.0
+        ]
+      }
+    }
+  },
+  "modeltrace_three_call": {
+    "decisions": 25,
+    "requested_label_matches": 25,
+    "requested_label_match_rate": 1.0,
+    "wilson_95_interval": [
+      0.8668077490609515,
+      0.9999999999999999
+    ],
+    "per_model": {
+      "gpt-5.5": {
+        "decisions": 5,
+        "requested_label_matches": 5,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.5655175352168251,
+          1.0
+        ]
+      },
+      "gpt-5.6-luna": {
+        "decisions": 5,
+        "requested_label_matches": 5,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.5655175352168251,
+          1.0
+        ]
+      },
+      "gpt-5.6-sol": {
+        "decisions": 5,
+        "requested_label_matches": 5,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.5655175352168251,
+          1.0
+        ]
+      },
+      "gpt-5.6-terra": {
+        "decisions": 5,
+        "requested_label_matches": 5,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.5655175352168251,
+          1.0
+        ]
+      },
+      "gpt-6-astra": {
+        "decisions": 5,
+        "requested_label_matches": 5,
+        "requested_label_match_rate": 1.0,
+        "wilson_95_interval": [
+          0.5655175352168251,
+          1.0
+        ]
+      }
+    }
+  },
+  "decisions": {
+    "traceone_one_call": [
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__001",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__002",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__003",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__004",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__005",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__006",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__007",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__008",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__009",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__010",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__011",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__012",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__013",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__014",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__015",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__001",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__002",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__003",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__004",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__005",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__006",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__007",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__008",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__009",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__010",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__011",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__012",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__013",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__014",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__015",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__001",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__002",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__003",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__004",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__005",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__006",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__007",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__008",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__009",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__010",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__011",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__012",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__013",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__014",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__015",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__001",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__002",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__003",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__004",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__005",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__006",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__007",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__008",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__009",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__010",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__011",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__012",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__013",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__014",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__015",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__001",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__002",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__003",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__004",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__005",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__006",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__007",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__008",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__009",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__010",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__011",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__012",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__013",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__014",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__015",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra",
+        "support_path": "distance"
+      }
+    ],
+    "modeltrace_one_call": [
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__001",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__002",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__003",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__004",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__005",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__006",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__007",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__008",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__009",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__010",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__011",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__012",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__013",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__014",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__015",
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__001",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__002",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__003",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__004",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__005",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__006",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__007",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__008",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__009",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__010",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__011",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__012",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__013",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__014",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__015",
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__001",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__002",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__003",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__004",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__005",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__006",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__007",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__008",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__009",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__010",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__011",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__012",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__013",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__014",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__015",
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__001",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__002",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__003",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__004",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__005",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__006",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__007",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__008",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__009",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__010",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__011",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__012",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__013",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__014",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__015",
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__001",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__002",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__003",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__004",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__005",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__006",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__007",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__008",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__009",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__010",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__011",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__012",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__013",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__014",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_id": "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__015",
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      }
+    ],
+    "modeltrace_three_call": [
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__001",
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__002",
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__003"
+        ],
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__004",
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__005",
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__006"
+        ],
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__007",
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__008",
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__009"
+        ],
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__010",
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__011",
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__012"
+        ],
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__013",
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__014",
+          "confirmation-v7-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v7__confirmation__015"
+        ],
+        "requested_model": "gpt-5.5",
+        "prediction": "gpt-5.5"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__001",
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__002",
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__003"
+        ],
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__004",
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__005",
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__006"
+        ],
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__007",
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__008",
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__009"
+        ],
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__010",
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__011",
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__012"
+        ],
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__013",
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__014",
+          "confirmation-v7-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v7__confirmation__015"
+        ],
+        "requested_model": "gpt-5.6-luna",
+        "prediction": "gpt-5.6-luna"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__001",
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__002",
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__003"
+        ],
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__004",
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__005",
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__006"
+        ],
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__007",
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__008",
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__009"
+        ],
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__010",
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__011",
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__012"
+        ],
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__013",
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__014",
+          "confirmation-v7-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v7__confirmation__015"
+        ],
+        "requested_model": "gpt-5.6-sol",
+        "prediction": "gpt-5.6-sol"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__001",
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__002",
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__003"
+        ],
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__004",
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__005",
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__006"
+        ],
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__007",
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__008",
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__009"
+        ],
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__010",
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__011",
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__012"
+        ],
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__013",
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__014",
+          "confirmation-v7-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v7__confirmation__015"
+        ],
+        "requested_model": "gpt-5.6-terra",
+        "prediction": "gpt-5.6-terra"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__001",
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__002",
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__003"
+        ],
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__004",
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__005",
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__006"
+        ],
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__007",
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__008",
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__009"
+        ],
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__010",
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__011",
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__012"
+        ],
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      },
+      {
+        "sample_ids": [
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__013",
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__014",
+          "confirmation-v7-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v7__confirmation__015"
+        ],
+        "requested_model": "gpt-6-astra",
+        "prediction": "gpt-6-astra"
+      }
+    ]
+  }
+}

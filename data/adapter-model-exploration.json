@@ -1,0 +1,1526 @@
+{
+  "schema": "traceone-adapter-exploration-v1",
+  "results": [
+    {
+      "method": "lda:0.1",
+      "correct": 411,
+      "samples": 415,
+      "errors_per_group": {
+        "validation_v3": 1,
+        "confirmation_v4": 1,
+        "confirmation_v6": 2
+      },
+      "errors": [
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "lda:0.3",
+      "correct": 411,
+      "samples": 415,
+      "errors_per_group": {
+        "validation_v3": 1,
+        "confirmation_v4": 1,
+        "confirmation_v6": 2
+      },
+      "errors": [
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "lda:0.6",
+      "correct": 409,
+      "samples": 415,
+      "errors_per_group": {
+        "validation_v3": 1,
+        "confirmation_v4": 2,
+        "confirmation_v6": 3
+      },
+      "errors": [
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__002",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-terra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__006",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "knn:3",
+      "correct": 404,
+      "samples": 415,
+      "errors_per_group": {
+        "validation_v3": 1,
+        "confirmation_v2": 1,
+        "confirmation_v3": 2,
+        "confirmation_v4": 2,
+        "confirmation_v6": 5
+      },
+      "errors": [
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation__015",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v3__confirmation__004",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v3__confirmation__010",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.6-terra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__002",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-terra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__006",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v6__confirmation__004",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__008",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "knn:5",
+      "correct": 404,
+      "samples": 415,
+      "errors_per_group": {
+        "validation_v3": 1,
+        "confirmation_v2": 1,
+        "confirmation_v3": 2,
+        "confirmation_v4": 2,
+        "confirmation_v6": 5
+      },
+      "errors": [
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation__015",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v3__confirmation__004",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v3__confirmation__010",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__002",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-terra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__006",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v6__confirmation__004",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__008",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "knn:9",
+      "correct": 404,
+      "samples": 415,
+      "errors_per_group": {
+        "development_v3": 1,
+        "validation_v3": 1,
+        "confirmation_v2": 2,
+        "confirmation_v3": 1,
+        "confirmation_v4": 2,
+        "confirmation_v6": 4
+      },
+      "errors": [
+        {
+          "held_group": "development_v3",
+          "sample_id": "development-schema.jsonl::gpt-5.6-sol__development__002",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation__015",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__005",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v3__confirmation__010",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__002",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-terra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__006",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v6__confirmation__004",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "rbf:10.0",
+      "correct": 404,
+      "samples": 415,
+      "errors_per_group": {
+        "validation_v3": 1,
+        "confirmation_v2": 2,
+        "confirmation_v4": 3,
+        "confirmation_v6": 5
+      },
+      "errors": [
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation__015",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__005",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__002",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-terra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__007",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__006",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v6__confirmation__004",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__008",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "rbf:3.0",
+      "correct": 397,
+      "samples": 415,
+      "errors_per_group": {
+        "development_v3": 1,
+        "validation_v3": 1,
+        "confirmation_v1": 1,
+        "confirmation_v2": 3,
+        "confirmation_v3": 2,
+        "confirmation_v4": 5,
+        "confirmation_v6": 5
+      },
+      "errors": [
+        {
+          "held_group": "development_v3",
+          "sample_id": "development-schema.jsonl::gpt-5.6-sol__development__002",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v1",
+          "sample_id": "confirmation-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.5.jsonl::gpt-5.5__confirmation__011",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__005",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__010",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__014",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v3__confirmation__007",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__002",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-terra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__007",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__010",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v4__confirmation__010",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__006",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v6__confirmation__011",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__004",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "lda:1.0",
+      "correct": 395,
+      "samples": 415,
+      "errors_per_group": {
+        "development_v3": 1,
+        "validation_v3": 1,
+        "confirmation_v1": 1,
+        "confirmation_v2": 3,
+        "confirmation_v3": 3,
+        "confirmation_v4": 4,
+        "confirmation_v6": 7
+      },
+      "errors": [
+        {
+          "held_group": "development_v3",
+          "sample_id": "development-schema.jsonl::gpt-5.6-luna__development__002",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v1",
+          "sample_id": "confirmation-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.5.jsonl::gpt-5.5__confirmation__008",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.5.jsonl::gpt-5.5__confirmation__011",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation__015",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__012",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__013",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__014",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__002",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-terra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__010",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v4__confirmation__010",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__006",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__007",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__009",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__015",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v6__confirmation__011",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "knn:1",
+      "correct": 394,
+      "samples": 415,
+      "errors_per_group": {
+        "validation_v3": 2,
+        "confirmation_v2": 3,
+        "confirmation_v3": 3,
+        "confirmation_v4": 5,
+        "confirmation_v6": 8
+      },
+      "errors": [
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__holdout__002",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.5.jsonl::gpt-5.5__confirmation__011",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation__002",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__005",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v3__confirmation__004",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v3__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v3__confirmation__010",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.6-terra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__002",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-terra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__004",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__006",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__010",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__006",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__008",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v6__confirmation__004",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v6__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__003",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__008",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "rbf:1.0",
+      "correct": 384,
+      "samples": 415,
+      "errors_per_group": {
+        "development_v3": 2,
+        "validation_v3": 3,
+        "confirmation_v1": 1,
+        "confirmation_v2": 5,
+        "confirmation_v3": 5,
+        "confirmation_v4": 7,
+        "confirmation_v6": 8
+      },
+      "errors": [
+        {
+          "held_group": "development_v3",
+          "sample_id": "development-schema.jsonl::gpt-5.6-luna__development__002",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "development_v3",
+          "sample_id": "development-schema.jsonl::gpt-5.6-sol__development__002",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__holdout__003",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__002",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v1",
+          "sample_id": "confirmation-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.5.jsonl::gpt-5.5__confirmation__004",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.5.jsonl::gpt-5.5__confirmation__008",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.5.jsonl::gpt-5.5__confirmation__011",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__005",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__010",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__011",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__013",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__014",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v3__confirmation__007",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v3__confirmation__014",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__002",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__007",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__010",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v4__confirmation__004",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__003",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v4__confirmation__010",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__006",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__007",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__015",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v6__confirmation__011",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__008",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__004",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "method": "rbf:0.3",
+      "correct": 370,
+      "samples": 415,
+      "errors_per_group": {
+        "development_v3": 3,
+        "validation_v3": 4,
+        "confirmation_v1": 3,
+        "confirmation_v2": 7,
+        "confirmation_v3": 8,
+        "confirmation_v4": 9,
+        "confirmation_v6": 11
+      },
+      "errors": [
+        {
+          "held_group": "development_v3",
+          "sample_id": "development-schema.jsonl::gpt-5.6-luna__development__002",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "development_v3",
+          "sample_id": "development-schema.jsonl::gpt-5.6-sol__development__002",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "development_v3",
+          "sample_id": "development-schema.jsonl::gpt-5.6-terra__development__003",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__holdout__005",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__holdout__003",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "validation_v3",
+          "sample_id": "holdout-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__holdout__002",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v1",
+          "sample_id": "confirmation-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation__014",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v1",
+          "sample_id": "confirmation-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v1",
+          "sample_id": "confirmation-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__008",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.5.jsonl::gpt-5.5__confirmation__004",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.5.jsonl::gpt-5.5__confirmation__006",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.5.jsonl::gpt-5.5__confirmation__008",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.5.jsonl::gpt-5.5__confirmation__011",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__005",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__010",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v2",
+          "sample_id": "confirmation-v2-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation__015",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v3__confirmation__015",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__005",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__011",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__012",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__013",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v3__confirmation__014",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v3__confirmation__007",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v3",
+          "sample_id": "confirmation-v3-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v3__confirmation__014",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__002",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__007",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v4__confirmation__010",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v4__confirmation__004",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__003",
+          "truth": "gpt-5.6-sol",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v4__confirmation__008",
+          "truth": "gpt-5.6-sol",
+          "label": null,
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v4__confirmation__002",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-luna",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v4__confirmation__010",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v4",
+          "sample_id": "confirmation-v4-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v4__confirmation__012",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-6-astra",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__006",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__007",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__008",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__009",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__010",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v6__confirmation__015",
+          "truth": "gpt-5.5",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v6__confirmation__011",
+          "truth": "gpt-5.6-luna",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__001",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v6__confirmation__008",
+          "truth": "gpt-5.6-terra",
+          "label": "gpt-5.5",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__004",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        },
+        {
+          "held_group": "confirmation_v6",
+          "sample_id": "confirmation-v6-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v6__confirmation__010",
+          "truth": "gpt-6-astra",
+          "label": "gpt-5.6-sol",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
