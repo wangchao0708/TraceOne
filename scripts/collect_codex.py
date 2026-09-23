@@ -19,6 +19,8 @@ MODELS = (
     "gpt-5.6-terra",
     "gpt-5.6-sol",
     "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna",
 )
 REFERENCE_OOD_MODELS = ("gpt-5.4",)
 BUNDLED_CODEX = Path("/Applications/ChatGPT.app/Contents/Resources/codex")
@@ -77,13 +79,26 @@ def collect_one(
         if output_schema is not None:
             command.extend(["--output-schema", str(output_schema)])
         command.append(prompt)
-        result = subprocess.run(
-            command,
-            cwd=clean_dir,
-            capture_output=True,
-            text=True,
-            timeout=240,
-        )
+        timed_out = False
+        try:
+            result = subprocess.run(
+                command,
+                cwd=clean_dir,
+                capture_output=True,
+                text=True,
+                timeout=240,
+            )
+        except subprocess.TimeoutExpired as error:
+            timed_out = True
+            stdout = (
+                error.stdout.decode("utf-8", "replace")
+                if isinstance(error.stdout, bytes) else error.stdout or ""
+            )
+            stderr = (
+                error.stderr.decode("utf-8", "replace")
+                if isinstance(error.stderr, bytes) else error.stderr or ""
+            )
+            result = subprocess.CompletedProcess(command, 124, stdout, stderr)
         elapsed = time.monotonic() - started
 
     events = []
@@ -100,6 +115,9 @@ def collect_one(
     ]
     usage_events = [event.get("usage") for event in events if event.get("type") == "turn.completed"]
     thread_events = [event for event in events if event.get("type") == "thread.started"]
+    stderr_tail = result.stderr.splitlines()[-12:]
+    if timed_out:
+        stderr_tail.append("codex exec timed out after 240 seconds")
     return {
         "schema": "traceone-sample-v1",
         "sample_id": "__".join(
@@ -128,8 +146,8 @@ def collect_one(
         "return_code": result.returncode,
         "thread_id": thread_events[-1].get("thread_id") if thread_events else None,
         "usage": usage_events[-1] if usage_events else None,
-        "text": messages[-1] if messages else "",
-        "stderr_tail": "\n".join(result.stderr.splitlines()[-12:]),
+        "text": "" if timed_out else (messages[-1] if messages else ""),
+        "stderr_tail": "\n".join(stderr_tail),
     }
 
 
@@ -158,17 +176,18 @@ def main() -> None:
     parser.add_argument("--model", choices=MODELS + REFERENCE_OOD_MODELS, required=True)
     parser.add_argument("--codex")
     parser.add_argument("--schema", type=Path, default=Path("schemas/identity-v3.json"))
+    parser.add_argument("--no-schema", action="store_true")
     parser.add_argument("--run-id")
     args = parser.parse_args()
 
     prompt = args.prompt.read_text(encoding="utf-8").strip()
     executable = codex_path(args.codex)
-    schema = args.schema.resolve() if args.schema else None
+    schema = None if args.no_schema else args.schema.resolve()
     record = collect_one(
         executable, args.model, prompt, args.split, args.repeat, schema, args.run_id
     )
     record["prompt_id"] = args.prompt.stem
-    record["output_schema"] = args.schema.name if args.schema else None
+    record["output_schema"] = args.schema.name if schema else None
     append_jsonl(args.output, record)
     print(
         json.dumps(

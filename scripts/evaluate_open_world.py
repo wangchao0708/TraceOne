@@ -71,18 +71,18 @@ def evaluate(
     covariance_shrinkage: float = 0.3,
     distance_quantile: float = 0.99,
     rescue_margin_quantile: float = 0.95,
-    adapter_alpha: float = 30.0,
+    adapter_alpha: float = 1.0,
     adapter_margin: float = 0.01,
 ) -> dict:
-    reference = read_reference_rows(reference_dir / "gpt_reference.jsonl", family="gpt")
-    reference += read_reference_rows(reference_dir / "claude_reference.jsonl", family="claude")
+    reference = read_reference_rows(reference_dir / "gpt_reference_v2.jsonl", family="gpt")
+    reference += read_reference_rows(reference_dir / "claude_reference_v2.jsonl", family="claude")
     enrollment = load_live(enrollment_paths)
     # Invalid/timeout holdout rows remain in the denominator and are scored wrong.
     # Enrollment rows, by contrast, must be valid because they define the fit.
     holdout = load_live(target_holdout_paths, require_valid=False)
     counts = Counter(row["truth"] for row in enrollment)
     if set(counts) != set(TARGET_MODELS) or len(set(counts.values())) != 1:
-        raise ValueError(f"balanced five-model enrollment is required: {counts}")
+        raise ValueError(f"balanced target enrollment is required: {counts}")
 
     model_order = list(dict.fromkeys(row["source"] for row in reference))
     excluded = [model for model in model_order if model not in TARGET_MODELS]
@@ -221,7 +221,7 @@ def evaluate(
             "enrolled_minimum_accuracy_across_gallery_folds": min(
                 enrolled_holdout_rates
             ),
-            "warning": "the same target holdout rows are reused across folds and are not 8x independent",
+            "warning": "the same target holdout rows are reused across folds and are not independent across galleries",
         },
         "limitations": [
             "held labels come from the upstream corpus rather than a new independent provider",
@@ -240,7 +240,7 @@ def main() -> None:
     parser.add_argument("--covariance-shrinkage", type=float, default=0.3)
     parser.add_argument("--distance-quantile", type=float, default=0.99)
     parser.add_argument("--rescue-margin-quantile", type=float, default=0.95)
-    parser.add_argument("--adapter-alpha", type=float, default=30.0)
+    parser.add_argument("--adapter-alpha", type=float, default=1.0)
     parser.add_argument("--adapter-margin", type=float, default=0.01)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()

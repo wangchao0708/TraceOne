@@ -92,6 +92,15 @@ def main() -> None:
                 )
             )
 
+    for index, entry in enumerate(config.get("extra_files", [])):
+        checks.append(
+            (
+                f"extra_file_{index}",
+                digest((PROJECT / entry["path"]).read_bytes()),
+                entry["sha256"],
+            )
+        )
+
     result = {
         "config": str(args.config),
         "valid": all(actual == expected for _, actual, expected in checks),

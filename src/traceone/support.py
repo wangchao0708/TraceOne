@@ -38,7 +38,7 @@ class SupportResult:
 def load_support(path: Path | None = None) -> dict:
     if path is not None:
         return json.loads(path.read_text(encoding="utf-8"))
-    resource = files("traceone").joinpath("data/codex_low_v4_support_415.json")
+    resource = files("traceone").joinpath("data/codex_low_v5_support_581.json")
     return json.loads(resource.read_text(encoding="utf-8"))
 
 

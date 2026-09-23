@@ -43,6 +43,8 @@ def main() -> None:
     if set(counts) != set(TARGET_MODELS) or len(set(counts.values())) != 1:
         raise ValueError(f"balanced enrollment is required: {counts}")
     adapter = load_adapter(args.adapter)
+    if adapter.get("training_sources") != sources:
+        raise ValueError("support enrollment differs from adapter training sources")
     artifact = fit_support(
         labeled,
         load_bank(),

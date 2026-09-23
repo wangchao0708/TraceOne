@@ -10,6 +10,10 @@ validation results, and clearly stated boundaries. It is an original, exceptiona
 well-executed, and generous open-source contribution. TraceOne expresses its sincere
 respect and gratitude.
 
+The author's September 23, 2026 update openly added GPT-6 Sol and GPT-6 Luna
+reference data and a new bank. That careful ongoing maintenance directly enabled
+TraceOne's auditable seven-route extension, and we are especially grateful for it.
+
 TraceOne reuses and adapts ModelTrace's marginal Hellinger and ordered-block features,
 unified reference bank, and reference corpus. The pinned upstream commit, license, and
 modification boundary are recorded in [third_party/NOTICE.md](third_party/NOTICE.md).

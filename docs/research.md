@@ -56,20 +56,21 @@ accuracy 的独立单位仍是 75 次模型调用；Wilson interval 也以 75 �
 
 单一 closed-set softmax/argmax 对任意有效输入总能给出高置信标签。TraceOne 分层：
 
-1. 13-model bank 检查绝对分布相似度和 top label 是否为目标；
-2. ridge adapter 解决当前 Codex wrapper 下五个相近 route 的边界；
+1. 16-model bank 检查绝对分布相似度和 top label 是否为目标；
+2. ridge adapter 解决当前 Codex wrapper 下七个相近 route 的边界；
 3. target-support envelope 检查预测点是否位于对应 enrollment 支持区域。
 
-这种结构把“最像谁”和“是否像任何已登记目标”分开。它把 held-label false
-identification 从 ModelTrace 的 288/288 降到 24/288，但 GPT-5.4 仍与目标 support
-高度重叠，说明一次数字响应的可辨识信息存在上限。
+这种结构把“最像谁”和“是否像任何已登记目标”分开。在 0.1.0 的 13-model、
+五目标开发评测中，它把 held-label false identification 从 ModelTrace 的 288/288
+降到 24/288；这不是新版 16-model、七目标配置的结果。GPT-5.4 仍与旧版目标
+support 高度重叠，说明一次数字响应的可辨识信息存在上限。
 
 ## Active probe 与 nonlinear adapter 的负结果
 
 - Pairwise v1：128 个随机整数对，模型每对选左/右；小样本且同数据选超参数的
   development LOO 为 24/25。
 - Pairwise v2：依据 340 条 enrollment log-odds 选 pair，结果降到 22/25。
-- 同一 39 维 feature 上，KNN、shrinkage LDA 与 RBF prototype 的 whole-collection
+- 0.1.0 的 39 维 feature 上，KNN、shrinkage LDA 与 RBF prototype 的 whole-collection
   CV 均未超过 alpha=1 ridge 的 412/415。
 
 负结果说明“更主动”或“更非线性”不自动等于更可靠；我们没有因为方法更新颖就

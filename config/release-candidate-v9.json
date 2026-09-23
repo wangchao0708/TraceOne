@@ -1,0 +1,107 @@
+{
+  "schema": "traceone-frozen-config-v1",
+  "frozen_at": "2026-09-23T16:29:50Z",
+  "targets": [
+    "gpt-5.5",
+    "gpt-5.6-luna",
+    "gpt-5.6-terra",
+    "gpt-5.6-sol",
+    "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna"
+  ],
+  "reasoning_effort": "low",
+  "prompt": {
+    "path": "prompts/identity-v3-schema.txt",
+    "file_sha256": "225b34e767cd2686da0c56ca991c62dc944075d3cfec3cca7397c88a2a4fc969",
+    "normalized_text_sha256": "53767b09f7f15afe169fca782daea4611aa08f39ad18b22839aa3a0e717a6557",
+    "requests": 1,
+    "requested_numbers": 315
+  },
+  "output_schema": {
+    "path": "schemas/identity-v3.json",
+    "sha256": "176a5898f6f364a276183e2196e10afa586776bad087a81dc4434476ea7ccfb0"
+  },
+  "outer_guard": {
+    "implementation": "src/traceone/fingerprint.py",
+    "sha256": "a7c1e0f345ea0cec21f907c119877e751f4b98a2a82d7ef01b17856f8ab465ec",
+    "bank": "src/traceone/data/unified_bank_v2_16.json",
+    "bank_sha256": "1c2cb74d372f9f0f30d0dabbb7b7a838660d2f769a88d0c8489e4c662e088c21",
+    "source_commit": "55a2e4a55170423b484d701e9a82ab62b268c811",
+    "profile": "enrolled-outer-v2",
+    "minimum_numbers": 280,
+    "minimum_absolute_similarity": 0.52
+  },
+  "enrollment_adapter": {
+    "implementation": "src/traceone/adapter.py",
+    "implementation_sha256": "7769cb800a335bc7dd1bed87cb813e417b78edbd31adce3a246e2e94f4151864",
+    "artifact": "src/traceone/data/codex_low_v5_adapter_581.json",
+    "artifact_sha256": "2b3dfc9a90e682deb0ff96e057659dcb9d1bd180aa498f15df008d3c52ff5dca",
+    "classifier": "closed-form ridge, alpha 1",
+    "minimum_margin": 0.01,
+    "training_rows": 581,
+    "training_rows_per_model": 83
+  },
+  "target_support": {
+    "implementation": "src/traceone/support.py",
+    "implementation_sha256": "199436ee55f9ffc7166b70b27373821f2954838b7c3474a35605bf8945dde732",
+    "artifact": "src/traceone/data/codex_low_v5_support_581.json",
+    "artifact_sha256": "5d25000064ad35a4817736199a483fe30e6b605c8a4f7c79c7a5ae8b6a09f360",
+    "covariance_shrinkage": 0.3,
+    "distance_quantile": 0.99,
+    "rescue_margin_quantile": 0.9,
+    "guarantee": "empirical target-support envelope; no distribution-free guarantee"
+  },
+  "public_enrollment": [
+    {
+      "path": "data/public/enrollment-v3.jsonl",
+      "sha256": "28af25f638f45e560da294f3968e581e39d1e6a210b482e13be823b86a0245cd"
+    },
+    {
+      "path": "data/public/confirmation-v6.jsonl",
+      "sha256": "ab3bd8578e097aaf7d2468cdc760a3f6f4ee772410dc2d508ea52e58c00dab58"
+    },
+    {
+      "path": "data/public/gpt6-enrollment-v1.jsonl",
+      "sha256": "f298380daf481d9f31ae04a84745f1dbc118d0f9c6ffc3eef4fc3428bc06e88a"
+    }
+  ],
+  "extra_files": [
+    {
+      "path": "data/reference/manifest-v2.json",
+      "sha256": "41f0f0db25099041278d5c40c20d960735deac25496b0b213e57b39612ef1abc"
+    },
+    {
+      "path": "scripts/train_adapter.py",
+      "sha256": "445d42b4d699ba7a1b2f1e67e1e82c3ca2518a0b1f4906efc41c4452ea9b4ae4"
+    },
+    {
+      "path": "scripts/train_support.py",
+      "sha256": "0b401204358b582e08cc19f9568958de0be575568068a64f15e7a14d90ab3afd"
+    },
+    {
+      "path": "scripts/evaluate_seven_development.py",
+      "sha256": "b39ec26e7936d5f32f7e46d2f545162ec067c3810808c990f7b0c98ed6fbcf76"
+    },
+    {
+      "path": "data/seven-model-development-v1.json",
+      "sha256": "72c169f1574d6ddc50d3466aa640f2e37a6da71a8b7d3aae992635d3b7527a60"
+    },
+    {
+      "path": "data/open-world-development-v3.json",
+      "sha256": "414ef21fc2ac4e1f6dbd2d96c8a8100bdc7d6f8587e74c0aad08a569775c09f0"
+    },
+    {
+      "path": "prompts/identity-web-v1.txt",
+      "sha256": "fca24dc29b83da3c0c59032346e5b41909085132bfa380f14c01cd2bbafb6909"
+    }
+  ],
+  "development_evidence": {
+    "seven_model_68_15_supported": "100/105, with gpt-6-astra and gpt-6-luna each 13/15",
+    "old_five_schema_regression": "75/75 on the historical confirmation-v7; inspected during v9 design",
+    "held_label_open_world_supported": "34/324 false accepts across nine excluded labels; tuned development estimate",
+    "largest_ood_weaknesses": "held-out gpt-5.4: 19/36; claude-opus-5-5: 10/36"
+  },
+  "provenance_limit": "old five enrollment collected with Codex CLI 0.154 and new two with 0.155; new confirmation must use one runtime across all seven",
+  "status": "frozen before confirmation-v8"
+}

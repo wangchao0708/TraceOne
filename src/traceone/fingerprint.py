@@ -29,6 +29,8 @@ TARGET_MODELS = (
     "gpt-5.6-terra",
     "gpt-5.6-sol",
     "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna",
 )
 
 
@@ -115,7 +117,7 @@ class IdentityResult:
 def load_bank(path: Path | None = None) -> dict:
     if path is not None:
         return json.loads(path.read_text(encoding="utf-8"))
-    resource = files("traceone").joinpath("data/unified_bank.json")
+    resource = files("traceone").joinpath("data/unified_bank_v2_16.json")
     return json.loads(resource.read_text(encoding="utf-8"))
 
 

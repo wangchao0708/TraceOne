@@ -21,7 +21,7 @@ from traceone.parsing import parse_grid_response
 from traceone.support import identify_text_supported
 
 
-UPSTREAM_COMMIT = "3f0dd2f4b451ad424f3b165a108a468efe4d4d81"
+UPSTREAM_COMMIT = "55a2e4a55170423b484d701e9a82ab62b268c811"
 
 
 def wilson_interval(successes: int, total: int) -> list[float] | None:
@@ -52,6 +52,10 @@ def _upstream_prediction(texts: list[str], bank: dict) -> str | None:
         return None
     mean_scores = np.mean(np.stack(score_rows), axis=0)
     return bank["robust"]["model_order"][int(np.argmax(mean_scores))]
+
+
+def _recorded_text(row: dict) -> str:
+    return row.get("text", "") if row.get("return_code", 0) == 0 else ""
 
 
 def _summary(decisions: list[dict]) -> dict:
@@ -97,9 +101,10 @@ def evaluate(paths: list[Path]) -> dict:
     grouped: dict[str, list[dict]] = defaultdict(list)
     for row in rows:
         model = row["requested_model"]
+        text = _recorded_text(row)
         grouped[model].append(row)
         result = identify_text_supported(
-            row.get("text", ""),
+            text,
             response_format="grid",
             guard=ENROLLED_OUTER_GUARD,
         )
@@ -115,7 +120,7 @@ def evaluate(paths: list[Path]) -> dict:
             {
                 "sample_id": row["sample_id"],
                 "requested_model": model,
-                "prediction": _upstream_prediction([row.get("text", "")], bank),
+                "prediction": _upstream_prediction([text], bank),
             }
         )
 
@@ -131,7 +136,7 @@ def evaluate(paths: list[Path]) -> dict:
                     "sample_ids": [row["sample_id"] for row in triplet],
                     "requested_model": model,
                     "prediction": _upstream_prediction(
-                        [row.get("text", "") for row in triplet], bank
+                        [_recorded_text(row) for row in triplet], bank
                     ),
                 }
             )
@@ -141,7 +146,7 @@ def evaluate(paths: list[Path]) -> dict:
         "upstream": {
             "repository": "https://github.com/xqy2006/ModelTrace",
             "commit": UPSTREAM_COMMIT,
-            "bank_sha256": "6a3f7e4d703990a2322cf535020309380ca858654345d8fe5db278578568bad3",
+            "bank_sha256": "1c2cb74d372f9f0f30d0dabbb7b7a838660d2f769a88d0c8489e4c662e088c21",
             "method": "upstream average fused score followed by closed-set argmax",
         },
         "design": (

@@ -9,6 +9,10 @@ TraceOne 最重要的直接基础是 xqy2006 的
 源码和数据的方式为社区提供了极具价值的研究起点。TraceOne 对此表示由衷敬意
 与感谢。
 
+作者在 2026-09-23 及时公开包含 GPT-6 Sol、GPT-6 Luna 的新版参考库与采集
+语料，为 TraceOne 扩展到七条路由提供了可审计的直接基础；我们特别感谢这次持续
+维护与开放共享。
+
 TraceOne 复用并改造了 ModelTrace 的 marginal Hellinger、ordered-block 特征、
 统一参考 bank 和参考语料。固定的上游 commit、许可证及改动边界记录在
 [third_party/NOTICE.md](third_party/NOTICE.md)。本仓库中的 head-to-head 对照旨在

@@ -1,0 +1,31 @@
+{
+  "schema": "traceone-confirmation-plan-v1",
+  "registered_at": "2026-09-23T16:30:55Z",
+  "frozen_configuration": "config/release-candidate-v9.json",
+  "frozen_configuration_sha256": "ea763a93ce9e4ba86e9498338620c4556fcc511cc299147f6c32d5ca2b25ac27",
+  "samples_per_model": 15,
+  "run_id": "confirmation-v8",
+  "models": [
+    "gpt-5.5",
+    "gpt-5.6-luna",
+    "gpt-5.6-terra",
+    "gpt-5.6-sol",
+    "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna"
+  ],
+  "reasoning_effort": "low",
+  "expected_runtime": "codex-cli 0.155.0-alpha.9.2",
+  "prompt_id": "identity-v3-schema",
+  "output_schema": "identity-v3.json",
+  "primary_metric": "supported requested-label match rate including abstention, invalid output, and failed calls",
+  "success_rule": "at least 14 of 15 for every model; every failed, unknown, or mismatched run remains in the denominator",
+  "secondary_rules": [
+    "report 105-call schema compliance and unique sample IDs",
+    "report enrolled and supported operating points separately",
+    "all frozen hashes, prompt, runtime, reasoning, and wrapper remain constant",
+    "compare TraceOne one-call with ModelTrace one-call and disjoint three-call decisions on the same untouched responses",
+    "report the new 16-model bank separately from historical 0.1.0 results"
+  ],
+  "truth_limitation": "requested route labels are not independent ground truth for served weights"
+}

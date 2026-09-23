@@ -47,6 +47,7 @@ def evaluate(paths: list[Path]) -> dict:
         raise ValueError("duplicate sample_id detected; evaluation stopped")
     samples = []
     for row in rows:
+        text = row.get("text", "") if row.get("return_code", 0) == 0 else ""
         prompt_id = str(row.get("prompt_id"))
         grid_prompts = {"identity-v2-grid", "identity-v3-schema", "identity-web-v1"}
         response_format = (
@@ -56,7 +57,7 @@ def evaluate(paths: list[Path]) -> dict:
         )
         results = {}
         supported = identify_text_supported(
-            row.get("text", ""),
+            text,
             response_format=response_format,
             guard=ENROLLED_OUTER_GUARD,
         )
@@ -79,7 +80,7 @@ def evaluate(paths: list[Path]) -> dict:
             "support_p_value": supported.support_p_value,
         }
         enrolled = identify_text_adapted(
-            row.get("text", ""),
+            text,
             response_format=response_format,
             guard=ENROLLED_OUTER_GUARD,
         )
@@ -102,7 +103,7 @@ def evaluate(paths: list[Path]) -> dict:
             ("balanced", BALANCED_GUARD),
             ("strict", STRICT_GUARD),
         ):
-            result = identify_text(row.get("text", ""), response_format=response_format, guard=guard)
+            result = identify_text(text, response_format=response_format, guard=guard)
             results[name] = {
                 "status": result.status,
                 "label": result.label,

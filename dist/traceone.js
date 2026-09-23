@@ -4,6 +4,8 @@ export const TARGET_MODELS = [
   "gpt-5.6-terra",
   "gpt-5.6-sol",
   "gpt-6-astra",
+  "gpt-6-sol",
+  "gpt-6-luna",
 ];
 
 const VALUE_MIN = 1;
@@ -397,9 +399,9 @@ let artifactPromise;
 export function loadArtifacts() {
   if (!artifactPromise) {
     artifactPromise = Promise.all([
-      fetch(new URL("./data/unified_bank.json", import.meta.url)).then((response) => response.json()),
-      fetch(new URL("./data/codex_low_v4_adapter_415.json", import.meta.url)).then((response) => response.json()),
-      fetch(new URL("./data/codex_low_v4_support_415.json", import.meta.url)).then((response) => response.json()),
+      fetch(new URL("./data/unified_bank_v2_16.json", import.meta.url)).then((response) => response.json()),
+      fetch(new URL("./data/codex_low_v5_adapter_581.json", import.meta.url)).then((response) => response.json()),
+      fetch(new URL("./data/codex_low_v5_support_581.json", import.meta.url)).then((response) => response.json()),
     ]).then(([bank, adapter, support]) => ({ bank, adapter, support }));
   }
   return artifactPromise;

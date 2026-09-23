@@ -4,8 +4,8 @@
 
 ## 1. 目标与真值边界
 
-目标是在固定 `reasoning_effort=low`、Codex runtime、wrapper 和 prompt 下，
-从一次响应判断五个 `requested_model` route label，或返回 `unknown`。事件流没有
+目标是在记录 Codex runtime、固定 `reasoning_effort=low`、wrapper 和 prompt 的条件下，
+从一次响应判断七个 `requested_model` route label，或返回 `unknown`。事件流没有
 独立 `response_model` 或权重证明，因此结果叫 requested-label agreement，不能
 解释为服务端实际权重的 ground truth accuracy。
 
@@ -15,21 +15,29 @@
 
 ## 2. 冻结发布管线
 
-最终发布使用 [release-candidate-v8.json](../config/release-candidate-v8.json)：
+七模型发布使用 [release-candidate-v9.json](../config/release-candidate-v9.json)；
+五模型历史发布配置仍见
+[release-candidate-v8.json](../config/release-candidate-v8.json)：
 
 1. strict parser 要求对象只含 `numbers`，形状 9×35，值为 1–355 的 integer。
-2. 复用 ModelTrace 的 13-model marginal Hellinger 与 ordered-block bank，并计算
+2. 复用 ModelTrace 的 16-model marginal Hellinger 与 ordered-block bank，并计算
    absolute JS similarity；不足 280 个可用值、top 不属于目标或 similarity <0.52
    时立即返回 `unknown`。
-3. 通过 outer guard 后，39 维 feature（13 fused、13 marginal、13 absolute
-   similarity）进入 alpha=1 的五类 ridge adapter；margin <0.01 时拒识。
+3. 通过 outer guard 后，48 维 feature（16 fused、16 marginal、16 absolute
+   similarity）进入 alpha=1 的七类 ridge adapter；margin <0.01 时拒识。
 4. 默认 `supported` 再检查 shrinkage Mahalanobis target-support envelope。
    每类 99% empirical distance 阈值；高于每类第 90 百分位的 adapter margin
    可 rescue。它是经验 support，不具 distribution-free OOD 保证。
 
-训练集共 415 条、每类 83 条，来自公开的 340 条 enrollment 与失败盲测
-confirmation-v6。所有 prompt、Schema、bank、实现和 artifact hash 在
-confirmation-v7 采集前冻结，采集后复核一致。
+七模型训练集共 581 条、每类 83 条：旧五类沿用已公开的 415 条 enrollment，
+新两类采集各 83 条独立响应。新版本分别记录旧类与新类的 Codex runtime；
+两批不是同日采集，时间漂移仍是限制。0.1.0 的 415 条训练和 confirmation-v7
+冻结结果保持为历史证据。
+
+新版本的开发划分是旧五类 `enrollment-v3` 68 条训练 / `confirmation-v6`
+15 条测试，以及新两类各前 68 条训练 / 后 15 条测试。它是用于选择发布配置的
+development 结果；新的七类 15/类确认计划在
+[confirmation-v8.json](../config/confirmation-v8.json) 预先登记。
 
 ## 3. Operating profiles
 
@@ -46,13 +54,13 @@ confirmation-v7 采集前冻结，采集后复核一致。
 - Confirmation：先固定配置、样本数、成功规则与 hash，再采集全新响应。
 - Open world：完整 label 同时从 gallery、feature space 和 support fit 中移除。
 
-v7 配置的 confirmation-v6 为 71/75，未过预注册门槛；随后才允许作为 v8
+旧 v7 配置的 confirmation-v6 为 71/75，未过预注册门槛；随后才允许作为 v8
 development 数据。v8 的 confirmation-v7 是最终未见盲测，不能再用于修改 v8。
 失败调用、格式错误、误判与 `unknown` 全部留在主分母。
 
 ## 5. 对照设计
 
-最终 head-to-head 对同一批 75 条响应运行：
+0.1.0 的 head-to-head 对同一批 75 条响应运行：
 
 - TraceOne：每条响应作一次决定；
 - ModelTrace-one：同一条响应的 closed-set mean fused argmax；
@@ -99,6 +107,6 @@ manifest 记录源文件和公开文件 digest。发布前仍需人工检查未�
 
 - 行为指纹会随 system prompt、wrapper、reasoning 和时间漂移。
 - 上游参考语料缺少完整 reasoning provenance。
-- 五类各 15 条只能证明本批结果；75/75 的 Wilson 95% 区间仍为约 95.13%–100%。
+- 0.1.0 五类各 15 条只能证明该批结果；75/75 的 Wilson 95% 区间仍为约 95.13%–100%。
 - GPT-5.4 是当前最难未见类，development 中仍有 20/36 false accepts。
 - 没有 routing log/attestation，不能区分 detector error、自然波动和真实换模。

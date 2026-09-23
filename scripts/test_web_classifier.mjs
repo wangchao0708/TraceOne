@@ -7,9 +7,9 @@ import { identifyWithArtifacts, parseGridResponse } from "../dist/traceone.js";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const readJson = (relativePath) => JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const artifacts = {
-  bank: readJson("dist/data/unified_bank.json"),
-  adapter: readJson("dist/data/codex_low_v4_adapter_415.json"),
-  support: readJson("dist/data/codex_low_v4_support_415.json"),
+  bank: readJson("dist/data/unified_bank_v2_16.json"),
+  adapter: readJson("dist/data/codex_low_v5_adapter_581.json"),
+  support: readJson("dist/data/codex_low_v5_support_581.json"),
 };
 const readJsonl = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8")
   .trim()
@@ -53,16 +53,17 @@ function verifyRows(rows, expectedRows) {
   return rows.length;
 }
 
-const confirmationRows = readJsonl("data/public/confirmation-v7.jsonl");
-const confirmationCount = verifyRows(
-  confirmationRows,
-  readJson("data/confirmation-v7-evaluation.json").samples,
-);
-const webPilotRows = readJsonl("data/public/web-prompt-v1-pilot.jsonl");
-const webPilotCount = verifyRows(
-  webPilotRows,
-  readJson("data/web-prompt-v1-pilot-evaluation.json").samples,
-);
+const expectedRows = [
+  ...readJson("data/confirmation-v8-evaluation.json").samples,
+  ...readJson("data/seven-model-regression-v1.json").samples,
+];
+const evidenceFiles = [
+  "data/public/confirmation-v7.jsonl",
+  "data/public/confirmation-v8.jsonl",
+  "data/public/web-prompt-v1-pilot.jsonl",
+  "data/public/gpt6-web-pilot-v1.jsonl",
+];
+const counts = evidenceFiles.map((file) => verifyRows(readJsonl(file), expectedRows));
 
 const malformed = parseGridResponse("```json\n[1, 2, 3]\n```");
 if (malformed.valid || !malformed.errors[0]?.startsWith("invalid_json:")) {
@@ -70,10 +71,11 @@ if (malformed.valid || !malformed.errors[0]?.startsWith("invalid_json:")) {
 }
 
 console.log(JSON.stringify({
-  samples: confirmationCount + webPilotCount,
-  frozen_confirmation: confirmationCount,
-  self_contained_web_pilot: webPilotCount,
-  exact_decisions: confirmationCount + webPilotCount,
+  samples: counts.reduce((total, count) => total + count, 0),
+  historical_confirmation: counts[0],
+  seven_model_confirmation: counts[1],
+  historical_web_pilot: counts[2],
+  new_model_web_pilot: counts[3],
   numeric_tolerance: 1e-9,
   strict_invalid_case: "passed",
 }));

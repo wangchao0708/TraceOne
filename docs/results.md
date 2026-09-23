@@ -2,9 +2,53 @@
 
 [简体中文](results.md) | [English](results.en.md)
 
-## 发布结论
+## 七模型首轮冻结确认：未过门槛
 
-最终发布是 `release-candidate-v8` + `confirmation-v7`：先冻结、后采集、再揭盲。
+`release-candidate-v9` 于 2026-09-23 16:29:50 UTC 冻结，首条
+`confirmation-v8` 于 16:32:05 UTC 采集。七类各 15 条，共 105 次调用全部成功、
+严格符合 Schema，并使用相同的 Codex runtime、Low reasoning、prompt 与 wrapper。
+
+TraceOne `supported` 是 101/105（96.19%）：5.5、5.6 Luna/Terra/Sol 和 6 Sol
+各 15/15，6 Astra 与 6 Luna 各 13/15。因此没有达到预登记的“每类至少 14/15”
+门槛。四条失败包括两条 outer guard 拒识和两条适配器误判；完整失败分母与逐条结果
+见 [confirmation-v8-evaluation.json](../data/confirmation-v8-evaluation.json)。
+
+同响应的新版 ModelTrace closed-set 一问也是 101/105，但逐类不同：5.6 Sol
+14/15、6 Astra 13/15、6 Luna 14/15；非重叠三问为 35/35。它们不是模型服务
+真实权重的证明，也不能凭这些点估计声称 TraceOne 已全面超过 ModelTrace。
+对照见 [confirmation-v8-head-to-head.json](../data/confirmation-v8-head-to-head.json)。
+这批失败确认只在冻结规则判定未通过后，才允许进入下一轮开发；不能把它重新称为
+v9 的盲测成功。
+
+## 0.2.0 七模型开发证据
+
+ModelTrace 作者及时公开的新版 16-model bank（上游 commit
+`55a2e4a55170423b484d701e9a82ab62b268c811`）包含 GPT-6 Sol 与 Luna 的
+各 36 条 Low-reasoning 参考响应。TraceOne 在此优秀开放工作的基础上，用同一个
+9×35 问题另外采集两款各 83 条独立 enrollment，与旧五款各 83 条组成平衡的
+581 条训练集。两批 enrollment 的 Codex runtime 不同，已逐类记录。
+
+冻结前的 68/15 开发划分共有 105 条测试响应：`supported` 为 100/105，
+`enrolled` 为 102/105。新款 6 Sol 是 15/15；6 Luna 的 `supported` 是 13/15，
+其中一条分类错、一条被支持域拒识。旧版 Astra 也为 13/15；这是需要保留的
+失败证据，不能写成“七款开发集全对”。完整逐样本结果见
+[seven-model-development-v1.json](../data/seven-model-development-v1.json)。
+
+16-model held-label open-world 开发评测包含九个未登记标签各 36 条：
+`supported` 误接收 34/324（10.49%），`enrolled` 51/324（15.74%）；
+ModelTrace closed-set 按定义会给 324/324 个有效 unknown 输入命名。主要短板为
+GPT-5.4 的 19/36 与 Claude Opus 5.5 的 10/36。数据仍来自上游参考语料，
+并非独立 provider 盲测；它与旧版 24/288 使用的标签集合不同，不能直接比较
+百分比。见 [open-world-development-v3.json](../data/open-world-development-v3.json)。
+
+最终 581 条训练配置先固定在
+[release-candidate-v9.json](../config/release-candidate-v9.json)，随后按
+[confirmation-v8.json](../config/confirmation-v8.json) 的七款各 15 条规则采集新
+确认集。开发数据只用于选择配置，不能替代新确认结果。
+
+## 0.1.0 五模型发布结论（历史）
+
+0.1.0 发布使用 `release-candidate-v8` + `confirmation-v7`：先冻结、后采集、再揭盲。
 
 - 75 次调用全部 `return_code=0`，75 个 sample ID 唯一。
 - 75/75 严格 9×35 Schema 合规；prompt/schema hash、runtime、reasoning、wrapper

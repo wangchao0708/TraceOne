@@ -2,7 +2,7 @@ import json
 import random
 import unittest
 
-from traceone.fingerprint import ADAPTIVE_GUARD, BALANCED_GUARD, classify_parsed, load_bank
+from traceone.fingerprint import ADAPTIVE_GUARD, BALANCED_GUARD, TARGET_MODELS, classify_parsed, load_bank
 from traceone.parsing import ParseResult
 
 
@@ -10,6 +10,11 @@ class FingerprintTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.bank = load_bank()
+
+    def test_reference_bank_covers_seven_targets(self) -> None:
+        self.assertEqual(len(TARGET_MODELS), 7)
+        self.assertEqual(len(self.bank["robust"]["model_order"]), 16)
+        self.assertTrue(set(TARGET_MODELS).issubset(self.bank["robust"]["model_order"]))
 
     def test_uniform_sequence_is_rejected(self) -> None:
         rng = random.Random(7)

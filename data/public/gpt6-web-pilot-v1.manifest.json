@@ -1,0 +1,20 @@
+{
+  "schema": "traceone-public-export-manifest-v1",
+  "output": "data/public/gpt6-web-pilot-v1.jsonl",
+  "rows": 2,
+  "sha256": "d644ae329a3e8bf2417790cdb72d15d1d29f3af932d05f37520f3491350cc681",
+  "excluded_fields": [
+    "thread_id",
+    "stderr_tail"
+  ],
+  "sources": [
+    {
+      "source_file": "gpt6-web-pilot-v1/gpt-6-sol.jsonl",
+      "sha256": "b2cf803e958f00c237d3f769c0dc9fdbe586899d629fb8a50ba966cbfe3b4f3b"
+    },
+    {
+      "source_file": "gpt6-web-pilot-v1/gpt-6-luna.jsonl",
+      "sha256": "38152a0f9a94cbc4472de16056fa1b933fc5112796c3179e08b551b25de493ce"
+    }
+  ]
+}

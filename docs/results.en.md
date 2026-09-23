@@ -2,9 +2,60 @@
 
 [简体中文](results.md) | [English](results.en.md)
 
-## Release result
+## First frozen seven-model confirmation: gate failed
 
-The final release is `release-candidate-v8` plus `confirmation-v7`: freeze first,
+`release-candidate-v9` was frozen at 16:29:50 UTC on September 23, 2026; the
+first `confirmation-v8` call followed at 16:32:05. All 105 calls (15 per route)
+completed, conformed to the strict Schema, and shared one Codex runtime, Low
+reasoning, prompt, and wrapper.
+
+TraceOne `supported` matched 101/105 (96.19%). GPT-5.5, all three GPT-5.6 routes,
+and GPT-6 Sol were each 15/15; GPT-6 Astra and Luna were each 13/15. This failed
+the preregistered minimum of 14/15 per route. Two errors were outer-guard
+rejections and two were adapter misclassifications. See every row in
+[confirmation-v8-evaluation.json](../data/confirmation-v8-evaluation.json).
+
+The updated ModelTrace closed-set one-call comparator also matched 101/105, with
+5.6 Sol at 14/15, 6 Astra at 13/15, and 6 Luna at 14/15. Its disjoint three-call
+arm matched 35/35. These requested-route point estimates do not prove served
+weights or comprehensive superiority for TraceOne. The paired decisions are in
+[confirmation-v8-head-to-head.json](../data/confirmation-v8-head-to-head.json).
+The failed batch may be used for a later development iteration only after the
+v9 gate has been recorded as failed.
+
+## 0.2.0 seven-model development evidence
+
+The author's excellent updated 16-model ModelTrace bank (commit
+`55a2e4a55170423b484d701e9a82ab62b268c811`) includes 36 Low-reasoning
+reference responses each for GPT-6 Sol and Luna. Building on that open work,
+TraceOne collected 83 additional independent enrollment responses per new route
+with the same 9×35 question. Together with 83 rows per original route, training
+is balanced at 581 rows. The two collection epochs used different Codex runtimes,
+which are recorded per model.
+
+The 68/15 development split held out 105 responses. `supported` matched 100/105;
+`enrolled` matched 102/105. GPT-6 Sol was 15/15. GPT-6 Luna was 13/15 under
+`supported`, with one classification error and one support rejection; the historical
+Astra route was also 13/15. These failures remain visible in
+[seven-model-development-v1.json](../data/seven-model-development-v1.json).
+
+Nine held-out labels with 36 rows each produced 34/324 false accepts under
+`supported` (10.49%) and 51/324 under `enrolled` (15.74%). A closed-set ModelTrace
+decision necessarily names all 324 valid unknown inputs. GPT-5.4 (19/36) and
+Claude Opus 5.5 (10/36) are the largest weaknesses. These are upstream-corpus
+development data, not a blind independent-provider test. The label set differs
+from the historical 24/288 study, so those percentages are not directly
+comparable. See [open-world-development-v3.json](../data/open-world-development-v3.json).
+
+The final 581-row configuration was frozen in
+[release-candidate-v9.json](../config/release-candidate-v9.json) before collecting
+the fresh 15-per-route batch registered in
+[confirmation-v8.json](../config/confirmation-v8.json). Development results do
+not substitute for confirmation evidence.
+
+## Historical 0.1.0 five-model result
+
+The 0.1.0 release used `release-candidate-v8` plus `confirmation-v7`: freeze first,
 collect second, reveal last.
 
 - All 75 calls returned code 0 and all 75 sample IDs were unique.

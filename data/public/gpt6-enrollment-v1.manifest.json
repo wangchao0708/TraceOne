@@ -1,0 +1,20 @@
+{
+  "schema": "traceone-public-export-manifest-v1",
+  "output": "data/public/gpt6-enrollment-v1.jsonl",
+  "rows": 166,
+  "sha256": "f298380daf481d9f31ae04a84745f1dbc118d0f9c6ffc3eef4fc3428bc06e88a",
+  "excluded_fields": [
+    "thread_id",
+    "stderr_tail"
+  ],
+  "sources": [
+    {
+      "source_file": "gpt6-enrollment-v1/gpt-6-sol.jsonl",
+      "sha256": "ee1b1f89bf4870d5ee3a4633d2704e5cb291fe8c918e8ffa952fe72da13c3660"
+    },
+    {
+      "source_file": "gpt6-enrollment-v1/gpt-6-luna.jsonl",
+      "sha256": "c5a3591f105c8f7c99c39a1c9b537d4abb05af292037e7e23c1c396ea603dcb3"
+    }
+  ]
+}

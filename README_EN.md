@@ -8,7 +8,7 @@
   </a>
 </p>
 
-TraceOne identifies five Codex model routes from one model call and treats route
+TraceOne identifies seven Codex model routes from one model call and treats route
 fingerprint drift and capability degradation as separate, reproducible questions:
 
 - `gpt-5.5`
@@ -16,6 +16,8 @@ fingerprint drift and capability degradation as separate, reproducible questions
 - `gpt-5.6-terra`
 - `gpt-5.6-sol`
 - `gpt-6-astra`
+- `gpt-6-sol`
+- `gpt-6-luna`
 
 ## Use it online
 
@@ -23,7 +25,7 @@ fingerprint drift and capability degradation as separate, reproducible questions
 
 The web question embeds the output shape in the same prompt, so users need no
 installation or separate JSON Schema: copy the question, ask the model, and paste the
-complete answer. The 13-model outer guard, ridge adapter, and target-support rejection
+complete answer. The 16-model outer guard, ridge adapter, and target-support rejection
 all run locally in the browser; responses are not uploaded.
 
 The page switches between “Identify model” and “Degradation signal.” In the latter,
@@ -54,7 +56,7 @@ of the original work.
 
 - Identity attribution uses one call and one response instead of the author's
   recommended three probes.
-- It is not a bare closed-set argmax. A 13-model outer guard, five-class ridge
+- It is not a bare closed-set argmax. A 16-model outer guard, seven-class ridge
   adapter, and target-support envelope can return `unknown`.
 - Frozen configurations, preregistered confirmations, complete failure
   denominators, whole-collection holdouts, and publishable data are included.
@@ -89,7 +91,17 @@ decisions, not three independent questions. The exact assets are
 [prompts/identity-v3-schema.txt](prompts/identity-v3-schema.txt) and
 [schemas/identity-v3.json](schemas/identity-v3.json).
 
-## Frozen confirmation
+## First seven-model confirmation did not pass
+
+GPT-6 Sol and Luna are present in the 16-model reference bank and seven-class
+adapter. All 105 fresh `confirmation-v8` calls conformed to the strict Schema.
+TraceOne one-call matched 101/105, but GPT-6 Astra and Luna were each 13/15,
+below the preregistered 14/15 per-route threshold. The same-response ModelTrace
+one-call result was also 101/105; its three-call arm was 35/35. This failed
+batch remains visible and cannot support a comprehensive superiority claim.
+See [docs/results.en.md](docs/results.en.md).
+
+## Historical 0.1.0 five-model confirmation
 
 Release candidate v8 was frozen before `confirmation-v7`. All 75 fresh calls
 succeeded and conformed to the strict schema:
@@ -112,7 +124,7 @@ and [data/confirmation-v7-head-to-head.json](data/confirmation-v7-head-to-head.j
 Labels are Codex `requested_model` values, not independent attestation of served
 weights.
 
-## Open-world result and boundary
+## Historical 0.1.0 open-world result and boundary
 
 The held-label evaluation removes one complete excluded label from the bank,
 adapter feature space, and support fit before treating it as unseen:
@@ -128,6 +140,8 @@ registered-distractor check, not true OOD evidence. See
 [data/open-world-development-v2.json](data/open-world-development-v2.json).
 
 ## Install and identify
+
+Requires Python 3.11 or newer.
 
 ```text
 python3 -m venv .venv
@@ -158,7 +172,7 @@ traceone identify answer.json --format grid --method supported
 ```
 
 `supported` is the default lower-false-accept operating point; `enrolled` favors
-sensitivity to registered targets. Both run only after the 13-model outer guard.
+sensitivity to registered targets. Both run only after the 16-model outer guard.
 `unknown` is a valid outcome and should not be forced into a model label.
 
 Reproduce the final evaluation and verify frozen assets:

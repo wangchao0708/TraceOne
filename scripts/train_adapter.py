@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 
 from traceone.adapter import fit_ridge_adapter
@@ -26,8 +26,10 @@ def main() -> None:
     sources = []
     prompt_hashes = set()
     schema_hashes = set()
-    runtimes = set()
+    runtimes_by_model = defaultdict(set)
     reasoning = set()
+    wrappers = set()
+    providers = set()
     seen_records = set()
     for path in args.inputs:
         raw = path.read_bytes()
@@ -46,13 +48,16 @@ def main() -> None:
             labeled.append((row["requested_model"], list(parsed.numbers)))
             prompt_hashes.add(row["prompt_sha256"])
             schema_hashes.add(row["output_schema_sha256"])
-            runtimes.add(row["runtime"])
+            runtimes_by_model[row["requested_model"]].add(row["runtime"])
             reasoning.add(row["reasoning_effort"])
+            wrappers.add(row["wrapper"])
+            providers.add(row["provider"])
 
     if len(prompt_hashes) != 1 or len(schema_hashes) != 1:
         raise ValueError("enrollment prompt/schema drift detected")
-    if len(runtimes) != 1 or reasoning != {"low"}:
-        raise ValueError("enrollment runtime/reasoning drift detected")
+    if (any(len(versions) != 1 for versions in runtimes_by_model.values())
+            or reasoning != {"low"} or len(wrappers) != 1 or len(providers) != 1):
+        raise ValueError("enrollment runtime/reasoning/wrapper/provider drift detected")
     counts = Counter(label for label, _ in labeled)
     if set(counts) != set(TARGET_MODELS) or len(set(counts.values())) != 1:
         raise ValueError(f"enrollment must be balanced across targets: {counts}")
@@ -67,8 +72,12 @@ def main() -> None:
     artifact["training_label_counts"] = dict(counts)
     artifact["prompt_sha256"] = next(iter(prompt_hashes))
     artifact["output_schema_sha256"] = next(iter(schema_hashes))
-    artifact["runtime"] = next(iter(runtimes))
+    artifact["runtimes_by_model"] = {
+        model: next(iter(versions)) for model, versions in sorted(runtimes_by_model.items())
+    }
     artifact["reasoning_effort"] = "low"
+    artifact["wrapper"] = next(iter(wrappers))
+    artifact["provider"] = next(iter(providers))
     args.output.write_text(
         json.dumps(artifact, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )

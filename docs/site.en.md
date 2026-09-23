@@ -8,7 +8,7 @@ Live site: <https://traceone-model-check.nutmeg-basil-6747.chatgpt.site>
 
 The same workspace provides two switchable modes:
 
-- **Identify model:** copy the question, paste the answer, and predict one of the five
+- **Identify model:** copy the question, paste the answer, and predict one of the seven
   target routes or `unknown`.
 - **Degradation signal:** first choose the model actually in use, then complete the same
   one-question flow. The page automatically compares the selected model with the
@@ -16,7 +16,7 @@ The same workspace provides two switchable modes:
   or “Unable to determine.”
 
 Both modes use one self-contained question and show absolute similarity, support
-distance, and five-candidate relative weights. The user does not compare model names
+distance, and seven-candidate relative weights. The user does not compare model names
 manually.
 
 The page asks for no API key and sends no model response to a server. Its HTML, CSS,
@@ -28,8 +28,8 @@ data connections to the same origin.
 
 `dist/traceone.js` ports the release path step by step:
 
-1. the ModelTrace-derived 13-model marginal Hellinger and ordered-block outer guard;
-2. the five-class ridge adapter;
+1. the ModelTrace-derived 16-model marginal Hellinger and ordered-block outer guard;
+2. the seven-class ridge adapter;
 3. shrinkage-Mahalanobis target-support rejection and high-margin rescue; and
 4. an explicit `unknown` outcome.
 
@@ -49,7 +49,7 @@ The frozen release prompt uses a Codex JSON Schema to enforce the 9×35 output. 
 web user cannot conveniently attach that Schema, so `identity-web-v1` states the 9×35
 shape inside the same question while still using only one model call.
 
-The 2026-09-15 compatibility pilot collected one Low-reasoning call from each target
+The historical 2026-09-15 compatibility pilot collected one Low-reasoning call from each of the then-current five target
 route:
 
 - `supported` requested-route agreement was 5/5;
@@ -66,7 +66,7 @@ paste journey functions end to end.
 
 ## Interpretation boundary
 
-Candidate bars are a relative softmax of the five adapter scores for visualization,
+Candidate bars are a relative softmax of the seven adapter scores for visualization,
 not probabilities of server identity. Absolute similarity and support distance are not
 trusted attestation either. System prompts, reasoning effort, runtime, date, and service
 updates can all move a behavioral fingerprint.

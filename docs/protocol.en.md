@@ -4,8 +4,8 @@
 
 ## 1. Objective and truth boundary
 
-Under fixed `reasoning_effort=low`, Codex runtime, wrapper, and prompt, one response
-must be assigned to one of five `requested_model` route labels or `unknown`. The event
+With recorded Codex runtime and fixed `reasoning_effort=low`, wrapper, and prompt,
+one response is assigned to one of seven `requested_model` route labels or `unknown`. The event
 stream contains no independent `response_model` or weight attestation. Results are
 requested-label agreement, not ground-truth accuracy for served weights.
 
@@ -15,22 +15,31 @@ extra question. Capability degradation is a separate multi-item workflow.
 
 ## 2. Frozen release pipeline
 
-The final release uses [release-candidate-v8.json](../config/release-candidate-v8.json):
+The seven-model release uses [release-candidate-v9.json](../config/release-candidate-v9.json).
+The historical five-model
+configuration remains in [release-candidate-v8.json](../config/release-candidate-v8.json):
 
 1. A strict parser requires an object containing only `numbers`, shape 9×35, with
    integer values from 1 through 355.
-2. ModelTrace's 13-model marginal Hellinger and ordered-block bank is reused with
+2. ModelTrace's 16-model marginal Hellinger and ordered-block bank is reused with
    absolute JS similarity. Fewer than 280 usable values, a non-target top candidate,
    or similarity below 0.52 returns `unknown`.
-3. Passing samples enter a five-class alpha=1 ridge adapter over 39 features: 13
-   fused, 13 marginal, and 13 absolute similarities. Margin below 0.01 abstains.
+3. Passing samples enter a seven-class alpha=1 ridge adapter over 48 features: 16
+   fused, 16 marginal, and 16 absolute similarities. Margin below 0.01 abstains.
 4. Default `supported` applies a shrinkage-Mahalanobis target-support envelope with
    per-class 99% empirical distance thresholds and a 90th-percentile adapter-margin
    rescue. This is empirical support, not a distribution-free OOD guarantee.
 
-Training contains 415 rows, 83 per class, from the public 340-row enrollment and the
-failed confirmation-v6. Prompt, Schema, bank, implementation, and artifact hashes
-were frozen before confirmation-v7 and rechecked afterward.
+Seven-model training contains 581 rows, 83 per class: the original five classes
+reuse 415 published enrollment rows, and the two new classes contribute 83 new
+independent responses each. Codex runtimes are recorded per model because collection
+dates differ. The 0.1.0 training and confirmation-v7 remain historical evidence.
+
+The new development split uses 68 training and 15 testing rows per class: historical
+`enrollment-v3` / `confirmation-v6` for the original five, and the first 68 / last
+15 new rows for GPT-6 Sol and Luna. It is development evidence. The fresh seven-class
+15-per-model confirmation was registered in
+[confirmation-v8.json](../config/confirmation-v8.json).
 
 ## 3. Operating profiles
 
@@ -48,14 +57,14 @@ samples alone is not a primary metric.
 - Confirmation freezes configuration, sample count, decision rule, and hashes first.
 - Open world removes a complete label from gallery, feature space, and support fit.
 
-The v7 configuration scored 71/75 on confirmation-v6 and failed its preregistered
+The earlier v7 configuration scored 71/75 on confirmation-v6 and failed its preregistered
 gate. Only then did that batch become v8 development data. Confirmation-v7 is v8's
 final unseen confirmation and cannot be used to modify v8. Failed calls, invalid
 format, errors, and `unknown` all remain in the primary denominator.
 
 ## 5. Comparator design
 
-The final head-to-head runs on the same 75 responses:
+The 0.1.0 head-to-head runs on the same 75 responses:
 
 - TraceOne makes one decision per response.
 - ModelTrace-one applies closed-set mean-fused argmax to each response.
@@ -107,7 +116,7 @@ review exports for fields introduced by future runtimes.
 
 - Fingerprints drift with system prompts, wrappers, reasoning, and time.
 - Upstream reference data lack complete reasoning provenance.
-- Fifteen rows per class establish only this batch; 75/75 still has a Wilson 95%
+- The 0.1.0 fifteen rows per class establish only that batch; 75/75 still has a Wilson 95%
   interval of approximately 95.13%–100%.
 - GPT-5.4 is the hardest unseen label: 20/36 false accepts in development.
 - Without routing logs or attestation, detector error, natural variation, and real

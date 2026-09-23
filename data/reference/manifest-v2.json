@@ -1,0 +1,21 @@
+{
+  "schema": "traceone-reference-manifest-v1",
+  "source": "https://github.com/xqy2006/ModelTrace",
+  "commit": "55a2e4a55170423b484d701e9a82ab62b268c811",
+  "license": "MIT; see ../../third_party/ModelTrace-LICENSE",
+  "files": {
+    "gpt_reference_v2.jsonl": {
+      "sha256": "b87e5630286308fdcec0893b89873635bf274b64a5269f41039eb46e66d3793f",
+      "rows": 288
+    },
+    "claude_reference_v2.jsonl": {
+      "sha256": "170f6bf43df14f3fbaf6ddc05cbb9946a2e42f9e8f6183116902863e894eefdd",
+      "rows": 288
+    }
+  },
+  "bank": {
+    "path": "src/traceone/data/unified_bank_v2_16.json",
+    "sha256": "1c2cb74d372f9f0f30d0dabbb7b7a838660d2f769a88d0c8489e4c662e088c21",
+    "models": 16
+  }
+}

@@ -63,20 +63,22 @@ interval uses 75 as its denominator.
 
 A closed-set softmax or argmax can confidently label any valid input. TraceOne splits:
 
-1. a 13-model bank checks absolute similarity and whether the top label is a target;
-2. a ridge adapter separates five nearby routes under the current Codex wrapper;
+1. a 16-model bank checks absolute similarity and whether the top label is a target;
+2. a ridge adapter separates seven nearby routes under the current Codex wrapper;
 3. a target-support envelope checks whether the prediction lies in enrollment support.
 
-This separates “which is closest?” from “is it like any registered target?” It reduces
-held-label false identification from ModelTrace's 288/288 to 24/288, but GPT-5.4 still
-overlaps heavily, showing an information limit in one numeric response.
+This separates “which is closest?” from “is it like any registered target?” In the
+0.1.0 development evaluation with 13 bank models and five targets, it reduced
+held-label false identification from ModelTrace's 288/288 to 24/288. That is not a
+result for the new 16-bank, seven-target configuration. GPT-5.4 still overlapped
+heavily with the historical target support.
 
 ## Negative results: active probes and nonlinear adapters
 
 - Pairwise v1 asked 128 random left/right choices and reached 24/25 in a small
   development leave-one-out whose hyperparameters were selected on the same rows.
 - Pairwise v2 selected pairs from 340-row enrollment log-odds and fell to 22/25.
-- On the same 39 features, KNN, shrinkage LDA, and RBF prototypes all trailed the
+- On the 0.1.0 release's 39 features, KNN, shrinkage LDA, and RBF prototypes trailed the
   alpha=1 ridge adapter's 412/415 whole-collection CV.
 
 Novel or active did not automatically mean reliable, so none entered the release path.

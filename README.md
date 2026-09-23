@@ -8,7 +8,7 @@
   </a>
 </p>
 
-TraceOne 用一个模型调用识别五条 Codex 模型路由，并把行为身份漂移与能力
+TraceOne 用一个模型调用识别七条 Codex 模型路由，并把行为身份漂移与能力
 降质拆成两个独立、可复现的统计问题：
 
 - `gpt-5.5`
@@ -16,13 +16,15 @@ TraceOne 用一个模型调用识别五条 Codex 模型路由，并把行为身�
 - `gpt-5.6-terra`
 - `gpt-5.6-sol`
 - `gpt-6-astra`
+- `gpt-6-sol`
+- `gpt-6-luna`
 
 ## 在线使用
 
 [打开 TraceOne Web](https://traceone-model-check.nutmeg-basil-6747.chatgpt.site)
 
 网页把输出形状直接写进同一个问题，用户无需安装软件或附加 JSON Schema：复制
-问题、向模型提问、粘贴完整回答即可。13-model outer guard、ridge adapter 与
+问题、向模型提问、粘贴完整回答即可。16-model outer guard、ridge adapter 与
 target-support rejection 全部在浏览器本地运行，回答不会被上传。
 
 网页提供“模型识别”和“降智线索”两个切换模式。后者让用户选择自己实际使用的
@@ -45,7 +47,7 @@ TraceOne 首先向 [ModelTrace](https://github.com/xqy2006/ModelTrace) 作者
 下面的比较应理解为在这一坚实基础上的扩展与压力测试，而不是对原工作的否定。
 
 - 身份识别从作者推荐的三次 probe 降为一次调用、一次响应。
-- 不做裸 closed-set argmax：13-model outer guard、五类 ridge adapter 和
+- 不做裸 closed-set argmax：16-model outer guard、七类 ridge adapter 和
   target-support envelope 可返回 `unknown`。
 - 有冻结配置、预注册盲测、完整失败分母、整批留一验证与可公开复现数据。
 - “数字指纹变了”不等于“降智”；降质由独立 canary、paired McNemar、功效规划
@@ -78,7 +80,16 @@ schema-conforming JSON value with no explanation.
 [prompts/identity-v3-schema.txt](prompts/identity-v3-schema.txt) 和
 [schemas/identity-v3.json](schemas/identity-v3.json)。
 
-## 冻结盲测结果
+## 七模型首轮确认未通过
+
+新款 GPT-6 Sol/Luna 已进入 16-model 参考库和七类适配器。按冻结的
+`confirmation-v8` 计划，105 次新调用全部严格符合 Schema；TraceOne 一问是
+101/105，但 GPT-6 Astra 与 GPT-6 Luna 各只有 13/15，未过每类至少 14/15 的
+预登记门槛。ModelTrace 同响应一问也是 101/105，三问是 35/35。
+本批结果保留为失败证据，不能据此宣称七款均优于上游；详见
+[docs/results.md](docs/results.md)。
+
+## 0.1.0 的五模型冻结盲测结果
 
 发布配置 v8 在 `confirmation-v7` 采集前冻结。75 次新调用全部成功且严格符合
 Schema：
@@ -98,7 +109,7 @@ TraceOne 一问形成 75 个独立决定，三问 arm 形成 25 个 triplet 决�
 
 标签是 Codex `requested_model`，不是服务端实际权重的独立证明。
 
-## Open-world 结果与边界
+## 0.1.0 的 Open-world 结果与边界
 
 真正的 held-label 评测会把一个完整 excluded label 同时移出 bank、adapter feature
 space 和 support 拟合，再把它当作未见模型：
@@ -113,6 +124,8 @@ space 和 support 拟合，再把它当作未见模型：
 OOD。完整结果在 [data/open-world-development-v2.json](data/open-world-development-v2.json)。
 
 ## 安装与身份识别
+
+需要 Python 3.11 或更新版本。
 
 ```text
 python3 -m venv .venv
@@ -143,7 +156,7 @@ traceone identify answer.json --format grid --method supported
 ```
 
 `supported` 是较低 OOD 误接收的默认模式；`enrolled` 更偏重已登记模型的敏感度。
-两者都先经过 13-model outer guard。`unknown` 是有效结果，不应强制改成某个模型。
+两者都先经过 16-model outer guard。`unknown` 是有效结果，不应强制改成某个模型。
 
 复现最终评测与冻结检查：
 

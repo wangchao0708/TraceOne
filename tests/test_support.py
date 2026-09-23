@@ -16,8 +16,8 @@ class SupportTests(unittest.TestCase):
         self.assertEqual(support["models"], list(TARGET_MODELS))
         self.assertEqual(support["bank_model_order"], bank["robust"]["model_order"])
         self.assertEqual(support["training_rows"], adapter["training_rows"])
-        self.assertEqual(len(support["precision"]), 39)
-        self.assertEqual(len(support["distance_thresholds"]), 5)
+        self.assertEqual(len(support["precision"]), 48)
+        self.assertEqual(len(support["distance_thresholds"]), 7)
 
     def test_outer_guard_still_precedes_support_rescue(self) -> None:
         rng = random.Random(23)

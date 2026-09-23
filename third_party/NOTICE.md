@@ -1,7 +1,12 @@
 # Third-party notice
 
 TraceOne includes and adapts the ModelTrace feature extractor, reference bank,
-and reference corpus from commit `3f0dd2f4b451ad424f3b165a108a468efe4d4d81`:
+and reference corpus from commit `3f0dd2f4b451ad424f3b165a108a468efe4d4d81`.
+
+The seven-route release additionally incorporates ModelTrace's updated 16-model
+reference corpus and bank from commit
+`55a2e4a55170423b484d701e9a82ab62b268c811`. Both pinned snapshots remain
+in this repository so the historical five-route result can still be audited.
 
 - Source: https://github.com/xqy2006/ModelTrace
 - Copyright: 2026 xqy2006

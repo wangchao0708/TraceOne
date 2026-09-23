@@ -9,10 +9,14 @@ const text = (relativePath) => read(relativePath).toString("utf8");
 const hash = (relativePath) => crypto.createHash("sha256").update(read(relativePath)).digest("hex");
 
 const mirroredAssets = [
-  "unified_bank.json",
-  "codex_low_v4_adapter_415.json",
-  "codex_low_v4_support_415.json",
+  "unified_bank_v2_16.json",
+  "codex_low_v5_adapter_581.json",
+  "codex_low_v5_support_581.json",
 ];
+const deployedAssets = fs.readdirSync(path.join(root, "dist/data")).filter((name) => name.endsWith(".json"));
+if (JSON.stringify(deployedAssets.sort()) !== JSON.stringify(mirroredAssets.slice().sort())) {
+  throw new Error("site data directory contains missing or superseded model assets");
+}
 for (const asset of mirroredAssets) {
   const sourceHash = hash(`src/traceone/data/${asset}`);
   const siteHash = hash(`dist/data/${asset}`);
@@ -31,6 +35,11 @@ if (visiblePrompt !== promptFile) throw new Error("visible prompt differs from i
 
 for (const marker of ["identifyMode", "degradationMode", "expectedModel"]) {
   if (!html.includes(`id="${marker}"`)) throw new Error(`${marker} control is missing`);
+}
+for (const model of ["gpt-6-sol", "gpt-6-luna"]) {
+  if (!html.includes(`value="${model}"`) || !app.includes(`"${model}"`)) {
+    throw new Error(`${model} is missing from the page`);
+  }
 }
 if (!html.includes('wrap="off"')) throw new Error("response textarea must disable visual wrapping");
 const promptRule = css.match(/\.prompt-box\s*\{([^}]*)\}/)?.[1] ?? "";

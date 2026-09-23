@@ -8,12 +8,12 @@
 
 网页在同一个工作区提供两个切换模式：
 
-- **模型识别**：复制问题、粘贴回答，直接预测五条目标路由之一或 `unknown`；
+- **模型识别**：复制问题、粘贴回答，直接预测七条目标路由之一或 `unknown`；
 - **降智线索**：先选择自己实际使用的模型，再完成同样的一问流程。网页自动把
   所选模型与指纹预测比较，返回“指纹一致”“指纹异常”或“无法判断”。
 
 两个模式都只需复制一个自包含问题，把模型返回的完整 JSON 粘贴回网页。页面同时
-显示绝对相似度、支持距离和五候选相对权重，用户不需要手工比较模型名称。
+显示绝对相似度、支持距离和七候选相对权重，用户不需要手工比较模型名称。
 
 网页不会要求 API Key，也不会把模型回答发送给服务器。HTML、CSS、JavaScript、
 三个冻结模型资产均由站点静态提供，识别计算只发生在当前浏览器标签页。页面设置
@@ -23,8 +23,8 @@
 
 `dist/traceone.js` 逐步移植以下发布路径：
 
-1. ModelTrace 衍生的 13-model marginal Hellinger 与 ordered-block outer guard；
-2. 五类 ridge adapter；
+1. ModelTrace 衍生的 16-model marginal Hellinger 与 ordered-block outer guard；
+2. 七类 ridge adapter；
 3. shrinkage Mahalanobis target-support rejection 与 high-margin rescue；
 4. 显式的 `unknown` 结果。
 
@@ -42,7 +42,7 @@ support distance、threshold 与 empirical p-value。75 条冻结 confirmation �
 附加 Schema，因此 `identity-web-v1` 把 9×35 形状写入同一次提问，仍然只有一次
 模型调用。
 
-2026-09-15 的 compatibility pilot 对五条目标 route 各采集一次 Low reasoning：
+2026-09-15 的历史 compatibility pilot 对当时五条目标 route 各采集一次 Low reasoning：
 
 - `supported` requested-route agreement：5/5；
 - 严格格式合规：1/5；
@@ -56,7 +56,7 @@ support distance、threshold 与 empirical p-value。75 条冻结 confirmation �
 
 ## 解释边界
 
-候选条形图是五类 adapter score 的相对 softmax，仅用于可视化，不是服务端身份
+候选条形图是七类 adapter score 的相对 softmax，仅用于可视化，不是服务端身份
 概率。绝对相似度与支持距离也不是可信 attestation。system prompt、reasoning、
 runtime、日期和服务更新都可能使行为指纹漂移。
 

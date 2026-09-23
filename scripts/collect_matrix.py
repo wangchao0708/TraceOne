@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Collect a balanced five-model matrix, one isolated call per sample."""
+"""Collect a balanced model matrix, one isolated call per sample."""
 
 from __future__ import annotations
 
@@ -16,6 +16,8 @@ MODELS = (
     "gpt-5.6-terra",
     "gpt-5.6-sol",
     "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna",
 )
 COLLECTABLE_MODELS = MODELS + ("gpt-5.4",)
 PROJECT = Path(__file__).resolve().parents[1]
@@ -27,6 +29,7 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--prompt", type=Path, required=True)
     parser.add_argument("--schema", type=Path, required=True)
+    parser.add_argument("--no-schema", action="store_true")
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--split", choices=("development", "calibration", "holdout", "confirmation"), required=True)
     parser.add_argument("--repeat-start", type=int, required=True)
@@ -36,7 +39,7 @@ def main() -> None:
         nargs="+",
         choices=COLLECTABLE_MODELS,
         default=list(MODELS),
-        help="routes to collect; defaults to the five release targets",
+        help="routes to collect; defaults to all release targets",
     )
     args = parser.parse_args()
     if args.repeat_start < 1 or args.repeat_end < args.repeat_start:
@@ -54,8 +57,6 @@ def main() -> None:
                 str(output_dir / f"{model}.jsonl"),
                 "--prompt",
                 str(args.prompt.resolve()),
-                "--schema",
-                str(args.schema.resolve()),
                 "--split",
                 args.split,
                 "--repeat",
@@ -65,6 +66,10 @@ def main() -> None:
                 "--run-id",
                 args.run_id,
             ]
+            if args.no_schema:
+                command.append("--no-schema")
+            else:
+                command.extend(["--schema", str(args.schema.resolve())])
             processes[model] = subprocess.Popen(
                 command,
                 cwd=PROJECT,

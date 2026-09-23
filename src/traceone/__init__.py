@@ -19,4 +19,4 @@ __all__ = [
     "mcnemar_detection_power",
     "plan_mcnemar",
 ]
-__version__ = "0.1.0"
+__version__ = "0.2.0"
