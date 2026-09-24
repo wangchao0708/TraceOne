@@ -13,10 +13,11 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(adapter["schema"], "traceone-ridge-adapter-v1")
         self.assertEqual(adapter["models"], list(TARGET_MODELS))
         self.assertEqual(adapter["bank_model_order"], bank["robust"]["model_order"])
-        self.assertEqual(adapter["training_rows"], 686)
-        self.assertEqual(set(adapter["training_label_counts"].values()), {98})
-        self.assertEqual(len(adapter["feature_mean"]), 48)
-        self.assertEqual(len(adapter["weights"]), 48)
+        self.assertEqual(adapter["training_rows"], 791)
+        self.assertEqual(set(adapter["training_label_counts"].values()), {113})
+        self.assertEqual(adapter["raw_weight"], 0.25)
+        self.assertEqual(len(adapter["feature_mean"]), 403)
+        self.assertEqual(len(adapter["weights"]), 403)
         self.assertEqual(len(adapter["weights"][0]), 7)
 
     def test_adapter_cannot_bypass_outer_unknown(self) -> None:

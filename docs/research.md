@@ -50,7 +50,8 @@ bank 与语料，再补充 single-call 协议、当前 Codex enrollment、open-s
 调用。9×35 Schema 解决了无 Schema 版本真实出现的越界、解释文字和截断问题。
 
 这是一种 query packing，而不是把 315 个选择当作 315 个独立统计样本。最终
-accuracy 的独立单位仍是 75 次模型调用；Wilson interval 也以 75 为分母。
+accuracy 的独立单位仍是模型调用：历史五模型确认有 75 次，当前七模型每轮
+有 105 次；Wilson interval 分别使用对应的调用数作分母。
 
 ## 为什么使用分层拒识
 

@@ -7,6 +7,18 @@ PROJECT = Path(__file__).resolve().parents[1]
 
 
 class ReleaseEvidenceTests(unittest.TestCase):
+    def test_seven_model_third_confirmation_is_recorded_as_failed(self) -> None:
+        evaluation = json.loads(
+            (PROJECT / "data/confirmation-v10-evaluation.json").read_text()
+        )
+        supported = evaluation["profiles"]["supported"]
+        self.assertEqual(supported["samples"], 105)
+        self.assertEqual(supported["format_compliant"], 105)
+        self.assertEqual(supported["requested_label_matches"], 103)
+        self.assertEqual(
+            supported["per_model"]["gpt-6-sol"]["requested_label_matches"], 13
+        )
+
     def test_seven_model_second_confirmation_is_recorded_as_failed(self) -> None:
         evaluation = json.loads(
             (PROJECT / "data/confirmation-v9-evaluation.json").read_text()

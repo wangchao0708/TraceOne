@@ -231,11 +231,13 @@ function jsSimilarity(left, right) {
   return 1 - Math.sqrt(divergence / Math.log(2));
 }
 
-function adapterFeature(numbers, bank) {
+function adapterFeature(numbers, bank, includeRaw = false) {
   const { fused, marginal, counts } = scoreNumbers(numbers, bank);
   const models = new Map(bank.models.map((model) => [model.id, model]));
   const similarities = bank.robust.model_order.map((model) => jsSimilarity(counts, models.get(model).counts));
-  return [...fused, ...marginal, ...similarities];
+  const base = [...fused, ...marginal, ...similarities];
+  if (!includeRaw) return base;
+  return [...base, ...counts.map((count) => count / numbers.length)];
 }
 
 function classifyOuter(parsed, bank) {
@@ -311,9 +313,11 @@ function classifyOuter(parsed, bank) {
 }
 
 function scoreAdapter(numbers, bank, adapter) {
-  const feature = adapterFeature(numbers, bank);
+  const rawWeight = Number(adapter.raw_weight ?? 0);
+  const feature = adapterFeature(numbers, bank, rawWeight > 0);
   const standardized = feature.map(
-    (value, index) => (value - adapter.feature_mean[index]) / adapter.feature_scale[index],
+    (value, index) => ((value - adapter.feature_mean[index]) / adapter.feature_scale[index])
+      * (index >= 48 ? rawWeight : 1),
   );
   return adapter.target_mean.map((center, modelIndex) => {
     let score = center;
@@ -355,7 +359,8 @@ function supportScore(numbers, label, bank, support) {
   }
   const threshold = Number(support.distance_thresholds[index]);
   const calibration = support.calibration_distances[index];
-  const pValue = (1 + calibration.filter((value) => value >= distance).length) / (calibration.length + 1);
+  const tolerance = 1e-10 * Math.max(1, Math.abs(distance));
+  const pValue = (1 + calibration.filter((value) => value >= distance - tolerance).length) / (calibration.length + 1);
   return { distance, threshold, pValue, index };
 }
 
@@ -419,8 +424,8 @@ export function loadArtifacts() {
   if (!artifactPromise) {
     artifactPromise = Promise.all([
       fetch(new URL("./data/unified_bank_v2_16.json", import.meta.url)).then((response) => response.json()),
-      fetch(new URL("./data/codex_low_v6_adapter_686.json", import.meta.url)).then((response) => response.json()),
-      fetch(new URL("./data/codex_low_v6_support_686.json", import.meta.url)).then((response) => response.json()),
+      fetch(new URL("./data/codex_low_v7_adapter_791.json", import.meta.url)).then((response) => response.json()),
+      fetch(new URL("./data/codex_low_v7_support_791.json", import.meta.url)).then((response) => response.json()),
     ]).then(([bank, adapter, support]) => ({ bank, adapter, support }));
   }
   return artifactPromise;

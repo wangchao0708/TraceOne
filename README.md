@@ -8,8 +8,8 @@
   </a>
 </p>
 
-TraceOne 用一个模型调用识别七条 Codex 模型路由，并把行为身份漂移与能力
-降质拆成两个独立、可复现的统计问题：
+TraceOne 用一次 315 数字提问为七条 Codex 模型路由提供实验性指纹识别，并把行为身份
+漂移与能力降质拆成两个独立、可复现的统计问题：
 
 - `gpt-5.5`
 - `gpt-5.6-luna`
@@ -32,11 +32,11 @@ target-support rejection 全部在浏览器本地运行，回答不会被上传�
 “无法判断”。这只是路由指纹一致性筛查；能力下降仍需独立 canary 评测，不能仅凭
 一次指纹不一致下结论。
 
-浏览器 JavaScript 实现已与 Python 发布实现逐字段比对：75 条冻结 confirmation
-和 5 条自包含网页 prompt pilot 的决策及关键数值全部一致。网页 pilot 每条目标
-路由仅 1 次，5/5 与 requested route 一致，但只有 1/5 严格无格式异常；其余四条
-各含 1–2 个越界值，网页会明确警告并只使用 313–314 个有效数字。这只是端到端
-兼容性 smoke test，不是新的准确率估计。协议见 [docs/site.md](docs/site.md)。
+浏览器 JavaScript 实现与 Python 对最新 315 数字确认集的 105 条响应逐字段一致。
+网页展示的是自包含问题；冻结确认使用了同一次调用附加 JSON Schema 的版本，
+因此 103/105 不能直接当成网页提示词的准确率。历史五模型网页 pilot 为 5/5
+路由匹配、1/5 严格格式合规，只是兼容性 smoke test。详见
+[docs/site.md](docs/site.md)。
 
 ## 在 ModelTrace 基础上的扩展
 
@@ -80,7 +80,7 @@ schema-conforming JSON value with no explanation.
 [prompts/identity-v3-schema.txt](prompts/identity-v3-schema.txt) 和
 [schemas/identity-v3.json](schemas/identity-v3.json)。
 
-## 七模型两轮确认均未过预设门槛
+## 七模型三轮确认均未过预设门槛
 
 新款 GPT-6 Sol/Luna 已进入 16-model 参考库和七类适配器。按冻结的
 `confirmation-v8` 计划，105 次新调用全部严格符合 Schema；TraceOne 一问是
@@ -91,8 +91,13 @@ schema-conforming JSON value with no explanation.
 
 随后冻结的 `release-candidate-v10` 在独立 `confirmation-v9` 上是 98/105；
 GPT-5.6 Sol 为 13/15，GPT-6 Sol 为 12/15，仍未过同一门槛。
-ModelTrace 同响应一问为 96/105，非重叠三问 35/35。七模型支持目前应视作
-实验性，不能写成已验证的正式优势。原始数字频率特征的下一轮开发正在进行。
+ModelTrace 同响应一问为 96/105，非重叠三问 35/35。
+
+当前 315 数字 v11 加入原始数字频率特征，在新采集的 `confirmation-v10` 上为
+103/105（98.1%）；GPT-6 Sol 为 13/15，仍未达到每类 ≥14/15 的预设门槛。
+同响应 ModelTrace 一问为 104/105，互不重叠三问为 35/35。因此七模型支持
+可以试用，但不能宣称全面超过上游。完整失败样本见
+[docs/results.md](docs/results.md)。
 
 ## 0.1.0 的五模型冻结盲测结果
 
@@ -172,6 +177,9 @@ PYTHONPATH=src python3 scripts/evaluate_head_to_head.py \
   data/public/confirmation-v7.jsonl --output /tmp/traceone-h2h.json
 python3 scripts/verify_frozen.py config/release-candidate-v8.json
 python3 scripts/verify_release.py config/release-v0.1.0.json
+python3 scripts/verify_frozen.py config/release-candidate-v11.json
+PYTHONPATH=src python3 scripts/evaluate_live.py \
+  data/public/confirmation-v10.jsonl --output /tmp/traceone-v11-eval.json
 ```
 
 ## 降质检测

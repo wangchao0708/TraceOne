@@ -30,24 +30,25 @@
 
 `scripts/test_web_classifier.mjs` 将浏览器实现与 Python 保存结果逐字段比对，包括
 标签、格式、有效数字数、outer candidates、相似度、score margin、adapter margin、
-support distance、threshold 与 empirical p-value。75 条冻结 confirmation 加 5 条
-网页 pilot 共 80 条全部在 `1e-9` 数值容差内一致。
+support distance、threshold 与 empirical p-value。当前 v11 的 105 条
+`confirmation-v10` 响应全部在 `1e-9` 数值容差内一致。
 
 `scripts/test_site_assets.mjs` 还验证网页中的 bank、adapter、support 与 Python 包
 资产逐字节一致，并检查网页显示问题与 `prompts/identity-web-v1.txt` 一致。
 
 ## 自包含问题 pilot
 
-冻结发布 prompt 通过 Codex JSON Schema 强制 9×35 输出。普通网页用户无法方便地
+冻结确认 prompt 通过 Codex JSON Schema 强制 9×35 输出。普通网页用户无法方便地
 附加 Schema，因此 `identity-web-v1` 把 9×35 形状写入同一次提问，仍然只有一次
-模型调用。
+模型调用。两种 prompt 不完全相同；103/105 是 Schema 确认集的路由标签匹配率，
+不是这个网页自包含问题在七模型上的独立准确率。
 
 2026-09-15 的历史 compatibility pilot 对当时五条目标 route 各采集一次 Low reasoning：
 
 - `supported` requested-route agreement：5/5；
 - 严格格式合规：1/5；
 - 其余四条各有 1–2 个越界整数，保留 313–314 个有效数字，均经过 distance path；
-- 浏览器与 Python 结果完全一致。
+- 当时版本的浏览器与 Python 结果完全一致。
 
 公开响应与评测分别在
 [data/public/web-prompt-v1-pilot.jsonl](../data/public/web-prompt-v1-pilot.jsonl) 和

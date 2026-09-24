@@ -1,0 +1,641 @@
+{
+  "schema": "traceone-raw-feature-development-v1",
+  "status": "development after confirmation-v9 failed; neither holdout is independent of hyperparameter selection",
+  "design": "hold out confirmation-v8 or confirmation-v9 as a whole; fit on 581 earlier enrollment rows plus the other 105-row batch",
+  "variants": [
+    {
+      "alpha": 1.0,
+      "raw_weight": 0.25,
+      "matches": 208,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-sol": 14,
+          "gpt-6-luna": 15
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 15,
+          "gpt-6-sol": 14
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v8__confirmation__014",
+          "gpt-6-sol",
+          "gpt-6-astra"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ]
+      ]
+    },
+    {
+      "alpha": 10.0,
+      "raw_weight": 0.5,
+      "matches": 208,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-sol": 14,
+          "gpt-6-luna": 15
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 15,
+          "gpt-6-sol": 14
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v8__confirmation__014",
+          "gpt-6-sol",
+          "gpt-6-astra"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ]
+      ]
+    },
+    {
+      "alpha": 10.0,
+      "raw_weight": 0.25,
+      "matches": 207,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-sol": 15,
+          "gpt-6-luna": 14
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 15,
+          "gpt-6-sol": 13
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__003",
+          "gpt-6-luna",
+          "gpt-5.6-terra"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__004",
+          "gpt-6-sol",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ]
+      ]
+    },
+    {
+      "alpha": 100.0,
+      "raw_weight": 0.5,
+      "matches": 207,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-sol": 15,
+          "gpt-6-luna": 14
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 15,
+          "gpt-6-sol": 13
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__003",
+          "gpt-6-luna",
+          "gpt-5.6-terra"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__004",
+          "gpt-6-sol",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ]
+      ]
+    },
+    {
+      "alpha": 100.0,
+      "raw_weight": 1.0,
+      "matches": 207,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-sol": 15,
+          "gpt-6-luna": 14
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 14,
+          "gpt-5.6-sol": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 15,
+          "gpt-6-sol": 14
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__003",
+          "gpt-6-luna",
+          "gpt-5.6-terra"
+        ],
+        [
+          "confirmation-v9-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v9__confirmation__011",
+          "gpt-5.6-luna",
+          "gpt-5.6-terra"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ]
+      ]
+    },
+    {
+      "alpha": 100.0,
+      "raw_weight": 0.25,
+      "matches": 206,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-sol": 15,
+          "gpt-6-luna": 14
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 15,
+          "gpt-6-sol": 12
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__003",
+          "gpt-6-luna",
+          "gpt-5.6-terra"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__004",
+          "gpt-6-sol",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__011",
+          "gpt-6-sol",
+          "gpt-6-luna"
+        ]
+      ]
+    },
+    {
+      "alpha": 1.0,
+      "raw_weight": 0.5,
+      "matches": 206,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 14,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-sol": 15,
+          "gpt-6-luna": 14
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-sol": 14,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 15,
+          "gpt-6-sol": 14
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v8__confirmation__003",
+          "gpt-5.6-terra",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__012",
+          "gpt-6-luna",
+          "gpt-6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v9__confirmation__008",
+          "gpt-5.6-sol",
+          "gpt-6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ]
+      ]
+    },
+    {
+      "alpha": 10.0,
+      "raw_weight": 1.0,
+      "matches": 206,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 14,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-sol": 15,
+          "gpt-6-luna": 14
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 14,
+          "gpt-6-sol": 14
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v8__confirmation__003",
+          "gpt-5.6-terra",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__012",
+          "gpt-6-luna",
+          "gpt-6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v9__confirmation__006",
+          "gpt-6-luna",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ]
+      ]
+    },
+    {
+      "alpha": 100.0,
+      "raw_weight": 0.0,
+      "matches": 205,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-sol": 15,
+          "gpt-6-luna": 14
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-sol": 14,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 15,
+          "gpt-6-sol": 12
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__003",
+          "gpt-6-luna",
+          "gpt-5.6-terra"
+        ],
+        [
+          "confirmation-v9-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v9__confirmation__008",
+          "gpt-5.6-sol",
+          "gpt-6-luna"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__004",
+          "gpt-6-sol",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__011",
+          "gpt-6-sol",
+          "gpt-6-luna"
+        ]
+      ]
+    },
+    {
+      "alpha": 1.0,
+      "raw_weight": 1.0,
+      "matches": 204,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 14,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-sol": 15,
+          "gpt-6-luna": 14
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 14,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-sol": 14,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 14,
+          "gpt-6-sol": 14
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-5.6-terra.jsonl::gpt-5.6-terra__confirmation-v8__confirmation__003",
+          "gpt-5.6-terra",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__012",
+          "gpt-6-luna",
+          "gpt-6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v9__confirmation__006",
+          "gpt-5.5",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v9__confirmation__008",
+          "gpt-5.6-sol",
+          "gpt-6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v9__confirmation__005",
+          "gpt-6-luna",
+          "gpt-5.5"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ]
+      ]
+    },
+    {
+      "alpha": 1.0,
+      "raw_weight": 0.0,
+      "matches": 203,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 14,
+          "gpt-6-sol": 15,
+          "gpt-6-luna": 14
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 14,
+          "gpt-5.6-sol": 14,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 15,
+          "gpt-6-sol": 12
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v8__confirmation__003",
+          "gpt-6-astra",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__003",
+          "gpt-6-luna",
+          "gpt-6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v9__confirmation__011",
+          "gpt-5.6-luna",
+          "gpt-6-luna"
+        ],
+        [
+          "confirmation-v9-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v9__confirmation__008",
+          "gpt-5.6-sol",
+          "gpt-6-luna"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__004",
+          "gpt-6-sol",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__011",
+          "gpt-6-sol",
+          "gpt-6-luna"
+        ]
+      ]
+    },
+    {
+      "alpha": 10.0,
+      "raw_weight": 0.0,
+      "matches": 203,
+      "per_batch": {
+        "data/public/confirmation-v8.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 15,
+          "gpt-5.6-terra": 15,
+          "gpt-5.6-sol": 15,
+          "gpt-6-astra": 14,
+          "gpt-6-sol": 15,
+          "gpt-6-luna": 14
+        },
+        "data/public/confirmation-v9.jsonl": {
+          "gpt-5.5": 15,
+          "gpt-5.6-luna": 14,
+          "gpt-5.6-sol": 14,
+          "gpt-5.6-terra": 15,
+          "gpt-6-astra": 15,
+          "gpt-6-luna": 15,
+          "gpt-6-sol": 12
+        }
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v8__confirmation__003",
+          "gpt-6-astra",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__003",
+          "gpt-6-luna",
+          "gpt-6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-5.6-luna.jsonl::gpt-5.6-luna__confirmation-v9__confirmation__011",
+          "gpt-5.6-luna",
+          "gpt-6-luna"
+        ],
+        [
+          "confirmation-v9-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v9__confirmation__008",
+          "gpt-5.6-sol",
+          "gpt-6-luna"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__004",
+          "gpt-6-sol",
+          "gpt-5.6-sol"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__011",
+          "gpt-6-sol",
+          "gpt-6-luna"
+        ]
+      ]
+    }
+  ],
+  "supported_two_batch": [
+    {
+      "holdout": "data/public/confirmation-v8.jsonl",
+      "matches": 104,
+      "per_model": {
+        "gpt-5.5": 15,
+        "gpt-5.6-luna": 15,
+        "gpt-5.6-terra": 15,
+        "gpt-5.6-sol": 15,
+        "gpt-6-astra": 15,
+        "gpt-6-sol": 15,
+        "gpt-6-luna": 14
+      },
+      "errors": [
+        [
+          "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__003",
+          "gpt-6-luna",
+          null,
+          null,
+          "claude-sonnet-4-6"
+        ]
+      ]
+    },
+    {
+      "holdout": "data/public/confirmation-v9.jsonl",
+      "matches": 102,
+      "per_model": {
+        "gpt-5.5": 14,
+        "gpt-5.6-luna": 15,
+        "gpt-5.6-terra": 15,
+        "gpt-5.6-sol": 14,
+        "gpt-6-astra": 15,
+        "gpt-6-sol": 14,
+        "gpt-6-luna": 15
+      },
+      "errors": [
+        [
+          "confirmation-v9-schema/gpt-5.5.jsonl::gpt-5.5__confirmation-v9__confirmation__005",
+          "gpt-5.5",
+          null,
+          "rejected",
+          "gpt-5.5"
+        ],
+        [
+          "confirmation-v9-schema/gpt-5.6-sol.jsonl::gpt-5.6-sol__confirmation-v9__confirmation__007",
+          "gpt-5.6-sol",
+          null,
+          null,
+          "gpt-5.4"
+        ],
+        [
+          "confirmation-v9-schema/gpt-6-sol.jsonl::gpt-6-sol__confirmation-v9__confirmation__006",
+          "gpt-6-sol",
+          "gpt-5.5",
+          "distance",
+          "gpt-5.5"
+        ]
+      ]
+    }
+  ]
+}

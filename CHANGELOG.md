@@ -1,6 +1,14 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 — 2026-09-23 (experimental seven-route support)
+
+- Selected the 315-choice one-call v11 classifier for the seven-route Python package
+  and browser workflow. The 945-choice exploration is not the published default.
+- Published all 105 fresh `confirmation-v10` decisions: 103/105 requested-route
+  matches, but GPT-6 Sol 13/15 missed the prespecified per-route gate.
+- Kept the same-response ModelTrace comparison visible: its one-call result was
+  104/105 and its three-call arm 35/35. No comprehensive-superiority claim.
+- Verified browser/Python numeric and decision parity on those 105 responses.
 
 - Added a single-surface mode switch for model identification and route-fingerprint
   consistency screening, with an explicit selected-versus-predicted comparison.

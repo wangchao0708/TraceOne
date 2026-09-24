@@ -2,6 +2,23 @@
 
 [简体中文](results.md) | [English](results.en.md)
 
+## 当前 315 数字 v11：第三轮确认仍未过门槛
+
+先冻结 [release-candidate-v11.json](../config/release-candidate-v11.json)，再按
+[confirmation-v10.json](../config/confirmation-v10.json) 对七类各采集 15 条新响应。
+105 次调用全部成功并严格符合 9×35 Schema。默认 `supported` 与请求路由标签
+一致 103/105（98.10%）：GPT-5.5、5.6 Luna/Terra/Sol、6 Astra、6 Luna
+均为 15/15，GPT-6 Sol 为 13/15。预设规则要求每类至少 14/15，因此确认失败。
+
+同响应 ModelTrace closed-set 一问为 104/105，非重叠三问为 35/35；本批不能
+支持 TraceOne 全面优于优秀的上游方法。它们共用 TraceOne 的响应与 Schema，
+三问只有 35 个独立决定；请求路由标签也不是实际服务权重的独立证明。
+逐样本记录见 [evaluation](../data/confirmation-v10-evaluation.json) 和
+[head-to-head](../data/confirmation-v10-head-to-head.json)。新 791 条适配器
+以及原始数字频率特征的开发过程见
+[seven-model-development-v3.json](../data/seven-model-development-v3.json)；
+该开发证据不能替代独立确认。
+
 ## 七模型第二轮冻结确认：再次未过门槛
 
 `release-candidate-v10` 于 2026-09-23 17:06:12 UTC 冻结，随后登记

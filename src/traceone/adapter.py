@@ -44,11 +44,11 @@ class AdapterResult:
 def load_adapter(path: Path | None = None) -> dict:
     if path is not None:
         return json.loads(path.read_text(encoding="utf-8"))
-    resource = files("traceone").joinpath("data/codex_low_v6_adapter_686.json")
+    resource = files("traceone").joinpath("data/codex_low_v7_adapter_791.json")
     return json.loads(resource.read_text(encoding="utf-8"))
 
 
-def adapter_feature(numbers: list[int], bank: dict) -> np.ndarray:
+def adapter_feature(numbers: list[int], bank: dict, *, include_raw: bool = False) -> np.ndarray:
     model_ids = list(bank["robust"]["model_order"])
     entries = {entry["id"]: entry for entry in bank["models"]}
     fused, marginal = score_numbers(numbers, bank)
@@ -57,7 +57,11 @@ def adapter_feature(numbers: list[int], bank: dict) -> np.ndarray:
         [js_similarity(counts, entries[model_id]["counts"]) for model_id in model_ids],
         dtype=np.float64,
     )
-    return np.concatenate((fused, marginal, similarities))
+    base = np.concatenate((fused, marginal, similarities))
+    if not include_raw:
+        return base
+    raw = np.bincount(numbers, minlength=356)[1:356].astype(np.float64) / len(numbers)
+    return np.concatenate((base, raw))
 
 
 def fit_ridge_adapter(
@@ -66,17 +70,25 @@ def fit_ridge_adapter(
     *,
     alpha: float = 10.0,
     minimum_margin: float = 0.05,
+    raw_weight: float = 0.0,
 ) -> dict:
     if alpha <= 0:
         raise ValueError("alpha must be positive")
+    if raw_weight < 0:
+        raise ValueError("raw_weight must be nonnegative")
     labels = [label for label, _ in labeled_numbers]
     if set(labels) != set(TARGET_MODELS):
         raise ValueError("training data must contain every target model")
-    matrix = np.stack([adapter_feature(numbers, bank) for _, numbers in labeled_numbers])
+    matrix = np.stack([
+        adapter_feature(numbers, bank, include_raw=raw_weight > 0)
+        for _, numbers in labeled_numbers
+    ])
     mean = matrix.mean(axis=0)
     scale = matrix.std(axis=0)
     scale[scale < 1e-12] = 1.0
     standardized = (matrix - mean) / scale
+    if raw_weight > 0:
+        standardized[:, 48:] *= raw_weight
     targets = np.asarray(
         [[float(label == model) for model in TARGET_MODELS] for label in labels],
         dtype=np.float64,
@@ -88,9 +100,11 @@ def fit_ridge_adapter(
         "schema": "traceone-ridge-adapter-v1",
         "models": list(TARGET_MODELS),
         "bank_model_order": list(bank["robust"]["model_order"]),
-        "feature": "fused scores + marginal scores + absolute JS similarities",
+        "feature": "fused scores + marginal scores + absolute JS similarities"
+                   + (" + raw 1-355 frequencies" if raw_weight > 0 else ""),
         "alpha": alpha,
         "minimum_margin": minimum_margin,
+        "raw_weight": raw_weight,
         "training_rows": len(labeled_numbers),
         "feature_mean": mean.tolist(),
         "feature_scale": scale.tolist(),
@@ -102,10 +116,13 @@ def fit_ridge_adapter(
 def adapter_scores(numbers: list[int], bank: dict, adapter: dict) -> np.ndarray:
     if list(bank["robust"]["model_order"]) != list(adapter["bank_model_order"]):
         raise ValueError("adapter and bank model order do not match")
-    feature = adapter_feature(numbers, bank)
+    raw_weight = float(adapter.get("raw_weight", 0.0))
+    feature = adapter_feature(numbers, bank, include_raw=raw_weight > 0)
     standardized = (
         feature - np.asarray(adapter["feature_mean"], dtype=np.float64)
     ) / np.asarray(adapter["feature_scale"], dtype=np.float64)
+    if raw_weight > 0:
+        standardized[48:] *= raw_weight
     return standardized @ np.asarray(adapter["weights"], dtype=np.float64) + np.asarray(
         adapter["target_mean"], dtype=np.float64
     )

@@ -8,8 +8,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const readJson = (relativePath) => JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const artifacts = {
   bank: readJson("dist/data/unified_bank_v2_16.json"),
-  adapter: readJson("dist/data/codex_low_v6_adapter_686.json"),
-  support: readJson("dist/data/codex_low_v6_support_686.json"),
+  adapter: readJson("dist/data/codex_low_v7_adapter_791.json"),
+  support: readJson("dist/data/codex_low_v7_support_791.json"),
 };
 const readJsonl = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8")
   .trim()
@@ -53,10 +53,10 @@ function verifyRows(rows, expectedRows) {
   return rows.length;
 }
 
-const expectedRows = readJson("data/confirmation-v9-evaluation.json").samples;
-const evidenceFiles = [
-  "data/public/confirmation-v9.jsonl",
-];
+const expectedRows = readJson(process.env.TRACEONE_PARITY_EVALUATION
+  ?? "data/confirmation-v10-evaluation.json").samples;
+const evidenceFiles = [process.env.TRACEONE_PARITY_RESPONSES
+  ?? "data/public/confirmation-v10.jsonl"];
 const counts = evidenceFiles.map((file) => verifyRows(readJsonl(file), expectedRows));
 
 const malformed = parseGridResponse("```json\n[1, 2, 3]\n```");

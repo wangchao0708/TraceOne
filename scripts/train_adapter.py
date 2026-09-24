@@ -20,6 +20,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--alpha", type=float, default=10.0)
     parser.add_argument("--minimum-margin", type=float, default=0.05)
+    parser.add_argument("--raw-weight", type=float, default=0.0)
     args = parser.parse_args()
 
     labeled = []
@@ -66,6 +67,7 @@ def main() -> None:
         load_bank(),
         alpha=args.alpha,
         minimum_margin=args.minimum_margin,
+        raw_weight=args.raw_weight,
     )
     artifact["training_sources"] = sources
     artifact["training_label_counts"] = dict(counts)

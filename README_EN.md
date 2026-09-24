@@ -8,8 +8,9 @@
   </a>
 </p>
 
-TraceOne identifies seven Codex model routes from one model call and treats route
-fingerprint drift and capability degradation as separate, reproducible questions:
+TraceOne offers experimental fingerprint identification for seven Codex model routes
+with one 315-choice call. Route-fingerprint drift and capability degradation remain
+separate, reproducible questions:
 
 - `gpt-5.5`
 - `gpt-5.6-luna`
@@ -35,13 +36,12 @@ selection with the fingerprint prediction and returns “Fingerprint consistent,
 consistency screen. Capability loss still requires the separate canary evaluation and
 cannot be concluded from one fingerprint mismatch alone.
 
-The browser JavaScript implementation was compared field by field with the Python
-release on the 75 frozen confirmation calls and five self-contained web-prompt pilot
-calls. All decisions and key numeric diagnostics matched. The pilot used only one call
-per target route: all 5 matched the requested route, but only 1/5 was strictly free of
-format errors. The other four contained one or two out-of-range values, were explicitly
-flagged, and retained 313–314 usable integers. This is a compatibility smoke test, not
-a new accuracy estimate. See [docs/site.en.md](docs/site.en.md).
+Browser JavaScript matches Python field by field on all 105 responses in the latest
+315-choice confirmation set. The web question is self-contained, whereas the frozen
+confirmation used a JSON Schema attached to the same call, so its 103/105 result is
+not a measured web-prompt accuracy. An earlier five-route web-prompt pilot matched
+5/5 requested routes but only 1/5 strict formats; it was a compatibility smoke test.
+See [docs/site.en.md](docs/site.en.md).
 
 ## Extensions built on ModelTrace
 
@@ -91,7 +91,7 @@ decisions, not three independent questions. The exact assets are
 [prompts/identity-v3-schema.txt](prompts/identity-v3-schema.txt) and
 [schemas/identity-v3.json](schemas/identity-v3.json).
 
-## Both seven-model confirmations failed their prespecified gate
+## All three seven-model confirmations failed their prespecified gate
 
 GPT-6 Sol and Luna are present in the 16-model reference bank and seven-class
 adapter. All 105 fresh `confirmation-v8` calls conformed to the strict Schema.
@@ -104,9 +104,14 @@ See [docs/results.en.md](docs/results.en.md).
 The subsequently frozen `release-candidate-v10` matched 98/105 on independent
 `confirmation-v9`: GPT-5.6 Sol was 13/15 and GPT-6 Sol 12/15, again below the
 same gate. ModelTrace one-call on those responses was 96/105, while disjoint
-three-call decisions were 35/35. Seven-route support remains experimental, not
-a verified comprehensive advantage. A next development iteration using raw
-number-frequency features is in progress.
+three-call decisions were 35/35.
+
+The current 315-choice v11 adds raw number-frequency features. On the fresh
+`confirmation-v10` it matched 103/105 (98.1%), but GPT-6 Sol was 13/15, below the
+prespecified ≥14/15 per-route gate. On the same responses, ModelTrace one-call
+matched 104/105 and disjoint three-call decisions matched 35/35. Seven-route
+support is usable experimentally, not a verified comprehensive advantage over
+upstream. See [docs/results.en.md](docs/results.en.md) for the complete failures.
 
 ## Historical 0.1.0 five-model confirmation
 
@@ -191,6 +196,9 @@ PYTHONPATH=src python3 scripts/evaluate_head_to_head.py \
   data/public/confirmation-v7.jsonl --output /tmp/traceone-h2h.json
 python3 scripts/verify_frozen.py config/release-candidate-v8.json
 python3 scripts/verify_release.py config/release-v0.1.0.json
+python3 scripts/verify_frozen.py config/release-candidate-v11.json
+PYTHONPATH=src python3 scripts/evaluate_live.py \
+  data/public/confirmation-v10.jsonl --output /tmp/traceone-v11-eval.json
 ```
 
 ## Degradation detection

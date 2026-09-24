@@ -36,8 +36,8 @@ data connections to the same origin.
 `scripts/test_web_classifier.mjs` compares the browser implementation field by field
 with saved Python results: label, format, usable count, outer candidates, similarity,
 score margin, adapter margin, support distance, threshold, and empirical p-value. All
-80 rows—75 frozen confirmation calls plus five web-prompt pilot calls—match within a
-numeric tolerance of `1e-9`.
+105 rows in the current v11 `confirmation-v10` batch match within a numeric
+tolerance of `1e-9`.
 
 `scripts/test_site_assets.mjs` also verifies that the site's bank, adapter, and support
 files are byte-identical to the Python package assets and that the visible question is
@@ -45,9 +45,11 @@ synchronized with `prompts/identity-web-v1.txt`.
 
 ## Self-contained prompt pilot
 
-The frozen release prompt uses a Codex JSON Schema to enforce the 9×35 output. A normal
+The frozen confirmation prompt uses a Codex JSON Schema to enforce the 9×35 output. A normal
 web user cannot conveniently attach that Schema, so `identity-web-v1` states the 9×35
-shape inside the same question while still using only one model call.
+shape inside the same question while still using only one model call. These prompts
+differ: 103/105 measures route-label agreement for Schema-constrained confirmation,
+not independent seven-route accuracy for the self-contained web question.
 
 The historical 2026-09-15 compatibility pilot collected one Low-reasoning call from each of the then-current five target
 route:
@@ -56,7 +58,7 @@ route:
 - strict format compliance was 1/5;
 - the other four responses each had one or two out-of-range integers, retained 313–314
   usable values, and passed by the distance path; and
-- browser and Python decisions matched exactly.
+- browser and Python decisions matched exactly for that historical version.
 
 Public responses and evaluation are in
 [data/public/web-prompt-v1-pilot.jsonl](../data/public/web-prompt-v1-pilot.jsonl) and

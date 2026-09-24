@@ -56,8 +56,9 @@ round trips. A 9×35 Schema prevents the out-of-range values, prose, and truncat
 observed in the schema-free version.
 
 This is query packing, not a claim that 315 values are independent statistical
-samples. The final accuracy unit is still one of 75 model calls, and the Wilson
-interval uses 75 as its denominator.
+samples. Accuracy still counts model calls: 75 in the historical five-route
+confirmation and 105 in each seven-route batch. Wilson intervals use the
+corresponding call count as their denominator.
 
 ## Why rejection is layered
 

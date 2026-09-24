@@ -1,0 +1,77 @@
+{
+  "schema": "traceone-frozen-config-v1",
+  "frozen_at": "2026-09-24T04:03:57Z",
+  "targets": ["gpt-5.5", "gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-sol", "gpt-6-astra", "gpt-6-sol", "gpt-6-luna"],
+  "reasoning_effort": "low",
+  "prompt": {
+    "path": "prompts/identity-v3-schema.txt",
+    "file_sha256": "225b34e767cd2686da0c56ca991c62dc944075d3cfec3cca7397c88a2a4fc969",
+    "normalized_text_sha256": "53767b09f7f15afe169fca782daea4611aa08f39ad18b22839aa3a0e717a6557",
+    "requests": 1,
+    "requested_numbers": 315
+  },
+  "output_schema": {
+    "path": "schemas/identity-v3.json",
+    "sha256": "176a5898f6f364a276183e2196e10afa586776bad087a81dc4434476ea7ccfb0"
+  },
+  "outer_guard": {
+    "implementation": "src/traceone/fingerprint.py",
+    "sha256": "a65034ea034d4bbd4e32d79a8184dfe9177e988d4afb03427143cbb2cf349526",
+    "bank": "src/traceone/data/unified_bank_v2_16.json",
+    "bank_sha256": "1c2cb74d372f9f0f30d0dabbb7b7a838660d2f769a88d0c8489e4c662e088c21",
+    "source_commit": "55a2e4a55170423b484d701e9a82ab62b268c811",
+    "profile": "enrolled-outer-v3",
+    "minimum_numbers": 280,
+    "minimum_absolute_similarity": 0.52,
+    "marginal_fallback_maximum_fused_gap": 0.20
+  },
+  "enrollment_adapter": {
+    "implementation": "src/traceone/adapter.py",
+    "implementation_sha256": "9756083133930b5b0aa1b832b1c98b4b6ee4dfdbfeeae99940e2acbb3374f177",
+    "artifact": "src/traceone/data/codex_low_v7_adapter_791.json",
+    "artifact_sha256": "52aba16f11f1866616ea30658ef51016201f84c101d034418a67492ea2a08073",
+    "classifier": "closed-form ridge on 48 bank scores plus 355 raw frequencies",
+    "alpha": 1.0,
+    "raw_frequency_weight": 0.25,
+    "minimum_margin": 0.01,
+    "training_rows": 791,
+    "training_rows_per_model": 113
+  },
+  "target_support": {
+    "implementation": "src/traceone/support.py",
+    "implementation_sha256": "9719802c105e6024061d3a11b50eb55a482c4ffb535b40d2129135458ad1e6d4",
+    "artifact": "src/traceone/data/codex_low_v7_support_791.json",
+    "artifact_sha256": "3c37ba2903e075ade6ec65fd672162c72870793a555e434140eeb827f5e0f3a1",
+    "feature_space": "original 48 bank scores; raw histogram is used by the adapter only",
+    "covariance_shrinkage": 0.3,
+    "distance_quantile": 0.99,
+    "rescue_margin_quantile": 0.9,
+    "bank_rescue": "only for adapter margin below 0.01 when target outer winner has fused margin >= 0.25, similarity >= 0.60, and target support distance passes",
+    "guarantee": "empirical target-support envelope; no distribution-free guarantee"
+  },
+  "public_enrollment": [
+    {"path": "data/public/enrollment-v3.jsonl", "sha256": "28af25f638f45e560da294f3968e581e39d1e6a210b482e13be823b86a0245cd"},
+    {"path": "data/public/confirmation-v6.jsonl", "sha256": "ab3bd8578e097aaf7d2468cdc760a3f6f4ee772410dc2d508ea52e58c00dab58"},
+    {"path": "data/public/gpt6-enrollment-v1.jsonl", "sha256": "f298380daf481d9f31ae04a84745f1dbc118d0f9c6ffc3eef4fc3428bc06e88a"},
+    {"path": "data/public/confirmation-v8.jsonl", "sha256": "89680a91bfaf1e379a5ed330a58c8fe7ca556d9b9f2d3142d6720f57de74c1fe"},
+    {"path": "data/public/confirmation-v9.jsonl", "sha256": "99d52971046fd50be2e47c6aeac1d9ddaca281fe365bd285f43209269e654b43"}
+  ],
+  "extra_files": [
+    {"path": "data/reference/manifest-v2.json", "sha256": "41f0f0db25099041278d5c40c20d960735deac25496b0b213e57b39612ef1abc"},
+    {"path": "scripts/train_adapter.py", "sha256": "66457c2a96c6b6c31173c736adbd5ff7dba7eba3cb299f4accae8ebf9cd9475c"},
+    {"path": "scripts/train_support.py", "sha256": "0b401204358b582e08cc19f9568958de0be575568068a64f15e7a14d90ab3afd"},
+    {"path": "scripts/explore_seven_raw_features.py", "sha256": "6bbd432fdcfbe770fd9a4cf24c498260cc1702db5f7f015db0b2913d5ab8cb98"},
+    {"path": "data/seven-model-development-v3.json", "sha256": "ffc4ae9cd2d2265725cd6934117c55b6434a45273c71b0a54d003fa887f9c636"},
+    {"path": "data/open-world-v5-development.json", "sha256": "59c754b99e5fd5b91ea2d8f08d1eb86cbbd0946998fe8f4fe1cf3ddb291feb31"},
+    {"path": "prompts/identity-web-v1.txt", "sha256": "fca24dc29b83da3c0c59032346e5b41909085132bfa380f14c01cd2bbafb6909"},
+    {"path": "dist/traceone.js", "sha256": "e518e8d5da3334e265d9f2cbf055ef66bb84273f2b4a2df4607d50afc28c5ed1"}
+  ],
+  "development_evidence": {
+    "whole_batch_cross_fit_supported": "confirmation-v8 held 104/105 and confirmation-v9 held 102/105, each target at least 14/15; both inspected development batches",
+    "held_label_open_world_supported": "22/324 false accepts across nine excluded labels; tuned development estimate",
+    "largest_ood_weaknesses": "held-out gpt-5.4: 13/36; claude-opus-5-5: 8/36"
+  },
+  "prior_failures": "v9 failed confirmation-v8; v10 failed confirmation-v9; both retained before reused as development",
+  "provenance_limit": "791 training responses span Codex CLI 0.154 and 0.155; confirmation must use one runtime across all seven",
+  "status": "frozen before confirmation-v10"
+}

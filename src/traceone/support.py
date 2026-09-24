@@ -38,7 +38,7 @@ class SupportResult:
 def load_support(path: Path | None = None) -> dict:
     if path is not None:
         return json.loads(path.read_text(encoding="utf-8"))
-    resource = files("traceone").joinpath("data/codex_low_v6_support_686.json")
+    resource = files("traceone").joinpath("data/codex_low_v7_support_791.json")
     return json.loads(resource.read_text(encoding="utf-8"))
 
 
@@ -135,7 +135,8 @@ def support_score(numbers: list[int], label: str, bank: dict, artifact: dict) ->
     distance = float(residual @ precision @ residual)
     threshold = float(artifact["distance_thresholds"][index])
     calibration = artifact["calibration_distances"][index]
-    p_value = (1 + sum(value >= distance for value in calibration)) / (len(calibration) + 1)
+    tolerance = 1e-10 * max(1.0, abs(distance))
+    p_value = (1 + sum(value >= distance - tolerance for value in calibration)) / (len(calibration) + 1)
     return {"distance": distance, "threshold": threshold, "p_value": p_value}
 
 

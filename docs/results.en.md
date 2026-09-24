@@ -2,6 +2,26 @@
 
 [简体中文](results.md) | [English](results.en.md)
 
+## Current 315-choice v11: third confirmation still failed the gate
+
+[Release candidate v11](../config/release-candidate-v11.json) was frozen before
+[confirmation-v10](../config/confirmation-v10.json) collected 15 fresh responses
+per route. All 105 calls succeeded and strictly conformed to the 9×35 Schema.
+Default `supported` matched requested route labels on 103/105 (98.10%): GPT-5.5,
+5.6 Luna/Terra/Sol, 6 Astra, and 6 Luna were each 15/15; GPT-6 Sol was 13/15.
+The prespecified ≥14/15-per-route gate therefore failed.
+
+On the same responses, closed-set ModelTrace one-call matched 104/105 and disjoint
+three-call decisions matched 35/35. This batch cannot establish comprehensive
+superiority over the excellent upstream method. Both comparators reuse TraceOne's
+responses and Schema, the three-call arm has only 35 independent decisions, and
+requested-route labels are not independently attested served weights. See the
+per-response [evaluation](../data/confirmation-v10-evaluation.json) and
+[head-to-head](../data/confirmation-v10-head-to-head.json). The 791-row adapter
+and raw-frequency development are documented in
+[seven-model-development-v3.json](../data/seven-model-development-v3.json); that
+development evidence cannot replace independent confirmation.
+
 ## Second frozen seven-model confirmation: gate failed again
 
 `release-candidate-v10` was frozen at 17:06:12 UTC on September 23, 2026,

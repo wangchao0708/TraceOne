@@ -10,8 +10,8 @@ const hash = (relativePath) => crypto.createHash("sha256").update(read(relativeP
 
 const mirroredAssets = [
   "unified_bank_v2_16.json",
-  "codex_low_v6_adapter_686.json",
-  "codex_low_v6_support_686.json",
+  "codex_low_v7_adapter_791.json",
+  "codex_low_v7_support_791.json",
 ];
 const deployedAssets = fs.readdirSync(path.join(root, "dist/data")).filter((name) => name.endsWith(".json"));
 if (JSON.stringify(deployedAssets.sort()) !== JSON.stringify(mirroredAssets.slice().sort())) {
@@ -32,6 +32,11 @@ const normalize = (value) => value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const visiblePrompt = normalize(promptMatch[1]);
 const promptFile = normalize(text("prompts/identity-web-v1.txt"));
 if (visiblePrompt !== promptFile) throw new Error("visible prompt differs from identity-web-v1.txt");
+if (!visiblePrompt.includes("produce 315 separate")
+    || !app.includes("identifyWithArtifacts(responseText, artifacts)")
+    || app.includes("identifyLongWithArtifacts")) {
+  throw new Error("the public site must use the 315-choice classifier");
+}
 
 for (const marker of ["identifyMode", "degradationMode", "expectedModel"]) {
   if (!html.includes(`id="${marker}"`)) throw new Error(`${marker} control is missing`);

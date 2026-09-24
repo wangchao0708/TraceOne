@@ -73,6 +73,7 @@ def evaluate(
     rescue_margin_quantile: float = 0.95,
     adapter_alpha: float = 1.0,
     adapter_margin: float = 0.01,
+    adapter_raw_weight: float = 0.0,
 ) -> dict:
     reference = read_reference_rows(reference_dir / "gpt_reference_v2.jsonl", family="gpt")
     reference += read_reference_rows(reference_dir / "claude_reference_v2.jsonl", family="claude")
@@ -97,7 +98,8 @@ def evaluate(
         bank = build_scoring_bank(fold_rows, fold_models)
         labeled = [(row["truth"], row["numbers"]) for row in enrollment]
         adapter = fit_ridge_adapter(
-            labeled, bank, alpha=adapter_alpha, minimum_margin=adapter_margin
+            labeled, bank, alpha=adapter_alpha, minimum_margin=adapter_margin,
+            raw_weight=adapter_raw_weight,
         )
         support = fit_support(
             labeled,
@@ -186,6 +188,7 @@ def evaluate(
         "adapter_hyperparameters": {
             "alpha": adapter_alpha,
             "minimum_margin": adapter_margin,
+            "raw_weight": adapter_raw_weight,
         },
         "enrollment_rows": len(enrollment),
         "enrollment_per_model": dict(counts),
@@ -242,6 +245,7 @@ def main() -> None:
     parser.add_argument("--rescue-margin-quantile", type=float, default=0.95)
     parser.add_argument("--adapter-alpha", type=float, default=1.0)
     parser.add_argument("--adapter-margin", type=float, default=0.01)
+    parser.add_argument("--adapter-raw-weight", type=float, default=0.0)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     result = evaluate(
@@ -253,6 +257,7 @@ def main() -> None:
         rescue_margin_quantile=args.rescue_margin_quantile,
         adapter_alpha=args.adapter_alpha,
         adapter_margin=args.adapter_margin,
+        adapter_raw_weight=args.adapter_raw_weight,
     )
     rendered = json.dumps(result, indent=2) + "\n"
     if args.output:
