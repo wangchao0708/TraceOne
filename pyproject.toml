@@ -23,7 +23,7 @@ where = ["src"]
 [tool.setuptools.package-data]
 traceone = [
   "data/unified_bank_v2_16.json",
-  "data/codex_low_v5_adapter_581.json",
-  "data/codex_low_v5_support_581.json",
+  "data/codex_low_v6_adapter_686.json",
+  "data/codex_low_v6_support_686.json",
   "data/identity-v3-schema.txt",
 ]

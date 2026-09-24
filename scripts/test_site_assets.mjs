@@ -10,8 +10,8 @@ const hash = (relativePath) => crypto.createHash("sha256").update(read(relativeP
 
 const mirroredAssets = [
   "unified_bank_v2_16.json",
-  "codex_low_v5_adapter_581.json",
-  "codex_low_v5_support_581.json",
+  "codex_low_v6_adapter_686.json",
+  "codex_low_v6_support_686.json",
 ];
 const deployedAssets = fs.readdirSync(path.join(root, "dist/data")).filter((name) => name.endsWith(".json"));
 if (JSON.stringify(deployedAssets.sort()) !== JSON.stringify(mirroredAssets.slice().sort())) {

@@ -15,31 +15,35 @@ extra question. Capability degradation is a separate multi-item workflow.
 
 ## 2. Frozen release pipeline
 
-The seven-model release uses [release-candidate-v9.json](../config/release-candidate-v9.json).
+The current seven-model candidate is [release-candidate-v10.json](../config/release-candidate-v10.json).
+The failed v9 candidate and confirmation remain in the historical record.
 The historical five-model
 configuration remains in [release-candidate-v8.json](../config/release-candidate-v8.json):
 
 1. A strict parser requires an object containing only `numbers`, shape 9×35, with
    integer values from 1 through 355.
 2. ModelTrace's 16-model marginal Hellinger and ordered-block bank is reused with
-   absolute JS similarity. Fewer than 280 usable values, a non-target top candidate,
-   or similarity below 0.52 returns `unknown`.
+   absolute JS similarity. Fewer than 280 usable values abstains; a non-target fused
+   winner can pass only when a target marginal winner meets the prespecified similarity,
+   margin, and fused-gap ≤0.20 fallback conditions.
 3. Passing samples enter a seven-class alpha=1 ridge adapter over 48 features: 16
    fused, 16 marginal, and 16 absolute similarities. Margin below 0.01 abstains.
 4. Default `supported` applies a shrinkage-Mahalanobis target-support envelope with
    per-class 99% empirical distance thresholds and a 90th-percentile adapter-margin
-   rescue. This is empirical support, not a distribution-free OOD guarantee.
+   rescue. If adapter margin is below 0.01, bank rescue additionally requires a
+   target outer winner with fused margin ≥0.25, similarity ≥0.60, and a passing support
+   distance. This is empirical support, not a distribution-free OOD guarantee.
 
-Seven-model training contains 581 rows, 83 per class: the original five classes
-reuse 415 published enrollment rows, and the two new classes contribute 83 new
-independent responses each. Codex runtimes are recorded per model because collection
-dates differ. The 0.1.0 training and confirmation-v7 remain historical evidence.
+Current seven-model training contains 686 rows, 98 per class: 83 prior rows per
+route plus 15 per route from the failed `confirmation-v8`. Codex runtimes and dates
+span collection epochs and are explicitly recorded. The 0.1.0 training and
+confirmation-v7 remain historical evidence.
 
-The new development split uses 68 training and 15 testing rows per class: historical
-`enrollment-v3` / `confirmation-v6` for the original five, and the first 68 / last
-15 new rows for GPT-6 Sol and Luna. It is development evidence. The fresh seven-class
-15-per-model confirmation was registered in
-[confirmation-v8.json](../config/confirmation-v8.json).
+The initial 68/15 development split led to the frozen v9 candidate, which then failed
+confirmation. Only after recording that failure was `confirmation-v8` moved into v10
+development: its 15 rows per route were checked in three folds, then all 686 rows
+were used for the final fit. A new 15-per-route confirmation was registered in
+[confirmation-v9.json](../config/confirmation-v9.json).
 
 ## 3. Operating profiles
 
@@ -61,10 +65,14 @@ The earlier v7 configuration scored 71/75 on confirmation-v6 and failed its prer
 gate. Only then did that batch become v8 development data. Confirmation-v7 is v8's
 final unseen confirmation and cannot be used to modify v8. Failed calls, invalid
 format, errors, and `unknown` all remain in the primary denominator.
+Seven-model v9 scored 101/105 on confirmation-v8, with Astra and GPT-6 Luna at
+13/15 each, failing the ≥14/15-per-route gate. That batch is v10 development only;
+it cannot be relabeled as a v9 success.
 
 ## 5. Comparator design
 
-The 0.1.0 head-to-head runs on the same 75 responses:
+The 0.1.0 head-to-head runs on the same 75 responses. The seven-model confirmation
+uses the same comparison definition, with five disjoint triplets per route:
 
 - TraceOne makes one decision per response.
 - ModelTrace-one applies closed-set mean-fused argmax to each response.
@@ -80,10 +88,12 @@ context only.
 Rejecting an excluded route that is present in the full bank is only a registered-
 distractor result. A true held-label fold rebuilds the bank, adapter feature space,
 and support without that complete label. ModelTrace closed set has no `unknown` for
-these valid inputs, so all 288 are necessarily named. This means 100% false
+these valid inputs, so all 324 current samples are necessarily named. This means 100% false
 identification under unknown truth, not a claim of 0% ordinary classification accuracy.
 
-The open-world v2 data were inspected while tuning; results are development estimates.
+Open-world v4 contains nine excluded labels and 324 rows; `supported` still falsely
+accepts 34, including 19/36 GPT-5.4 and 10/36 Claude Opus 5.5. These data were
+inspected while tuning and are development estimates.
 A blind independent-provider, new-date, and unseen-wrapper test remains missing.
 
 ## 7. Degradation protocol
@@ -118,6 +128,6 @@ review exports for fields introduced by future runtimes.
 - Upstream reference data lack complete reasoning provenance.
 - The 0.1.0 fifteen rows per class establish only that batch; 75/75 still has a Wilson 95%
   interval of approximately 95.13%–100%.
-- GPT-5.4 is the hardest unseen label: 20/36 false accepts in development.
+- GPT-5.4 is the hardest unseen label: 19/36 false accepts in seven-model development.
 - Without routing logs or attestation, detector error, natural variation, and real
   substitution cannot be distinguished.

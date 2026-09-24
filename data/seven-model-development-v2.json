@@ -1,0 +1,145 @@
+{
+  "schema": "traceone-seven-development-v2",
+  "status": "development after confirmation-v8 failed; not an independent holdout",
+  "design": "three chronological 5-per-model folds from failed confirmation-v8; each fit uses 581 prior enrollment rows plus the other 10 per model",
+  "hyperparameters": {
+    "alpha": 1.0,
+    "minimum_margin": 0.01,
+    "distance_quantile": 0.99,
+    "rescue_margin_quantile": 0.9
+  },
+  "variants": [
+    {
+      "fallback_maximum_fused_gap": 0.075,
+      "bank_rescue": false,
+      "samples": 105,
+      "matches": 101,
+      "per_model": {
+        "gpt-5.5": 15,
+        "gpt-5.6-luna": 15,
+        "gpt-5.6-terra": 15,
+        "gpt-5.6-sol": 15,
+        "gpt-6-astra": 13,
+        "gpt-6-sol": 15,
+        "gpt-6-luna": 13
+      },
+      "errors": [
+        {
+          "sample_id": "confirmation-v8-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v8__confirmation__001",
+          "fold": 0,
+          "requested_model": "gpt-6-astra",
+          "prediction": null,
+          "outer_top": "gpt-5.4",
+          "outer_marginal": "gpt-6-astra",
+          "support_path": null
+        },
+        {
+          "sample_id": "confirmation-v8-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v8__confirmation__003",
+          "fold": 0,
+          "requested_model": "gpt-6-astra",
+          "prediction": "gpt-5.6-sol",
+          "outer_top": "gpt-5.6-sol",
+          "outer_marginal": "gpt-5.6-sol",
+          "support_path": "distance"
+        },
+        {
+          "sample_id": "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__003",
+          "fold": 0,
+          "requested_model": "gpt-6-luna",
+          "prediction": null,
+          "outer_top": "claude-sonnet-4-6",
+          "outer_marginal": "claude-sonnet-4-6",
+          "support_path": null
+        },
+        {
+          "sample_id": "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__011",
+          "fold": 2,
+          "requested_model": "gpt-6-luna",
+          "prediction": null,
+          "outer_top": "gpt-6-luna",
+          "outer_marginal": "gpt-6-luna",
+          "support_path": null
+        }
+      ]
+    },
+    {
+      "fallback_maximum_fused_gap": 0.2,
+      "bank_rescue": false,
+      "samples": 105,
+      "matches": 102,
+      "per_model": {
+        "gpt-5.5": 15,
+        "gpt-5.6-luna": 15,
+        "gpt-5.6-terra": 15,
+        "gpt-5.6-sol": 15,
+        "gpt-6-astra": 14,
+        "gpt-6-sol": 15,
+        "gpt-6-luna": 13
+      },
+      "errors": [
+        {
+          "sample_id": "confirmation-v8-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v8__confirmation__003",
+          "fold": 0,
+          "requested_model": "gpt-6-astra",
+          "prediction": "gpt-5.6-sol",
+          "outer_top": "gpt-5.6-sol",
+          "outer_marginal": "gpt-5.6-sol",
+          "support_path": "distance"
+        },
+        {
+          "sample_id": "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__003",
+          "fold": 0,
+          "requested_model": "gpt-6-luna",
+          "prediction": null,
+          "outer_top": "claude-sonnet-4-6",
+          "outer_marginal": "claude-sonnet-4-6",
+          "support_path": null
+        },
+        {
+          "sample_id": "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__011",
+          "fold": 2,
+          "requested_model": "gpt-6-luna",
+          "prediction": null,
+          "outer_top": "gpt-6-luna",
+          "outer_marginal": "gpt-6-luna",
+          "support_path": null
+        }
+      ]
+    },
+    {
+      "fallback_maximum_fused_gap": 0.2,
+      "bank_rescue": true,
+      "samples": 105,
+      "matches": 103,
+      "per_model": {
+        "gpt-5.5": 15,
+        "gpt-5.6-luna": 15,
+        "gpt-5.6-terra": 15,
+        "gpt-5.6-sol": 15,
+        "gpt-6-astra": 14,
+        "gpt-6-sol": 15,
+        "gpt-6-luna": 14
+      },
+      "errors": [
+        {
+          "sample_id": "confirmation-v8-schema/gpt-6-astra.jsonl::gpt-6-astra__confirmation-v8__confirmation__003",
+          "fold": 0,
+          "requested_model": "gpt-6-astra",
+          "prediction": "gpt-5.6-sol",
+          "outer_top": "gpt-5.6-sol",
+          "outer_marginal": "gpt-5.6-sol",
+          "support_path": "distance"
+        },
+        {
+          "sample_id": "confirmation-v8-schema/gpt-6-luna.jsonl::gpt-6-luna__confirmation-v8__confirmation__003",
+          "fold": 0,
+          "requested_model": "gpt-6-luna",
+          "prediction": null,
+          "outer_top": "claude-sonnet-4-6",
+          "outer_marginal": "claude-sonnet-4-6",
+          "support_path": null
+        }
+      ]
+    }
+  ]
+}

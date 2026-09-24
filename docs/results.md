@@ -2,6 +2,21 @@
 
 [简体中文](results.md) | [English](results.en.md)
 
+## 七模型第二轮冻结确认：再次未过门槛
+
+`release-candidate-v10` 于 2026-09-23 17:06:12 UTC 冻结，随后登记
+`confirmation-v9`。七类各 15 次，共 105 次调用全部成功、严格符合 Schema；
+prompt、runtime、Low reasoning 与 wrapper 在批内一致。TraceOne `supported`
+为 98/105：5.5 与 5.6 Luna 各 14/15，5.6 Terra、6 Astra、6 Luna 各 15/15，
+5.6 Sol 为 13/15，6 Sol 为 12/15。低于事先固定的“每类至少 14/15”门槛，
+因此 v10 不作为七模型通过的发布依据。
+
+同响应的 ModelTrace 一问为 96/105，非重叠三问为 35/35；TraceOne 一问
+整体多对两条，但这不足以证明七类全面优于上游。保存的逐样本证据见
+[evaluation](../data/confirmation-v9-evaluation.json) 与
+[head-to-head](../data/confirmation-v9-head-to-head.json)。v9 批次只有在这次
+失败如实记录之后，才能作为下一版开发数据。
+
 ## 七模型首轮冻结确认：未过门槛
 
 `release-candidate-v9` 于 2026-09-23 16:29:50 UTC 冻结，首条
@@ -22,6 +37,20 @@ v9 的盲测成功。
 
 ## 0.2.0 七模型开发证据
 
+首轮失败确认记录后，`confirmation-v8` 才转为 v10 开发数据。该批七类各 15 条
+做三折留出，训练折使用旧 581 条和其余每类 10 条。最终规则在 105 条留出上
+为 103/105，各类至少 14/15；这不是独立确认。最终拟合用 686 条、每类 98 条，
+并于新确认采集前冻结在
+[release-candidate-v10.json](../config/release-candidate-v10.json)。开发比较与逐条
+错误见 [seven-model-development-v2.json](../data/seven-model-development-v2.json)。
+
+同一九标签 held-label 压力测试中，新 `supported` 仍为 34/324 误接收，
+`enrolled` 为 52/324；GPT-5.4 仍有 19/36、Claude Opus 5.5 仍有 10/36。
+这是调参数据，不是新的独立 OOD 盲测；见
+[open-world-v4-development.json](../data/open-world-v4-development.json)。
+新确认计划是 [confirmation-v9.json](../config/confirmation-v9.json)，门槛仍为
+七类每类至少 14/15。
+
 ModelTrace 作者及时公开的新版 16-model bank（上游 commit
 `55a2e4a55170423b484d701e9a82ab62b268c811`）包含 GPT-6 Sol 与 Luna 的
 各 36 条 Low-reasoning 参考响应。TraceOne 在此优秀开放工作的基础上，用同一个
@@ -41,10 +70,10 @@ GPT-5.4 的 19/36 与 Claude Opus 5.5 的 10/36。数据仍来自上游参考语
 并非独立 provider 盲测；它与旧版 24/288 使用的标签集合不同，不能直接比较
 百分比。见 [open-world-development-v3.json](../data/open-world-development-v3.json)。
 
-最终 581 条训练配置先固定在
+首轮 581 条训练配置先固定在
 [release-candidate-v9.json](../config/release-candidate-v9.json)，随后按
 [confirmation-v8.json](../config/confirmation-v8.json) 的七款各 15 条规则采集新
-确认集。开发数据只用于选择配置，不能替代新确认结果。
+确认集，随后未过门槛。开发数据只用于选择配置，不能替代新确认结果。
 
 ## 0.1.0 五模型发布结论（历史）
 

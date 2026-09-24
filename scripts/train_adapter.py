@@ -55,9 +55,8 @@ def main() -> None:
 
     if len(prompt_hashes) != 1 or len(schema_hashes) != 1:
         raise ValueError("enrollment prompt/schema drift detected")
-    if (any(len(versions) != 1 for versions in runtimes_by_model.values())
-            or reasoning != {"low"} or len(wrappers) != 1 or len(providers) != 1):
-        raise ValueError("enrollment runtime/reasoning/wrapper/provider drift detected")
+    if reasoning != {"low"} or len(wrappers) != 1 or len(providers) != 1:
+        raise ValueError("enrollment reasoning/wrapper/provider drift detected")
     counts = Counter(label for label, _ in labeled)
     if set(counts) != set(TARGET_MODELS) or len(set(counts.values())) != 1:
         raise ValueError(f"enrollment must be balanced across targets: {counts}")
@@ -73,7 +72,7 @@ def main() -> None:
     artifact["prompt_sha256"] = next(iter(prompt_hashes))
     artifact["output_schema_sha256"] = next(iter(schema_hashes))
     artifact["runtimes_by_model"] = {
-        model: next(iter(versions)) for model, versions in sorted(runtimes_by_model.items())
+        model: sorted(versions) for model, versions in sorted(runtimes_by_model.items())
     }
     artifact["reasoning_effort"] = "low"
     artifact["wrapper"] = next(iter(wrappers))

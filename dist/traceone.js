@@ -20,7 +20,7 @@ const OUTER_GUARD = Object.freeze({
   allowMarginalFallback: true,
   fallbackMinimumSimilarity: 0.54,
   fallbackMinimumMargin: 0.10,
-  fallbackMaximumFusedGap: 0.075,
+  fallbackMaximumFusedGap: 0.20,
 });
 
 const mean = (values) => values.reduce((sum, value) => sum + value, 0) / values.length;
@@ -363,6 +363,25 @@ export function identifyWithArtifacts(text, { bank, adapter, support }) {
   const parsed = parseGridResponse(text);
   const base = classifyAdapted(parsed, bank, adapter);
   if (base.status !== "identified" || !base.label) {
+    const outer = base.outerGuard;
+    if (
+      parsed.valid &&
+      base.adapterMargin !== null &&
+      base.adapterMargin < Number(adapter.minimum_margin) &&
+      outer.status === "identified" &&
+      TARGET_MODELS.includes(outer.label) &&
+      outer.scoreMargin !== null && outer.scoreMargin >= 0.25 &&
+      outer.similarity !== null && outer.similarity >= 0.60
+    ) {
+      const score = supportScore(parsed.numbers, outer.label, bank, support);
+      if (score.distance <= score.threshold) {
+        return {
+          status: "identified", label: outer.label, supportPassed: true,
+          supportDistance: score.distance, supportThreshold: score.threshold,
+          supportPValue: score.pValue, supportPath: "bank_rescue", adapter: base, parsed,
+        };
+      }
+    }
     return {
       status: "unknown",
       label: null,
@@ -400,8 +419,8 @@ export function loadArtifacts() {
   if (!artifactPromise) {
     artifactPromise = Promise.all([
       fetch(new URL("./data/unified_bank_v2_16.json", import.meta.url)).then((response) => response.json()),
-      fetch(new URL("./data/codex_low_v5_adapter_581.json", import.meta.url)).then((response) => response.json()),
-      fetch(new URL("./data/codex_low_v5_support_581.json", import.meta.url)).then((response) => response.json()),
+      fetch(new URL("./data/codex_low_v6_adapter_686.json", import.meta.url)).then((response) => response.json()),
+      fetch(new URL("./data/codex_low_v6_support_686.json", import.meta.url)).then((response) => response.json()),
     ]).then(([bank, adapter, support]) => ({ bank, adapter, support }));
   }
   return artifactPromise;

@@ -91,7 +91,7 @@ decisions, not three independent questions. The exact assets are
 [prompts/identity-v3-schema.txt](prompts/identity-v3-schema.txt) and
 [schemas/identity-v3.json](schemas/identity-v3.json).
 
-## First seven-model confirmation did not pass
+## Both seven-model confirmations failed their prespecified gate
 
 GPT-6 Sol and Luna are present in the 16-model reference bank and seven-class
 adapter. All 105 fresh `confirmation-v8` calls conformed to the strict Schema.
@@ -100,6 +100,13 @@ below the preregistered 14/15 per-route threshold. The same-response ModelTrace
 one-call result was also 101/105; its three-call arm was 35/35. This failed
 batch remains visible and cannot support a comprehensive superiority claim.
 See [docs/results.en.md](docs/results.en.md).
+
+The subsequently frozen `release-candidate-v10` matched 98/105 on independent
+`confirmation-v9`: GPT-5.6 Sol was 13/15 and GPT-6 Sol 12/15, again below the
+same gate. ModelTrace one-call on those responses was 96/105, while disjoint
+three-call decisions were 35/35. Seven-route support remains experimental, not
+a verified comprehensive advantage. A next development iteration using raw
+number-frequency features is in progress.
 
 ## Historical 0.1.0 five-model confirmation
 

@@ -38,7 +38,7 @@ class SupportResult:
 def load_support(path: Path | None = None) -> dict:
     if path is not None:
         return json.loads(path.read_text(encoding="utf-8"))
-    resource = files("traceone").joinpath("data/codex_low_v5_support_581.json")
+    resource = files("traceone").joinpath("data/codex_low_v6_support_686.json")
     return json.loads(resource.read_text(encoding="utf-8"))
 
 
@@ -146,13 +146,33 @@ def classify_supported(
     adapter: dict | None = None,
     support: dict | None = None,
     guard: GuardConfig = ENROLLED_OUTER_GUARD,
+    allow_bank_rescue: bool = True,
 ) -> SupportResult:
     bank = bank or load_bank()
     adapter = adapter or load_adapter()
     base = classify_adapted(parsed, bank=bank, adapter=adapter, guard=guard)
-    if base.status != "identified" or base.label is None:
-        return SupportResult("unknown", None, None, None, None, None, None, base)
     support = support or load_support()
+    if base.status != "identified" or base.label is None:
+        outer = base.outer_guard
+        if (
+            allow_bank_rescue
+            and parsed.valid
+            and base.adapter_margin is not None
+            and base.adapter_margin < float(adapter["minimum_margin"])
+            and outer.status == "identified"
+            and outer.label in TARGET_MODELS
+            and outer.score_margin is not None
+            and outer.score_margin >= 0.25
+            and outer.similarity is not None
+            and outer.similarity >= 0.60
+        ):
+            score = support_score(list(parsed.numbers), outer.label, bank, support)
+            if score["distance"] <= score["threshold"]:
+                return SupportResult(
+                    "identified", outer.label, True, score["distance"],
+                    score["threshold"], score["p_value"], "bank_rescue", base,
+                )
+        return SupportResult("unknown", None, None, None, None, None, None, base)
     score = support_score(list(parsed.numbers), base.label, bank, support)
     index = list(support["models"]).index(base.label)
     rescue_threshold = float(support["rescue_margin_thresholds"][index])

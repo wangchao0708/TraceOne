@@ -72,7 +72,7 @@ ADAPTIVE_GUARD = GuardConfig(
     fallback_maximum_fused_gap=0.075,
 )
 ENROLLED_OUTER_GUARD = GuardConfig(
-    name="enrolled-outer-v2",
+    name="enrolled-outer-v3",
     minimum_numbers=280,
     minimum_similarity=0.52,
     minimum_margin=0.0,
@@ -80,7 +80,7 @@ ENROLLED_OUTER_GUARD = GuardConfig(
     allow_marginal_fallback=True,
     fallback_minimum_similarity=0.54,
     fallback_minimum_margin=0.10,
-    fallback_maximum_fused_gap=0.075,
+    fallback_maximum_fused_gap=0.20,
 )
 
 

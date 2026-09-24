@@ -80,7 +80,7 @@ schema-conforming JSON value with no explanation.
 [prompts/identity-v3-schema.txt](prompts/identity-v3-schema.txt) 和
 [schemas/identity-v3.json](schemas/identity-v3.json)。
 
-## 七模型首轮确认未通过
+## 七模型两轮确认均未过预设门槛
 
 新款 GPT-6 Sol/Luna 已进入 16-model 参考库和七类适配器。按冻结的
 `confirmation-v8` 计划，105 次新调用全部严格符合 Schema；TraceOne 一问是
@@ -88,6 +88,11 @@ schema-conforming JSON value with no explanation.
 预登记门槛。ModelTrace 同响应一问也是 101/105，三问是 35/35。
 本批结果保留为失败证据，不能据此宣称七款均优于上游；详见
 [docs/results.md](docs/results.md)。
+
+随后冻结的 `release-candidate-v10` 在独立 `confirmation-v9` 上是 98/105；
+GPT-5.6 Sol 为 13/15，GPT-6 Sol 为 12/15，仍未过同一门槛。
+ModelTrace 同响应一问为 96/105，非重叠三问 35/35。七模型支持目前应视作
+实验性，不能写成已验证的正式优势。原始数字频率特征的下一轮开发正在进行。
 
 ## 0.1.0 的五模型冻结盲测结果
 

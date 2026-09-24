@@ -15,29 +15,32 @@
 
 ## 2. 冻结发布管线
 
-七模型发布使用 [release-candidate-v9.json](../config/release-candidate-v9.json)；
+七模型当前候选配置为 [release-candidate-v10.json](../config/release-candidate-v10.json)；
+首轮 v9 候选与失败确认保留在历史记录中。
 五模型历史发布配置仍见
 [release-candidate-v8.json](../config/release-candidate-v8.json)：
 
 1. strict parser 要求对象只含 `numbers`，形状 9×35，值为 1–355 的 integer。
 2. 复用 ModelTrace 的 16-model marginal Hellinger 与 ordered-block bank，并计算
-   absolute JS similarity；不足 280 个可用值、top 不属于目标或 similarity <0.52
-   时立即返回 `unknown`。
+   absolute JS similarity。不足 280 个可用值会拒识；非目标 top 只有在目标
+   marginal 候选满足相似度、边际优势和 fused 差距 ≤0.20 的预设回退条件时才能通过。
 3. 通过 outer guard 后，48 维 feature（16 fused、16 marginal、16 absolute
    similarity）进入 alpha=1 的七类 ridge adapter；margin <0.01 时拒识。
 4. 默认 `supported` 再检查 shrinkage Mahalanobis target-support envelope。
    每类 99% empirical distance 阈值；高于每类第 90 百分位的 adapter margin
-   可 rescue。它是经验 support，不具 distribution-free OOD 保证。
+   可 rescue。若 adapter margin <0.01，只有 outer 目标候选的 fused margin ≥0.25、
+   相似度 ≥0.60 且支持距离达标时才允许 bank rescue。它是经验 support，
+   不具 distribution-free OOD 保证。
 
-七模型训练集共 581 条、每类 83 条：旧五类沿用已公开的 415 条 enrollment，
-新两类采集各 83 条独立响应。新版本分别记录旧类与新类的 Codex runtime；
-两批不是同日采集，时间漂移仍是限制。0.1.0 的 415 条训练和 confirmation-v7
-冻结结果保持为历史证据。
+七模型当前训练集共 686 条、每类 98 条：旧五类已有各 83 条、新两类各采集 83 条，
+首轮失败确认 `confirmation-v8` 再为七类各提供 15 条。每类 Codex runtime 均显式
+记录，训练跨日期与 runtime，时间漂移仍是限制。0.1.0 的 415 条训练和
+`confirmation-v7` 冻结结果保持为历史证据。
 
-新版本的开发划分是旧五类 `enrollment-v3` 68 条训练 / `confirmation-v6`
-15 条测试，以及新两类各前 68 条训练 / 后 15 条测试。它是用于选择发布配置的
-development 结果；新的七类 15/类确认计划在
-[confirmation-v8.json](../config/confirmation-v8.json) 预先登记。
+初版开发划分是各类 68 条训练 / 15 条测试，随后 v9 在新确认集上未过门槛。
+只有记录该失败后，`confirmation-v8` 才被转作 v10 的开发数据；对这 15 条/类作
+三折检验，最终配置再用全部 686 条拟合。下一批七类各 15 条的全新确认计划在
+[confirmation-v9.json](../config/confirmation-v9.json) 预先登记。
 
 ## 3. Operating profiles
 
@@ -56,11 +59,14 @@ development 结果；新的七类 15/类确认计划在
 
 旧 v7 配置的 confirmation-v6 为 71/75，未过预注册门槛；随后才允许作为 v8
 development 数据。v8 的 confirmation-v7 是最终未见盲测，不能再用于修改 v8。
+七模型 v9 的 confirmation-v8 为 101/105，Astra 和 6 Luna 各 13/15；它未过
+每类 ≥14/15 门槛，所以后续仅作为 v10 开发数据，绝不能回写成 v9 成功。
 失败调用、格式错误、误判与 `unknown` 全部留在主分母。
 
 ## 5. 对照设计
 
-0.1.0 的 head-to-head 对同一批 75 条响应运行：
+0.1.0 的 head-to-head 对同一批 75 条响应运行；七模型确认批次也沿用同一
+对照定义，并把三问划成每类五个互不重叠 triplet：
 
 - TraceOne：每条响应作一次决定；
 - ModelTrace-one：同一条响应的 closed-set mean fused argmax；
@@ -75,10 +81,12 @@ ModelTrace 随机 challenge 原文；三问只有 25 个独立决定，置信区
 完整 bank 中“excluded route 被拒绝”只是 registered-distractor 结果，因为该标签
 参与了 bank 构建。真正 held-label 流程对每个 excluded label 重新构建 bank、
 adapter feature space 和 support，再测试被删标签。ModelTrace closed-set 在这些
-有效输入上没有 `unknown`，所以 288/288 必然被命名；这不是称其 0% accuracy，
+有效输入上没有 `unknown`，所以当前 324/324 必然被命名；这不是称其 0% accuracy，
 而是 100% false identification under unknown truth。
 
-open-world v2 用过这些数据调参，只能称 development estimate。独立 provider、
+open-world v4 在九个 excluded label、324 条上再次验证，`supported` 仍有 34 条
+误接收，其中 GPT-5.4 为 19/36、Claude Opus 5.5 为 10/36。这些数据用于调参，
+只能称 development estimate。独立 provider、
 新日期和未见 wrapper 的盲测仍是缺口。
 
 ## 7. 降质协议
@@ -108,5 +116,5 @@ manifest 记录源文件和公开文件 digest。发布前仍需人工检查未�
 - 行为指纹会随 system prompt、wrapper、reasoning 和时间漂移。
 - 上游参考语料缺少完整 reasoning provenance。
 - 0.1.0 五类各 15 条只能证明该批结果；75/75 的 Wilson 95% 区间仍为约 95.13%–100%。
-- GPT-5.4 是当前最难未见类，development 中仍有 20/36 false accepts。
+- GPT-5.4 是当前最难未见类，七模型 development 中仍有 19/36 false accepts。
 - 没有 routing log/attestation，不能区分 detector error、自然波动和真实换模。

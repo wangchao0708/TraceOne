@@ -2,6 +2,23 @@
 
 [简体中文](results.md) | [English](results.en.md)
 
+## Second frozen seven-model confirmation: gate failed again
+
+`release-candidate-v10` was frozen at 17:06:12 UTC on September 23, 2026,
+before registering `confirmation-v9`. All 105 calls (15 per route) completed
+and conformed to the strict Schema with the same prompt, runtime, Low reasoning,
+and wrapper. TraceOne `supported` matched 98/105: 5.5 and 5.6 Luna were 14/15;
+5.6 Terra, 6 Astra, and 6 Luna were 15/15; 5.6 Sol was 13/15 and 6 Sol was
+12/15. This failed the prespecified ≥14/15-per-route gate. V10 therefore cannot
+serve as a validated seven-route release.
+
+On those same responses, ModelTrace one-call matched 96/105 and disjoint
+three-call decisions matched 35/35. TraceOne gained two one-call items overall,
+but that does not prove comprehensive per-route superiority. Every decision is
+retained in the [evaluation](../data/confirmation-v9-evaluation.json) and
+[head-to-head](../data/confirmation-v9-head-to-head.json). Only after this failure
+was recorded may `confirmation-v9` become development data for a later version.
+
 ## First frozen seven-model confirmation: gate failed
 
 `release-candidate-v9` was frozen at 16:29:50 UTC on September 23, 2026; the
@@ -25,6 +42,24 @@ v9 gate has been recorded as failed.
 
 ## 0.2.0 seven-model development evidence
 
+Only after the first confirmation failure was recorded did `confirmation-v8`
+become v10 development data. Its 15 rows per route were held out in three folds;
+each fit used the previous 581 rows plus the other 10 rows per route. The selected
+rule matched 103/105 held-out rows, at least 14/15 per route. This is not an
+independent confirmation. The final fit uses 686 rows, 98 per route, and was frozen
+before new collection in
+[release-candidate-v10.json](../config/release-candidate-v10.json). Development
+variants and errors are in
+[seven-model-development-v2.json](../data/seven-model-development-v2.json).
+
+On the same nine-label held-label stress test, new `supported` still falsely
+accepted 34/324, while `enrolled` accepted 52/324. GPT-5.4 remained at 19/36
+and Claude Opus 5.5 at 10/36. These data were inspected while tuning, not a new
+blind OOD result; see
+[open-world-v4-development.json](../data/open-world-v4-development.json).
+The new plan [confirmation-v9.json](../config/confirmation-v9.json) retains the
+≥14/15-per-route gate.
+
 The author's excellent updated 16-model ModelTrace bank (commit
 `55a2e4a55170423b484d701e9a82ab62b268c811`) includes 36 Low-reasoning
 reference responses each for GPT-6 Sol and Luna. Building on that open work,
@@ -47,11 +82,11 @@ development data, not a blind independent-provider test. The label set differs
 from the historical 24/288 study, so those percentages are not directly
 comparable. See [open-world-development-v3.json](../data/open-world-development-v3.json).
 
-The final 581-row configuration was frozen in
+The first 581-row candidate was frozen in
 [release-candidate-v9.json](../config/release-candidate-v9.json) before collecting
 the fresh 15-per-route batch registered in
-[confirmation-v8.json](../config/confirmation-v8.json). Development results do
-not substitute for confirmation evidence.
+[confirmation-v8.json](../config/confirmation-v8.json), which then failed its gate.
+Development results do not substitute for confirmation evidence.
 
 ## Historical 0.1.0 five-model result
 
