@@ -2,7 +2,48 @@
 
 [简体中文](results.md) | [English](results.en.md)
 
+## 八模型 v12 实验实现：网页条件确认失败，本次仅更新仓库
+
+本版本增加真实同环境登记、独立校准与一次全新八类确认，全部使用 Codex 订阅
+CLI 0.159.2、Low reasoning；没有使用付费 API 或重置额度。仍是一问 315 数字。
+新登记每类 48 次，共 384 次，380 次成功、4 次超时；连同此前同问题的 192 条开发数据，
+三折选型共 576 个调用分母。96 个候选按最差逐类匹配数优先、总数其次选择，选出
+bank + raw + repetition/order 的 ridge（alpha=1，group weights=1/1/0.5）。
+开发结果 543/576，Astra 59/72、6.1 Sol 58/72，属于已经看过、用于选型的数据。
+
+用于拟合的是 571 条：4 条超时和1条旧采集器的事件异常未参与拟合，均保留在开发分母。
+该异常的 `completed_item_types` 包含 `error`，早期保守计数把它计入 `tool_item_count`，
+不能据此称发生了真实工具执行；原记录没有改写。新版采集器分开记录 error 和工具事件。
+独立网页条件校准为 128 次、每类16次，不附加 Schema；124 条满足容错分析输入规则，
+4条无法分析。支持范围用独立校准距离的逐类最大值，没有 high-margin bypass。
+
+冻结 [v12配置](../config/release-candidate-v12.json) 和提交 `5b70968` 后才采集
+[confirmation-v12](../data/public/confirmation-v12.jsonl)。120 次全部成功，未出现工具执行事件；
+网页、CLI 和确认使用相同自包含问题、不附加 Schema，结果如下：
+
+- GPT-5.5：15/15（100%）；GPT-5.6 Luna：14/15（93.3%）。
+- GPT-5.6 Terra：15/15（100%）；GPT-5.6 Sol：14/15（93.3%）。
+- GPT-6 Astra：9/15（60%）；GPT-6 Sol：14/15（93.3%）。
+- GPT-6 Luna：10/15（66.7%）；GPT-6.1 Sol：10/15（66.7%）。
+- 合计101/120（84.2%），未达到逐类≥14/15；9次拒识全部计入未匹配。
+- 严格JSON/形状/范围合规61/120（50.8%）；按预先冻结的容错规则可分析114/120。
+
+Astra的6次错误都被归为6.1 Sol；6.1 Sol有3次被归为Astra、2次拒识。
+6 Luna有2次明确拒绝“独立随机”要求、2次JSON结构错误、1次支持范围拒识。
+因此不能把开发94.3%或页面能显示6.1 Sol当作“整体性能变好”，也不能将这些错误当作降智证明。
+本次按已冻结配置发布可复核的八类实验源码，未将失败确认冒充性能提升。
+在线站点未同步替换，仍提供七模型版本；仓库保留七类历史方法。
+Python/JavaScript在全部120条响应上逐字段一致，最大差约3.4×10⁻¹³。
+
+[开发数据](../data/public/eight-optimized-development-v1.jsonl)、[开发选型](../data/eight-optimized-development-v1.json)、
+[确认评测](../data/confirmation-v12-evaluation.json) 保留完整分母和隐私字段白名单。
+另外包含24次已放弃的数字范围试点；它们不进入最终分类器拟合、校准或确认。
+尚未对新版做真实未见模型的独立OOD验证；合成均匀数压力测试不能替代这种验证。
+
 ## GPT-6.1 Sol 扩展开发：尚未通过发布门槛
+
+以下为最早489次开发阶段的历史记录；其中“未启动最终确认”等决策仅指当时，
+后续v12的失败确认已在上节单独记录，不修改或覆盖先前结果。
 
 2026-09-30 在 Codex CLI 0.159.2、订阅账户、Low reasoning 和隔离 wrapper 下
 完成 489 次真实调用，均只有一次提问、315 个数字。489 次调用均返回成功；473 条
@@ -55,7 +96,7 @@ PYTHONPATH=src OPENBLAS_NUM_THREADS=1 python3 scripts/evaluate_gpt61_development
 参考库未登记 6.1 Sol，不能把这个覆盖差异计为对照方法“准确率为零”来制造胜利。既有同响应
 一问/三问比较保留在下方；本轮未作新的八类全面优越性声明。
 
-## 当前 315 数字 v11：第三轮确认仍未过门槛
+## 历史 315 数字 v11：第三轮确认仍未过门槛
 
 先冻结 [release-candidate-v11.json](../config/release-candidate-v11.json)，再按
 [confirmation-v10.json](../config/confirmation-v10.json) 对七类各采集 15 条新响应。

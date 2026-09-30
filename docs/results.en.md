@@ -2,7 +2,63 @@
 
 [简体中文](results.md) | [English](results.en.md)
 
+## Eight-route v12 experiment: web-condition confirmation failed; repository-only update
+
+This version adds concurrent enrollment, separate calibration and fresh
+confirmation through Codex subscription CLI 0.159.2 with Low reasoning. No paid API
+or reset credit was used; each call still requests 315 integers in one question.
+New enrollment contains 384 calls, 380 successes and four timeouts. Together with
+192 prior same-prompt development calls, 576 calls enter the development denominator.
+Selection over 96 candidates prioritized the lowest per-route match count, then
+total matches, selecting bank/raw/repetition-order ridge with alpha=1 and group
+weights 1/1/0.5. Inspected cross-fit matched 543/576, Astra 59/72 and 6.1 Sol 58/72.
+
+The fit uses 571 rows: four timeouts and one conservatively flagged CLI event are
+excluded from fitting, never from the development denominator. The latter records
+an `error` item that an early collector counted as `tool_item_count`; this is not
+evidence of actual tool execution. The original record is retained. The collector
+now records errors separately. Web-condition calibration made 128 calls without
+Schema; 124 meet the frozen bounded-tolerance input rule and four cannot be analyzed.
+Support uses independent class-conditional maximum calibration distances, without
+any high-margin bypass.
+
+After [freezing v12](../config/release-candidate-v12.json) at commit `5b70968`, 120
+fresh [confirmation calls](../data/public/confirmation-v12.jsonl) were collected.
+All succeeded and emitted no tool-execution items. The web, CLI, and confirmation
+use the identical self-contained question without additional Schema:
+
+- GPT-5.5: 15/15 (100%); GPT-5.6 Luna: 14/15 (93.3%).
+- GPT-5.6 Terra: 15/15 (100%); GPT-5.6 Sol: 14/15 (93.3%).
+- GPT-6 Astra: 9/15 (60%); GPT-6 Sol: 14/15 (93.3%).
+- GPT-6 Luna: 10/15 (66.7%); GPT-6.1 Sol: 10/15 (66.7%).
+- Total 101/120 (84.2%), failing the ≥14/15 gate for every route. All nine
+  abstentions count as misses.
+- Strict JSON/shape/range compliance: 61/120 (50.8%); frozen tolerant analysis
+  accepts 114/120 responses.
+
+All six Astra errors were assigned to 6.1 Sol. For 6.1 Sol, three were assigned
+to Astra and two rejected. 6 Luna had two refusals of the independence/randomness
+requirement, two JSON structure errors and one support rejection. Development
+94.3% and a working eighth UI option are not evidence of overall improvement;
+these errors cannot establish degradation. The repository publishes the frozen
+eight-route experimental source and retains the historical seven-class method.
+The public site is not redeployed and retains the seven-route baseline.
+All 120 Python/JavaScript outputs agree field by field,
+with maximum numeric error about 3.4×10⁻¹³.
+
+[Development corpus](../data/public/eight-optimized-development-v1.jsonl),
+[selection](../data/eight-optimized-development-v1.json) and
+[confirmation evaluation](../data/confirmation-v12-evaluation.json) retain complete
+denominators and a private-field exclusion policy. The corpus also includes 24
+discarded range-pilot calls; they never enter the final fit/calibration/confirmation.
+The candidate has no independent real unseen-model OOD confirmation; synthetic
+uniform-number stress tests cannot substitute for it.
+
 ## GPT-6.1 Sol expansion development: not qualified for release
+
+The following is the historical first 489-call stage. Decisions about not starting
+confirmation refer to that stage; the later failed v12 confirmation is recorded
+separately above, without overwriting historical evidence.
 
 On September 30, 2026, 489 real subscription calls were collected with Codex CLI
 0.159.2, Low reasoning, and the isolated wrapper. Every call used one 315-choice
@@ -65,7 +121,7 @@ The frozen upstream 16-model bank used here lacks a registered 6.1 Sol reference
 manufacture a win. Historical bounded one-/three-call comparisons remain below;
 no comprehensive eight-route superiority claim is made.
 
-## Current 315-choice v11: third confirmation still failed the gate
+## Historical 315-choice v11: third confirmation still failed the gate
 
 [Release candidate v11](../config/release-candidate-v11.json) was frozen before
 [confirmation-v10](../config/confirmation-v10.json) collected 15 fresh responses

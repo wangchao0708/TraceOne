@@ -9,6 +9,7 @@ from .degradation import (
 )
 from .fingerprint import identify_text
 from .support import identify_text_supported
+from .optimized import identify_text_optimized
 
 __all__ = [
     "compare_paired_outcomes",
@@ -16,7 +17,8 @@ __all__ = [
     "identify_text",
     "identify_text_adapted",
     "identify_text_supported",
+    "identify_text_optimized",
     "mcnemar_detection_power",
     "plan_mcnemar",
 ]
-__version__ = "0.2.0"
+__version__ = "0.3.0"

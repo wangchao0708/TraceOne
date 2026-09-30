@@ -1,0 +1,180 @@
+{
+  "schema": "traceone-release-manifest-v2",
+  "version": "0.3.0",
+  "released_on": "2026-09-30",
+  "status": "experimental source release; per-route research gate failed",
+  "frozen_commit": "5b70968bb1f9ffca89523e3f8c5bfcc9c371f5eb",
+  "targets": [
+    "gpt-5.5",
+    "gpt-5.6-luna",
+    "gpt-5.6-terra",
+    "gpt-5.6-sol",
+    "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna",
+    "gpt-6.1-sol"
+  ],
+  "default_method": "optimized",
+  "legacy_method": "supported",
+  "prompt": {
+    "path": "prompts/identity-replacement-v1.txt",
+    "file_sha256": "441797bb623cee418ae557bfb481232d0a2becef4dbcbdc366dd8d55e7c58992",
+    "normalized_text_sha256": "aa39bb9e7966064709402caef9922d3788ac5ac362768ac0b62739d5e10eecb1",
+    "requests": 1,
+    "requested_numbers": 315
+  },
+  "bank": {
+    "path": "src/traceone/data/unified_bank_v2_16.json",
+    "sha256": "1c2cb74d372f9f0f30d0dabbb7b7a838660d2f769a88d0c8489e4c662e088c21"
+  },
+  "classifier": {
+    "path": "src/traceone/data/codex_low_v8_optimized.json",
+    "sha256": "9deaa49ce8ce46b43088b133afe36ee20a1f64a227e53df7cd96a1fb1514109b"
+  },
+  "method": {
+    "classifier": "ridge",
+    "alpha": 1,
+    "group_weights": {
+      "bank": 1,
+      "raw": 1,
+      "structure": 0.5,
+      "order": 0
+    },
+    "minimum_margin": 0.01,
+    "training_rows": 571,
+    "training_label_counts": {
+      "gpt-5.5": 72,
+      "gpt-5.6-luna": 72,
+      "gpt-5.6-sol": 71,
+      "gpt-5.6-terra": 71,
+      "gpt-6-astra": 71,
+      "gpt-6-luna": 72,
+      "gpt-6-sol": 71,
+      "gpt-6.1-sol": 71
+    },
+    "calibration_rows": 124,
+    "calibration_label_counts": {
+      "gpt-5.5": 16,
+      "gpt-5.6-luna": 16,
+      "gpt-5.6-sol": 15,
+      "gpt-5.6-terra": 15,
+      "gpt-6-astra": 16,
+      "gpt-6-luna": 14,
+      "gpt-6-sol": 16,
+      "gpt-6.1-sol": 16
+    }
+  },
+  "confirmation": {
+    "responses": {
+      "path": "data/public/confirmation-v12.jsonl",
+      "sha256": "35f474fc361d5f54b1f25b72b73a9cd13656147c4730e7091995dc27c5bd51d9"
+    },
+    "evaluation": {
+      "path": "data/confirmation-v12-evaluation.json",
+      "sha256": "e17570c3921c33f9135db0ca0e8cf771d1ee50f054d052ba254e74465b1f904c"
+    },
+    "calls": 120,
+    "matches": 101,
+    "gate_passed": false,
+    "per_model": {
+      "gpt-5.5": {
+        "samples": 15,
+        "matches": 15,
+        "match_rate": 1.0,
+        "unknown": 0,
+        "format_compliant": 4
+      },
+      "gpt-5.6-luna": {
+        "samples": 15,
+        "matches": 14,
+        "match_rate": 0.9333333333333333,
+        "unknown": 1,
+        "format_compliant": 3
+      },
+      "gpt-5.6-terra": {
+        "samples": 15,
+        "matches": 15,
+        "match_rate": 1.0,
+        "unknown": 0,
+        "format_compliant": 3
+      },
+      "gpt-5.6-sol": {
+        "samples": 15,
+        "matches": 14,
+        "match_rate": 0.9333333333333333,
+        "unknown": 1,
+        "format_compliant": 7
+      },
+      "gpt-6-astra": {
+        "samples": 15,
+        "matches": 9,
+        "match_rate": 0.6,
+        "unknown": 0,
+        "format_compliant": 13
+      },
+      "gpt-6-sol": {
+        "samples": 15,
+        "matches": 14,
+        "match_rate": 0.9333333333333333,
+        "unknown": 0,
+        "format_compliant": 13
+      },
+      "gpt-6-luna": {
+        "samples": 15,
+        "matches": 10,
+        "match_rate": 0.6666666666666666,
+        "unknown": 5,
+        "format_compliant": 3
+      },
+      "gpt-6.1-sol": {
+        "samples": 15,
+        "matches": 10,
+        "match_rate": 0.6666666666666666,
+        "unknown": 2,
+        "format_compliant": 15
+      }
+    },
+    "ground_truth_limit": "requested Codex route labels, not verified hidden served weights"
+  },
+  "deployment": {
+    "repository_updated": true,
+    "public_site_updated": false,
+    "public_url": "https://traceone-model-check.nutmeg-basil-6747.chatgpt.site/",
+    "public_site_routes": 7
+  },
+  "privacy": {
+    "private_logs_included": false,
+    "paid_api_used": false,
+    "reset_credit_used": false
+  },
+  "extra_files": [
+    {
+      "path": "config/release-candidate-v12.json",
+      "sha256": "75c004e50d6dd1dc124d2604284d644c230e5cf86503a6b7f89d8a054bc1e080"
+    },
+    {
+      "path": "data/public/confirmation-v12.manifest.json",
+      "sha256": "4f9a90dfaedddeb35e04882b7f149377eaf5a7d24fb402adecc52b90bd18f550"
+    },
+    {
+      "path": "src/traceone/optimized.py",
+      "sha256": "5897d871897d3dc84441163fd058ddd0805671ea165e442d84697be5980b475d"
+    },
+    {
+      "path": "dist/traceone.js",
+      "sha256": "719b8c9b49ccd7a22045a7cf763a6bb72b566bc7fa34918465cfff0890e316c6"
+    },
+    {
+      "path": "scripts/evaluate_eight_optimized.py",
+      "sha256": "3a806e7604b7845011c26a34a59a4544c7da7c2894c2db608713cb506ecf0fbc"
+    },
+    {
+      "path": "data/eight-optimized-development-v1.json",
+      "sha256": "50b00ff8aafc23461bbe93824011265dfb526e4d28f11c83bc734163d4f0fbd2"
+    },
+    {
+      "path": "data/public/eight-optimized-development-v1.jsonl",
+      "sha256": "40273a96033566b792d2240f2915815b42aa9d90d4b75fc53813f983f3571166"
+    }
+  ]
+}

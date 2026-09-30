@@ -2,100 +2,65 @@
 
 [简体中文](site.md) | [English](site.en.md)
 
-Live site: <https://traceone-model-check.nutmeg-basil-6747.chatgpt.site>
+Public URL: <https://traceone-model-check.nutmeg-basil-6747.chatgpt.site>
 
-## GPT-6.1 Sol boundary
+## Repository source is not production deployment
 
-Real 6.1 Sol responses were collected through the Codex subscription on September
-30, 2026, but eight-class development methods do not reliably separate it from
-Astra. The site retains the accepted seven-class 315-choice default and does not
-offer an eighth prediction option. Both modes and languages disclose this limit;
-Astra results add the overlap warning to the existing explanation, not a new
-subtitle under the model name.
+This request updates GitHub only. Repository dist/ and CLI include the eight-route
+experiment and GPT-6.1 Sol. The public site is not redeployed and retains the earlier
+seven-route implementation and Astra/6.1 overlap warning. Run the new source locally:
 
-The current two-per-route web compatibility pilot matched 12/16 requested labels
-and 5/16 strict formats; both 6.1 Sol responses received the Astra label. This is
-not a web accuracy estimate or evidence of substitution/degradation. See the
-[development evidence](results.en.md#gpt-61-sol-expansion-development-not-qualified-for-release).
+```text
+python3 -m http.server 8000 --bind 127.0.0.1 --directory dist
+```
 
-## User flow
+Open http://127.0.0.1:8000 on the same machine. Loopback only, not public hosting;
+press Ctrl+C to stop.
 
-The same workspace provides two switchable modes:
+## Local eight-route workflow
 
-- **Identify model:** copy the question, paste the answer, and predict one of the seven
-  target routes or `unknown`.
-- **Degradation signal:** first choose the model actually in use, then complete the same
-  one-question flow. The page automatically compares the selected model with the
-  fingerprint prediction and returns “Fingerprint consistent,” “Fingerprint anomaly,”
-  or “Unable to determine.”
+One workspace switches between identification and degradation signals. Identification
+copies one self-contained 315-choice question and predicts an enrolled route or unknown
+from the pasted answer. Consistency screening selects the model used and compares the
+label automatically with its fingerprint prediction: consistent, anomalous or inconclusive.
 
-Both modes use one self-contained question and show absolute similarity, support
-distance, and seven-candidate relative weights. The user does not compare model names
-manually.
+Astra/6.1 Sol cross-confusion always yields unable to determine. A fingerprint mismatch
+cannot prove capability loss; rigorous degradation requires separate paired canaries.
+Both languages retain the full visible prompt, non-wrapping input, centered single-line
+result and compact upstream credit. Imperfect format is disclosed. Out-of-range entries
+are discarded, never padded or fabricated. Tolerance requires nine rows, 25–45 usable
+integers per row and total 280–350; a complete response should be 9x35 integers in 1–355.
+Unreadable/inadmissible responses return unknown.
 
-The page asks for no API key and sends no model response to a server. Its HTML, CSS,
-JavaScript, and three frozen model artifacts are served statically; identification runs
-only in the current browser tab. A Content Security Policy limits scripts, styles, and
-data connections to the same origin.
+## Source decision path and evidence
 
-## Parity with the Python release path
+1. The unchanged ModelTrace-derived 16-model bank supplies distribution/order features.
+2. Eight-class ridge uses 48 bank, 355 raw-frequency and 188 repetition/order features.
+3. Independent 73-dimensional target support plus margin retain rejection, without a
+   high-margin bypass.
+4. The old bank decision is diagnostic, not a closed-set veto on newly enrolled 6.1 Sol.
 
-`dist/traceone.js` ports the release path step by step:
+Enrollment, calibration and confirmation use Codex subscription CLI 0.159.2, Low reasoning.
+Calibration and confirmation omit Schema and match the visible question exactly. Other
+providers, API wrappers and reasoning settings are not qualified by these data.
+Fresh agreement is 101/120 (84.2%), strict-format compliance 61/120, failing the requirement
+that EVERY route reach ≥14/15. See the [ledger](results.en.md). This is neither comprehensive
+superiority nor authenticated identity. Historical seven-route Schema 103/105 cannot be
+relabeled as current web accuracy.
 
-1. the ModelTrace-derived 16-model marginal Hellinger and ordered-block outer guard;
-2. the seven-class ridge adapter;
-3. shrinkage-Mahalanobis target-support rejection and high-margin rescue; and
-4. an explicit `unknown` outcome.
+test_eight_classifier.mjs checks all 120 new decisions and numeric outputs, maximum
+error about 3.4e-13 at tolerance 1e-9. Historical 105 decisions remain reproducible using
+historical artifacts. test_site_assets.mjs checks byte-identical source/deploy assets
+and matching web/CLI/collection prompts. Source parity is not production completion.
 
-`scripts/test_web_classifier.mjs` compares the browser implementation field by field
-with saved Python results: label, format, usable count, outer candidates, similarity,
-score margin, adapter margin, support distance, threshold, and empirical p-value. All
-105 rows in the current v11 `confirmation-v10` batch match within a numeric
-tolerance of `1e-9`.
+## Privacy, interpretation and credit
 
-`scripts/test_site_assets.mjs` also verifies that the site's bank, adapter, and support
-files are byte-identical to the Python package assets and that the visible question is
-synchronized with `prompts/identity-web-v1.txt`.
+The application needs no API key and processes answers in the current browser tab;
+application code does not upload them. Candidate bars visualize relative scores, not
+served-weight identity probabilities. Similarity and empirical support are not trusted
+attestation. System prompts, reasoning, runtimes and provider updates can drift fingerprints.
 
-## Self-contained prompt pilot
-
-The frozen confirmation prompt uses a Codex JSON Schema to enforce the 9×35 output. A normal
-web user cannot conveniently attach that Schema, so `identity-web-v1` states the 9×35
-shape inside the same question while still using only one model call. These prompts
-differ: 103/105 measures route-label agreement for Schema-constrained confirmation,
-not independent seven-route accuracy for the self-contained web question.
-
-The historical 2026-09-15 compatibility pilot collected one Low-reasoning call from each of the then-current five target
-route:
-
-- `supported` requested-route agreement was 5/5;
-- strict format compliance was 1/5;
-- the other four responses each had one or two out-of-range integers, retained 313–314
-  usable values, and passed by the distance path; and
-- browser and Python decisions matched exactly for that historical version.
-
-Public responses and evaluation are in
-[data/public/web-prompt-v1-pilot.jsonl](../data/public/web-prompt-v1-pilot.jsonl) and
-[data/web-prompt-v1-pilot-evaluation.json](../data/web-prompt-v1-pilot-evaluation.json).
-With only five calls, 5/5 is not an accuracy claim; it is evidence that the copy–ask–
-paste journey functions end to end.
-
-## Interpretation boundary
-
-Candidate bars are a relative softmax of the seven adapter scores for visualization,
-not probabilities of server identity. Absolute similarity and support distance are not
-trusted attestation either. System prompts, reasoning effort, runtime, date, and service
-updates can all move a behavioral fingerprint.
-
-The web “Degradation signal” is a **route-fingerprint consistency screen**. A supported
-match produces “Fingerprint consistent,” a supported mismatch produces “Fingerprint
-anomaly,” and rejection produces “Unable to determine.” A mismatch can also result
-from classification error, route substitution, system-prompt changes, reasoning effort,
-or temporal drift, so it cannot by itself prove a capability loss. Strict capability-
-degradation claims in the repository still require the separate canary, paired McNemar
-test, power plan, and multiple-testing correction.
-
-The site explicitly thanks [ModelTrace](https://github.com/xqy2006/ModelTrace), the
-most important direct method and implementation foundation of this project. The web
-experience makes that excellent lineage easier to use through a one-question workflow,
-rejection, and clear visualization.
+The page credits [ModelTrace](https://github.com/xqy2006/ModelTrace). The repository
+specifically appreciates xqy2006's excellent open-source contribution, explaining
+lineage and MIT reuse boundaries in [research notes](research.en.md) and
+[third-party NOTICE](../third_party/NOTICE.md).

@@ -15,7 +15,7 @@
 
 ## 2. 冻结发布管线
 
-七模型当前 315 数字配置为
+七模型历史 v11 的 315 数字配置为
 [release-candidate-v11.json](../config/release-candidate-v11.json)；
 v9、v10 候选与失败确认保留在历史记录中。
 五模型历史发布配置仍见
@@ -127,7 +127,9 @@ manifest 记录源文件和公开文件 digest。发布前仍需人工检查未�
 - GPT-5.4 是当前最难未见类，七模型 development 中仍有 13/36 false accepts。
 - 没有 routing log/attestation，不能区分 detector error、自然波动和真实换模。
 
-## 10. GPT-6.1 Sol 扩展开发
+## 10. GPT-6.1 Sol 首轮扩展开发（历史阶段）
+
+本节记录最早489次开发的当时决策；0.3.0已登记第八类，后续实现和确认见第11节。
 
 [OpenAI 官方模型说明](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
 确认模型 ID 为 `gpt-6.1-sol`，且支持 `low` reasoning。2026-09-30 的早期试调
@@ -170,7 +172,33 @@ python3 scripts/verify_frozen.py config/release-candidate-v11.json --revision 8d
 16-model bank 数值不变；对删去一类的 held-label bank 则修正为 45。历史 OOD
 开发结果仍属于当时实现，不能直接标成这个修正版或八类方法的 OOD 准确率。
 
-[OpenAI 的 Codex 可用性说明](https://learn.chatgpt.com/docs/models) 指出模型按
-账户和客户端逐步开放，且 GPT-5.5 将于 2026-10-14 从 ChatGPT/Codex 退休。
-若在此之前无法完成同条件八类确认，就不能把历史 GPT-5.5 样本与新日期批次
-拼接成“八类同期盲测”；应重新登记可调用目标集合，保留七类历史结果。
+复验前应重新检查所有目标是否能在同一账户、客户端和推理条件下调用；不能把历史
+样本与不同日期、环境的新样本拼接成“同期盲测”。若可用模型集合改变，应重新登记
+目标集合，并保留历史结果。
+
+## 11. 0.3.0 八模型实验实现与发布边界
+
+模型集为八条路由，包含 `gpt-6.1-sol`；采集不再要求该模型的 prospective opt-in。
+CLI默认 `optimized` 使用 `identity-replacement-v1` 自包含问题；`supported` 和
+`traceone prompt --legacy` 保留七类历史方法与问题。不要混用两版问题和分类器。
+
+训练使用同一CLI 0.159.2、Low reasoning、同一问题的576次开发调用，571条参与拟合。
+每次目标仍为315个整数。Schema约束用于登记；独立校准128次和全新确认120次均
+不附加Schema，与网页条件相同。训练、校准、确认的ID分离，失败不从评测分母删除。
+
+96个开发配置按最差逐类匹配数优先、总数其次、并列时简单ridge优先选择。
+结果是alpha=1，48 bank特征、355原始频率和188重复/顺序统计；每组标准化后按
+weight/sqrt(dim)加权，group weights为1、1、0.5。原16-model bank未添加伪造的6.1中心。
+73维支持范围使用独立校准的逐类最大距离、covariance shrinkage=0.3；没有high-margin
+bypass。它是经验检查，不提供身份概率或跨漂移的分布无关保证。
+
+输入必须能读取为九个数组或唯一 `numbers` key 的对象。允许丢弃越界和非整数值，
+每行需25–45个有效整数、总数280–350；不得补造或clamp整数。严格9×35、1–355格式
+合规率另外报告；无法解析、输入不合格、工具执行、超时和拒识均计入未匹配。
+支持距离比较使用1e-10相对浮点容差，margin使用1e-12绝对容差，以保持跨语言边界一致。
+
+先冻结代码、数据和参数于 `5b70968`，再采集每类15次确认，规则仍是每类≥14/15。
+实际101/120，Astra、6 Luna、6.1 Sol未过门槛；确认之后没有再调参或替换调用。
+本次按已选择配置发布实验源码，不宣称整体性能改善，不同步替换线上站点。
+完整失败证据见[结果](results.md)。网页降智线索中，Astra/6.1相互混淆一律为无法判断；
+其他不一致也不能单独证明能力下降，能力降质仍需独立paired canary。

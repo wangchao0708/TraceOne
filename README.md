@@ -8,7 +8,7 @@
   </a>
 </p>
 
-TraceOne 用一次 315 数字提问为七条 Codex 模型路由提供实验性指纹识别，并把行为身份
+TraceOne 用一次 315 数字提问为八条 Codex 模型路由提供实验性指纹识别，并把行为身份
 漂移与能力降质拆成两个独立、可复现的统计问题：
 
 - `gpt-5.5`
@@ -18,22 +18,29 @@ TraceOne 用一次 315 数字提问为七条 Codex 模型路由提供实验性�
 - `gpt-6-astra`
 - `gpt-6-sol`
 - `gpt-6-luna`
+- `gpt-6.1-sol`
 
-`gpt-6.1-sol` 已于 2026-09-30 用 Codex 订阅实际采样，并完成八类训练接口与
-开发评测；但**尚不能可靠区分 GPT-6 Astra，因此未启用第八个预测选项**。
-本轮公开 489 次真实调用，其中 178 次请求 6.1 Sol，全部仍是一问 315 数字。
-原问题的八类 `supported` 开发结果为 101/120，6.1 Sol 为 8/15；改进问题的最佳
-closed-set 开发候选为 175/192，6.1 Sol 为 19/24，仍未达到逐类门槛。两者不是
-同批 paired 比较，也不是独立盲测；不能宣称八款均优于上游。默认七类版本保持不变。
-详见 [结果与证据](docs/results.md#gpt-61-sol-扩展开发尚未通过发布门槛) 与
-[评测协议](docs/protocol.md#10-gpt-61-sol-扩展开发)。
+`0.3.0` 将预先选型并冻结的八类配置作为实验实现加入仓库，包含 GPT-6.1 Sol，
+仍只问一次、要求 315 个数字。它是当前开发选型规则选出的配置，不代表所有配置
+都已做独立盲测比较。
+新问题明确允许重复；分类器结合 ModelTrace 衍生的 bank 特征、原始频率及重复、顺序
+统计，并采用同一 Codex CLI 0.159.2 的八类登记数据及独立支持范围校准。
+开发三折结果为 543/576，Astra 为 59/72、6.1 Sol 为 58/72，**不能当作独立准确率**。
+冻结后真实网页条件确认只有 101/120（84.2%）：Astra 9/15、6.1 Sol 10/15、6 Luna 10/15，
+未达到每类 ≥14/15 的预设门槛。完整分母和格式情况见 [结果与证据](docs/results.md)。
+**Astra 与 6.1 Sol 仍可能混淆；本项目不宣称八款全面优于 ModelTrace，也不提供模型身份认证。**
+旧版失败证据和七模型 `supported` 方法保留，`traceone prompt --legacy` 可取旧问题。
+**本次只更新仓库；在线链接仍提供之前的七模型版本。** 使用八模型需运行本地
+CLI 或本地网页源码。源码发布不表示通过科研性能门槛，不能把失败确认冒充性能提升。
+登记与评测覆盖 Codex 订阅 Low reasoning；其他平台、API wrapper 或推理设置不属于
+这批数据已验证的范围。
 
 ## 在线使用
 
 [打开 TraceOne Web](https://traceone-model-check.nutmeg-basil-6747.chatgpt.site)
 
 网页把输出形状直接写进同一个问题，用户无需安装软件或附加 JSON Schema：复制
-问题、向模型提问、粘贴完整回答即可。16-model outer guard、ridge adapter 与
+问题、向模型提问、粘贴完整回答即可。16-model bank 特征、八类 ridge adapter 与
 target-support rejection 全部在浏览器本地运行，回答不会被上传。
 
 网页提供“模型识别”和“降智线索”两个切换模式。后者让用户选择自己实际使用的
@@ -41,9 +48,9 @@ target-support rejection 全部在浏览器本地运行，回答不会被上传�
 “无法判断”。这只是路由指纹一致性筛查；能力下降仍需独立 canary 评测，不能仅凭
 一次指纹不一致下结论。
 
-浏览器 JavaScript 实现与 Python 对最新 315 数字确认集的 105 条响应逐字段一致。
-网页展示的是自包含问题；冻结确认使用了同一次调用附加 JSON Schema 的版本，
-因此 103/105 不能直接当成网页提示词的准确率。历史五模型网页 pilot 为 5/5
+浏览器 JavaScript 与 Python 对新八类确认逐字段验证；旧版 105 条响应的历史结果也保留并复核。
+新版网页和确认均使用同一个自包含问题、不附加 Schema。历史 103/105 来自七模型
+Schema 确认，不能直接当成当前网页问题的准确率。历史五模型网页 pilot 为 5/5
 路由匹配、1/5 严格格式合规，只是兼容性 smoke test。详见
 [docs/site.md](docs/site.md)。
 
@@ -56,7 +63,7 @@ TraceOne 首先向 [ModelTrace](https://github.com/xqy2006/ModelTrace) 作者
 下面的比较应理解为在这一坚实基础上的扩展与压力测试，而不是对原工作的否定。
 
 - 身份识别从作者推荐的三次 probe 降为一次调用、一次响应。
-- 不做裸 closed-set argmax：16-model outer guard、七类 ridge adapter 和
+- 不做裸 closed-set argmax：16-model bank 特征、八类 ridge adapter 和
   target-support envelope 可返回 `unknown`。
 - 有冻结配置、预注册盲测、完整失败分母、整批留一验证与可公开复现数据。
 - “数字指纹变了”不等于“降智”；降质由独立 canary、paired McNemar、功效规划
@@ -72,7 +79,14 @@ ModelTrace 还明确致谢了更早的
 
 ## 我们的一问
 
-实际冻结问题只有下面这一条；JSON Schema 只是同一次调用的输出约束：
+八类实验实现的本地网页、CLI 和新盲测使用同一条自包含问题，不需要附加 JSON Schema。
+它要求 9×35 个整数；“独立、允许重复”是生成指令，不保证真正独立均匀随机。
+
+```text
+Using only the current language model, make 315 independent first-instinct selections of an integer from 1 through 355 inclusive. Sample mentally with replacement: after each choice, forget the earlier choices. Repeated integers are allowed and expected; do not try to cover the range, balance frequencies, avoid duplicates, or alternate high and low values. Output only one JSON object with the sole key "numbers", containing 9 arrays of exactly 35 integers each. Do not use tools, code execution, calculators, search, APIs, or external random generators. Do not count, use an arithmetic progression, or reuse a designed sequence. No explanation.
+```
+
+历史七模型冻结问题如下；不要把它与新八模型资产混用：
 
 ```text
 Using only the current language model, produce 315 separate first-instinct
@@ -102,7 +116,7 @@ schema-conforming JSON value with no explanation.
 GPT-5.6 Sol 为 13/15，GPT-6 Sol 为 12/15，仍未过同一门槛。
 ModelTrace 同响应一问为 96/105，非重叠三问 35/35。
 
-当前 315 数字 v11 加入原始数字频率特征，在新采集的 `confirmation-v10` 上为
+历史 315 数字 v11 加入原始数字频率特征，在当时新采集的 `confirmation-v10` 上为
 103/105（98.1%）；GPT-6 Sol 为 13/15，仍未达到每类 ≥14/15 的预设门槛。
 同响应 ModelTrace 一问为 104/105，互不重叠三问为 35/35。因此七模型支持
 可以试用，但不能宣称全面超过上游。完整失败样本见
@@ -171,15 +185,21 @@ python3 scripts/collect_codex.py \
 离线识别保存的 JSON 响应：
 
 ```text
-traceone identify answer.json --format grid --method supported
+traceone identify answer.json --format grid --method optimized
 ```
 
-`supported` 是较低 OOD 误接收的默认模式；`enrolled` 更偏重已登记模型的敏感度。
-两者都先经过 16-model outer guard。`unknown` 是有效结果，不应强制改成某个模型。
+`optimized` 是仓库默认的八类实验模式，要求使用新版问题并经过独立校准的支持范围检查。
+`supported`、`enrolled` 是保留的七类历史方法，两者先经过旧 outer guard。
+`unknown` 是有效结果，不应强制改成某个模型。
 
 复现最终评测与冻结检查：
 
 ```text
+python3 scripts/verify_frozen.py config/release-candidate-v12.json
+PYTHONPATH=src python3 scripts/evaluate_eight_optimized.py --verify-only
+PYTHONPATH=src python3 scripts/evaluate_eight_optimized.py \
+  --responses data/public/confirmation-v12.jsonl --output /tmp/traceone-v12-eval.json
+node scripts/test_eight_classifier.mjs
 PYTHONPATH=src python3 scripts/evaluate_live.py \
   data/public/confirmation-v7.jsonl --output /tmp/traceone-eval.json
 PYTHONPATH=src python3 scripts/evaluate_head_to_head.py \

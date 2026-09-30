@@ -25,6 +25,9 @@ jobs:
       - run: python scripts/verify_frozen.py config/release-candidate-v11.json --revision 8d70a3b
       - run: python scripts/verify_release.py config/release-v0.1.0.json
       - run: python scripts/evaluate_gpt61_development.py --verify-only
+      - run: python scripts/verify_frozen.py config/release-candidate-v12.json
+      - run: python scripts/verify_frozen.py config/release-v0.3.0.json
+      - run: python scripts/evaluate_eight_optimized.py --verify-only
 
   web-classifier:
     runs-on: ubuntu-latest
@@ -36,4 +39,5 @@ jobs:
       - run: node --check dist/app.js
       - run: node --check dist/traceone.js
       - run: node scripts/test_web_classifier.mjs
+      - run: node scripts/test_eight_classifier.mjs
       - run: node scripts/test_site_assets.mjs

@@ -8,7 +8,7 @@
   </a>
 </p>
 
-TraceOne offers experimental fingerprint identification for seven Codex model routes
+TraceOne offers experimental fingerprint identification for eight Codex model routes
 with one 315-choice call. Route-fingerprint drift and capability degradation remain
 separate, reproducible questions:
 
@@ -19,19 +19,28 @@ separate, reproducible questions:
 - `gpt-6-astra`
 - `gpt-6-sol`
 - `gpt-6-luna`
+- `gpt-6.1-sol`
 
-`gpt-6.1-sol` was sampled through the Codex subscription on September 30, 2026;
-eight-class training interfaces and development checks are now available. However,
-it is **not reliably separated from GPT-6 Astra, so the eighth prediction option
-remains disabled**. This update publishes 489 real calls, including 178 requested
-6.1 Sol responses, all using a single 315-choice call. The original-prompt eight-class
-`supported` development check matched 101/120, with 6.1 Sol at 8/15. The best revised
-prompt closed-set development candidate matched 175/192, with 6.1 Sol at 19/24.
-These are different, inspected development batches and decision rules, not a paired
-improvement estimate or independent confirmation. The seven-class default is retained;
-comprehensive eight-route superiority is not claimed. See the
-[evidence](docs/results.en.md#gpt-61-sol-expansion-development-not-qualified-for-release)
-and [protocol](docs/protocol.en.md#10-gpt-61-sol-expansion-development).
+Version `0.3.0` publishes the preselected, frozen eight-class experimental configuration, including GPT-6.1 Sol, still
+using one question requesting 315 integers. The revised question explicitly permits
+repetition. The classifier combines ModelTrace-derived bank features, raw frequencies,
+and repetition/order statistics with concurrent eight-route enrollment and separate
+support calibration collected through Codex CLI 0.159.2. Inspected three-fold
+development matched 543/576 (Astra 59/72, 6.1 Sol 58/72), **not an independent accuracy
+estimate**. Fresh web-condition confirmation matched only 101/120 (84.2%): Astra
+9/15, 6.1 Sol 10/15, and 6 Luna 10/15. The requirement that EVERY route reach ≥14/15 was not met.
+Strict-format compliance and failure denominators are documented in the
+[evidence ledger](docs/results.en.md).
+**Astra and 6.1 Sol can still be confused. We claim neither comprehensive superiority
+over ModelTrace nor authenticated model identity.** Historical failures and the
+seven-class `supported` method remain reproducible; `traceone prompt --legacy` prints
+the old question. Enrollment and evaluation cover Codex subscription Low reasoning;
+other providers, API wrappers, and reasoning settings are not qualified by these data.
+**This update changes the repository only, not the public site. The online link
+still serves the seven-route baseline.** Run the local CLI or local web source for
+eight-route identification. Source publication is not qualification against the
+research gate. The configuration is selected by the documented development rule,
+not an independent confirmation comparison of every configuration.
 
 ## Use it online
 
@@ -39,7 +48,7 @@ and [protocol](docs/protocol.en.md#10-gpt-61-sol-expansion-development).
 
 The web question embeds the output shape in the same prompt, so users need no
 installation or separate JSON Schema: copy the question, ask the model, and paste the
-complete answer. The 16-model outer guard, ridge adapter, and target-support rejection
+complete answer. The 16-model bank features, eight-class ridge adapter, and target-support rejection
 all run locally in the browser; responses are not uploaded.
 
 The page switches between “Identify model” and “Degradation signal.” In the latter,
@@ -49,11 +58,10 @@ selection with the fingerprint prediction and returns “Fingerprint consistent,
 consistency screen. Capability loss still requires the separate canary evaluation and
 cannot be concluded from one fingerprint mismatch alone.
 
-Browser JavaScript matches Python field by field on all 105 responses in the latest
-315-choice confirmation set. The web question is self-contained, whereas the frozen
-confirmation used a JSON Schema attached to the same call, so its 103/105 result is
-not a measured web-prompt accuracy. An earlier five-route web-prompt pilot matched
-5/5 requested routes but only 1/5 strict formats; it was a compatibility smoke test.
+The new eight-route confirmation is checked field by field against browser JavaScript.
+All 105 historical seven-route results are also retained and reproduced. Both the
+current web question and confirmation are self-contained, without an external Schema;
+the historical 103/105 Schema result must not be relabeled as current web accuracy.
 See [docs/site.en.md](docs/site.en.md).
 
 ## Extensions built on ModelTrace
@@ -69,7 +77,7 @@ of the original work.
 
 - Identity attribution uses one call and one response instead of the author's
   recommended three probes.
-- It is not a bare closed-set argmax. A 16-model outer guard, seven-class ridge
+- It is not a bare closed-set argmax. The 16-model bank features, eight-class ridge
   adapter, and target-support envelope can return `unknown`.
 - Frozen configurations, preregistered confirmations, complete failure
   denominators, whole-collection holdouts, and publishable data are included.
@@ -86,8 +94,15 @@ and acknowledges that community lineage as well. See
 
 ## The single question
 
-The frozen prompt below is the only question. JSON Schema constrains the same
-call's output; it is not another query.
+The current web question, CLI prompt, and new confirmation use this identical
+self-contained question, with no additional JSON Schema. Independence and repetition
+are instructions, not a guarantee of independent uniform randomness.
+
+```text
+Using only the current language model, make 315 independent first-instinct selections of an integer from 1 through 355 inclusive. Sample mentally with replacement: after each choice, forget the earlier choices. Repeated integers are allowed and expected; do not try to cover the range, balance frequencies, avoid duplicates, or alternate high and low values. Output only one JSON object with the sole key "numbers", containing 9 arrays of exactly 35 integers each. Do not use tools, code execution, calculators, search, APIs, or external random generators. Do not count, use an arithmetic progression, or reuse a designed sequence. No explanation.
+```
+
+Historical seven-route Schema prompt; do not mix it with the new eight-route assets:
 
 ```text
 Using only the current language model, produce 315 separate first-instinct
@@ -119,7 +134,7 @@ The subsequently frozen `release-candidate-v10` matched 98/105 on independent
 same gate. ModelTrace one-call on those responses was 96/105, while disjoint
 three-call decisions were 35/35.
 
-The current 315-choice v11 adds raw number-frequency features. On the fresh
+The historical 315-choice v11 adds raw number-frequency features. On its fresh
 `confirmation-v10` it matched 103/105 (98.1%), but GPT-6 Sol was 13/15, below the
 prespecified ≥14/15 per-route gate. On the same responses, ModelTrace one-call
 matched 104/105 and disjoint three-call decisions matched 35/35. Seven-route
@@ -193,16 +208,22 @@ python3 scripts/collect_codex.py \
 Identify a saved JSON response offline:
 
 ```text
-traceone identify answer.json --format grid --method supported
+traceone identify answer.json --format grid --method optimized
 ```
 
-`supported` is the default lower-false-accept operating point; `enrolled` favors
-sensitivity to registered targets. Both run only after the 16-model outer guard.
-`unknown` is a valid outcome and should not be forced into a model label.
+`optimized` is the repository's default eight-class experimental method. Use the revised question and its
+independently calibrated target-support gate. `supported` and `enrolled` retain the
+historical seven-class methods and old outer guard. `unknown` is a valid result and
+must not be forced into a model label.
 
 Reproduce the final evaluation and verify frozen assets:
 
 ```text
+python3 scripts/verify_frozen.py config/release-candidate-v12.json
+PYTHONPATH=src python3 scripts/evaluate_eight_optimized.py --verify-only
+PYTHONPATH=src python3 scripts/evaluate_eight_optimized.py \
+  --responses data/public/confirmation-v12.jsonl --output /tmp/traceone-v12-eval.json
+node scripts/test_eight_classifier.mjs
 PYTHONPATH=src python3 scripts/evaluate_live.py \
   data/public/confirmation-v7.jsonl --output /tmp/traceone-eval.json
 PYTHONPATH=src python3 scripts/evaluate_head_to_head.py \

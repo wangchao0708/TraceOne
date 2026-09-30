@@ -1,6 +1,20 @@
 # Changelog
 
-## Unreleased
+## 0.3.0 — 2026-09-30 (experimental eight-route source; repository-only update)
+
+- Added GPT-6.1 Sol to the eight-class CLI and local browser implementation; one
+  self-contained question still requests 315 integers.
+- Selected a frozen ridge configuration on 576 development calls, with 571 fitted
+  rows and 124 analyzable responses from a separate 128-call web calibration.
+- Published the complete 120-call fresh web-condition confirmation: 101/120, with
+  Astra 9/15, 6 Luna 10/15 and 6.1 Sol 10/15. The per-route gate FAILED; no overall
+  improvement or comprehensive-superiority claim.
+- Verified 120 Python/browser decisions at 1e-9 tolerance and retained every
+  historical seven-route result. Astra/6.1 mismatches are inconclusive in screening.
+- Kept raw private logs and unused exploratory runners out of the repository.
+- Updated GitHub only; the public Site remains the previous seven-route deployment.
+
+## Earlier 6.1 compatibility preparation (historical)
 
 - Prepared `gpt-6.1-sol` as an opt-in Codex collection route and updated detection
   of the desktop-bundled Codex executable. The public classifier and web picker

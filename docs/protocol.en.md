@@ -142,7 +142,10 @@ review exports for fields introduced by future runtimes.
 - Without routing logs or attestation, detector error, natural variation, and real
   substitution cannot be distinguished.
 
-## 10. GPT-6.1 Sol expansion development
+## 10. Initial GPT-6.1 Sol expansion development (historical stage)
+
+This section records the first 489-call stage. Version 0.3.0 registers the eighth
+route; its subsequent method and confirmation are described in section 11.
 
 The [official OpenAI model page](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
 confirms the exact ID `gpt-6.1-sol` and support for `low` reasoning. An early
@@ -196,8 +199,44 @@ than a hard-coded 48. Default 16-model calculations are unchanged; a one-label-
 removed bank correctly uses 45. Historical OOD development results belong to their
 original implementation, not this correction or the prospective eight-class method.
 
-[OpenAI's Codex availability guidance](https://learn.chatgpt.com/docs/models)
-notes a staged account/client rollout and GPT-5.5 retirement from ChatGPT/Codex
-on October 14, 2026. If a same-condition eight-route confirmation cannot finish
-before then, do not splice historical GPT-5.5 rows into a new-date “concurrent”
-eight-route test. Preregister a callable target set and preserve historical results.
+Before revalidation, check that every target is callable under the same account,
+client and reasoning conditions. Do not splice historical rows into a different-date
+or different-environment batch and call it concurrent confirmation. If availability
+changes, preregister the callable target set and preserve historical results.
+
+## 11. Version 0.3.0 eight-route experiment and publication boundary
+
+Eight targets include `gpt-6.1-sol`, no longer requiring prospective opt-in for
+collection. CLI default `optimized` uses the self-contained `identity-replacement-v1`
+question. `supported` and `traceone prompt --legacy` retain seven-route history.
+Do not mix questions and classifier versions.
+
+All 576 development calls use CLI 0.159.2, Low reasoning and the same question;
+571 enter fitting. Each requests 315 integers. Enrollment uses Schema; independent
+128-call calibration and 120-call confirmation do not, matching web conditions.
+IDs are disjoint across roles and failures remain in evaluation denominators.
+
+Selection over 96 development configurations prioritizes the lowest per-route match
+count, then total matches, preferring ordinary ridge on ties. The result uses alpha=1,
+48 bank features, 355 raw frequencies and 188 repetition/order statistics. After
+standardization, each group is scaled by weight/sqrt(dim), with weights 1/1/0.5.
+The original 16-model bank has no fabricated 6.1 Sol centroid. The 73-dimensional
+support envelope uses independent per-class maximum calibration distance, covariance
+shrinkage 0.3 and no high-margin bypass. It is empirical, not an identity probability
+or distribution-free guarantee under drift.
+
+Input must be readable as nine arrays or a sole-key numbers object. Out-of-range
+and non-integer entries may be discarded; each row needs 25–45 usable integers,
+total 280–350. Never pad, fabricate or clamp integers. Strict 9x35/1–355 format
+compliance is reported separately. Unparseable, inadmissible, tool-using, timed-out
+and rejected calls count as misses. Distance comparison has 1e-10 relative and
+margin comparison 1e-12 absolute floating-point tolerance for cross-language parity.
+
+Code, data and parameters were frozen at 5b70968 before collecting 15 fresh calls
+per route. The rule remains ≥14/15 for EVERY route. Actual agreement is 101/120;
+Astra, 6 Luna and 6.1 Sol fail the gate. No retuning or replacing confirmation calls
+followed. This publishes the selected experimental source, not an overall-improvement
+claim or public-site replacement. Full failures are in the [ledger](results.en.md).
+Astra/6.1 Sol cross-confusion always yields an inconclusive web consistency verdict.
+Other mismatches likewise cannot prove degradation; capability loss requires separate
+paired canary measurement.

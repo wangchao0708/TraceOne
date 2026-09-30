@@ -4,81 +4,54 @@
 
 在线地址：<https://traceone-model-check.nutmeg-basil-6747.chatgpt.site>
 
-## GPT-6.1 Sol 当前边界
+## 仓库源码与线上部署分开
 
-2026-09-30 已用 Codex 订阅采集真实 6.1 Sol 样本，但八类开发方法仍不能稳定
-区分它与 Astra。因此网页保持用户选择的七类 315 数字版本，不提供第八个预测
-选项。两个模式与两种语言都会显示范围提示；出现 Astra 结论时，原有结果说明
-也会提醒 6.1 Sol 可能呈现相同指纹。模型名称下方不新增小字。
+本次只更新GitHub。仓库dist/和CLI包含八模型实验实现及GPT-6.1 Sol；在线站点
+没有重新部署，仍使用此前七模型版本及Astra/6.1重叠提示。运行八模型源码：
 
-本轮八路由各两次的网页 compatibility pilot 为 12/16 路由匹配、5/16 严格
-格式合规；6.1 Sol 的两条都被归为 Astra。这不是网页准确率证明，更不能作为
-模型替换或降智的结论。样本和复现方法见
-[本轮开发结果](results.md#gpt-61-sol-扩展开发尚未通过发布门槛)。
+```text
+python3 -m http.server 8000 --bind 127.0.0.1 --directory dist
+```
 
-## 用户流程
+在同一机器打开http://127.0.0.1:8000。仅绑定loopback，不对外发布；Ctrl+C停止。
 
-网页在同一个工作区提供两个切换模式：
+## 八模型源码的工作流
 
-- **模型识别**：复制问题、粘贴回答，直接预测七条目标路由之一或 `unknown`；
-- **降智线索**：先选择自己实际使用的模型，再完成同样的一问流程。网页自动把
-  所选模型与指纹预测比较，返回“指纹一致”“指纹异常”或“无法判断”。
+同一工作区切换模型识别和降智线索。识别模式复制一个自包含315数字问题，粘贴
+回答后预测八条登记路由之一或unknown。降智线索模式先选择使用的模型，自动将
+预测与所选标签比较，显示指纹一致、指纹异常或无法判断。
 
-两个模式都只需复制一个自包含问题，把模型返回的完整 JSON 粘贴回网页。页面同时
-显示绝对相似度、支持距离和七候选相对权重，用户不需要手工比较模型名称。
+Astra和6.1 Sol互相混淆时，降智线索直接显示无法判断，不把困难分类当作路由异常。
+任何指纹不一致都不能单独证明能力下降；严格能力降质仍需独立paired canary。
 
-网页不会要求 API Key，也不会把模型回答发送给服务器。HTML、CSS、JavaScript、
-三个冻结模型资产均由站点静态提供，识别计算只发生在当前浏览器标签页。页面设置
-了仅允许同源脚本、样式、数据连接的 Content Security Policy。
+两种语言保持完整问题展示、不自动折行的输入、居中单行结果及简洁上游致谢。
+格式偏差明确提示：越界值丢弃，不补造整数。容错为九行、每行25–45个有效整数、
+总数280–350；完整回答仍应为9×35个1–355整数。不可读或不合格时返回未知。
 
-## 与 Python 发布路径的一致性
+## 当前源码实现与证据
 
-`dist/traceone.js` 逐步移植以下发布路径：
+1. 未改写的ModelTrace衍生16-model bank提供分布及ordered-block特征。
+2. 48 bank + 355 raw-frequency + 188 repetition/order特征进入八类ridge。
+3. 独立校准的73维目标支持范围及margin允许拒识，没有high-margin bypass。
+4. 原bank外层结论仅作诊断，不用旧标签集合否决新登记的6.1 Sol。
 
-1. ModelTrace 衍生的 16-model marginal Hellinger 与 ordered-block outer guard；
-2. 七类 ridge adapter；
-3. shrinkage Mahalanobis target-support rejection 与 high-margin rescue；
-4. 显式的 `unknown` 结果。
+登记、校准和确认使用Codex订阅CLI 0.159.2、Low reasoning。后两者不附加Schema，
+与页面问题完全一致；其他平台、API wrapper和推理设置未获这批数据验证。
 
-`scripts/test_web_classifier.mjs` 将浏览器实现与 Python 保存结果逐字段比对，包括
-标签、格式、有效数字数、outer candidates、相似度、score margin、adapter margin、
-support distance、threshold 与 empirical p-value。当前 v11 的 105 条
-`confirmation-v10` 响应全部在 `1e-9` 数值容差内一致。
+新确认101/120（84.2%）、严格格式61/120，未过每类≥14/15门槛，详见[结果](results.md)。
+它不是八款全面优于上游或模型身份认证。旧七类Schema的103/105不能移作当前网页准确率。
 
-`scripts/test_site_assets.mjs` 还验证网页中的 bank、adapter、support 与 Python 包
-资产逐字节一致，并检查网页显示问题与 `prompts/identity-web-v1.txt` 一致。
+test_eight_classifier.mjs核对120条新响应的标签、格式、有效数、分数、间隔、
+支持距离、阈值和empirical p-value，最大误差约3.4×10⁻¹³，容差1e-9。
+旧105条结果继续用历史资产复核。test_site_assets.mjs检查当前两份部署资产与
+Python源资产逐字节一致、网页与CLI及采集问题相同。源码一致性不等于在线部署。
 
-## 自包含问题 pilot
+## 隐私、解释和致谢
 
-冻结确认 prompt 通过 Codex JSON Schema 强制 9×35 输出。普通网页用户无法方便地
-附加 Schema，因此 `identity-web-v1` 把 9×35 形状写入同一次提问，仍然只有一次
-模型调用。两种 prompt 不完全相同；103/105 是 Schema 确认集的路由标签匹配率，
-不是这个网页自包含问题在七模型上的独立准确率。
+应用无需API Key，计算留在当前浏览器标签页，应用代码不会上传回答。候选条形图
+只是相对分数，不是实际权重身份概率；相似度与经验支持也不是可信attestation。
+system prompt、reasoning、runtime及服务更新均可能使行为漂移。
 
-2026-09-15 的历史 compatibility pilot 对当时五条目标 route 各采集一次 Low reasoning：
-
-- `supported` requested-route agreement：5/5；
-- 严格格式合规：1/5；
-- 其余四条各有 1–2 个越界整数，保留 313–314 个有效数字，均经过 distance path；
-- 当时版本的浏览器与 Python 结果完全一致。
-
-公开响应与评测分别在
-[data/public/web-prompt-v1-pilot.jsonl](../data/public/web-prompt-v1-pilot.jsonl) 和
-[data/web-prompt-v1-pilot-evaluation.json](../data/web-prompt-v1-pilot-evaluation.json)。
-样本量只有 5，不能把 5/5 当作准确率证明；它只验证复制—回答—粘贴链路可工作。
-
-## 解释边界
-
-候选条形图是七类 adapter score 的相对 softmax，仅用于可视化，不是服务端身份
-概率。绝对相似度与支持距离也不是可信 attestation。system prompt、reasoning、
-runtime、日期和服务更新都可能使行为指纹漂移。
-
-网页的“降智线索”是**路由指纹一致性筛查**：可靠预测与所选模型一致时显示
-“指纹一致”，可靠预测不一致时显示“指纹异常”，拒识时显示“无法判断”。不一致
-也可能来自分类误差、路由替换、系统提示、推理强度或时间漂移，因此不能单独证明
-能力下降。仓库中严格的能力降质结论仍由独立 canary、paired McNemar、功效规划
-和多重比较校正产生。
-
-网页明确致谢 [ModelTrace](https://github.com/xqy2006/ModelTrace)。它是本项目最
-重要的直接方法与实现基础；TraceOne 的网页只是把这条优秀工作脉络包装成更易用
-的一问交互，并增加拒识与可视化。
+页面简洁致谢[ModelTrace](https://github.com/xqy2006/ModelTrace)。仓库具体感谢作者
+xqy2006的优秀开源贡献，并说明方法继承和MIT复用边界，见[研究说明](research.md)
+和[third-party NOTICE](../third_party/NOTICE.md)。
