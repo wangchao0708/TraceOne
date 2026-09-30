@@ -2,9 +2,9 @@ import json
 import random
 import unittest
 
-from traceone.adapter import load_adapter
+from traceone.adapter import fit_ridge_adapter, load_adapter
 from traceone.fingerprint import TARGET_MODELS, load_bank
-from traceone.support import identify_text_supported, load_support
+from traceone.support import fit_support, identify_text_supported, load_support
 
 
 class SupportTests(unittest.TestCase):
@@ -25,6 +25,18 @@ class SupportTests(unittest.TestCase):
         result = identify_text_supported(json.dumps({"numbers": grid}))
         self.assertEqual(result.status, "unknown")
         self.assertIsNone(result.support_passed)
+
+    def test_explicit_eighth_class_support_uses_artifact_targets(self) -> None:
+        bank = load_bank()
+        models = TARGET_MODELS + ("gpt-6.1-sol",)
+        rng = random.Random(62)
+        rows = [(model, [rng.randint(1, 355) for _ in range(315)])
+                for model in models for _ in range(2)]
+        adapter = fit_ridge_adapter(rows, bank, models=models, raw_weight=0.25)
+        support = fit_support(rows, bank, adapter)
+        self.assertEqual(support["models"], list(models))
+        self.assertEqual(len(support["centroids"]), 8)
+        self.assertEqual(len(support["distance_thresholds"]), 8)
 
 
 if __name__ == "__main__":

@@ -16,7 +16,7 @@ from .adapter import (
     classify_adapted,
     load_adapter,
 )
-from .fingerprint import ENROLLED_OUTER_GUARD, GuardConfig, TARGET_MODELS, load_bank
+from .fingerprint import ENROLLED_OUTER_GUARD, GuardConfig, load_bank
 from .parsing import ParseResult, parse_grid_response, parse_identity_response
 
 
@@ -59,8 +59,9 @@ def fit_support(
         raise ValueError("covariance_shrinkage must be positive")
     if not 0 < distance_quantile <= 1 or not 0 < rescue_margin_quantile <= 1:
         raise ValueError("quantiles must be in (0, 1]")
+    models = tuple(adapter["models"])
     labels = [label for label, _ in labeled_numbers]
-    if set(labels) != set(TARGET_MODELS):
+    if set(labels) != set(models):
         raise ValueError("training data must contain every target model")
 
     matrix = np.stack([adapter_feature(numbers, bank) for _, numbers in labeled_numbers])
@@ -68,14 +69,14 @@ def fit_support(
     feature_scale = matrix.std(axis=0)
     feature_scale[feature_scale < 1e-12] = 1.0
     standardized = (matrix - feature_mean) / feature_scale
-    target_indices = np.asarray([TARGET_MODELS.index(label) for label in labels])
+    target_indices = np.asarray([models.index(label) for label in labels])
     centroids = np.stack(
         [standardized[target_indices == index].mean(axis=0)
-         for index in range(len(TARGET_MODELS))]
+         for index in range(len(models))]
     )
     residuals = np.concatenate(
         [standardized[target_indices == index] - centroids[index]
-         for index in range(len(TARGET_MODELS))]
+         for index in range(len(models))]
     )
     covariance = residuals.T @ residuals / len(residuals)
     precision = np.linalg.inv(
@@ -93,18 +94,18 @@ def fit_support(
     distance_thresholds = []
     rescue_thresholds = []
     calibration_distances = []
-    for index in range(len(TARGET_MODELS)):
+    for index in range(len(models)):
         class_distances = distances[target_indices == index]
         correct_margins = margins[(target_indices == index) & (predictions == index)]
         if not len(correct_margins):
-            raise ValueError(f"adapter has no correct row for {TARGET_MODELS[index]}")
+            raise ValueError(f"adapter has no correct row for {models[index]}")
         distance_thresholds.append(_quantile(class_distances, distance_quantile))
         rescue_thresholds.append(_quantile(correct_margins, rescue_margin_quantile))
         calibration_distances.append(sorted(float(value) for value in class_distances))
 
     return {
         "schema": "traceone-target-support-v1",
-        "models": list(TARGET_MODELS),
+        "models": list(models),
         "bank_model_order": list(bank["robust"]["model_order"]),
         "feature": "registered-bank fused scores + marginal scores + absolute JS similarities",
         "training_rows": len(labeled_numbers),
@@ -161,7 +162,8 @@ def classify_supported(
             and base.adapter_margin is not None
             and base.adapter_margin < float(adapter["minimum_margin"])
             and outer.status == "identified"
-            and outer.label in TARGET_MODELS
+            and outer.label in adapter["models"]
+            and outer.label in support["models"]
             and outer.score_margin is not None
             and outer.score_margin >= 0.25
             and outer.similarity is not None

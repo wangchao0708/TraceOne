@@ -20,10 +20,18 @@ separate, reproducible questions:
 - `gpt-6-sol`
 - `gpt-6-luna`
 
-`gpt-6.1-sol` is prepared as a future collection route but is **not in the current
-seven-route classifier or web picker**. As of September 30, 2026, this Codex
-ChatGPT account cannot call it; there are no fingerprint samples and no eighth-route
-accuracy claim. See the [expansion gate](docs/protocol.en.md#10-gpt-61-sol-expansion-readiness).
+`gpt-6.1-sol` was sampled through the Codex subscription on September 30, 2026;
+eight-class training interfaces and development checks are now available. However,
+it is **not reliably separated from GPT-6 Astra, so the eighth prediction option
+remains disabled**. This update publishes 489 real calls, including 178 requested
+6.1 Sol responses, all using a single 315-choice call. The original-prompt eight-class
+`supported` development check matched 101/120, with 6.1 Sol at 8/15. The best revised
+prompt closed-set development candidate matched 175/192, with 6.1 Sol at 19/24.
+These are different, inspected development batches and decision rules, not a paired
+improvement estimate or independent confirmation. The seven-class default is retained;
+comprehensive eight-route superiority is not claimed. See the
+[evidence](docs/results.en.md#gpt-61-sol-expansion-development-not-qualified-for-release)
+and [protocol](docs/protocol.en.md#10-gpt-61-sol-expansion-development).
 
 ## Use it online
 
@@ -199,9 +207,9 @@ PYTHONPATH=src python3 scripts/evaluate_live.py \
   data/public/confirmation-v7.jsonl --output /tmp/traceone-eval.json
 PYTHONPATH=src python3 scripts/evaluate_head_to_head.py \
   data/public/confirmation-v7.jsonl --output /tmp/traceone-h2h.json
-python3 scripts/verify_frozen.py config/release-candidate-v8.json
+python3 scripts/verify_frozen.py config/release-candidate-v8.json --revision 7b52cb1
 python3 scripts/verify_release.py config/release-v0.1.0.json
-python3 scripts/verify_frozen.py config/release-candidate-v11.json
+python3 scripts/verify_frozen.py config/release-candidate-v11.json --revision 8d70a3b
 PYTHONPATH=src python3 scripts/evaluate_live.py \
   data/public/confirmation-v10.jsonl --output /tmp/traceone-v11-eval.json
 ```

@@ -4,6 +4,20 @@
 
 Live site: <https://traceone-model-check.nutmeg-basil-6747.chatgpt.site>
 
+## GPT-6.1 Sol boundary
+
+Real 6.1 Sol responses were collected through the Codex subscription on September
+30, 2026, but eight-class development methods do not reliably separate it from
+Astra. The site retains the accepted seven-class 315-choice default and does not
+offer an eighth prediction option. Both modes and languages disclose this limit;
+Astra results add the overlap warning to the existing explanation, not a new
+subtitle under the model name.
+
+The current two-per-route web compatibility pilot matched 12/16 requested labels
+and 5/16 strict formats; both 6.1 Sol responses received the Astra label. This is
+not a web accuracy estimate or evidence of substitution/degradation. See the
+[development evidence](results.en.md#gpt-61-sol-expansion-development-not-qualified-for-release).
+
 ## User flow
 
 The same workspace provides two switchable modes:

@@ -10,7 +10,7 @@ from collections import Counter
 from pathlib import Path
 
 from traceone.adapter import load_adapter
-from traceone.fingerprint import TARGET_MODELS, load_bank
+from traceone.fingerprint import load_bank
 from traceone.parsing import parse_grid_response
 from traceone.support import fit_support
 
@@ -40,9 +40,9 @@ def main() -> None:
             label = row["requested_model"]
             counts[label] += 1
             labeled.append((label, list(parsed.numbers)))
-    if set(counts) != set(TARGET_MODELS) or len(set(counts.values())) != 1:
-        raise ValueError(f"balanced enrollment is required: {counts}")
     adapter = load_adapter(args.adapter)
+    if set(counts) != set(adapter["models"]) or len(set(counts.values())) != 1:
+        raise ValueError(f"balanced enrollment is required: {counts}")
     if adapter.get("training_sources") != sources:
         raise ValueError("support enrollment differs from adapter training sources")
     artifact = fit_support(

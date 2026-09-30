@@ -2,6 +2,69 @@
 
 [简体中文](results.md) | [English](results.en.md)
 
+## GPT-6.1 Sol expansion development: not qualified for release
+
+On September 30, 2026, 489 real subscription calls were collected with Codex CLI
+0.159.2, Low reasoning, and the isolated wrapper. Every call used one 315-choice
+question and returned successfully. All 473 Schema-constrained responses were
+strictly compliant; only 5/16 self-contained web responses were strictly compliant.
+Format deviations and abstentions remain in their denominators. Public exports
+remove task IDs and stderr: [responses](../data/public/gpt61-development-v1.jsonl),
+[manifest](../data/public/gpt61-development-v1.manifest.json), and
+[evaluation](../data/gpt61-development-v1.json).
+
+The original prompt collected 113 enrollment responses for 6.1 Sol plus 15 new
+development responses for each of eight routes. The earlier seven routes use
+historical 113-per-route enrollment from older runtimes; this is not a concurrent
+eight-route reference bank. The unchanged 16-model bank is a feature extractor,
+not a fabricated 17-centroid bank. Three-fold eight-class ridge plus support,
+with alpha=1 and raw weight=0.25, produced the first column below.
+
+A revised, still single-call 315-choice prompt explicitly permits independent
+repeated choices. Each of eight routes supplied 24 development responses, split
+into three chronological balanced folds. The best candidate uses bank features,
+raw frequencies, and repetition/sequence statistics with RBF kernel ridge
+(alpha=1, gamma=1).
+
+| Requested route | Original-prompt supported, 15 per route | Revised-prompt closed-set candidate, 24 per route |
+| --- | ---: | ---: |
+| GPT-5.5 | 15/15 | 23/24 |
+| GPT-5.6 Luna | 15/15 | 23/24 |
+| GPT-5.6 Terra | 15/15 | 24/24 |
+| GPT-5.6 Sol | 15/15 | 23/24 |
+| GPT-6 Astra | 9/15 | 19/24 |
+| GPT-6 Sol | 12/15 | 21/24 |
+| GPT-6 Luna | 12/15 | 23/24 |
+| GPT-6.1 Sol | 8/15 | 19/24 |
+| Total | 101/120 | 175/192 |
+
+**These are different batches and decision rules, not a paired improvement estimate.**
+The kernel candidate lacks newly calibrated target-support and independent
+confirmation. Applying the existing outer guard reduces it to 171/192, with Astra
+at 16/24. The 175/192 result is not the accuracy of a complete open-set method.
+Prompt, feature, and 51 classifier candidates were selected on inspected development
+data. Another nine-preference numeric prompt was tested only in a small two-route
+pilot. Neither prompt replaces the public default.
+
+The frozen seven-class v11 matched 98/105 earlier-route responses in the current
+original-prompt development batch; all 15 new 6.1 Sol responses instead received
+the Astra label. The self-contained web compatibility pilot matched 12/16 routes,
+with 6.1 Sol at 0/2. This is a known discrimination failure, not proof of substitution
+or capability degradation. The update publishes research evidence, optional
+eight-class fitting, and web disclosures while retaining the accepted seven-class
+315-choice default. No final eight-route confirmation batch was started.
+
+Reproduction is offline and does not launch new model calls:
+
+```text
+PYTHONPATH=src OPENBLAS_NUM_THREADS=1 python3 scripts/evaluate_gpt61_development.py
+```
+
+ModelTrace's excellent corpus and reproducible features remain the direct foundation.
+The frozen upstream 16-model bank used here lacks a registered 6.1 Sol reference; this must not be counted as zero accuracy to
+manufacture a win. Historical bounded one-/three-call comparisons remain below;
+no comprehensive eight-route superiority claim is made.
+
 ## Current 315-choice v11: third confirmation still failed the gate
 
 [Release candidate v11](../config/release-candidate-v11.json) was frozen before

@@ -127,24 +127,48 @@ manifest 记录源文件和公开文件 digest。发布前仍需人工检查未�
 - GPT-5.4 是当前最难未见类，七模型 development 中仍有 13/36 false accepts。
 - 没有 routing log/attestation，不能区分 detector error、自然波动和真实换模。
 
-## 10. GPT-6.1 Sol 扩展准备
+## 10. GPT-6.1 Sol 扩展开发
 
 [OpenAI 官方模型说明](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
-确认模型 ID 为 `gpt-6.1-sol`，且支持 `low` reasoning。它目前只是采集脚本中的
-**显式可选候选**：默认七模型采集、16-model bank、七类 adapter/support、网页
-选项和上述准确率都未加入它。2026-09-30 使用本项目的 Codex ChatGPT 账户试调用
-返回“不支持该模型”，未得到可用于拟合的响应；不以合成数据冒充采样。
+确认模型 ID 为 `gpt-6.1-sol`，且支持 `low` reasoning。2026-09-30 的早期试调
+曾返回“不支持该模型”；同日后续使用 Codex CLI 0.159.2 已验证可调用，并采集
+了真实响应。现在训练函数可显式接收八类标签，support 从 adapter 读取类别；
+默认采集、包内资产和网页预测仍保持七类，不把调用成功等同于识别通过。
 
-待同一账户可以调用后，仍保持一问 315 数字与相同 Schema、`low` reasoning、
-隔离运行和完整 provenance。新增参考数据须与适配器 enrollment、最终确认分离；
-17-model outer bank 的归一化、环境方向及中心须从原始数据重拟合，不能只向现有
-16-model bank 追加一个中心。随后平衡训练八类 adapter/support，并检查旧七类
-是否退化、未收录标签误接收和跨运行环境漂移。
+本轮保持一问 315 数字、Low reasoning、隔离 wrapper 与完整 provenance。
+全部 489 次调用均使用 Codex 订阅，没有使用付费 API 或账户重置额度。原问题给
+6.1 Sol 采集 113 条 enrollment，对八类各采集 15 条开发响应；另测两种小规模
+数字指令及一组八类各 24 条的改进问题。原问题的旧七类 enrollment 来自历史
+运行时，而八类开发响应都使用同一 0.159.2 runtime。这是开发验证，不是八类
+同期盲测；新增 enrollment 中也有晚于这批开发响应采集的记录。
+
+对最初“直接重建 17-model bank”的计划作如下有记录调整：本轮缺少与上游匹配的
+多环境 6.1 Sol 参考语料，因此保留 16-model bank 作为冻结的特征提取器，只训练
+显式八类 adapter/support，不向原中心列表追加单独一个中心。未来若重建 17-model
+outer bank，仍须从独立原始参考数据重新拟合归一化、环境方向与中心；不能与
+enrollment、最终确认混用。原问题与改进问题的数据分别拟合，不能混成一个
+单提示词训练集。
+
+开发结果表明 Astra 与 6.1 Sol 尚不能稳定区分，详见
+[结果](results.md#gpt-61-sol-扩展开发尚未通过发布门槛)。因此未启动最终八类确认，
+也未上线新的预测模型。采集脚本用 `--allow-prospective` 明确允许经验证的新路由
+参与多模型开发批次；不加该参数时，保留默认七类和新路由单独采集的保护。
 
 所有规则与资产先冻结，再对八类各采集至少 15 条未见响应；沿用每类 ≥14/15
 的预设识别门槛，失败、拒识和格式错误保留在分母。同响应 ModelTrace 一问及
-互不重叠三问仍只作有边界的对照。网页自包含 prompt 还需单独做兼容性试测与
-Python/JavaScript 一致性验证；在这些证据到位前，不展示第八个预测选项。
+互不重叠三问仍只作有边界的对照。网页自包含 prompt 的本轮 16 次 pilot 只作
+兼容性检查，不能支持准确率声明；在重新冻结、独立确认与 Python/JavaScript
+一致性证据到位前，不展示第八个预测选项。
+
+冻结历史版本须在其原始 Git 提交上校验，不能修改旧 digest 来迁就新代码：
+
+```text
+python3 scripts/verify_frozen.py config/release-candidate-v11.json --revision 8d70a3b
+```
+
+本轮还把 raw-frequency 加权边界从写死的 48 改为 bank 模型数的三倍。对默认
+16-model bank 数值不变；对删去一类的 held-label bank 则修正为 45。历史 OOD
+开发结果仍属于当时实现，不能直接标成这个修正版或八类方法的 OOD 准确率。
 
 [OpenAI 的 Codex 可用性说明](https://learn.chatgpt.com/docs/models) 指出模型按
 账户和客户端逐步开放，且 GPT-5.5 将于 2026-10-14 从 ChatGPT/Codex 退休。

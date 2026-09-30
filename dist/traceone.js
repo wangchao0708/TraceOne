@@ -317,7 +317,7 @@ function scoreAdapter(numbers, bank, adapter) {
   const feature = adapterFeature(numbers, bank, rawWeight > 0);
   const standardized = feature.map(
     (value, index) => ((value - adapter.feature_mean[index]) / adapter.feature_scale[index])
-      * (index >= 48 ? rawWeight : 1),
+      * (index >= 3 * bank.robust.model_order.length ? rawWeight : 1),
   );
   return adapter.target_mean.map((center, modelIndex) => {
     let score = center;

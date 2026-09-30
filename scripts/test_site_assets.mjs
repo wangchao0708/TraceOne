@@ -41,6 +41,13 @@ if (!visiblePrompt.includes("produce 315 separate")
 for (const marker of ["identifyMode", "degradationMode", "expectedModel"]) {
   if (!html.includes(`id="${marker}"`)) throw new Error(`${marker} control is missing`);
 }
+if (!html.includes('id="routeNotice"') || !app.includes('setText("routeNotice", t.routeNotice)')
+    || !app.includes("astraOverlapWarning")) {
+  throw new Error("the unqualified GPT-6.1 Sol overlap must be disclosed in both languages and modes");
+}
+if (html.includes('value="gpt-6.1-sol"')) {
+  throw new Error("GPT-6.1 Sol must not be exposed as a qualified prediction target yet");
+}
 for (const model of ["gpt-6-sol", "gpt-6-luna"]) {
   if (!html.includes(`value="${model}"`) || !app.includes(`"${model}"`)) {
     throw new Error(`${model} is missing from the page`);

@@ -2,6 +2,59 @@
 
 [简体中文](results.md) | [English](results.en.md)
 
+## GPT-6.1 Sol 扩展开发：尚未通过发布门槛
+
+2026-09-30 在 Codex CLI 0.159.2、订阅账户、Low reasoning 和隔离 wrapper 下
+完成 489 次真实调用，均只有一次提问、315 个数字。489 次调用均返回成功；473 条
+附加 Schema 的响应全部严格合规，16 条网页问题响应只有 5 条严格合规。后者的
+格式偏差与拒识保留在分母。公开数据已去除 `thread_id`、stderr 等私人日志：
+[responses](../data/public/gpt61-development-v1.jsonl)、
+[manifest](../data/public/gpt61-development-v1.manifest.json)、
+[development evaluation](../data/gpt61-development-v1.json)。
+
+原问题给 6.1 Sol 采集 113 条 enrollment，再对八类各采集 15 条开发响应。
+旧七类的 113 条/类 enrollment 来自历史批次，运行时与新增类不同，不能冒充
+八类同期参考库。固定的 16-model bank 只作特征提取器，并未伪造第 17 个中心。
+八类 ridge + support 三折开发验证中，alpha=1、raw weight=0.25 的结果如下。
+随后另测“允许独立重复选择”的 315 数字问题，对八类各采集 24 条，按时间分成
+三个平衡 fold。其最佳候选为 bank 特征 + 原始频率 + 重复/顺序统计的 RBF kernel
+ridge（alpha=1、gamma=1）。
+
+| 请求路由 | 原问题八类 supported，15 条/类 | 新问题最佳 closed-set 候选，24 条/类 |
+| --- | ---: | ---: |
+| GPT-5.5 | 15/15 | 23/24 |
+| GPT-5.6 Luna | 15/15 | 23/24 |
+| GPT-5.6 Terra | 15/15 | 24/24 |
+| GPT-5.6 Sol | 15/15 | 23/24 |
+| GPT-6 Astra | 9/15 | 19/24 |
+| GPT-6 Sol | 12/15 | 21/24 |
+| GPT-6 Luna | 12/15 | 23/24 |
+| GPT-6.1 Sol | 8/15 | 19/24 |
+| 合计 | 101/120 | 175/192 |
+
+**这两列不是同批 paired 比较，不能从差值推导统计显著提升。** 新问题的 kernel
+候选还没有重新校准 target-support，也没有独立确认；套用既有 outer guard 后
+降为 171/192，Astra 为 16/24。因此 175/192 不能宣传成完整开放集方法的准确率。
+新问题的提示词、特征及 51 个分类器候选均经过开发数据选择，公开这些候选是为了
+呈现选择过程，而不是把最优开发结果当作盲测。另一个九种数字偏好问题的小规模
+双模型 pilot 同样只用于选题，没有进入线上默认流程。
+
+冻结的七类 v11 在本轮原问题开发响应上为 98/105；新增的 15 条 6.1 Sol 则
+0/15 匹配，均被识别为 Astra。网页问题的 16 条 compatibility pilot 为 12/16
+路由匹配，其中 6.1 Sol 为 0/2。这是已知的区分失败，**不是替换模型或降智的证明**。
+为保留用户选择的 315 数字默认版本，当前只发布研究数据、可选八类训练接口和
+网页风险提示，不启用第八类预测，也没有启动最终八类确认批次。
+
+复现无需 API，也不会触发新采样：
+
+```text
+PYTHONPATH=src OPENBLAS_NUM_THREADS=1 python3 scripts/evaluate_gpt61_development.py
+```
+
+本轮继续尊重并感谢 ModelTrace 的优秀参考语料与可复现特征。所用的上游 16-model
+参考库未登记 6.1 Sol，不能把这个覆盖差异计为对照方法“准确率为零”来制造胜利。既有同响应
+一问/三问比较保留在下方；本轮未作新的八类全面优越性声明。
+
 ## 当前 315 数字 v11：第三轮确认仍未过门槛
 
 先冻结 [release-candidate-v11.json](../config/release-candidate-v11.json)，再按

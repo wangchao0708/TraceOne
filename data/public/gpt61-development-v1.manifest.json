@@ -1,0 +1,128 @@
+{
+  "schema": "traceone-public-export-manifest-v1",
+  "output": "data/public/gpt61-development-v1.jsonl",
+  "rows": 489,
+  "sha256": "7d0a60ca3c6a7c81333ecd799d7597880cc375ed5d263a953ac7140991ba46b0",
+  "excluded_fields": [
+    "thread_id",
+    "stderr_tail"
+  ],
+  "sources": [
+    {
+      "source_file": "data/live/gpt61-enrollment-v2/gpt-6.1-sol.jsonl",
+      "sha256": "cf3a8b1ae78a9a3524e45228c3c9e52522771bf73c98c1039fb63d4da618fc17"
+    },
+    {
+      "source_file": "data/live/eight-development-v1/gpt-5.5.jsonl",
+      "sha256": "673d71532b7a3b91c918ae45664d57c7b8977bfbe2c0587328563c1e1de6494c"
+    },
+    {
+      "source_file": "data/live/eight-development-v1/gpt-5.6-luna.jsonl",
+      "sha256": "0d8780a5c72401e6a39de3f117b5c79aa40e651afefc2ede2b579e00e089fdf4"
+    },
+    {
+      "source_file": "data/live/eight-development-v1/gpt-5.6-sol.jsonl",
+      "sha256": "6db3c9d9185e3c2ccb8b8cec2bc828740e3ecad86efe645e364cd396a95ad2c5"
+    },
+    {
+      "source_file": "data/live/eight-development-v1/gpt-5.6-terra.jsonl",
+      "sha256": "469b447008321efe6b2df0247ee640c50873938ce576acb708fc517fee6c7115"
+    },
+    {
+      "source_file": "data/live/eight-development-v1/gpt-6-astra.jsonl",
+      "sha256": "3886b87a42a801bdfc25ac4e4a763a3b2775a43d08f0fd367563a258f2c96652"
+    },
+    {
+      "source_file": "data/live/eight-development-v1/gpt-6-luna.jsonl",
+      "sha256": "c6665d03883377d9f4dbdb18f6cb484fefc39d291c450291965154335a300191"
+    },
+    {
+      "source_file": "data/live/eight-development-v1/gpt-6-sol.jsonl",
+      "sha256": "b02fd6ec9e07197b80e599a513ddc4a2b234c35b91d13f9f6db93bed161000ed"
+    },
+    {
+      "source_file": "data/live/eight-development-v1/gpt-6.1-sol.jsonl",
+      "sha256": "57cdba45927eb98da0a0bfdd4c492f3095c9dd80d91170d15da9f80d67f1b8ca"
+    },
+    {
+      "source_file": "data/live/pair-replacement-v1/gpt-6-astra.jsonl",
+      "sha256": "3018aa3d392764957506c342046f2d7c15740e05101cc66691c0b778ecfd3eae"
+    },
+    {
+      "source_file": "data/live/pair-replacement-v1/gpt-6.1-sol.jsonl",
+      "sha256": "7b1186b111d255d9200e77aa3b318ea3743ece731be3c27693fb479e30fcc00a"
+    },
+    {
+      "source_file": "data/live/pair-contexts-v1/gpt-6-astra.jsonl",
+      "sha256": "057e28ebc0f80c4363c58c23616588aff8d715b0154734cd9d9a35c2f63447d6"
+    },
+    {
+      "source_file": "data/live/pair-contexts-v1/gpt-6.1-sol.jsonl",
+      "sha256": "50fee51fae8929bfaf5d75710405fe7fc50ef9b0476aae80c3d49d773e2c6237"
+    },
+    {
+      "source_file": "data/live/eight-web-pilot-v2/gpt-5.5.jsonl",
+      "sha256": "e2d6df5996d9be9143cd1280a56f4aba2e92823058d1afff2c4e2f5f6a769111"
+    },
+    {
+      "source_file": "data/live/eight-web-pilot-v2/gpt-5.6-luna.jsonl",
+      "sha256": "8cd75c4fb8c37846d5d5759584b7f8e7f1a6a4513b1ddac8c12e31440b3bd4a3"
+    },
+    {
+      "source_file": "data/live/eight-web-pilot-v2/gpt-5.6-sol.jsonl",
+      "sha256": "752ab4f32e9ba85474b6002c4e67c9d9bc3283e19f3fdebb24ac56f89453926e"
+    },
+    {
+      "source_file": "data/live/eight-web-pilot-v2/gpt-5.6-terra.jsonl",
+      "sha256": "46a1a12770128089456d3bf25931335b78d744c20daaf188331bdbf9c192e0d1"
+    },
+    {
+      "source_file": "data/live/eight-web-pilot-v2/gpt-6-astra.jsonl",
+      "sha256": "6c068fdcdb6adb2056baf2aa3b4ad87f423ff6f613ee02eb53681950bc68f193"
+    },
+    {
+      "source_file": "data/live/eight-web-pilot-v2/gpt-6-luna.jsonl",
+      "sha256": "ae8122a724f3fc2cbec9df9e5d3af736d60739b3d74764bd74cfd8dedd304370"
+    },
+    {
+      "source_file": "data/live/eight-web-pilot-v2/gpt-6-sol.jsonl",
+      "sha256": "8a2cfb98df5c74ce853ffbe21eec7f2cf0f08ef16f5f00bc887e6c96acc0ce86"
+    },
+    {
+      "source_file": "data/live/eight-web-pilot-v2/gpt-6.1-sol.jsonl",
+      "sha256": "8bdad5a4afe8d031c5298f495879aaf53dc4128a67e9f97b1a1e6402add0c046"
+    },
+    {
+      "source_file": "data/live/eight-replacement-v1/gpt-5.5.jsonl",
+      "sha256": "2b3c1f205b6a4a50fe34bfb4014b4314ee7993aa5cc04180c5724221779b0eeb"
+    },
+    {
+      "source_file": "data/live/eight-replacement-v1/gpt-5.6-luna.jsonl",
+      "sha256": "952a3020b3610693c0be169ce0399f571d9a853f5904e4ba2248c001328a7608"
+    },
+    {
+      "source_file": "data/live/eight-replacement-v1/gpt-5.6-sol.jsonl",
+      "sha256": "53fd7c54e15a0d400ccc273227e40c6ca0b268eb6c8c542500122e53b1829b43"
+    },
+    {
+      "source_file": "data/live/eight-replacement-v1/gpt-5.6-terra.jsonl",
+      "sha256": "6baa64b61059a978ead847c972657abe91dd34ebb51e4c66c206ad20ef835e3b"
+    },
+    {
+      "source_file": "data/live/eight-replacement-v1/gpt-6-astra.jsonl",
+      "sha256": "4bae6d323bc838f6b854e1544ef74ee90189b795961f44d7cb6be9f5505e5fb4"
+    },
+    {
+      "source_file": "data/live/eight-replacement-v1/gpt-6-luna.jsonl",
+      "sha256": "cc182b1efed79767ec039dbf153766ca671cc9b00af452bd54a2e32b55922cc8"
+    },
+    {
+      "source_file": "data/live/eight-replacement-v1/gpt-6-sol.jsonl",
+      "sha256": "e4f3b23e9661321bd382269b41b15320bdc170467205b80d8fe8ea726d86fe75"
+    },
+    {
+      "source_file": "data/live/eight-replacement-v1/gpt-6.1-sol.jsonl",
+      "sha256": "7b3b732c2f95472147a5355da73ed277c4248fde4e85d61c18c0275388795518"
+    }
+  ]
+}

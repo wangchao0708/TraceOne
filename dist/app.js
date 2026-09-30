@@ -38,6 +38,8 @@ const copy = {
     aboutNav: "关于",
     pageTitle: "一次提问<br />看见模型的行为指纹",
     introCopy: "分析在你的浏览器中完成，不会上传回答。",
+    routeNotice: "GPT-6.1 Sol 已完成开发采样，暂不能稳定区分 GPT-6 Astra。当前识别器仍为七类，请勿把 Astra 结果当作排除 6.1 Sol 或判断降智的证据。",
+    astraOverlapWarning: "GPT-6.1 Sol 也可能呈现 Astra 指纹；目前无法据此区分这两条路由。",
     modeLabel: "检测模式",
     identifyMode: "模型识别",
     degradationMode: "降智线索",
@@ -116,6 +118,8 @@ const copy = {
     aboutNav: "About",
     pageTitle: "One question<br />See the model's behavioral trace",
     introCopy: "Analysis stays in your browser; the response is never uploaded.",
+    routeNotice: "GPT-6.1 Sol development samples are collected, but it is not reliably separated from GPT-6 Astra. This remains a seven-class detector; an Astra result cannot rule out 6.1 Sol or establish degradation.",
+    astraOverlapWarning: "GPT-6.1 Sol may also produce an Astra-like fingerprint; these two routes are not reliably separated yet.",
     modeLabel: "Check mode",
     identifyMode: "Identify model",
     degradationMode: "Degradation signal",
@@ -241,6 +245,7 @@ function setLanguage(nextLanguage) {
   expectedModelSelect.options[0].textContent = t.expectedModelPlaceholder;
   document.querySelector("#page-title").innerHTML = t.pageTitle;
   setText("introCopy", t.introCopy);
+  setText("routeNotice", t.routeNotice);
   setText("copyKicker", t.copyKicker);
   copyButton.textContent = t.copyButton;
   setText("pasteKicker", t.pasteKicker);
@@ -321,13 +326,14 @@ function candidateMarkup(result) {
 function resultPresentation(result) {
   const t = copy[language];
   const identified = result.status === "identified";
+  const overlapWarning = result.label === "gpt-6-astra" ? ` ${t.astraOverlapWarning}` : "";
   if (mode === "identity") {
     return {
       pillClass: identified ? "" : " unknown",
       pillText: identified ? t.identified : t.unknown,
       title: identified ? MODEL_DISPLAY_NAMES[result.label] : t.unknownTitle,
       comparison: "",
-      warning: t.warning,
+      warning: t.warning + overlapWarning,
     };
   }
 
@@ -345,7 +351,7 @@ function resultPresentation(result) {
       pillText: t.degradationUnknown,
       title: t.degradationUnknown,
       comparison,
-      warning: t.degradationWarning,
+      warning: t.degradationWarning + overlapWarning,
     };
   }
   const matches = result.label === expected;
@@ -354,7 +360,7 @@ function resultPresentation(result) {
     pillText: matches ? t.noDegradation : t.suspectedDegradation,
     title: matches ? t.noDegradation : t.suspectedDegradation,
     comparison,
-    warning: t.degradationWarning,
+    warning: t.degradationWarning + overlapWarning,
   };
 }
 

@@ -30,6 +30,8 @@ def main() -> None:
     parser.add_argument("--prompt", type=Path, required=True)
     parser.add_argument("--schema", type=Path, required=True)
     parser.add_argument("--no-schema", action="store_true")
+    parser.add_argument("--allow-prospective", action="store_true",
+                        help="explicitly permit a verified prospective route in a multi-model development batch")
     parser.add_argument("--codex", help="pin a specific Codex executable for every call")
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--split", choices=("development", "calibration", "holdout", "confirmation"), required=True)
@@ -45,8 +47,10 @@ def main() -> None:
     args = parser.parse_args()
     if args.repeat_start < 1 or args.repeat_end < args.repeat_start:
         raise SystemExit("invalid repeat range")
-    if "gpt-6.1-sol" in args.models and len(args.models) != 1:
-        raise SystemExit("collect the prospective gpt-6.1-sol route alone until access is verified")
+    if len(set(args.models)) != len(args.models):
+        raise SystemExit("model routes must be unique")
+    if "gpt-6.1-sol" in args.models and len(args.models) != 1 and not args.allow_prospective:
+        raise SystemExit("collect the prospective gpt-6.1-sol route alone, or opt in with --allow-prospective after verifying access")
 
     output_dir = args.output_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)

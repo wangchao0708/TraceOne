@@ -12,6 +12,8 @@ jobs:
         python-version: ["3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
@@ -19,9 +21,10 @@ jobs:
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -e .
       - run: python -m unittest discover -s tests -v
-      - run: python scripts/verify_frozen.py config/release-candidate-v10.json
-      - run: python scripts/verify_frozen.py config/release-candidate-v11.json
+      - run: python scripts/verify_frozen.py config/release-candidate-v10.json --revision 893be7c
+      - run: python scripts/verify_frozen.py config/release-candidate-v11.json --revision 8d70a3b
       - run: python scripts/verify_release.py config/release-v0.1.0.json
+      - run: python scripts/evaluate_gpt61_development.py --verify-only
 
   web-classifier:
     runs-on: ubuntu-latest

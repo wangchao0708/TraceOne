@@ -21,6 +21,7 @@ def main() -> None:
     parser.add_argument("--alpha", type=float, default=10.0)
     parser.add_argument("--minimum-margin", type=float, default=0.05)
     parser.add_argument("--raw-weight", type=float, default=0.0)
+    parser.add_argument("--models", nargs="+", default=list(TARGET_MODELS))
     args = parser.parse_args()
 
     labeled = []
@@ -59,7 +60,7 @@ def main() -> None:
     if reasoning != {"low"} or len(wrappers) != 1 or len(providers) != 1:
         raise ValueError("enrollment reasoning/wrapper/provider drift detected")
     counts = Counter(label for label, _ in labeled)
-    if set(counts) != set(TARGET_MODELS) or len(set(counts.values())) != 1:
+    if set(counts) != set(args.models) or len(set(counts.values())) != 1:
         raise ValueError(f"enrollment must be balanced across targets: {counts}")
 
     artifact = fit_ridge_adapter(
@@ -68,6 +69,7 @@ def main() -> None:
         alpha=args.alpha,
         minimum_margin=args.minimum_margin,
         raw_weight=args.raw_weight,
+        models=tuple(args.models),
     )
     artifact["training_sources"] = sources
     artifact["training_label_counts"] = dict(counts)

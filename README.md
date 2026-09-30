@@ -19,9 +19,14 @@ TraceOne 用一次 315 数字提问为七条 Codex 模型路由提供实验性�
 - `gpt-6-sol`
 - `gpt-6-luna`
 
-`gpt-6.1-sol` 已列入下一轮采集准备，但**不在当前七模型识别器或在线选项中**。
-截至 2026-09-30，当前 Codex ChatGPT 账户尚不能调用该路由；没有其指纹样本，
-因此不能报告第八类准确率。扩展门槛见 [评测协议](docs/protocol.md#10-gpt-61-sol-扩展准备)。
+`gpt-6.1-sol` 已于 2026-09-30 用 Codex 订阅实际采样，并完成八类训练接口与
+开发评测；但**尚不能可靠区分 GPT-6 Astra，因此未启用第八个预测选项**。
+本轮公开 489 次真实调用，其中 178 次请求 6.1 Sol，全部仍是一问 315 数字。
+原问题的八类 `supported` 开发结果为 101/120，6.1 Sol 为 8/15；改进问题的最佳
+closed-set 开发候选为 175/192，6.1 Sol 为 19/24，仍未达到逐类门槛。两者不是
+同批 paired 比较，也不是独立盲测；不能宣称八款均优于上游。默认七类版本保持不变。
+详见 [结果与证据](docs/results.md#gpt-61-sol-扩展开发尚未通过发布门槛) 与
+[评测协议](docs/protocol.md#10-gpt-61-sol-扩展开发)。
 
 ## 在线使用
 
@@ -179,9 +184,9 @@ PYTHONPATH=src python3 scripts/evaluate_live.py \
   data/public/confirmation-v7.jsonl --output /tmp/traceone-eval.json
 PYTHONPATH=src python3 scripts/evaluate_head_to_head.py \
   data/public/confirmation-v7.jsonl --output /tmp/traceone-h2h.json
-python3 scripts/verify_frozen.py config/release-candidate-v8.json
+python3 scripts/verify_frozen.py config/release-candidate-v8.json --revision 7b52cb1
 python3 scripts/verify_release.py config/release-v0.1.0.json
-python3 scripts/verify_frozen.py config/release-candidate-v11.json
+python3 scripts/verify_frozen.py config/release-candidate-v11.json --revision 8d70a3b
 PYTHONPATH=src python3 scripts/evaluate_live.py \
   data/public/confirmation-v10.jsonl --output /tmp/traceone-v11-eval.json
 ```

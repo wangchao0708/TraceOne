@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 
@@ -19,16 +20,23 @@ def digest(data: bytes) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("config", type=Path)
+    parser.add_argument("--revision", help="verify a historical config and assets at this Git commit")
     args = parser.parse_args()
-    config = json.loads(args.config.read_text(encoding="utf-8"))
+    def read_asset(path: str | Path) -> bytes:
+        relative = (PROJECT / path).resolve().relative_to(PROJECT).as_posix()
+        if args.revision:
+            return subprocess.check_output(["git", "-C", str(PROJECT), "show", f"{args.revision}:{relative}"])
+        return (PROJECT / relative).read_bytes()
+
+    config = json.loads(read_asset(args.config))
     checks = []
 
     prompt = config["prompt"]
     prompt_path = PROJECT / prompt["path"]
     if "file_sha256" in prompt:
-        checks.append(("prompt_file", digest(prompt_path.read_bytes()), prompt["file_sha256"]))
+        checks.append(("prompt_file", digest(read_asset(prompt_path)), prompt["file_sha256"]))
     if "normalized_text_sha256" in prompt:
-        normalized = prompt_path.read_text(encoding="utf-8").strip().encode("utf-8")
+        normalized = read_asset(prompt_path).decode("utf-8").strip().encode("utf-8")
         checks.append(
             ("prompt_normalized_text", digest(normalized), prompt["normalized_text_sha256"])
         )
@@ -37,45 +45,45 @@ def main() -> None:
         if key not in config:
             continue
         entry = config[key]
-        checks.append((key, digest((PROJECT / entry["path"]).read_bytes()), entry["sha256"]))
+        checks.append((key, digest(read_asset(entry["path"])), entry["sha256"]))
 
     if "outer_guard" in config:
         entry = config["outer_guard"]
         checks.append(
             (
                 "outer_guard_implementation",
-                digest((PROJECT / entry["implementation"]).read_bytes()),
+                digest(read_asset(entry["implementation"])),
                 entry["sha256"],
             )
         )
         checks.append(
-            ("outer_guard_bank", digest((PROJECT / entry["bank"]).read_bytes()), entry["bank_sha256"])
+            ("outer_guard_bank", digest(read_asset(entry["bank"])), entry["bank_sha256"])
         )
     if "enrollment_adapter" in config:
         entry = config["enrollment_adapter"]
         checks.append(
             (
                 "adapter_implementation",
-                digest((PROJECT / entry["implementation"]).read_bytes()),
+                digest(read_asset(entry["implementation"])),
                 entry["implementation_sha256"],
             )
         )
         checks.append(
-            ("adapter_artifact", digest((PROJECT / entry["artifact"]).read_bytes()), entry["artifact_sha256"])
+            ("adapter_artifact", digest(read_asset(entry["artifact"])), entry["artifact_sha256"])
         )
     if "target_support" in config:
         entry = config["target_support"]
         checks.append(
             (
                 "support_implementation",
-                digest((PROJECT / entry["implementation"]).read_bytes()),
+                digest(read_asset(entry["implementation"])),
                 entry["implementation_sha256"],
             )
         )
         checks.append(
             (
                 "support_artifact",
-                digest((PROJECT / entry["artifact"]).read_bytes()),
+                digest(read_asset(entry["artifact"])),
                 entry["artifact_sha256"],
             )
         )
@@ -87,7 +95,7 @@ def main() -> None:
             checks.append(
                 (
                     f"public_enrollment_{index}",
-                    digest((PROJECT / entry["path"]).read_bytes()),
+                    digest(read_asset(entry["path"])),
                     entry["sha256"],
                 )
             )
@@ -96,13 +104,14 @@ def main() -> None:
         checks.append(
             (
                 f"extra_file_{index}",
-                digest((PROJECT / entry["path"]).read_bytes()),
+                digest(read_asset(entry["path"])),
                 entry["sha256"],
             )
         )
 
     result = {
         "config": str(args.config),
+        "revision": args.revision,
         "valid": all(actual == expected for _, actual, expected in checks),
         "checks": [
             {"asset": name, "valid": actual == expected, "actual": actual, "expected": expected}

@@ -142,30 +142,59 @@ review exports for fields introduced by future runtimes.
 - Without routing logs or attestation, detector error, natural variation, and real
   substitution cannot be distinguished.
 
-## 10. GPT-6.1 Sol expansion readiness
+## 10. GPT-6.1 Sol expansion development
 
 The [official OpenAI model page](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
-confirms the exact ID `gpt-6.1-sol` and support for `low` reasoning. It is an
-**explicit opt-in collection candidate only**: the default seven-route collection,
-16-model bank, seven-class adapter/support, web picker, and reported accuracies do
-not include it. A September 30, 2026 test with this project's Codex ChatGPT account
-returned “model not supported,” so no usable fingerprint sample exists. Synthetic
-data will not be presented as collection evidence.
+confirms the exact ID `gpt-6.1-sol` and support for `low` reasoning. An early
+September 30, 2026 attempt returned “model not supported”; later that day, access
+was verified with Codex CLI 0.159.2 and real responses were collected. Fitting now
+accepts explicit eight-class labels and support derives its classes from the adapter.
+Default collection, packaged artifacts, and web predictions remain seven-class:
+successful access is not successful identification.
 
-Once the same account can call it, preserve the one-call 315-choice prompt and Schema,
-`low` reasoning, isolated runtime, and full provenance. New reference data must be
-disjoint from adapter enrollment and final confirmation. Refit normalization,
-environment directions, and centroids for a 17-model outer bank from raw data;
-do not append one centroid to the existing 16-model artifact. Then train balanced
-eight-class adapter/support artifacts and test regression on the earlier seven
-routes, unseen-label false acceptance, and cross-runtime drift.
+All 489 calls used the Codex subscription, Low reasoning, the isolated wrapper,
+and one 315-choice question. No paid API or reset credit was used. The original
+prompt supplied 113 new 6.1 Sol enrollment responses and 15 development responses
+per eight routes. Two small alternative-prompt pilots and a revised-prompt batch
+with 24 responses per eight routes were also collected. Earlier-route enrollment
+uses older runtimes, whereas all current eight-route development responses use
+0.159.2. Some new enrollment was collected after the current development batch;
+these are inspected development data, not concurrent blind confirmation.
+
+The initial 17-model-bank plan is revised explicitly: matching multi-environment
+6.1 Sol reference data are not available, so the 16-model bank remains a frozen
+feature extractor for explicit eight-class adapter/support fitting. No isolated
+centroid was appended. A future 17-model bank still requires independent raw
+reference data and a full normalization/environment/centroid refit, disjoint from
+enrollment and confirmation. Different prompts must not be mixed into a supposed
+single-prompt enrollment set.
+
+Astra and 6.1 Sol are not yet reliably separated; see the
+[results](results.en.md#gpt-61-sol-expansion-development-not-qualified-for-release).
+No final eight-route confirmation or new prediction model is published. Collection
+requires `--allow-prospective` to explicitly permit a verified prospective route in
+a multi-model development batch; otherwise seven-class defaults and single-route
+prospective collection protections remain in force.
 
 Freeze all rules and assets before collecting at least 15 untouched responses per
 route. Retain the prespecified ≥14/15 match gate for every route, counting failures,
 abstentions, and invalid formats in the denominator. Same-response ModelTrace
 one- and disjoint three-call arms remain bounded comparators. The self-contained
-web prompt also needs its own compatibility pilot and Python/JavaScript parity;
-the eighth prediction option stays hidden until these checks are complete.
+web prompt's 16-call pilot is a compatibility check, not an accuracy estimate.
+The eighth prediction option stays hidden until a new freeze, independent
+confirmation, and Python/JavaScript parity are complete.
+
+Verify historical freezes at their original Git commits rather than changing old
+digests to match new code:
+
+```text
+python3 scripts/verify_frozen.py config/release-candidate-v11.json --revision 8d70a3b
+```
+
+Raw-frequency weighting now starts at three times the bank model count rather
+than a hard-coded 48. Default 16-model calculations are unchanged; a one-label-
+removed bank correctly uses 45. Historical OOD development results belong to their
+original implementation, not this correction or the prospective eight-class method.
 
 [OpenAI's Codex availability guidance](https://learn.chatgpt.com/docs/models)
 notes a staged account/client rollout and GPT-5.5 retirement from ChatGPT/Codex

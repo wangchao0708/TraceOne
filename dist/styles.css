@@ -54,6 +54,7 @@ main { overflow: hidden; }
 .flow-panel, .result-panel { min-width: 0; background: var(--surface); border: 1px solid rgba(255,255,255,.8); border-radius: var(--radius-lg); box-shadow: 0 22px 70px rgba(0,0,0,.07); }
 .flow-panel { padding: 34px; }
 .result-panel { min-height: 610px; padding: 34px; background: linear-gradient(155deg, rgba(255,255,255,.94), rgba(244,248,255,.88)); }
+.route-notice { margin: 0 0 28px; padding: 14px 16px; border-radius: 14px; border: 1px solid #efd9b8; background: #fff8ed; color: #79582d; font-size: 15px; line-height: 1.65; }
 .mode-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 30px; padding: 4px; border-radius: 15px; background: #f0f0f3; }
 .mode-button { min-height: 42px; border: 0; border-radius: 11px; background: transparent; color: #6e6e73; cursor: pointer; font-size: .9375rem; font-weight: 620; transition: background .2s ease, color .2s ease, box-shadow .2s ease; }
 .mode-button.is-active { color: var(--ink); background: #fff; box-shadow: 0 1px 5px rgba(0,0,0,.09); }

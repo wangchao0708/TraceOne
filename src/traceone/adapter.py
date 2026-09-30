@@ -71,13 +71,17 @@ def fit_ridge_adapter(
     alpha: float = 10.0,
     minimum_margin: float = 0.05,
     raw_weight: float = 0.0,
+    models: tuple[str, ...] | None = None,
 ) -> dict:
     if alpha <= 0:
         raise ValueError("alpha must be positive")
     if raw_weight < 0:
         raise ValueError("raw_weight must be nonnegative")
+    models = tuple(TARGET_MODELS if models is None else models)
+    if not models or len(set(models)) != len(models):
+        raise ValueError("target models must be nonempty and unique")
     labels = [label for label, _ in labeled_numbers]
-    if set(labels) != set(TARGET_MODELS):
+    if set(labels) != set(models):
         raise ValueError("training data must contain every target model")
     matrix = np.stack([
         adapter_feature(numbers, bank, include_raw=raw_weight > 0)
@@ -88,9 +92,9 @@ def fit_ridge_adapter(
     scale[scale < 1e-12] = 1.0
     standardized = (matrix - mean) / scale
     if raw_weight > 0:
-        standardized[:, 48:] *= raw_weight
+        standardized[:, 3 * len(bank["robust"]["model_order"]):] *= raw_weight
     targets = np.asarray(
-        [[float(label == model) for model in TARGET_MODELS] for label in labels],
+        [[float(label == model) for model in models] for label in labels],
         dtype=np.float64,
     )
     target_mean = targets.mean(axis=0)
@@ -98,7 +102,7 @@ def fit_ridge_adapter(
     weights = np.linalg.solve(regularized, standardized.T @ (targets - target_mean))
     return {
         "schema": "traceone-ridge-adapter-v1",
-        "models": list(TARGET_MODELS),
+        "models": list(models),
         "bank_model_order": list(bank["robust"]["model_order"]),
         "feature": "fused scores + marginal scores + absolute JS similarities"
                    + (" + raw 1-355 frequencies" if raw_weight > 0 else ""),
@@ -122,7 +126,7 @@ def adapter_scores(numbers: list[int], bank: dict, adapter: dict) -> np.ndarray:
         feature - np.asarray(adapter["feature_mean"], dtype=np.float64)
     ) / np.asarray(adapter["feature_scale"], dtype=np.float64)
     if raw_weight > 0:
-        standardized[48:] *= raw_weight
+        standardized[3 * len(bank["robust"]["model_order"]):] *= raw_weight
     return standardized @ np.asarray(adapter["weights"], dtype=np.float64) + np.asarray(
         adapter["target_mean"], dtype=np.float64
     )
