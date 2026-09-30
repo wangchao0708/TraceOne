@@ -53,7 +53,9 @@ class EightReleaseTests(unittest.TestCase):
         self.assertEqual(sum(v["format_compliant"] for v in evaluation["per_model"].values()),61)
         release=json.loads((ROOT/"config/release-v0.3.0.json").read_text())
         self.assertFalse(release["confirmation"]["gate_passed"])
-        self.assertFalse(release["deployment"]["public_site_updated"])
+        self.assertTrue(release["deployment"]["public_site_updated"])
+        self.assertEqual(release["deployment"]["public_site_routes"],len(EIGHT_TARGET_MODELS))
+        self.assertEqual(release["deployment"]["public_site_status"],"succeeded")
 
     def test_high_margin_cannot_bypass_support(self):
         rows=[json.loads(line) for line in (ROOT/"data/public/confirmation-v12.jsonl").read_text().splitlines()]

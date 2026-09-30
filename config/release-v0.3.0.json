@@ -138,9 +138,14 @@
   },
   "deployment": {
     "repository_updated": true,
-    "public_site_updated": false,
+    "public_site_updated": true,
     "public_url": "https://traceone-model-check.nutmeg-basil-6747.chatgpt.site/",
-    "public_site_routes": 7
+    "public_site_routes": 8,
+    "public_site_source_commit": "f9ab16ddc637e71108691f6ddd45bfc441d66665",
+    "public_site_version": "appgprj_6aaa32f6cd38819180cc7265d6d218f6~appgver_cf66b3b8d6488191b7e7f51d31b6b351",
+    "public_site_deployment": "appgdep_6abd327d7be881919698251cf5e80d68",
+    "public_site_status": "succeeded",
+    "public_site_published_at": "2026-09-30T16:02:13.559047+00:00"
   },
   "privacy": {
     "private_logs_included": false,

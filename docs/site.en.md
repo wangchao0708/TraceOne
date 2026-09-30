@@ -4,11 +4,12 @@
 
 Public URL: <https://traceone-model-check.nutmeg-basil-6747.chatgpt.site>
 
-## Repository source is not production deployment
+## Current public version
 
-This request updates GitHub only. Repository dist/ and CLI include the eight-route
-experiment and GPT-6.1 Sol. The public site is not redeployed and retains the earlier
-seven-route implementation and Astra/6.1 overlap warning. Run the new source locally:
+Following the subsequent request on September 30, 2026, the eight-route experiment,
+including GPT-6.1 Sol, is published at the same public URL. Site version 7 uses source
+commit `f9ab16d`, the repository's 315-choice question and frozen classifier.
+Deployment does not change the failed research gate. Run the same source locally:
 
 ```text
 python3 -m http.server 8000 --bind 127.0.0.1 --directory dist
@@ -17,7 +18,7 @@ python3 -m http.server 8000 --bind 127.0.0.1 --directory dist
 Open http://127.0.0.1:8000 on the same machine. Loopback only, not public hosting;
 press Ctrl+C to stop.
 
-## Local eight-route workflow
+## Eight-route web workflow
 
 One workspace switches between identification and degradation signals. Identification
 copies one self-contained 315-choice question and predicts an enrolled route or unknown
@@ -26,6 +27,12 @@ label automatically with its fingerprint prediction: consistent, anomalous or in
 
 Astra/6.1 Sol cross-confusion always yields unable to determine. A fingerprint mismatch
 cannot prove capability loss; rigorous degradation requires separate paired canaries.
+
+[OpenAI's system-card addendum](https://deploymentsafety.openai.com/gpt-6-1-sol)
+describes shared data/training types and safeguards for the two models. The page treats
+this as possible context for similar fingerprints, not an established cause of overlap
+or evidence of identical training examples or weights.
+
 Both languages retain the full visible prompt, non-wrapping input, centered single-line
 result and compact upstream credit. Imperfect format is disclosed. Out-of-range entries
 are discarded, never padded or fabricated. Tolerance requires nine rows, 25–45 usable
@@ -51,7 +58,8 @@ relabeled as current web accuracy.
 test_eight_classifier.mjs checks all 120 new decisions and numeric outputs, maximum
 error about 3.4e-13 at tolerance 1e-9. Historical 105 decisions remain reproducible using
 historical artifacts. test_site_assets.mjs checks byte-identical source/deploy assets
-and matching web/CLI/collection prompts. Source parity is not production completion.
+and matching web/CLI/collection prompts. Cloud deployment success is checked separately;
+the publication record is in the [release manifest](../config/release-v0.3.0.json).
 
 ## Privacy, interpretation and credit
 

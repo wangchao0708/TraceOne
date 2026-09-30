@@ -1,5 +1,13 @@
 # Changelog
 
+## Website synchronization — 2026-09-30
+
+- Published the same frozen eight-route experiment to the existing public Site,
+  including GPT-6.1 Sol in both modes, without changing the 315-choice algorithm.
+- Added a linked OpenAI system-card explanation in Chinese and English: shared
+  training types and safeguards are possible context, not proven causes of overlap.
+- Retained the failed research gate, conservative Astra/6.1 screening and upstream credit.
+
 ## 0.3.0 — 2026-09-30 (experimental eight-route source; repository-only update)
 
 - Added GPT-6.1 Sol to the eight-class CLI and local browser implementation; one
@@ -12,7 +20,7 @@
 - Verified 120 Python/browser decisions at 1e-9 tolerance and retained every
   historical seven-route result. Astra/6.1 mismatches are inconclusive in screening.
 - Kept raw private logs and unused exploratory runners out of the repository.
-- Updated GitHub only; the public Site remains the previous seven-route deployment.
+- The initial source release updated GitHub only; the later website synchronization is recorded above.
 
 ## Earlier 6.1 compatibility preparation (historical)
 

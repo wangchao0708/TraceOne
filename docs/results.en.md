@@ -2,7 +2,7 @@
 
 [简体中文](results.md) | [English](results.en.md)
 
-## Eight-route v12 experiment: web-condition confirmation failed; repository-only update
+## Eight-route v12 experiment: web-condition confirmation failed the gate
 
 This version adds concurrent enrollment, separate calibration and fresh
 confirmation through Codex subscription CLI 0.159.2 with Low reasoning. No paid API
@@ -42,7 +42,7 @@ requirement, two JSON structure errors and one support rejection. Development
 94.3% and a working eighth UI option are not evidence of overall improvement;
 these errors cannot establish degradation. The repository publishes the frozen
 eight-route experimental source and retains the historical seven-class method.
-The public site is not redeployed and retains the seven-route baseline.
+Following the subsequent explicit request, the public site also serves the eight-route experiment.
 All 120 Python/JavaScript outputs agree field by field,
 with maximum numeric error about 3.4×10⁻¹³.
 

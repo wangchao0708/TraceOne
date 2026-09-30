@@ -235,8 +235,8 @@ margin comparison 1e-12 absolute floating-point tolerance for cross-language par
 Code, data and parameters were frozen at 5b70968 before collecting 15 fresh calls
 per route. The rule remains ≥14/15 for EVERY route. Actual agreement is 101/120;
 Astra, 6 Luna and 6.1 Sol fail the gate. No retuning or replacing confirmation calls
-followed. This publishes the selected experimental source, not an overall-improvement
-claim or public-site replacement. Full failures are in the [ledger](results.en.md).
+followed. This publishes the selected experiment, subsequently synchronized to the
+public site by explicit request, not an overall-improvement claim. Full failures are in the [ledger](results.en.md).
 Astra/6.1 Sol cross-confusion always yields an inconclusive web consistency verdict.
 Other mismatches likewise cannot prove degradation; capability loss requires separate
 paired canary measurement.

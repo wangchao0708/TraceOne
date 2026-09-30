@@ -36,9 +36,8 @@ over ModelTrace nor authenticated model identity.** Historical failures and the
 seven-class `supported` method remain reproducible; `traceone prompt --legacy` prints
 the old question. Enrollment and evaluation cover Codex subscription Low reasoning;
 other providers, API wrappers, and reasoning settings are not qualified by these data.
-**This update changes the repository only, not the public site. The online link
-still serves the seven-route baseline.** Run the local CLI or local web source for
-eight-route identification. Source publication is not qualification against the
+**The public site now serves the eight-route experiment, including GPT-6.1 Sol,
+using the same assets as the local CLI and web source.** Deployment is not qualification against the
 research gate. The configuration is selected by the documented development rule,
 not an independent confirmation comparison of every configuration.
 
