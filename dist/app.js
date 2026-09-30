@@ -26,6 +26,7 @@ const MODEL_DISPLAY_NAMES = {
   "gpt-6-astra": "GPT-6 Astra",
   "gpt-6-sol": "GPT-6 Sol",
   "gpt-6-luna": "GPT-6 Luna",
+  "gpt-6.1-sol": "GPT-6.1 Sol",
 };
 
 const copy = {
@@ -38,8 +39,8 @@ const copy = {
     aboutNav: "关于",
     pageTitle: "一次提问<br />看见模型的行为指纹",
     introCopy: "分析在你的浏览器中完成，不会上传回答。",
-    routeNotice: "GPT-6.1 Sol 已完成开发采样，暂不能稳定区分 GPT-6 Astra。当前识别器仍为七类，请勿把 Astra 结果当作排除 6.1 Sol 或判断降智的证据。",
-    astraOverlapWarning: "GPT-6.1 Sol 也可能呈现 Astra 指纹；目前无法据此区分这两条路由。",
+    routeNotice: "八模型实验版已包含 GPT-6.1 Sol。请使用下方最新版 315 数字问题；Astra 与 6.1 Sol 仍可能混淆，指纹结果不能单独证明模型身份或降智。",
+    astraOverlapWarning: "GPT-6 Astra 与 GPT-6.1 Sol 的行为分布有重叠，这两类结果需要谨慎解释。",
     modeLabel: "检测模式",
     identifyMode: "模型识别",
     degradationMode: "降智线索",
@@ -71,7 +72,7 @@ const copy = {
     principle1Title: "一次响应",
     principle1Copy: "315 个微选择被装入一个严格的 JSON 响应。",
     principle2Title: "分层判断",
-    principle2Copy: "先检查参考库相似度，再区分七条目标路由。",
+    principle2Copy: "结合数字分布与重复、顺序特征，区分八条目标路由并检查支持范围。",
     principle3Title: "允许未知",
     principle3Copy: "证据不足时返回 unknown，而不是强行指定模型。",
     aboutPrefix: "TraceOne 建立在",
@@ -91,18 +92,18 @@ const copy = {
     format: "有效数字",
     margin: "适配间隔",
     support: "支持距离",
-    candidates: "七个候选",
+    candidates: "八个候选",
     relativeOnly: "相对权重，仅用于可视化",
     warning: "行为指纹会随系统提示、推理强度、运行时和服务端更新漂移。结论表示统计相似性，不证明实际服务权重。",
     degradationWarning: "这里检测的是行为指纹是否与所选模型一致。不一致可提示路由变化或指纹漂移，但不能单独证明能力下降。",
     reset: "重新检测",
-    formatWarning: "格式存在偏差，但有效数字达到分析门槛；请谨慎解释结果。",
+    formatWarning: "格式存在偏差；越界值被丢弃、没有补造数字。保留至少 280 个有效整数时可分析，请谨慎解释。",
     unknownReasons: {
       invalid: "无法读取完整 JSON。请只粘贴数组或 {\"numbers\": [...]}，并移除 ``` 代码围栏。",
-      short: (count) => `只读取到 ${count}/315 个有效整数；至少需要 280 个。`,
+      short: (count) => `读取到 ${count}/315 个有效整数；分析范围为 280–350 个，完整响应仍应为 315 个。`,
       guard: "外层参考库认为其他已登记标签更相似，因此没有进入七模型判断。",
       similarity: "响应与参考分布的绝对相似度低于发布阈值。",
-      adapter: "七个目标候选的分数过于接近，无法稳定区分。",
+      adapter: "目标候选的分数过于接近，无法稳定区分。",
       support: "最接近候选仍超出该模型的经验支持区域。",
       generic: "一个或多个可靠性检查没有通过。",
     },
@@ -118,8 +119,8 @@ const copy = {
     aboutNav: "About",
     pageTitle: "One question<br />See the model's behavioral trace",
     introCopy: "Analysis stays in your browser; the response is never uploaded.",
-    routeNotice: "GPT-6.1 Sol development samples are collected, but it is not reliably separated from GPT-6 Astra. This remains a seven-class detector; an Astra result cannot rule out 6.1 Sol or establish degradation.",
-    astraOverlapWarning: "GPT-6.1 Sol may also produce an Astra-like fingerprint; these two routes are not reliably separated yet.",
+    routeNotice: "The eight-model experiment includes GPT-6.1 Sol. Use the updated 315-choice question below. Astra and 6.1 Sol may still be confused; a fingerprint cannot establish model identity or degradation by itself.",
+    astraOverlapWarning: "GPT-6 Astra and GPT-6.1 Sol have overlapping behavioral distributions; interpret these results cautiously.",
     modeLabel: "Check mode",
     identifyMode: "Identify model",
     degradationMode: "Degradation signal",
@@ -151,7 +152,7 @@ const copy = {
     principle1Title: "One response",
     principle1Copy: "315 micro-choices are packed into one strict JSON response.",
     principle2Title: "Layered decision",
-    principle2Copy: "Check reference-bank similarity before separating seven target routes.",
+    principle2Copy: "Combine number distributions, repetition and order to separate eight routes and check target support.",
     principle3Title: "Unknown is valid",
     principle3Copy: "Return unknown when evidence is weak instead of forcing a label.",
     aboutPrefix: "TraceOne builds on the excellent open-source work of",
@@ -171,18 +172,18 @@ const copy = {
     format: "Usable numbers",
     margin: "Adapter margin",
     support: "Support distance",
-    candidates: "Seven candidates",
+    candidates: "Eight candidates",
     relativeOnly: "Relative weight, visualization only",
     warning: "Behavioral fingerprints can drift with system prompts, reasoning effort, runtime, and server updates. This is statistical similarity, not proof of served weights.",
     degradationWarning: "This checks whether the behavioral fingerprint matches the selected model. A mismatch can flag rerouting or drift, but cannot by itself prove a capability loss.",
     reset: "Check another",
-    formatWarning: "The format is imperfect, but enough usable numbers remain; interpret the result cautiously.",
+    formatWarning: "The format is imperfect. Out-of-range values are discarded, never fabricated. At least 280 usable integers permit analysis; interpret cautiously.",
     unknownReasons: {
       invalid: "The JSON could not be read. Paste only the array or {\"numbers\": [...]}, without ``` code fences.",
-      short: (count) => `Only ${count}/315 usable integers were found; at least 280 are required.`,
+      short: (count) => `${count}/315 usable integers were found; analysis accepts 280–350, while a complete response should contain 315.`,
       guard: "The outer reference bank found another registered label more similar, so the seven-model decision was not entered.",
       similarity: "Absolute similarity to the reference distributions is below the release threshold.",
-      adapter: "The seven target candidates are too close to separate reliably.",
+      adapter: "The target candidates are too close to separate reliably.",
       support: "The nearest candidate still falls outside that model's empirical support region.",
       generic: "One or more reliability checks did not pass.",
     },
@@ -286,7 +287,10 @@ function unknownReason(result) {
   const t = copy[language].unknownReasons;
   const errors = result.parsed.errors;
   if (errors.some((error) => error.startsWith("invalid_json") || error === "missing_grid_array")) return t.invalid;
-  if (result.parsed.numbers.length < 280) return t.short(result.parsed.numbers.length);
+  if (result.parsed.numbers.length < 280 || result.parsed.numbers.length > 350) return t.short(result.parsed.numbers.length);
+  if (result.supportPath === "optimized_margin") return t.adapter;
+  if (result.supportPath === "optimized_rejected") return t.support;
+  if (result.supportPath === "invalid") return t.generic;
   const reasons = result.adapter.outerGuard.guardReasons;
   if (reasons.includes("guard_model_won")) return t.guard;
   if (reasons.includes("low_absolute_similarity")) return t.similarity;
@@ -326,7 +330,7 @@ function candidateMarkup(result) {
 function resultPresentation(result) {
   const t = copy[language];
   const identified = result.status === "identified";
-  const overlapWarning = result.label === "gpt-6-astra" ? ` ${t.astraOverlapWarning}` : "";
+  const overlapWarning = ["gpt-6-astra", "gpt-6.1-sol"].includes(result.label) ? ` ${t.astraOverlapWarning}` : "";
   if (mode === "identity") {
     return {
       pillClass: identified ? "" : " unknown",
@@ -345,7 +349,10 @@ function resultPresentation(result) {
     <span class="comparison-arrow" aria-hidden="true">→</span>
     <div><span>${t.predictedModel}</span><strong>${predictedName}</strong></div>
   </div>`;
-  if (!identified) {
+  const ambiguousPair = expected !== result.label
+    && ["gpt-6-astra", "gpt-6.1-sol"].includes(expected)
+    && ["gpt-6-astra", "gpt-6.1-sol"].includes(result.label);
+  if (!identified || ambiguousPair) {
     return {
       pillClass: " unknown",
       pillText: t.degradationUnknown,

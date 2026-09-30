@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import tempfile
 import time
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -21,9 +22,10 @@ MODELS = (
     "gpt-6-astra",
     "gpt-6-sol",
     "gpt-6-luna",
+    "gpt-6.1-sol",
 )
 REFERENCE_OOD_MODELS = ("gpt-5.4",)
-PROSPECTIVE_MODELS = ("gpt-6.1-sol",)
+PROSPECTIVE_MODELS = ()
 BUNDLED_CODEX_CANDIDATES = (
     Path("/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex"),
     Path("/Applications/ChatGPT.app/Contents/Resources/codex"),
@@ -118,6 +120,10 @@ def collect_one(
         and event.get("item", {}).get("type") == "agent_message"
     ]
     usage_events = [event.get("usage") for event in events if event.get("type") == "turn.completed"]
+    item_types = Counter(event.get("item", {}).get("type", "unknown")
+                         for event in events if event.get("type") == "item.completed")
+    tool_item_count = sum(count for kind, count in item_types.items()
+                          if kind not in {"agent_message", "reasoning", "error"})
     thread_events = [event for event in events if event.get("type") == "thread.started"]
     stderr_tail = result.stderr.splitlines()[-12:]
     if timed_out:
@@ -150,6 +156,9 @@ def collect_one(
         "return_code": result.returncode,
         "thread_id": thread_events[-1].get("thread_id") if thread_events else None,
         "usage": usage_events[-1] if usage_events else None,
+        "completed_item_types": dict(item_types),
+        "tool_item_count": tool_item_count,
+        "completed_error_count": item_types.get("error", 0),
         "text": "" if timed_out else (messages[-1] if messages else ""),
         "stderr_tail": "\n".join(stderr_tail),
     }
@@ -169,7 +178,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument(
-        "--prompt", type=Path, default=Path("prompts/identity-v3-schema.txt")
+        "--prompt", type=Path, default=Path("prompts/identity-replacement-v1.txt")
     )
     parser.add_argument(
         "--split",

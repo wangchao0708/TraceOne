@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "traceone"
-version = "0.2.0"
+version = "0.3.0"
 description = "Single-call behavioral route attribution and degradation auditing for Codex models"
 license = {file = "LICENSE"}
 readme = "README.md"
@@ -26,4 +26,6 @@ traceone = [
   "data/codex_low_v7_adapter_791.json",
   "data/codex_low_v7_support_791.json",
   "data/identity-v3-schema.txt",
+  "data/codex_low_v8_optimized.json",
+  "data/identity-replacement-v1.txt",
 ]

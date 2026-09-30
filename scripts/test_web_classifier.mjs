@@ -8,8 +8,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const readJson = (relativePath) => JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const artifacts = {
   bank: readJson("dist/data/unified_bank_v2_16.json"),
-  adapter: readJson("dist/data/codex_low_v7_adapter_791.json"),
-  support: readJson("dist/data/codex_low_v7_support_791.json"),
+  adapter: readJson("src/traceone/data/codex_low_v7_adapter_791.json"),
+  support: readJson("src/traceone/data/codex_low_v7_support_791.json"),
 };
 const readJsonl = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8")
   .trim()

@@ -1,0 +1,150 @@
+{
+  "schema": "traceone-frozen-config-v1",
+  "frozen_at": "2026-09-30T13:21:26.340182+00:00",
+  "status": "frozen before confirmation-v12; experimental eight-route method",
+  "targets": [
+    "gpt-5.5",
+    "gpt-5.6-luna",
+    "gpt-5.6-terra",
+    "gpt-5.6-sol",
+    "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna",
+    "gpt-6.1-sol"
+  ],
+  "reasoning_effort": "low",
+  "runtime": "codex-cli 0.159.2",
+  "prompt": {
+    "path": "prompts/identity-replacement-v1.txt",
+    "file_sha256": "441797bb623cee418ae557bfb481232d0a2becef4dbcbdc366dd8d55e7c58992",
+    "normalized_text_sha256": "aa39bb9e7966064709402caef9922d3788ac5ac362768ac0b62739d5e10eecb1",
+    "requests": 1,
+    "requested_numbers": 315
+  },
+  "output_schema_condition": "none; exact same self-contained prompt as the website",
+  "bank": {
+    "path": "src/traceone/data/unified_bank_v2_16.json",
+    "sha256": "1c2cb74d372f9f0f30d0dabbb7b7a838660d2f769a88d0c8489e4c662e088c21"
+  },
+  "classifier": {
+    "path": "src/traceone/data/codex_low_v8_optimized.json",
+    "sha256": "9deaa49ce8ce46b43088b133afe36ee20a1f64a227e53df7cd96a1fb1514109b"
+  },
+  "method": {
+    "classifier": "ridge",
+    "alpha": 1,
+    "group_weights": {
+      "bank": 1,
+      "raw": 1,
+      "structure": 0.5,
+      "order": 0
+    },
+    "minimum_margin": 0.01,
+    "training_rows": 571,
+    "training_label_counts": {
+      "gpt-5.5": 72,
+      "gpt-5.6-luna": 72,
+      "gpt-5.6-sol": 71,
+      "gpt-5.6-terra": 71,
+      "gpt-6-astra": 71,
+      "gpt-6-luna": 72,
+      "gpt-6-sol": 71,
+      "gpt-6.1-sol": 71
+    },
+    "calibration_rows": 124,
+    "calibration_label_counts": {
+      "gpt-5.5": 16,
+      "gpt-5.6-luna": 16,
+      "gpt-5.6-sol": 15,
+      "gpt-5.6-terra": 15,
+      "gpt-6-astra": 16,
+      "gpt-6-luna": 14,
+      "gpt-6-sol": 16,
+      "gpt-6.1-sol": 16
+    }
+  },
+  "input_policy": {
+    "requested_shape": "9x35 integers in 1\u2013355",
+    "accepted_shape": "nine JSON arrays or sole-key numbers object",
+    "minimum_usable_integers": 280,
+    "maximum_usable_integers": 350,
+    "usable_per_row_minimum": 25,
+    "usable_per_row_maximum": 45,
+    "out_of_range_policy": "discard, never clamp/pad/fabricate; warn about imperfect format",
+    "strict_format_compliance": "reported separately; not required for bounded-tolerance analysis"
+  },
+  "support": {
+    "features": 73,
+    "covariance_shrinkage": 0.3,
+    "thresholds": "per-class maximum independently collected analyzable calibration distance",
+    "high_margin_rescue": false,
+    "boundary_tolerance_relative": 1e-10,
+    "margin_tolerance_absolute": 1e-12,
+    "guarantee": "empirical support only; not an identity probability or a guarantee under drift"
+  },
+  "public_enrollment": [
+    {
+      "path": "data/public/gpt61-development-v1.jsonl",
+      "sha256": "7d0a60ca3c6a7c81333ecd799d7597880cc375ed5d263a953ac7140991ba46b0"
+    },
+    {
+      "path": "data/public/eight-optimized-development-v1.jsonl",
+      "sha256": "40273a96033566b792d2240f2915815b42aa9d90d4b75fc53813f983f3571166"
+    }
+  ],
+  "extra_files": [
+    {
+      "path": "src/traceone/optimized.py",
+      "sha256": "5897d871897d3dc84441163fd058ddd0805671ea165e442d84697be5980b475d"
+    },
+    {
+      "path": "src/traceone/adapter.py",
+      "sha256": "3b9cd63cf4e2bffa5497fade23874ef8760a2f5db4b456365ffbf8a372bc1853"
+    },
+    {
+      "path": "src/traceone/fingerprint.py",
+      "sha256": "a65034ea034d4bbd4e32d79a8184dfe9177e988d4afb03427143cbb2cf349526"
+    },
+    {
+      "path": "src/traceone/parsing.py",
+      "sha256": "858c66ccf8c652d3c0d446fbeb7a61a2ccaad4245532bd148fb3a8f7bb405af9"
+    },
+    {
+      "path": "dist/traceone.js",
+      "sha256": "719b8c9b49ccd7a22045a7cf763a6bb72b566bc7fa34918465cfff0890e316c6"
+    },
+    {
+      "path": "scripts/evaluate_eight_optimized.py",
+      "sha256": "3a806e7604b7845011c26a34a59a4544c7da7c2894c2db608713cb506ecf0fbc"
+    },
+    {
+      "path": "scripts/collect_codex.py",
+      "sha256": "62b08c5a5ead5b384e1ce52cb791d4adf0235c1f8ff874a4e43f8082739a4b5c"
+    },
+    {
+      "path": "scripts/export_public_data.py",
+      "sha256": "811129dec5e1c78e4457ff8c25e39deda3eed84505c1a44af2a1124700f1dd86"
+    },
+    {
+      "path": "scripts/test_eight_classifier.mjs",
+      "sha256": "a30cb564227b5137da06ac4ca292f06fcc684d81dd9676c6d5c45d93f8877731"
+    },
+    {
+      "path": "data/eight-optimized-development-v1.json",
+      "sha256": "50b00ff8aafc23461bbe93824011265dfb526e4d28f11c83bc734163d4f0fbd2"
+    },
+    {
+      "path": "src/traceone/data/identity-replacement-v1.txt",
+      "sha256": "441797bb623cee418ae557bfb481232d0a2becef4dbcbdc366dd8d55e7c58992"
+    }
+  ],
+  "confirmation": {
+    "run_id": "confirmation-v12",
+    "samples_per_model": 15,
+    "total_calls": 120,
+    "gate": "at least 14 requested-route matches out of 15 for EVERY model",
+    "failure_policy": "all calls remain in denominator; rejected, malformed, timeout, tool use count as misses",
+    "no_retuning_or_replacing_calls": true
+  },
+  "lineage": "ModelTrace 16-model bank remains unchanged and credited; eight-route adapter is newly trained"
+}

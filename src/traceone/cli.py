@@ -17,6 +17,7 @@ from .fingerprint import (
     identify_text,
 )
 from .support import identify_text_supported
+from .optimized import identify_text_optimized
 
 
 def _read_text(path: str) -> str:
@@ -58,10 +59,11 @@ def main() -> None:
         default="release",
     )
     identify.add_argument(
-        "--method", choices=("supported", "enrolled", "bank"), default="supported"
+        "--method", choices=("optimized", "supported", "enrolled", "bank"), default="optimized"
     )
 
-    commands.add_parser("prompt", help="print the frozen one-call identity prompt")
+    prompt_command = commands.add_parser("prompt", help="print the current one-call identity prompt")
+    prompt_command.add_argument("--legacy", action="store_true", help="print the historical seven-route Schema prompt")
 
     score = commands.add_parser("score-canary", help="score responses against a canary artifact")
     score.add_argument("benchmark", type=Path)
@@ -97,6 +99,8 @@ def main() -> None:
 
     args = parser.parse_args()
     if args.command == "identify":
+        if args.method == "optimized" and (args.format != "grid" or args.guard != "release"):
+            parser.error("optimized uses its frozen support gate and grid format; choose a legacy method for other guards/formats")
         guard = {
             "release": ENROLLED_OUTER_GUARD,
             "adaptive": ADAPTIVE_GUARD,
@@ -104,6 +108,7 @@ def main() -> None:
             "strict": STRICT_GUARD,
         }[args.guard]
         identify_function = {
+            "optimized": identify_text_optimized,
             "supported": identify_text_supported,
             "enrolled": identify_text_adapted,
             "bank": identify_text,
@@ -113,7 +118,8 @@ def main() -> None:
         )
         print(json.dumps(result.to_dict(), ensure_ascii=False, indent=2))
     elif args.command == "prompt":
-        prompt = files("traceone").joinpath("data/identity-v3-schema.txt")
+        filename = "identity-v3-schema.txt" if args.legacy else "identity-replacement-v1.txt"
+        prompt = files("traceone").joinpath("data/" + filename)
         print(prompt.read_text(encoding="utf-8").strip())
     elif args.command == "score-canary":
         benchmark = json.loads(args.benchmark.read_text(encoding="utf-8"))

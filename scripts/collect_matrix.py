@@ -18,8 +18,9 @@ MODELS = (
     "gpt-6-astra",
     "gpt-6-sol",
     "gpt-6-luna",
+    "gpt-6.1-sol",
 )
-COLLECTABLE_MODELS = MODELS + ("gpt-5.4", "gpt-6.1-sol")
+COLLECTABLE_MODELS = MODELS + ("gpt-5.4",)
 PROJECT = Path(__file__).resolve().parents[1]
 COLLECTOR = PROJECT / "scripts" / "collect_codex.py"
 
@@ -31,7 +32,7 @@ def main() -> None:
     parser.add_argument("--schema", type=Path, required=True)
     parser.add_argument("--no-schema", action="store_true")
     parser.add_argument("--allow-prospective", action="store_true",
-                        help="explicitly permit a verified prospective route in a multi-model development batch")
+                        help="legacy compatibility flag; GPT-6.1 Sol is now a registered target")
     parser.add_argument("--codex", help="pin a specific Codex executable for every call")
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--split", choices=("development", "calibration", "holdout", "confirmation"), required=True)
@@ -49,8 +50,6 @@ def main() -> None:
         raise SystemExit("invalid repeat range")
     if len(set(args.models)) != len(args.models):
         raise SystemExit("model routes must be unique")
-    if "gpt-6.1-sol" in args.models and len(args.models) != 1 and not args.allow_prospective:
-        raise SystemExit("collect the prospective gpt-6.1-sol route alone, or opt in with --allow-prospective after verifying access")
 
     output_dir = args.output_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)

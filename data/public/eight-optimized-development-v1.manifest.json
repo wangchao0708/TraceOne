@@ -1,0 +1,84 @@
+{
+  "schema": "traceone-public-export-manifest-v1",
+  "output": "data/public/eight-optimized-development-v1.jsonl",
+  "rows": 536,
+  "sha256": "40273a96033566b792d2240f2915815b42aa9d90d4b75fc53813f983f3571166",
+  "excluded_fields": [
+    "thread_id",
+    "stderr_tail"
+  ],
+  "sources": [
+    {
+      "source_file": "data/live/eight-replacement-enrollment-v2/gpt-5.5.jsonl",
+      "sha256": "97c5b065c50dafae201d76cce11c0a4cb0fe49618bb3c230eb2df90a1faa199e"
+    },
+    {
+      "source_file": "data/live/eight-replacement-enrollment-v2/gpt-5.6-luna.jsonl",
+      "sha256": "024f367fbe27b3a72a829fa8aeb0a7e73d2b244f38610815d5ff9f32f5cda424"
+    },
+    {
+      "source_file": "data/live/eight-replacement-enrollment-v2/gpt-5.6-sol.jsonl",
+      "sha256": "94c8f51ab9c52cffa6438591196fe19c68c216c1aa2393bcf0331e62df7eaa26"
+    },
+    {
+      "source_file": "data/live/eight-replacement-enrollment-v2/gpt-5.6-terra.jsonl",
+      "sha256": "f83b5399dc23caa34703ddeb662644cb8f2b134dac537326b5399ffc9a7137bf"
+    },
+    {
+      "source_file": "data/live/eight-replacement-enrollment-v2/gpt-6-astra.jsonl",
+      "sha256": "c5718c7be1654a7c57515ed665c24c87ed8b5faf606b3aba5314df23c445c673"
+    },
+    {
+      "source_file": "data/live/eight-replacement-enrollment-v2/gpt-6-luna.jsonl",
+      "sha256": "2b15ec0265b0b8d0e5c372531a91e4b5c4df3fb232f0004624b5c00bad3f1d28"
+    },
+    {
+      "source_file": "data/live/eight-replacement-enrollment-v2/gpt-6-sol.jsonl",
+      "sha256": "6dbd7da6631cc6152f2a485e5064f814d988d1dc308f509ad7262b1f90c12a7e"
+    },
+    {
+      "source_file": "data/live/eight-replacement-enrollment-v2/gpt-6.1-sol.jsonl",
+      "sha256": "9159b9b2e19e379e391a5c4f90e06351febf78eac81a05b689804e239c07d578"
+    },
+    {
+      "source_file": "data/live/eight-replacement-calibration-v1/gpt-5.5.jsonl",
+      "sha256": "713885c6981a947cc0642994722867fe7c76433ce6671198fc6295ce429523b4"
+    },
+    {
+      "source_file": "data/live/eight-replacement-calibration-v1/gpt-5.6-luna.jsonl",
+      "sha256": "be34eea1cae69bd2795b330f22a5210a0f09d9e0e91d926103a2c61a3da5d5b4"
+    },
+    {
+      "source_file": "data/live/eight-replacement-calibration-v1/gpt-5.6-sol.jsonl",
+      "sha256": "56f2f157ee027568d7d066afcbba5ca17fe16ffd3e692eb81ad33ac3e7584bf1"
+    },
+    {
+      "source_file": "data/live/eight-replacement-calibration-v1/gpt-5.6-terra.jsonl",
+      "sha256": "dcac7ff5606a76caae2fcc177f7c58e198b86244cb7c1e25ed05567dc30b04f5"
+    },
+    {
+      "source_file": "data/live/eight-replacement-calibration-v1/gpt-6-astra.jsonl",
+      "sha256": "0bb6de8133bf5b87172403dc50fb6891de80b7ded9fdeb15f95fc31dd4fc9851"
+    },
+    {
+      "source_file": "data/live/eight-replacement-calibration-v1/gpt-6-luna.jsonl",
+      "sha256": "21d9f02e44f03eb0e040faa9713dfe46657e7de9b6472be1d6c1438f8ee7bf08"
+    },
+    {
+      "source_file": "data/live/eight-replacement-calibration-v1/gpt-6-sol.jsonl",
+      "sha256": "f05d15b597016fade991c9782515c124fd61268165ac24f93bb75b880fbbd0e1"
+    },
+    {
+      "source_file": "data/live/eight-replacement-calibration-v1/gpt-6.1-sol.jsonl",
+      "sha256": "6ece0f79a157cfe10eff5d5e060192cf6e4fb42c13ddeb29242a82567c660d50"
+    },
+    {
+      "source_file": "data/live/pair-ranges-v1/gpt-6-astra.jsonl",
+      "sha256": "caaf31523cd9bf52bc4eed7f1adf6457a58966fff4a57478194f0ed9de6bb0da"
+    },
+    {
+      "source_file": "data/live/pair-ranges-v1/gpt-6.1-sol.jsonl",
+      "sha256": "e6eb1912857372e25f57a1158d46fb9343bc3f98d6e17c19f481b737e855abe3"
+    }
+  ]
+}

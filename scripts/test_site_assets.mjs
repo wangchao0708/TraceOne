@@ -10,8 +10,7 @@ const hash = (relativePath) => crypto.createHash("sha256").update(read(relativeP
 
 const mirroredAssets = [
   "unified_bank_v2_16.json",
-  "codex_low_v7_adapter_791.json",
-  "codex_low_v7_support_791.json",
+  "codex_low_v8_optimized.json",
 ];
 const deployedAssets = fs.readdirSync(path.join(root, "dist/data")).filter((name) => name.endsWith(".json"));
 if (JSON.stringify(deployedAssets.sort()) !== JSON.stringify(mirroredAssets.slice().sort())) {
@@ -30,9 +29,12 @@ const promptMatch = html.match(/<div class="prompt-box" id="promptText"[^>]*>([\
 if (!promptMatch) throw new Error("prompt box not found");
 const normalize = (value) => value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 const visiblePrompt = normalize(promptMatch[1]);
-const promptFile = normalize(text("prompts/identity-web-v1.txt"));
-if (visiblePrompt !== promptFile) throw new Error("visible prompt differs from identity-web-v1.txt");
-if (!visiblePrompt.includes("produce 315 separate")
+const promptFile = normalize(text("prompts/identity-replacement-v1.txt"));
+if (visiblePrompt !== promptFile) throw new Error("visible prompt differs from identity-replacement-v1.txt");
+if (hash("src/traceone/data/identity-replacement-v1.txt") !== hash("prompts/identity-replacement-v1.txt")) {
+  throw new Error("packaged CLI prompt differs from the current web/collection prompt");
+}
+if (!visiblePrompt.includes("make 315 independent")
     || !app.includes("identifyWithArtifacts(responseText, artifacts)")
     || app.includes("identifyLongWithArtifacts")) {
   throw new Error("the public site must use the 315-choice classifier");
@@ -43,10 +45,10 @@ for (const marker of ["identifyMode", "degradationMode", "expectedModel"]) {
 }
 if (!html.includes('id="routeNotice"') || !app.includes('setText("routeNotice", t.routeNotice)')
     || !app.includes("astraOverlapWarning")) {
-  throw new Error("the unqualified GPT-6.1 Sol overlap must be disclosed in both languages and modes");
+  throw new Error("the Astra/GPT-6.1 Sol overlap must be disclosed in both languages and modes");
 }
-if (html.includes('value="gpt-6.1-sol"')) {
-  throw new Error("GPT-6.1 Sol must not be exposed as a qualified prediction target yet");
+if (!html.includes('value="gpt-6.1-sol"') || !app.includes("ambiguousPair")) {
+  throw new Error("the eighth option and conservative pair-mismatch verdict are required");
 }
 for (const model of ["gpt-6-sol", "gpt-6-luna"]) {
   if (!html.includes(`value="${model}"`) || !app.includes(`"${model}"`)) {

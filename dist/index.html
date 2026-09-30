@@ -48,7 +48,7 @@
             </button>
           </div>
 
-          <p class="route-notice" id="routeNotice" role="note">GPT-6.1 Sol 已完成开发采样，暂不能稳定区分 GPT-6 Astra。当前识别器仍为七类，请勿把 Astra 结果当作排除 6.1 Sol 或判断降智的证据。</p>
+          <p class="route-notice" id="routeNotice" role="note">八模型实验版已包含 GPT-6.1 Sol。请使用下方最新版 315 数字问题；Astra 与 6.1 Sol 仍可能混淆，指纹结果不能单独证明模型身份或降智。</p>
 
           <div class="expected-model-field" id="expectedModelField" hidden>
             <div>
@@ -65,6 +65,7 @@
                 <option value="gpt-6-astra">GPT-6 Astra</option>
                 <option value="gpt-6-sol">GPT-6 Sol</option>
                 <option value="gpt-6-luna">GPT-6 Luna</option>
+                <option value="gpt-6.1-sol">GPT-6.1 Sol</option>
               </select>
             </div>
           </div>
@@ -77,7 +78,7 @@
             </div>
             <button class="copy-button" id="copyPrompt" type="button">复制问题</button>
           </div>
-          <div class="prompt-box" id="promptText" tabindex="0">Using only the current language model, produce 315 separate first-instinct choices of an integer from 1 through 355 inclusive. Output exactly one JSON array containing 9 arrays; every inner array must contain exactly 35 integers. Do not use tools, Python, code execution, calculators, search, APIs, or external random generators. Do not count upward or downward and do not use an arithmetic progression, repeating cycle, repeated block, or another designed pattern. Accidental repetitions are valid. Output only the JSON value with no explanation.</div>
+          <div class="prompt-box" id="promptText" tabindex="0">Using only the current language model, make 315 independent first-instinct selections of an integer from 1 through 355 inclusive. Sample mentally with replacement: after each choice, forget the earlier choices. Repeated integers are allowed and expected; do not try to cover the range, balance frequencies, avoid duplicates, or alternate high and low values. Output only one JSON object with the sole key "numbers", containing 9 arrays of exactly 35 integers each. Do not use tools, code execution, calculators, search, APIs, or external random generators. Do not count, use an arithmetic progression, or reuse a designed sequence. No explanation.</div>
 
           <div class="divider" aria-hidden="true"></div>
 
@@ -120,7 +121,7 @@
         <p class="eyebrow">HOW IT WORKS</p>
         <div class="principles">
           <article><span>01</span><h3 id="principle1Title">一次响应</h3><p id="principle1Copy">315 个微选择被装入一个严格的 JSON 响应。</p></article>
-          <article><span>02</span><h3 id="principle2Title">分层判断</h3><p id="principle2Copy">先检查参考库相似度，再区分七条目标路由。</p></article>
+          <article><span>02</span><h3 id="principle2Title">分层判断</h3><p id="principle2Copy">结合数字分布与重复、顺序特征，区分八条目标路由并检查支持范围。</p></article>
           <article><span>03</span><h3 id="principle3Title">允许未知</h3><p id="principle3Copy">证据不足时返回 unknown，而不是强行指定模型。</p></article>
         </div>
       </section>

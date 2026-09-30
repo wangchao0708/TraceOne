@@ -1,0 +1,2163 @@
+{
+  "schema": "traceone-eight-optimized-development-v1",
+  "status": "inspected development, not independent accuracy",
+  "folds": "repeat modulo 3, all scaling and bandwidth fitted on training folds only",
+  "samples": 576,
+  "calls_per_model": {
+    "gpt-5.5": 72,
+    "gpt-5.6-luna": 72,
+    "gpt-5.6-sol": 72,
+    "gpt-5.6-terra": 72,
+    "gpt-6-astra": 72,
+    "gpt-6-luna": 72,
+    "gpt-6-sol": 72,
+    "gpt-6.1-sol": 72
+  },
+  "valid_per_model": {
+    "gpt-5.5": 72,
+    "gpt-5.6-luna": 72,
+    "gpt-5.6-sol": 71,
+    "gpt-5.6-terra": 71,
+    "gpt-6-astra": 71,
+    "gpt-6-luna": 72,
+    "gpt-6-sol": 71,
+    "gpt-6.1-sol": 71
+  },
+  "selection_rule": "maximize minimum per-model matches, then total matches; prefer ridge on ties",
+  "selected": {
+    "group_weights": {
+      "bank": 1,
+      "raw": 1,
+      "structure": 0.5,
+      "order": 0
+    },
+    "classifier": "ridge",
+    "alpha": 1,
+    "gamma": 1,
+    "matches": 543,
+    "per_model": {
+      "gpt-5.5": 72,
+      "gpt-5.6-luna": 72,
+      "gpt-5.6-terra": 71,
+      "gpt-5.6-sol": 70,
+      "gpt-6-astra": 59,
+      "gpt-6-sol": 70,
+      "gpt-6-luna": 71,
+      "gpt-6.1-sol": 58
+    }
+  },
+  "variants": [
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 543,
+      "per_model": {
+        "gpt-5.5": 72,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 59,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 58
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 538,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 59,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 58
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 545,
+      "per_model": {
+        "gpt-5.5": 72,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 62,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 57
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 541,
+      "per_model": {
+        "gpt-5.5": 71,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 61,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 56
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 539,
+      "per_model": {
+        "gpt-5.5": 72,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 59,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 56
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 538,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 62,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 56
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 537,
+      "per_model": {
+        "gpt-5.5": 71,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 56,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 56
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 537,
+      "per_model": {
+        "gpt-5.5": 71,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 56,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 56
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 536,
+      "per_model": {
+        "gpt-5.5": 71,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 58,
+        "gpt-6-sol": 67,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 56
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 536,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 62,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 56
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 535,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 63,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 56
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 540,
+      "per_model": {
+        "gpt-5.5": 72,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 61,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 539,
+      "per_model": {
+        "gpt-5.5": 71,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 62,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 539,
+      "per_model": {
+        "gpt-5.5": 71,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 61,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 537,
+      "per_model": {
+        "gpt-5.5": 72,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 55,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 57
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 537,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 60,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 537,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 62,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 537,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 60,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 535,
+      "per_model": {
+        "gpt-5.5": 67,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 61,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 533,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 55,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 533,
+      "per_model": {
+        "gpt-5.5": 66,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 61,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 533,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 59,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 532,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 55,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 527,
+      "per_model": {
+        "gpt-5.5": 61,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 61,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 527,
+      "per_model": {
+        "gpt-5.5": 61,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 61,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 525,
+      "per_model": {
+        "gpt-5.5": 63,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 57,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 523,
+      "per_model": {
+        "gpt-5.5": 61,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 57,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 517,
+      "per_model": {
+        "gpt-5.5": 56,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 57,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 69,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 537,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 62,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 537,
+      "per_model": {
+        "gpt-5.5": 72,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 60,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 536,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 63,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 532,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 62,
+        "gpt-6-sol": 67,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 530,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 69,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 59,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 529,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 54,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 529,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 69,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 60,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 528,
+      "per_model": {
+        "gpt-5.5": 68,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 69,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 60,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 535,
+      "per_model": {
+        "gpt-5.5": 68,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 62,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 53
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 530,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 53,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 530,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 58,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 53
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 529,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 53,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 57
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 529,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 69,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 60,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 53
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 528,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 69,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 58,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 53
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 526,
+      "per_model": {
+        "gpt-5.5": 61,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 63,
+        "gpt-6-sol": 67,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 53
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 526,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 69,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 58,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 53
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 523,
+      "per_model": {
+        "gpt-5.5": 67,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 58,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 69,
+        "gpt-6.1-sol": 53
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 517,
+      "per_model": {
+        "gpt-5.5": 64,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 58,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 67,
+        "gpt-6.1-sol": 53
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 514,
+      "per_model": {
+        "gpt-5.5": 59,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 53,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 68,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 512,
+      "per_model": {
+        "gpt-5.5": 53,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 57,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 68,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 504,
+      "per_model": {
+        "gpt-5.5": 53,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 54,
+        "gpt-6-sol": 67,
+        "gpt-6-luna": 66,
+        "gpt-6.1-sol": 53
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 503,
+      "per_model": {
+        "gpt-5.5": 53,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 54,
+        "gpt-6-sol": 66,
+        "gpt-6-luna": 66,
+        "gpt-6.1-sol": 53
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 536,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 62,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 532,
+      "per_model": {
+        "gpt-5.5": 68,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 61,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 531,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 52,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 56
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 527,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 55,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 525,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 55,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 522,
+      "per_model": {
+        "gpt-5.5": 61,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 63,
+        "gpt-6-sol": 65,
+        "gpt-6-luna": 69,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 522,
+      "per_model": {
+        "gpt-5.5": 67,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 57,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 521,
+      "per_model": {
+        "gpt-5.5": 67,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 58,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 69,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 518,
+      "per_model": {
+        "gpt-5.5": 64,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 59,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 67,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 10,
+      "gamma": 1,
+      "matches": 515,
+      "per_model": {
+        "gpt-5.5": 60,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 52,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 68,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 504,
+      "per_model": {
+        "gpt-5.5": 61,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 54,
+        "gpt-6-sol": 65,
+        "gpt-6-luna": 65,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 504,
+      "per_model": {
+        "gpt-5.5": 61,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 54,
+        "gpt-6-sol": 65,
+        "gpt-6-luna": 65,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 494,
+      "per_model": {
+        "gpt-5.5": 56,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 67,
+        "gpt-5.6-sol": 67,
+        "gpt-6-astra": 56,
+        "gpt-6-sol": 63,
+        "gpt-6-luna": 63,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 491,
+      "per_model": {
+        "gpt-5.5": 55,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 67,
+        "gpt-5.6-sol": 67,
+        "gpt-6-astra": 54,
+        "gpt-6-sol": 63,
+        "gpt-6-luna": 63,
+        "gpt-6.1-sol": 52
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 523,
+      "per_model": {
+        "gpt-5.5": 68,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 51,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 518,
+      "per_model": {
+        "gpt-5.5": 65,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 56,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 51
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 515,
+      "per_model": {
+        "gpt-5.5": 64,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 57,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 69,
+        "gpt-6.1-sol": 51
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 514,
+      "per_model": {
+        "gpt-5.5": 65,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 54,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 69,
+        "gpt-6.1-sol": 51
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 508,
+      "per_model": {
+        "gpt-5.5": 61,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 55,
+        "gpt-6-sol": 66,
+        "gpt-6-luna": 67,
+        "gpt-6.1-sol": 51
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 506,
+      "per_model": {
+        "gpt-5.5": 61,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 56,
+        "gpt-6-sol": 67,
+        "gpt-6-luna": 65,
+        "gpt-6.1-sol": 51
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 505,
+      "per_model": {
+        "gpt-5.5": 61,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 54,
+        "gpt-6-sol": 66,
+        "gpt-6-luna": 66,
+        "gpt-6.1-sol": 51
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 501,
+      "per_model": {
+        "gpt-5.5": 61,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 53,
+        "gpt-6-sol": 65,
+        "gpt-6-luna": 65,
+        "gpt-6.1-sol": 51
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 500,
+      "per_model": {
+        "gpt-5.5": 58,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 53,
+        "gpt-6-sol": 64,
+        "gpt-6-luna": 66,
+        "gpt-6.1-sol": 51
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 0.5,
+      "matches": 498,
+      "per_model": {
+        "gpt-5.5": 57,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 53,
+        "gpt-6-sol": 65,
+        "gpt-6-luna": 65,
+        "gpt-6.1-sol": 51
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 484,
+      "per_model": {
+        "gpt-5.5": 54,
+        "gpt-5.6-luna": 69,
+        "gpt-5.6-terra": 67,
+        "gpt-5.6-sol": 65,
+        "gpt-6-astra": 53,
+        "gpt-6-sol": 62,
+        "gpt-6-luna": 63,
+        "gpt-6.1-sol": 51
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 2,
+      "matches": 481,
+      "per_model": {
+        "gpt-5.5": 53,
+        "gpt-5.6-luna": 69,
+        "gpt-5.6-terra": 67,
+        "gpt-5.6-sol": 64,
+        "gpt-6-astra": 53,
+        "gpt-6-sol": 61,
+        "gpt-6-luna": 63,
+        "gpt-6.1-sol": 51
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 530,
+      "per_model": {
+        "gpt-5.5": 70,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 50,
+        "gpt-6-sol": 70,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 56
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 528,
+      "per_model": {
+        "gpt-5.5": 69,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 50,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 57
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 523,
+      "per_model": {
+        "gpt-5.5": 66,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 50,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 521,
+      "per_model": {
+        "gpt-5.5": 67,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 50,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 511,
+      "per_model": {
+        "gpt-5.5": 64,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 55,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 68,
+        "gpt-6.1-sol": 50
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 492,
+      "per_model": {
+        "gpt-5.5": 59,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 66,
+        "gpt-6-astra": 52,
+        "gpt-6-sol": 62,
+        "gpt-6-luna": 64,
+        "gpt-6.1-sol": 50
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "kernel",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 489,
+      "per_model": {
+        "gpt-5.5": 58,
+        "gpt-5.6-luna": 70,
+        "gpt-5.6-terra": 68,
+        "gpt-5.6-sol": 66,
+        "gpt-6-astra": 53,
+        "gpt-6-sol": 61,
+        "gpt-6-luna": 63,
+        "gpt-6.1-sol": 50
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 1,
+      "gamma": 1,
+      "matches": 522,
+      "per_model": {
+        "gpt-5.5": 67,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 49,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 520,
+      "per_model": {
+        "gpt-5.5": 68,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 67,
+        "gpt-6-astra": 49,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 517,
+      "per_model": {
+        "gpt-5.5": 67,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 71,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 49,
+        "gpt-6-sol": 67,
+        "gpt-6-luna": 68,
+        "gpt-6.1-sol": 55
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 511,
+      "per_model": {
+        "gpt-5.5": 64,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 48,
+        "gpt-6-sol": 67,
+        "gpt-6-luna": 68,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 519,
+      "per_model": {
+        "gpt-5.5": 68,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 47,
+        "gpt-6-sol": 69,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 53
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 518,
+      "per_model": {
+        "gpt-5.5": 66,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 70,
+        "gpt-6-astra": 47,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 71,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 0.5,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 518,
+      "per_model": {
+        "gpt-5.5": 67,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 69,
+        "gpt-6-astra": 47,
+        "gpt-6-sol": 67,
+        "gpt-6-luna": 69,
+        "gpt-6.1-sol": 57
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 0.25,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 512,
+      "per_model": {
+        "gpt-5.5": 66,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 67,
+        "gpt-6-astra": 47,
+        "gpt-6-sol": 66,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 1,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 516,
+      "per_model": {
+        "gpt-5.5": 66,
+        "gpt-5.6-luna": 72,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 68,
+        "gpt-6-astra": 45,
+        "gpt-6-sol": 67,
+        "gpt-6-luna": 70,
+        "gpt-6.1-sol": 58
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 511,
+      "per_model": {
+        "gpt-5.5": 66,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 67,
+        "gpt-6-astra": 44,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 68,
+        "gpt-6.1-sol": 57
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 503,
+      "per_model": {
+        "gpt-5.5": 64,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 69,
+        "gpt-5.6-sol": 66,
+        "gpt-6-astra": 44,
+        "gpt-6-sol": 66,
+        "gpt-6-luna": 69,
+        "gpt-6.1-sol": 54
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 4,
+        "order": 0.5
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 510,
+      "per_model": {
+        "gpt-5.5": 65,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 70,
+        "gpt-5.6-sol": 67,
+        "gpt-6-astra": 43,
+        "gpt-6-sol": 68,
+        "gpt-6-luna": 69,
+        "gpt-6.1-sol": 57
+      }
+    },
+    {
+      "group_weights": {
+        "bank": 1,
+        "raw": 1,
+        "structure": 2,
+        "order": 0
+      },
+      "classifier": "ridge",
+      "alpha": 0.1,
+      "gamma": 1,
+      "matches": 504,
+      "per_model": {
+        "gpt-5.5": 64,
+        "gpt-5.6-luna": 71,
+        "gpt-5.6-terra": 69,
+        "gpt-5.6-sol": 67,
+        "gpt-6-astra": 43,
+        "gpt-6-sol": 67,
+        "gpt-6-luna": 68,
+        "gpt-6.1-sol": 55
+      }
+    }
+  ]
+}

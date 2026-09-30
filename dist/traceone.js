@@ -6,6 +6,7 @@ export const TARGET_MODELS = [
   "gpt-6-astra",
   "gpt-6-sol",
   "gpt-6-luna",
+  "gpt-6.1-sol",
 ];
 
 const VALUE_MIN = 1;
@@ -365,6 +366,9 @@ function supportScore(numbers, label, bank, support) {
 }
 
 export function identifyWithArtifacts(text, { bank, adapter, support }) {
+  if (adapter?.schema === "traceone-sequence-adapter-v1") {
+    return identifyOptimized(text, bank, adapter);
+  }
   const parsed = parseGridResponse(text);
   const base = classifyAdapted(parsed, bank, adapter);
   if (base.status !== "identified" || !base.label) {
@@ -418,15 +422,139 @@ export function identifyWithArtifacts(text, { bank, adapter, support }) {
   };
 }
 
+function histogram(values, size) {
+  const counts = Array(size).fill(0);
+  for (const value of values) counts[value] += 1;
+  return counts;
+}
+
+function splitNine(numbers) {
+  const size = Math.floor(numbers.length / 9);
+  const remainder = numbers.length % 9;
+  let offset = 0;
+  return Array.from({ length: 9 }, (_, i) => {
+    const end = offset + size + Number(i < remainder);
+    const row = numbers.slice(offset, end);
+    offset = end;
+    return row;
+  });
+}
+
+export function sequenceStructure(numbers) {
+  if (numbers.length < 280 || numbers.length > 350) throw new Error("optimized features require 280–350 usable integers");
+  const rows = splitNine(numbers);
+  const blocks = [numbers, ...rows, ...[70, 140, 210, 280].map((n) => numbers.slice(0, n))];
+  const out = [];
+  for (const block of blocks) {
+    const counts = histogram(block, 356).slice(1);
+    const center = mean(block);
+    const delta = block.slice(1).map((v, i) => v - block[i]);
+    out.push(new Set(block).size / block.length, Math.max(...counts), dot(counts, counts) / block.length,
+      center / 355, Math.sqrt(mean(block.map((v) => (v - center) ** 2))) / 355,
+      mean(delta.map(Math.abs)) / 355, mean(delta.map((d) => Number(d > 0))),
+      mean(delta.map((d) => Number(Math.abs(d) <= 10))), mean(block.map((v) => Number(v % 2 === 0))),
+      mean(block.map((v) => Number(v % 5 === 0))), mean(block.map((v) => Number(v % 10 === 7))));
+  }
+  const counts = histogram(numbers, 356).slice(1);
+  for (let count = 2; count <= 6; count += 1) out.push(counts.filter((n) => n >= count).length);
+  for (let count = 1; count <= 5; count += 1) out.push(counts.filter((n) => n === count).length);
+  const center = mean(numbers);
+  for (let lag = 1; lag <= 8; lag += 1) {
+    const left = numbers.slice(0, -lag);
+    const right = numbers.slice(lag);
+    out.push(mean(left.map((v, i) => Number(v === right[i]))),
+      mean(left.map((v, i) => Math.abs(v - right[i]))) / 355,
+      mean(left.map((v, i) => (v - center) * (right[i] - center))) / (355 ** 2));
+  }
+  return out;
+}
+
+function optimizedGroups(numbers, bank) {
+  const full = adapterFeature(numbers, bank, true);
+  const boundary = 3 * bank.robust.model_order.length;
+  const rows = splitNine(numbers);
+  const digit = rows.flatMap((b) => histogram(b.map((v) => v % 10), 10).map((n) => n / b.length));
+  const bins = numbers.map((v) => Math.min(Math.floor((v - 1) * 6 / 355), 5));
+  const transitions = histogram(bins.slice(0, -1).map((v, i) => v * 6 + bins[i + 1]), 36).map((n) => n / (numbers.length - 1));
+  const positions = rows.flatMap((b) => histogram(b.map((v) => Math.min(Math.floor((v - 1) * 8 / 355), 7)), 8)
+    .map((n) => n / b.length));
+  return { bank: full.slice(0, boundary), raw: full.slice(boundary), structure: sequenceStructure(numbers),
+    order: [...digit, ...transitions, ...positions] };
+}
+
+function identifyOptimized(text, bank, artifact) {
+  if (JSON.stringify(bank.robust.model_order) !== JSON.stringify(artifact.bank_model_order)) {
+    throw new Error("optimized artifact and bank order differ");
+  }
+  const parsed = parseGridResponse(text);
+  const outer = classifyOuter(parsed, bank);
+  let grid;
+  try { grid = JSON.parse(text); } catch { grid = null; }
+  if (grid && !Array.isArray(grid) && Object.keys(grid).length === 1 && Object.hasOwn(grid, "numbers")) grid = grid.numbers;
+  const analyzable = parsed.numbers.length >= 280 && parsed.numbers.length <= 350
+    && Array.isArray(grid) && grid.length === 9 && grid.every((row) => {
+      if (!Array.isArray(row)) return false;
+      const usable = row.filter((v) => Number.isInteger(v) && v >= 1 && v <= 355).length;
+      return usable >= 25 && usable <= 45;
+    });
+  if (!analyzable) {
+    return { status: "unknown", label: null, supportPassed: null, supportDistance: null,
+      supportThreshold: null, supportPValue: null, supportPath: "invalid", parsed,
+      adapter: { status: "unknown", label: null, adapterMargin: null, adapterScores: {}, outerGuard: outer } };
+  }
+  const groups = optimizedGroups(parsed.numbers, bank);
+  const feature = ["bank", "raw", "structure", "order"]
+    .filter((name) => Number(artifact.group_weights[name] ?? 0) > 0).flatMap((name) => groups[name]);
+  const x = feature.map((v, i) => (v - artifact.feature_mean[i]) / artifact.feature_scale[i] * artifact.feature_multiplier[i]);
+  let scores;
+  if (artifact.classifier === "kernel") {
+    const kernel = artifact.training_features.map((reference) => {
+      let distance = 0;
+      for (let i = 0; i < x.length; i += 1) distance += (reference[i] - x[i]) ** 2;
+      return Math.exp(-artifact.gamma * distance / artifact.bandwidth);
+    });
+    scores = artifact.target_mean.map((offset, modelIndex) => offset + kernel.reduce(
+      (total, k, i) => total + k * artifact.coefficients[i][modelIndex], 0));
+  } else {
+    scores = artifact.target_mean.map((offset, modelIndex) => offset + x.reduce(
+      (total, v, i) => total + v * artifact.weights[i][modelIndex], 0));
+  }
+  const order = scores.map((_, i) => i).sort((a, b) => scores[a] - scores[b]);
+  const winner = order.at(-1);
+  const margin = scores[winner] - scores[order.at(-2)];
+  const label = artifact.models[winner];
+  const s = groups.structure;
+  const supportFeature = [...groups.bank, ...s.slice(0, 11),
+    ...Array.from({ length: 9 }, (_, i) => s[11 + 11 * i]), ...s.slice(154, 159)];
+  const support = artifact.support;
+  const residual = supportFeature.map((v, i) => (v - support.feature_mean[i]) / support.feature_scale[i]
+    - support.centroids[winner][i]);
+  let distance = 0;
+  for (let i = 0; i < residual.length; i += 1) {
+    for (let j = 0; j < residual.length; j += 1) distance += residual[i] * support.precision[i][j] * residual[j];
+  }
+  const threshold = support.thresholds[winner];
+  const calibration = support.calibration_distances[winner];
+  const tolerance = 1e-10 * Math.max(1, Math.abs(distance));
+  const pValue = (1 + calibration.filter((d) => d >= distance - tolerance).length) / (calibration.length + 1);
+  const marginPassed = margin >= artifact.minimum_margin - 1e-12;
+  const boundaryTolerance = 1e-10 * Math.max(1, Math.abs(distance), Math.abs(threshold));
+  const passed = marginPassed && distance <= threshold + boundaryTolerance;
+  return { status: passed ? "identified" : "unknown", label: passed ? label : null,
+    supportPassed: passed, supportDistance: distance, supportThreshold: threshold, supportPValue: pValue,
+    supportPath: passed ? "optimized_distance" : marginPassed ? "optimized_rejected" : "optimized_margin", parsed,
+    adapter: { status: marginPassed ? "identified" : "unknown", label: marginPassed ? label : null,
+      adapterMargin: margin, adapterScores: Object.fromEntries(artifact.models.map((m, i) => [m, scores[i]])), outerGuard: outer } };
+}
+
 let artifactPromise;
 
 export function loadArtifacts() {
   if (!artifactPromise) {
     artifactPromise = Promise.all([
       fetch(new URL("./data/unified_bank_v2_16.json", import.meta.url)).then((response) => response.json()),
-      fetch(new URL("./data/codex_low_v7_adapter_791.json", import.meta.url)).then((response) => response.json()),
-      fetch(new URL("./data/codex_low_v7_support_791.json", import.meta.url)).then((response) => response.json()),
-    ]).then(([bank, adapter, support]) => ({ bank, adapter, support }));
+      fetch(new URL("./data/codex_low_v8_optimized.json", import.meta.url)).then((response) => response.json()),
+    ]).then(([bank, adapter]) => ({ bank, adapter }));
   }
   return artifactPromise;
 }

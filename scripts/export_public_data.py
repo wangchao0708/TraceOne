@@ -27,6 +27,9 @@ PUBLIC_FIELDS = (
     "elapsed_seconds",
     "return_code",
     "usage",
+    "completed_item_types",
+    "tool_item_count",
+    "completed_error_count",
     "text",
 )
 
