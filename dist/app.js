@@ -40,6 +40,8 @@ const copy = {
     pageTitle: "一次提问<br />看见模型的行为指纹",
     introCopy: "分析在你的浏览器中完成，不会上传回答。",
     routeNotice: "八模型实验版已包含 GPT-6.1 Sol。请使用下方最新版 315 数字问题；Astra 与 6.1 Sol 仍可能混淆，指纹结果不能单独证明模型身份或降智。",
+    modelSimilarityNote: "OpenAI 说明 GPT-6.1 Sol 与 GPT-6 Astra 使用同类数据和训练方法及同一套 safeguards stack（安全防护体系）；这可能是行为指纹相近的背景因素，但不是混淆原因的证明。",
+    modelSimilaritySource: "官方说明",
     astraOverlapWarning: "GPT-6 Astra 与 GPT-6.1 Sol 的行为分布有重叠，这两类结果需要谨慎解释。",
     modeLabel: "检测模式",
     identifyMode: "模型识别",
@@ -120,6 +122,8 @@ const copy = {
     pageTitle: "One question<br />See the model's behavioral trace",
     introCopy: "Analysis stays in your browser; the response is never uploaded.",
     routeNotice: "The eight-model experiment includes GPT-6.1 Sol. Use the updated 315-choice question below. Astra and 6.1 Sol may still be confused; a fingerprint cannot establish model identity or degradation by itself.",
+    modelSimilarityNote: "OpenAI states that GPT-6.1 Sol and GPT-6 Astra share data and training types and the same safeguards stack; this is a possible background factor for similar fingerprints, not evidence that it caused the overlap.",
+    modelSimilaritySource: "Official source",
     astraOverlapWarning: "GPT-6 Astra and GPT-6.1 Sol have overlapping behavioral distributions; interpret these results cautiously.",
     modeLabel: "Check mode",
     identifyMode: "Identify model",
@@ -247,6 +251,8 @@ function setLanguage(nextLanguage) {
   document.querySelector("#page-title").innerHTML = t.pageTitle;
   setText("introCopy", t.introCopy);
   setText("routeNotice", t.routeNotice);
+  setText("modelSimilarityNote", t.modelSimilarityNote);
+  setText("modelSimilaritySource", t.modelSimilaritySource);
   setText("copyKicker", t.copyKicker);
   copyButton.textContent = t.copyButton;
   setText("pasteKicker", t.pasteKicker);
