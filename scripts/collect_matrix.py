@@ -19,7 +19,7 @@ MODELS = (
     "gpt-6-sol",
     "gpt-6-luna",
 )
-COLLECTABLE_MODELS = MODELS + ("gpt-5.4",)
+COLLECTABLE_MODELS = MODELS + ("gpt-5.4", "gpt-6.1-sol")
 PROJECT = Path(__file__).resolve().parents[1]
 COLLECTOR = PROJECT / "scripts" / "collect_codex.py"
 
@@ -30,6 +30,7 @@ def main() -> None:
     parser.add_argument("--prompt", type=Path, required=True)
     parser.add_argument("--schema", type=Path, required=True)
     parser.add_argument("--no-schema", action="store_true")
+    parser.add_argument("--codex", help="pin a specific Codex executable for every call")
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--split", choices=("development", "calibration", "holdout", "confirmation"), required=True)
     parser.add_argument("--repeat-start", type=int, required=True)
@@ -44,6 +45,8 @@ def main() -> None:
     args = parser.parse_args()
     if args.repeat_start < 1 or args.repeat_end < args.repeat_start:
         raise SystemExit("invalid repeat range")
+    if "gpt-6.1-sol" in args.models and len(args.models) != 1:
+        raise SystemExit("collect the prospective gpt-6.1-sol route alone until access is verified")
 
     output_dir = args.output_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -70,6 +73,8 @@ def main() -> None:
                 command.append("--no-schema")
             else:
                 command.extend(["--schema", str(args.schema.resolve())])
+            if args.codex:
+                command.extend(["--codex", str(Path(args.codex).expanduser().resolve())])
             processes[model] = subprocess.Popen(
                 command,
                 cwd=PROJECT,

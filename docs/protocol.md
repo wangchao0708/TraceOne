@@ -126,3 +126,27 @@ manifest 记录源文件和公开文件 digest。发布前仍需人工检查未�
 - 0.1.0 五类各 15 条只能证明该批结果；75/75 的 Wilson 95% 区间仍为约 95.13%–100%。
 - GPT-5.4 是当前最难未见类，七模型 development 中仍有 13/36 false accepts。
 - 没有 routing log/attestation，不能区分 detector error、自然波动和真实换模。
+
+## 10. GPT-6.1 Sol 扩展准备
+
+[OpenAI 官方模型说明](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
+确认模型 ID 为 `gpt-6.1-sol`，且支持 `low` reasoning。它目前只是采集脚本中的
+**显式可选候选**：默认七模型采集、16-model bank、七类 adapter/support、网页
+选项和上述准确率都未加入它。2026-09-30 使用本项目的 Codex ChatGPT 账户试调用
+返回“不支持该模型”，未得到可用于拟合的响应；不以合成数据冒充采样。
+
+待同一账户可以调用后，仍保持一问 315 数字与相同 Schema、`low` reasoning、
+隔离运行和完整 provenance。新增参考数据须与适配器 enrollment、最终确认分离；
+17-model outer bank 的归一化、环境方向及中心须从原始数据重拟合，不能只向现有
+16-model bank 追加一个中心。随后平衡训练八类 adapter/support，并检查旧七类
+是否退化、未收录标签误接收和跨运行环境漂移。
+
+所有规则与资产先冻结，再对八类各采集至少 15 条未见响应；沿用每类 ≥14/15
+的预设识别门槛，失败、拒识和格式错误保留在分母。同响应 ModelTrace 一问及
+互不重叠三问仍只作有边界的对照。网页自包含 prompt 还需单独做兼容性试测与
+Python/JavaScript 一致性验证；在这些证据到位前，不展示第八个预测选项。
+
+[OpenAI 的 Codex 可用性说明](https://learn.chatgpt.com/docs/models) 指出模型按
+账户和客户端逐步开放，且 GPT-5.5 将于 2026-10-14 从 ChatGPT/Codex 退休。
+若在此之前无法完成同条件八类确认，就不能把历史 GPT-5.5 样本与新日期批次
+拼接成“八类同期盲测”；应重新登记可调用目标集合，保留七类历史结果。

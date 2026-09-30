@@ -19,6 +19,10 @@ TraceOne 用一次 315 数字提问为七条 Codex 模型路由提供实验性�
 - `gpt-6-sol`
 - `gpt-6-luna`
 
+`gpt-6.1-sol` 已列入下一轮采集准备，但**不在当前七模型识别器或在线选项中**。
+截至 2026-09-30，当前 Codex ChatGPT 账户尚不能调用该路由；没有其指纹样本，
+因此不能报告第八类准确率。扩展门槛见 [评测协议](docs/protocol.md#10-gpt-61-sol-扩展准备)。
+
 ## 在线使用
 
 [打开 TraceOne Web](https://traceone-model-check.nutmeg-basil-6747.chatgpt.site)

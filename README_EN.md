@@ -20,6 +20,11 @@ separate, reproducible questions:
 - `gpt-6-sol`
 - `gpt-6-luna`
 
+`gpt-6.1-sol` is prepared as a future collection route but is **not in the current
+seven-route classifier or web picker**. As of September 30, 2026, this Codex
+ChatGPT account cannot call it; there are no fingerprint samples and no eighth-route
+accuracy claim. See the [expansion gate](docs/protocol.en.md#10-gpt-61-sol-expansion-readiness).
+
 ## Use it online
 
 [Open TraceOne Web](https://traceone-model-check.nutmeg-basil-6747.chatgpt.site)

@@ -141,3 +141,34 @@ review exports for fields introduced by future runtimes.
 - GPT-5.4 is the hardest unseen label: 13/36 false accepts in seven-model development.
 - Without routing logs or attestation, detector error, natural variation, and real
   substitution cannot be distinguished.
+
+## 10. GPT-6.1 Sol expansion readiness
+
+The [official OpenAI model page](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
+confirms the exact ID `gpt-6.1-sol` and support for `low` reasoning. It is an
+**explicit opt-in collection candidate only**: the default seven-route collection,
+16-model bank, seven-class adapter/support, web picker, and reported accuracies do
+not include it. A September 30, 2026 test with this project's Codex ChatGPT account
+returned “model not supported,” so no usable fingerprint sample exists. Synthetic
+data will not be presented as collection evidence.
+
+Once the same account can call it, preserve the one-call 315-choice prompt and Schema,
+`low` reasoning, isolated runtime, and full provenance. New reference data must be
+disjoint from adapter enrollment and final confirmation. Refit normalization,
+environment directions, and centroids for a 17-model outer bank from raw data;
+do not append one centroid to the existing 16-model artifact. Then train balanced
+eight-class adapter/support artifacts and test regression on the earlier seven
+routes, unseen-label false acceptance, and cross-runtime drift.
+
+Freeze all rules and assets before collecting at least 15 untouched responses per
+route. Retain the prespecified ≥14/15 match gate for every route, counting failures,
+abstentions, and invalid formats in the denominator. Same-response ModelTrace
+one- and disjoint three-call arms remain bounded comparators. The self-contained
+web prompt also needs its own compatibility pilot and Python/JavaScript parity;
+the eighth prediction option stays hidden until these checks are complete.
+
+[OpenAI's Codex availability guidance](https://learn.chatgpt.com/docs/models)
+notes a staged account/client rollout and GPT-5.5 retirement from ChatGPT/Codex
+on October 14, 2026. If a same-condition eight-route confirmation cannot finish
+before then, do not splice historical GPT-5.5 rows into a new-date “concurrent”
+eight-route test. Preregister a callable target set and preserve historical results.

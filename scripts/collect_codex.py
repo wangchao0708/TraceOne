@@ -23,14 +23,18 @@ MODELS = (
     "gpt-6-luna",
 )
 REFERENCE_OOD_MODELS = ("gpt-5.4",)
-BUNDLED_CODEX = Path("/Applications/ChatGPT.app/Contents/Resources/codex")
+PROSPECTIVE_MODELS = ("gpt-6.1-sol",)
+BUNDLED_CODEX_CANDIDATES = (
+    Path("/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex"),
+    Path("/Applications/ChatGPT.app/Contents/Resources/codex"),
+)
 
 
 def codex_path(explicit: str | None) -> Path:
     if explicit:
         path = Path(explicit).expanduser().resolve()
-    elif BUNDLED_CODEX.is_file():
-        path = BUNDLED_CODEX
+    elif bundled := next((item for item in BUNDLED_CODEX_CANDIDATES if item.is_file()), None):
+        path = bundled
     else:
         found = shutil.which("codex")
         if not found:
@@ -173,7 +177,10 @@ def main() -> None:
         required=True,
     )
     parser.add_argument("--repeat", type=int, required=True)
-    parser.add_argument("--model", choices=MODELS + REFERENCE_OOD_MODELS, required=True)
+    parser.add_argument(
+        "--model", choices=MODELS + REFERENCE_OOD_MODELS + PROSPECTIVE_MODELS,
+        required=True,
+    )
     parser.add_argument("--codex")
     parser.add_argument("--schema", type=Path, default=Path("schemas/identity-v3.json"))
     parser.add_argument("--no-schema", action="store_true")

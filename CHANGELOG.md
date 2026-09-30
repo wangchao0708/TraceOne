@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Prepared `gpt-6.1-sol` as an opt-in Codex collection route and updated detection
+  of the desktop-bundled Codex executable. The public classifier and web picker
+  remain seven-route until independent evidence supports an eighth.
+- Documented the eight-route refit, freeze, confirmation, and retirement gates.
+
 ## 0.2.0 — 2026-09-23 (experimental seven-route support)
 
 - Selected the 315-choice one-call v11 classifier for the seven-route Python package
